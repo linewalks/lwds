@@ -9,17 +9,8 @@ interface ButtonProps {
   as: React.ElementType
   id?: string
   disabled: boolean
-  size:
-    | 'xlg'
-    | 'lg'
-    | 'md'
-  variant:
-    | 'primary'
-    | 'primary_line'
-    | 'basic'
-    | 'basic_line'
-    | 'primary_light'
-    | 'basic_light'
+  size: string
+  variant: string
   style?: object
   bold: boolean
   block: boolean
@@ -48,7 +39,7 @@ const Button = (props: ButtonProps) => {
   const renderStartImg = (): React.ReactNode => {
     return (
       <img
-        className={cls('button__startimg')}
+        className={cls('button-startimg')}
         src={startImgSrc}
       />
     )
@@ -57,7 +48,7 @@ const Button = (props: ButtonProps) => {
   const renderEndImg = (): React.ReactNode => {
     return (
       <img
-        className={cls('button__endimg')}
+        className={cls('button-endimg')}
         src={endImgSrc}
       />
     )
@@ -70,9 +61,9 @@ const Button = (props: ButtonProps) => {
       disabled={disabled}
       className={clsx(
         cls('button'),
-        cls(`button__${size}`),
-        cls(`button__${variant}`),
-        block && cls('button__block')
+        cls(`button-${size}`),
+        cls(`button-${variant}`),
+        block && cls('button-block')
       )}
       style={{
         ...style,
