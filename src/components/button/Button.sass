@@ -1,4 +1,4 @@
-@import "../../assets/styles/variables"
+@import "../../assets/styles/variables.scss"
 
 @mixin animation ($name, $duration, $iteration) 
   animation: $name $duration $iteration
@@ -8,7 +8,7 @@
         @content
     
 
-$component: mwc-button
+$component: #{$prefix}-button
 $white: #ffffff
 $sizes: ("xlg", "lg", "md")
 $variants: ("primary", "primary_line", "basic","basic_line", "primary_light", "basic_light")
@@ -168,3 +168,4 @@ $variants: ("primary", "primary_line", "basic","basic_line", "primary_light", "b
 .loading-three 
   @include loading-base
   animation-delay: 0.3s
+
