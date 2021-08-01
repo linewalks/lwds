@@ -1,5 +1,3 @@
-Button example:
-
 #### Buttons by variant
 - variants: colors and types
 - disabled style is same on all variants.
@@ -60,7 +58,7 @@ Button example:
   <Button size="md" block style={{marginBottom: '10px'}}>md - Normal</Button>
   <Button size="lg" block style={{marginBottom: '10px'}}>lg - Large</Button>
   <Button size="xlg" block style={{marginBottom: '10px'}}>xlg - ExtraLarge</Button>
-</div>z
+</div>
 ```
 
 #### Bold text
