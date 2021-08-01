@@ -65,11 +65,7 @@ module.exports = {
     extensions: ['.jsx', '.ts', '.tsx', '.js'],
     alias: {
       '@src': path.resolve(__dirname, 'src/'),
-      '@Components': path.resolve(__dirname, 'src/components/'),
-      '@Charts': path.resolve(__dirname, 'src/components/charts/'),
-      '@Cards': path.resolve(__dirname, 'src/components/card'),
-      '@Styles': path.resolve(__dirname, 'src/assets/styles/'),
-      '@Table': path.resolve(__dirname, 'src/components/table/'),
+      '@components': path.resolve(__dirname, 'src/components/')
     },
   },
 }
