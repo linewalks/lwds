@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 
 import './SegmentedControl.scss'
 import cls from 'helpers/class'
+import { getTextWidth } from 'helpers/ui'
 
 interface ControlProps {
   id?: string
@@ -24,9 +25,11 @@ const SegmentedControl = (props: ControlProps) => {
     onChange
   } = props
 
-  const longestValue = _.reduce(valueList, (acc: string, value: string): string => {
-    return acc.length > value.length ? acc : value
-  })
+  const longestValue = useMemo(() => {
+    return _.reduce(valueList, (acc: string, value: string): string => {
+      return getTextWidth(acc) > getTextWidth(value) ? acc : value
+    })
+  }, [valueList])
 
   const [activeValue, setActiveValue] = useState(defaultValue || propsValue || valueList[0])
 
