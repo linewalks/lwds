@@ -36,7 +36,9 @@ const SegmentedControl = (props: ControlProps) => {
   }
 
   useEffect(() => {
-    setActiveValue(propsValue)
+    if (propsValue) {
+      setActiveValue(propsValue)
+    }
   }, [propsValue])
 
   // hidden_text exists for
