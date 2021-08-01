@@ -1,3 +1,5 @@
+$font_family: "Spoqa Han Sans";
+
 body, th, td, input, select, textarea, button, div {
-  font-family: "Spoqa Han Sans";
+  font-family: $font_family
 }

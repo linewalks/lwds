@@ -27,7 +27,7 @@
 <div style={{padding: '8px'}}>
   <SegmentedControl
     size="lg"
-    valueList={['Index Invasive Treatment', 'MACE']}
+    valueList={['lllllllllllllllll', '가나다라마바사아자차카타파하']}
   />
 </div>
 ```
