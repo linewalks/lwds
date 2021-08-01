@@ -1,7 +1,7 @@
 @import "../../assets/styles/variables.scss";
 
 $component: #{$prefix}-button;
-$sizes: ("xlg", "lg", "md");
+$sizes: ("xlg", "lg", "md", "sm");
 $variants: (
   "primary",
   "primary_line",
