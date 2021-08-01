@@ -61,9 +61,9 @@ const Button = (props: ButtonProps) => {
       disabled={disabled}
       className={clsx(
         cls('button'),
-        cls(`button-${size}`),
-        cls(`button-${variant}`),
-        block && cls('button-block')
+        cls('button', size),
+        cls('button', variant),
+        block && cls('button', 'block')
       )}
       style={{
         ...style,
