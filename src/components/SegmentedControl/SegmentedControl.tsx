@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 
@@ -9,7 +9,9 @@ interface ControlProps {
   id?: string
   size: string
   valueList: string[]
-  defaultValue: string
+  value?: string
+  defaultValue?: string
+  onChange?: (value: string) => void
 }
 
 const SegmentedControl = (props: ControlProps) => {
@@ -17,14 +19,25 @@ const SegmentedControl = (props: ControlProps) => {
     id,
     size,
     valueList,
-    defaultValue
+    value: propsValue,
+    defaultValue,
+    onChange
   } = props
 
   const longestValue = _.reduce(valueList, (acc: string, value: string): string => {
     return acc.length > value.length ? acc : value
   })
 
-  const [activeValue, setActiveValue] = useState(defaultValue || valueList[0])
+  const [activeValue, setActiveValue] = useState(defaultValue || propsValue || valueList[0])
+
+  const handleChange = (value: string) => {
+    propsValue || setActiveValue(value)
+    onChange && onChange(value)
+  }
+
+  useEffect(() => {
+    setActiveValue(propsValue)
+  }, [propsValue])
 
   // hidden_text exists for
   // making button width matches to longest value
@@ -36,7 +49,7 @@ const SegmentedControl = (props: ControlProps) => {
           cls('segmented', 'btn', size),
           value === activeValue ? cls('segmented', 'active') : null
         )}
-        onClick={() => setActiveValue(value)}
+        onClick={() => handleChange(value)}
       >
         <div
           className={cls('segmented', 'btn', 'text')}
