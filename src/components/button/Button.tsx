@@ -2,6 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 
 import DynamicTag from 'components/utils/DynamicTag'
+import './Button.sass'
 
 interface ButtonProps {
   as: React.ElementType
@@ -35,16 +36,18 @@ const Button = (props: ButtonProps) => {
       id={id}
       disabled={disabled}
       className={clsx([
-        `hee-button`,
-        `hee-button--${size}`,
-        `hee-button--${variant}`
+        `mwc-button`,
+        `mwc-button__${size}`,
+        `mwc-button__${variant}`
       ])}
       style={{
         ...style,
         fontWeight: bold ? 'bold' : 'normal'
       }}
       onClick={onClick}
-    />
+    >
+      {children}
+    </DynamicTag>
   )
 }
 
