@@ -1,0 +1,189 @@
+@import "../../assets/styles/variables.scss";
+
+$component: #{$prefix}-button;
+$sizes: ("xlg", "lg", "md");
+$variants: (
+  "primary",
+  "primary_line",
+  "basic",
+  "basic_line",
+  "primary_light",
+  "basic_light"
+);
+
+.#{$component} {
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, color 0.3s ease, border-color 0.3s ease;
+  line-height: 1.34em;
+  img {
+    vertical-align: middle;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  .#{$component}__startimg {
+    margin-left: 0;
+  }
+  .#{$component}__endimg {
+    margin-right: 0;
+  }
+}
+
+// BtnSize
+@mixin size-class($size) {
+  .#{$component}__#{$size} {
+    @if $size == "xlg" {
+      min-width: 120px;
+      height: 60px;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 18px;
+      img {
+        margin: 0 8px;
+      }
+    }
+    @else if $size == "lg" {
+      min-width: 100px;
+      height: 42px;
+      border-radius: 21px;
+      padding: 10px 20px;
+      font-size: 16px;
+      img {
+        margin: 0 8px;
+      }
+    }
+    @else if $size == "md" {
+      min-width: 90px;
+      height: 34px;
+      border-radius: 17px;
+      padding: 7px 18px;
+      font-size: 14px;
+      img {
+        margin: 0 6px;
+      }
+    }
+    @else if $size == "sm" {
+      min-width: 70px;
+      height: 30px;
+      border-radius: 15px;
+      padding: 5px 16px;
+      font-size: 12px;
+      img {
+        margin: 0 6px;
+      }
+    }
+  }
+}
+
+@mixin color-class($variant) {
+  .#{$component}__#{$variant} {
+    @if $variant == "primary" {
+      background-color: $primary;
+      color: $primary_text;
+      &:hover {
+        background-color: $primary_dark;
+      }
+      &:disabled {
+        background-color: $disabled;
+        color: $disabled_text;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    @else if $variant == "primary_line" {
+      background-color: $white;
+      color: $primary;
+      border: 1px solid $primary;
+      &:hover {
+        box-shadow: 0 1px 8px 0 $hover_shadow;
+      }
+      &:disabled {
+        background-color: $disabled;
+        color: $disabled_text;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    @else if $variant == "basic" {
+      background-color: $secondary;
+      color: $secondary_text;
+      &:hover {
+        background-color: $secondary_dark ;
+      }
+      &:disabled {
+        background-color: $disabled;
+        color: $disabled_text;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    @else if $variant == "basic_line" {
+      background-color: $white;
+      color: $secondary_text;
+      border: 1px solid $secondary_dark;
+      &:hover {
+        box-shadow: 0 1px 8px 0 $hover_shadow;
+      }
+      &:disabled {
+        background-color: $disabled;
+        color: $disabled_text;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    @else if $variant == "primary_light" {
+      background-color: $white;
+      color: $primary;
+      &:hover {
+        box-shadow: 0 1px 8px 0 $hover_shadow;
+      }
+      &:disabled {
+        background-color: $disabled;
+        color: $disabled_text;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    @else if $variant == "basic_light" {
+      background-color: $white;
+      color: $secondary_text;
+      &:hover {
+        box-shadow: 0 1px 8px 0 $hover_shadow;
+      }
+      &:disabled {
+        background-color: $disabled;
+        color: $disabled_text;
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@mixin generate-sizes {
+  @each $size in $sizes {
+    @include size-class($size)
+  }
+}
+@include generate-sizes();
+
+@mixin generate-variants {
+  @each $variant in $variants {
+    @include color-class($variant)
+  }
+}
+    
+@include generate-variants();
+
+.#{$component}__block {
+  width: 100%;
+  min-width: 0px;
+}
