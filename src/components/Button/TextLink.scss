@@ -1,0 +1,36 @@
+@import "../../assets/styles/global.scss";
+
+$component: #{$prefix}-textlink;
+
+.#{$component} {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.#{$component}-primary {
+  color: $primary;
+}
+
+.#{$component}-basic {
+  color: $secondary_text;
+}
+
+.#{$component}-underline {
+  text-decoration: underline;
+}
+
+.#{$component}-disabled {
+  color: $disabled_text;
+  cursor: not-allowed;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.#{$component}-block {
+  width: 100%;
+}
