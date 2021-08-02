@@ -1,6 +1,5 @@
 import React from 'react'
 import each from 'jest-each'
-import renderer from 'react-test-renderer'
 import { mount } from 'enzyme'
 
 import Button from 'components/Button/Button'
