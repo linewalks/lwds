@@ -2,8 +2,8 @@ import React from 'react'
 import clsx from 'clsx'
 
 import './Button.scss'
-import cls from 'helpers/class'
 import DynamicTag from 'components/common/DynamicTag'
+import cls from 'helpers/class'
 
 interface ButtonProps {
   as: React.ElementType
