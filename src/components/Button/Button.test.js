@@ -13,7 +13,7 @@ describe('default', () => {
   })
 })
 
-describe('Button size', () => {
+describe('size', () => {
   each([
     'lg',
     'md',
@@ -24,7 +24,7 @@ describe('Button size', () => {
   })
 })
 
-describe('Button variant', () => {
+describe('variant', () => {
   each([
     'primary',
     'basic',
@@ -38,7 +38,7 @@ describe('Button variant', () => {
   })
 })
 
-describe('Button with icon', () => {
+describe('with image', () => {
   it('start', () => {
     const wrapper = mount(
       <Button
@@ -72,7 +72,7 @@ describe('Button with icon', () => {
   })
 })
 
-describe('Button block', () => {
+describe('block', () => {
   it('block', () => {
     const wrapper = mount(
       <Button
@@ -85,7 +85,17 @@ describe('Button block', () => {
   })
 })
 
-describe('Button font normal', () => {
+describe('font weight', () => {
+  it('font bold', () => {
+    const wrapper = mount(
+      <Button
+        variant="basic"
+        size="lg"
+        bold
+      />
+    )
+    expect(wrapper.childAt(0).props().style).toHaveProperty('fontWeight', 'bold')
+  })
   it('font normal', () => {
     const wrapper = mount(
       <Button

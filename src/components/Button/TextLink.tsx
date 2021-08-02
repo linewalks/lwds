@@ -9,7 +9,6 @@ interface TextLinkProps {
   as: React.ElementType
   id?: string
   disabled: boolean
-  size?: string
   variant: string
   style?: object
   underline: boolean
@@ -23,7 +22,6 @@ const TextLink = (props: TextLinkProps) => {
     as: propsAs,
     id,
     disabled,
-    size,
     variant,
     style,
     underline,
@@ -38,7 +36,6 @@ const TextLink = (props: TextLinkProps) => {
       disabled={disabled}
       className={clsx(
         cls('textlink'),
-        size && cls('textlink', size),
         cls('textlink', variant),
         underline && cls('textlink', 'underline'),
         disabled && cls('textlink', 'disabled')
