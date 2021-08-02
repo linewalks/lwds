@@ -1,10 +1,8 @@
 import React from 'react'
-import each from 'jest-each'
 import { mount } from 'enzyme'
 
 import TextLink from 'components/Button/TextLink'
 import cls from 'helpers/class'
-
 
 const Text = 'Link Text'
 
