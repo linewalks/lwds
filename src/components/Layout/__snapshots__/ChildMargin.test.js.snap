@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`horizontal 4 margin 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 > * {
+  margin-right: 4px;
+}
+
+.c0 > *:last-child {
+  margin-right: 0;
+}
+
+<div
+  className="c0"
+  orientation="horizontal"
+>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+</div>
+`;
+
+exports[`horizontal 8 margin 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 > * {
+  margin-right: 8px;
+}
+
+.c0 > *:last-child {
+  margin-right: 0;
+}
+
+<div
+  className="c0"
+  orientation="horizontal"
+>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+</div>
+`;
+
+exports[`horizontal 16 margin 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c0 > * {
+  margin-right: 16px;
+}
+
+.c0 > *:last-child {
+  margin-right: 0;
+}
+
+<div
+  className="c0"
+  orientation="horizontal"
+>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+</div>
+`;
+
+exports[`vertical 4 margin 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 > * {
+  margin-bottom: 4px;
+}
+
+.c0 > *:last-child {
+  margin-bottom: 0;
+}
+
+<div
+  className="c0"
+  orientation="vertical"
+>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+</div>
+`;
+
+exports[`vertical 8 margin 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 > * {
+  margin-bottom: 8px;
+}
+
+.c0 > *:last-child {
+  margin-bottom: 0;
+}
+
+<div
+  className="c0"
+  orientation="vertical"
+>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+</div>
+`;
+
+exports[`vertical 16 margin 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 > * {
+  margin-bottom: 16px;
+}
+
+.c0 > *:last-child {
+  margin-bottom: 0;
+}
+
+<div
+  className="c0"
+  orientation="vertical"
+>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+  <div>
+    child
+  </div>
+</div>
+`;
