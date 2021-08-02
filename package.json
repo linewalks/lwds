@@ -4,18 +4,18 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.24",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",
     "node-sass": "^5.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16",
+    "react-dom": "^16",
     "react-scripts": "4.0.3",
     "sass-variable-loader": "^0.1.2",
     "styled-components": "^5.3.0",
@@ -23,9 +23,22 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "test": "jest --coverage",
     "build": "rollup -c",
     "styleguide": "styleguidist server",
     "build:docs": "styleguidist build"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTest.js"
+    ],
+    "moduleNameMapper": {
+      "^components(.*)$": "<rootDir>/src/components/$1",
+      "^helpers(.*)$": "<rootDir>/src/helpers/$1",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +59,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.9",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
     "@rollup/plugin-alias": "^3.1.5",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^20.0.0",
@@ -54,8 +71,17 @@
     "@rollup/plugin-typescript": "^8.2.5",
     "@rollup/plugin-url": "^6.1.0",
     "@svgr/rollup": "^5.5.0",
+    "babel-jest": "^27.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.0.6",
+    "jest-each": "^27.0.6",
+    "jest-styled-components": "^7.0.5",
+    "jsdom": "^16.7.0",
     "postcss": "^8.3.6",
     "react-styleguidist": "^11.1.7",
+    "react-testing-library": "^8.0.1",
     "rollup": "^2.55.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
