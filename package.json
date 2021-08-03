@@ -81,6 +81,7 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
+    "jest-canvas-mock": "^2.3.1",
     "jest-each": "^27.0.6",
     "jest-styled-components": "^7.0.5",
     "jsdom": "^16.7.0",
