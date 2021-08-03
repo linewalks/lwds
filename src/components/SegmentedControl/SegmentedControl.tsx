@@ -46,9 +46,10 @@ const SegmentedControl = (props: ControlProps) => {
 
   // hidden_text exists for
   // making button width matches to longest value
-  const renderButton = (value: string) => {
+  const renderButton = (value: string, idx: number) => {
     return (
       <button
+        key={`segmented__btn__${idx}`}
         className={clsx(
           cls('segmented', 'btn'),
           cls('segmented', 'btn', size),

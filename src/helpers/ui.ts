@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import fontVariables from '!!sass-variable-loader!../assets/styles/font.scss'
 
-
 export const getTextWidth = (
   text: string,
   font: string = `bold 16px ${fontVariables.font_family}`
