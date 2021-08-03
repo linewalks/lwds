@@ -13,7 +13,7 @@ const Horizontal = () => {
         <Button variant="primary">primary</Button>
         <Button variant="primary">primary</Button>
       </ChildMargin>
-      <h5>Margin 16 (default)</h5>
+      <h5>Margin 16</h5>
       <ChildMargin margin={16}>
         <Button variant="primary">primary</Button>
         <Button variant="primary">primary</Button>
@@ -42,7 +42,7 @@ const Vertical = () => {
         <Button variant="primary">primary</Button>
         <Button variant="primary">primary</Button>
       </ChildMargin>
-      <h5>Margin 16 (default)</h5>
+      <h5>Margin 16</h5>
       <ChildMargin orientation="vertical" margin={16}>
         <Button variant="primary">primary</Button>
         <Button variant="primary">primary</Button>

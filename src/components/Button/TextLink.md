@@ -31,9 +31,6 @@
 ```
 
 #### With other text
-
-* Leaving size empty will make it same size with others.
-
 ```js
 <div style={{ 
   backgroundColor: '#eeeeee',
