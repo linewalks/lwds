@@ -12,6 +12,7 @@ interface ControlProps {
   valueList: string[]
   value?: string
   defaultValue?: string
+  style?: object
   onChange?: (value: string) => void
 }
 
@@ -22,6 +23,7 @@ const SegmentedControl = (props: ControlProps) => {
     valueList,
     value: propsValue,
     defaultValue,
+    style,
     onChange
   } = props
 
@@ -78,6 +80,7 @@ const SegmentedControl = (props: ControlProps) => {
         cls('segmented'),
         cls('segmented', size)
       )}
+      style={style}
     >
       {_.map(valueList, renderButton)}
     </div>

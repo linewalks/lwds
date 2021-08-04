@@ -1,0 +1,32 @@
+@import "../../assets/styles/global.scss";
+
+$component: #{$prefix}-tab;
+
+.#{$component} {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.#{$component}-basic {
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.#{$component}-md {
+  padding: 14px 10px;
+  border-bottom-width: 3px;
+}
+
+.#{$component}-basic-active {
+  color: $primary;
+  border-bottom-color: $primary;
+}

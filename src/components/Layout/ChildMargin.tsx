@@ -26,7 +26,7 @@ interface ChildMarginProps {
   orientation: 'horizontal' | 'vertical'
   margin: number
   style?: object
-  children: React.ReactNode
+  children: React.ReactNode  
 }
 
 const ChildMargin = (props: ChildMarginProps) => {
@@ -34,7 +34,8 @@ const ChildMargin = (props: ChildMarginProps) => {
     orientation,
     margin,
     style,
-    children
+    children,
+    ...rest
   } = props
 
   return (
@@ -42,6 +43,7 @@ const ChildMargin = (props: ChildMarginProps) => {
       orientation={orientation}
       margin={margin}
       style={style}
+      {...rest}
     >
       {children}
     </WrapLayout>

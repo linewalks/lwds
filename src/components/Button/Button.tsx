@@ -41,6 +41,7 @@ const Button = (props: ButtonProps) => {
       <img
         className={cls('button-startimg')}
         src={startImgSrc}
+        alt=""
       />
     )
   }
@@ -50,6 +51,7 @@ const Button = (props: ButtonProps) => {
       <img
         className={cls('button-endimg')}
         src={endImgSrc}
+        alt=""
       />
     )
   }

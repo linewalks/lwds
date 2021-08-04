@@ -1,8 +1,4 @@
-import React, {
-  ReactNode,
-  cloneElement
-} from 'react'
-import _ from 'lodash'
+import React, {cloneElement } from 'react'
 
 export const cloneWithProps = (
   child: JSX.Element,
