@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import './Tabs.scss'
@@ -7,28 +7,25 @@ import cls from 'helpers/class'
 import { cloneWithProps } from 'helpers/node'
 
 interface TabsProps {
-  id?: string
   variant: string
   size: string
   tabSpacing: number
   activeIndex?: number
   defaultActiveIndex?: number
-  style?: object
   children: React.ReactNode
   onChange?: (index: number) => void
 }
 
 const Tabs = (props: TabsProps) => {
   const {
-    id,
     variant,
     size,
     tabSpacing,
     activeIndex: propsActiveIndex,
     defaultActiveIndex,
-    style,
     children,
-    onChange
+    onChange,
+    ...rest
   } = props
 
   const [activeIndex, setActiveIndex] = useState(defaultActiveIndex || propsActiveIndex || 0)
@@ -37,6 +34,12 @@ const Tabs = (props: TabsProps) => {
     propsActiveIndex || setActiveIndex(index)
     onChange && onChange(index)
   }
+
+  useEffect(() => {
+    if (propsActiveIndex != null) {
+      setActiveIndex(propsActiveIndex)
+    }
+  }, [propsActiveIndex])
 
   const renderChild = () => {
     return React.Children.map(children, (child, index) => {
@@ -48,16 +51,14 @@ const Tabs = (props: TabsProps) => {
       })
     })
   }
-
   return (
     <ChildMargin
-      id={id}
+      {...rest}
       className={clsx(
         cls('tabs'),
         cls('tabs', variant),
         cls('tabs', size)
       )}
-      style={style}
       margin={tabSpacing}
     >
       {renderChild()}

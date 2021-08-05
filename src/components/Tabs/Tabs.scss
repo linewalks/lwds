@@ -6,7 +6,7 @@ $component: #{$prefix}-tabs;
   display: flex;
 }
 
-.#{$component}-primary {
+.#{$component}-basic {
   background-color: $white;
   border-bottom: 2px solid $secondary_dark;
 
