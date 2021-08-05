@@ -71,12 +71,4 @@ describe('tab panels', () => {
     wrapper.setProps({ activeIndex })
     expect(wrapper.find(TabPanel).props().id).toBe(`tabpanel${activeIndex}`)
   })
-  // it('click and active tab change', () => {
-  //   const clickIndex = 1
-  //   wrapper.find(Tab).at(clickIndex).simulate('click')
-  //   wrapper.update()
-  //   _.each(_.range(numberOfTabs), (i) => {
-  //     expect(wrapper.find(Tab).at(i).props().active).toBe(i === clickIndex)
-  //   })
-  // })
 })
