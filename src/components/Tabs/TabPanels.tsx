@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface TabPanelProps {
-  activeIndex?: number
+  activeIndex: number
   children: React.ReactNode
 }
 

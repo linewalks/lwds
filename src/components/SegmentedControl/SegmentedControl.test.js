@@ -26,7 +26,6 @@ describe('size', () => {
 
 describe('click', () => {
   it('click button onChange call', () => {
-    const activeCls = cls('segmented', 'active')
     const valueList = ['aaa', 'bbbbb', 'cccc']
     const defaultValue = valueList[2]
     const wrapper = mount(

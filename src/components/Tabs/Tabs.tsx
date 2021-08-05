@@ -11,7 +11,6 @@ interface TabsProps {
   size: string
   tabSpacing: number
   activeIndex?: number
-  defaultActiveIndex?: number
   children: React.ReactNode
   onChange?: (index: number) => void
 }
@@ -22,13 +21,12 @@ const Tabs = (props: TabsProps) => {
     size,
     tabSpacing,
     activeIndex: propsActiveIndex,
-    defaultActiveIndex,
     children,
     onChange,
     ...rest
   } = props
 
-  const [activeIndex, setActiveIndex] = useState(defaultActiveIndex || propsActiveIndex || 0)
+  const [activeIndex, setActiveIndex] = useState(propsActiveIndex || 0)
 
   const handleTabClick = (index: number) => {
     propsActiveIndex || setActiveIndex(index)
@@ -42,7 +40,7 @@ const Tabs = (props: TabsProps) => {
   }, [propsActiveIndex])
 
   const renderChild = () => {
-    return React.Children.map(children, (child, index) => {
+    return React.Children.map(children, (child, index) => { 
       return cloneWithProps(child, {
         variant,
         size,
@@ -69,8 +67,7 @@ const Tabs = (props: TabsProps) => {
 Tabs.defaultProps = {
   variant: 'basic',
   size: 'md',
-  tabSpacing: 20,
-  activeIndex: 0
+  tabSpacing: 20
 }
 
 export default Tabs
