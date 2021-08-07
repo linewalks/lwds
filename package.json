@@ -1,6 +1,6 @@
 {
-  "name": "MDwalks-UI",
-  "version": "0.15.4",
+  "name": "UI",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "scripts": {
@@ -37,19 +37,6 @@
       "src/**/*.ts"
     ]
   },
-  "husky": {
-    "hooks": {
-      "**comment_pre-commit**": "lint-staged",
-      "pre-push": "yarn eslint && yarn test"
-    }
-  },
-  "**comment_lint-staged**": {
-    "./src/**/*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "repository": "https://github.com/linewalks/MDwalks-UI.git",
   "keywords": [
     "data",
     "react",
