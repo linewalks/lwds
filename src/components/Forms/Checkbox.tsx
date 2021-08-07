@@ -81,7 +81,10 @@ const Checkbox = (props: CheckboxProps) => {
         margin={12}
       >
         <div
-          className={cls('checkbox', 'img')}
+          className={clsx(
+            cls('checkbox', 'img'),
+            disabled && cls('checkbox', 'img', 'disabled')
+          )}
         >
           <Icon />
         </div>
