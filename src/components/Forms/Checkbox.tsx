@@ -50,7 +50,6 @@ const Checkbox = (props: CheckboxProps) => {
   }, [propsChecked])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("handleChange Called", e.target.checked)
     propsChecked || setChecked(e.target.checked)
     onChange && onChange(e.target.checked)
   }
