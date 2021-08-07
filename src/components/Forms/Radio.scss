@@ -1,0 +1,51 @@
+@import "../../assets/styles/global.scss";
+
+$component: #{$prefix}-radio;
+
+.#{$component} {
+  cursor: pointer;  
+}
+
+.#{$component}-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.#{$component}-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    box-shadow: 0 1px 8px 0 $hover_shadow;
+  }
+}
+
+.#{$component}-img-disabled {
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.#{$component}-box {
+  display: flex;
+  vertical-align: middle;
+}
+
+.#{$component}-box-start {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.#{$component}-box-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.#{$component}-box-end {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
