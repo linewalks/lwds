@@ -4,8 +4,9 @@ import clsx from 'clsx'
 import './Checkbox.scss'
 import CheckedIconMedium from '@assets/svg/btn-checkbox-checked-24.svg'
 import UncheckedIconMedium from '@assets/svg/btn-checkbox-unchecked-24.svg'
-import CheckedIconSmall from '../../assets/svg/btn-checkbox-checked-16.svg'
-import UncheckedIconSmall from '../../assets/svg/btn-checkbox-unchecked-16.svg'
+import CheckedIconSmall from '@assets/svg/btn-checkbox-checked-16.svg'
+import UncheckedIconSmall from '@assets/svg/btn-checkbox-unchecked-16.svg'
+import ChildMargin from '@components/Layout/ChildMargin'
 import cls from '@helpers/class'
 
 interface CheckboxProps {
@@ -13,6 +14,7 @@ interface CheckboxProps {
   disabled: boolean
   checked?: boolean
   defaultChecked?: boolean
+  iconWeight: string
   children: React.ReactNode
   onChange: (checked: boolean) => void
 }
@@ -34,6 +36,7 @@ const Checkbox = (props: CheckboxProps) => {
     disabled,
     checked: propsChecked,
     defaultChecked,
+    iconWeight,
     children,
     onChange
   } = props
@@ -55,8 +58,6 @@ const Checkbox = (props: CheckboxProps) => {
     return IconMap[size][checked]
   }
   const Icon = getIcon(checked, size)
-  console.log(Icon)
-  // console.log(Comp)
 
   return (
     <label
@@ -71,19 +72,28 @@ const Checkbox = (props: CheckboxProps) => {
         onChange={handleChange}
         style={{ display: 'none' }}
       />
-      <span
-        className={cls('checkbox', 'img', size)}
+      <ChildMargin
+        className={clsx(
+          cls('checkbox', 'box'),
+          cls('checkbox', 'box', iconWeight)
+        )}
+        margin={12}
       >
-        <Icon />
-      </span>
-      <span>{children}</span>
-      </label>
+        <div
+          className={cls('checkbox', 'img')}
+        >
+          <Icon />
+        </div>
+        <div>{children}</div>
+      </ChildMargin>
+    </label>
   )
 }
 
 Checkbox.defaultProps = {
   size: 'md',
-  disabled: false
+  disabled: false,
+  iconWeight: 'center'
 }
 
 export default Checkbox
