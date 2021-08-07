@@ -6,6 +6,11 @@ $component: #{$prefix}-checkbox;
   cursor: pointer;
 }
 
+.#{$component}-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .#{$component}-img {
   display: flex;
   align-items: center;

@@ -15,7 +15,8 @@ const Default = () => {
       >
         <Checkbox>Option1</Checkbox>
         <Checkbox>Option2</Checkbox>
-        <Checkbox>Option3</Checkbox>
+        <Checkbox disabled>Option3</Checkbox>
+        <Checkbox disabled defaultChecked>Option4</Checkbox>
       </ChildMargin>
       <h5>size sm</h5>
       <ChildMargin
@@ -26,7 +27,8 @@ const Default = () => {
       >
         <Checkbox size="sm">Option1</Checkbox>
         <Checkbox size="sm">Option2</Checkbox>
-        <Checkbox size="sm">Option3</Checkbox>
+        <Checkbox size="sm" disabled>Option3</Checkbox>
+        <Checkbox size="sm" disabled defaultChecked>Option4</Checkbox>
       </ChildMargin>
     </ChildMargin>
   )

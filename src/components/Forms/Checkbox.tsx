@@ -63,7 +63,8 @@ const Checkbox = (props: CheckboxProps) => {
   return (
     <label
       className={clsx(
-        cls('checkbox')
+        cls('checkbox'),
+        disabled && cls('checkbox', 'disabled')
       )}
     >
       <input
