@@ -10,7 +10,7 @@ import ChildMargin from '@components/Layout/ChildMargin'
 import cls from '@helpers/class'
 
 interface CheckboxProps {
-  size: string
+  size: 'sm' | 'md'
   disabled: boolean
   checked?: boolean
   defaultChecked?: boolean
