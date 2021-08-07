@@ -14,7 +14,7 @@ interface CheckboxProps {
   disabled: boolean
   checked?: boolean
   defaultChecked?: boolean
-  iconWeight: string
+  iconWeight: 'start' | 'center' | 'end'
   children: React.ReactNode
   onChange: (checked: boolean) => void
 }
@@ -50,6 +50,7 @@ const Checkbox = (props: CheckboxProps) => {
   }, [propsChecked])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("handleChange Called", e.target.checked)
     propsChecked || setChecked(e.target.checked)
     onChange && onChange(e.target.checked)
   }
