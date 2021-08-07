@@ -3,18 +3,31 @@
 $component: #{$prefix}-checkbox;
 
 .#{$component} {
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 .#{$component}-disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .#{$component}-img {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    box-shadow: 0 1px 8px 0 $hover_shadow;
+  }
+}
+
+.#{$component}-img-disabled {
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .#{$component}-box {
