@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-interface RadioGroupContextProps {
+export interface RadioGroupContextProps {
   name: string
   value: string
   onChange: (value: string) => void

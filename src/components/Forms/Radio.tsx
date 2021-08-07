@@ -4,7 +4,10 @@ import clsx from 'clsx'
 import './Radio.scss'
 import CheckedIcon from '@assets/svg/btn-radiobutton-checked-24.svg'
 import UncheckedIcon from '@assets/svg/btn-radiobutton-unchecked-24.svg'
-import { RadioGroupContext } from '@components/Forms/RadioGroup'
+import {
+  RadioGroupContextProps,
+  RadioGroupContext
+} from '@components/Forms/RadioGroup'
 import ChildMargin from '@components/Layout/ChildMargin'
 import cls from '@helpers/class'
 
@@ -20,7 +23,7 @@ interface RadioProps {
 }
 
 const Radio = (props: RadioProps) => {
-  const context = useContext(RadioGroupContext)
+  const context: RadioGroupContextProps = useContext(RadioGroupContext)
 
   const {
     disabled,
@@ -33,10 +36,10 @@ const Radio = (props: RadioProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange && onChange(e.target.value)
-    context.onChange && context.onChange(e.target.value)
+    context?.onChange && context.onChange(e.target.value)
   }
 
-  const checked = propsChecked || context?.value === value
+  const checked = propsChecked || (context && (context.value === value))
 
   const Icon = checked ? CheckedIcon : UncheckedIcon
 
