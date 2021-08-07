@@ -28,6 +28,13 @@ describe('icon weight', () => {
   })
 })
 
+describe('disabled', () => {
+  it('disabled', () => {
+    const wrapper = mount(<Checkbox disabled/>)
+    expect(wrapper.find('input').prop('disabled')).toBeTruthy()
+  })
+})
+
 describe('with defaultChecked', () => {
   it('defaultChecked', () => {
     const wrapper = mount(<Checkbox defaultChecked />)
