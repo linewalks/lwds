@@ -1,25 +1,35 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "baseUrl": "./",
     "allowJs": true,
+    "target": "es5",
+    "lib": ["es6", "es2017", "dom", "dom.iterable", "esnext"],
+    "sourceMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "es2015",
     "moduleResolution": "node",
+    "importHelpers": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react",
+    "types": ["node", "jest"],
+    "typeRoots": ["./typings"]
   },
-  "include": ["typings", "src/**/*"]
+  "include": ["typings", "src/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.js",
+    "src/data/*",
+    "src/components/paper/*",
+    "src/components/notifications/*",
+    "src/components/__tests__/utils.js",
+  ],
+  "paths": {
+    "@src/*": ["src/*"],
+    "@assets/*": ["src/assets/*"],
+    "@components/*": ["src/components/*"],
+    "@helpers/*": ["src/helpers/*"],
+  },
 }

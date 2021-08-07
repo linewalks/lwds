@@ -2,8 +2,8 @@ import React from 'react'
 import clsx from 'clsx'
 
 import './TextLink.scss'
-import DynamicTag from 'components/common/DynamicTag'
-import cls from 'helpers/class'
+import DynamicTag from '@components/common/DynamicTag'
+import cls from '@helpers/class'
 
 interface TextLinkProps {
   as: React.ElementType

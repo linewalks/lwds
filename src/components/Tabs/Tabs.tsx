@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import './Tabs.scss'
-import ChildMargin from 'components/Layout/ChildMargin'
-import cls from 'helpers/class'
-import { cloneWithProps } from 'helpers/node'
+import ChildMargin from '@components/Layout/ChildMargin'
+import cls from '@helpers/class'
+import { cloneWithProps } from '@helpers/node'
 
 interface TabsProps {
   variant: string
@@ -40,7 +40,7 @@ const Tabs = (props: TabsProps) => {
   }, [propsActiveIndex])
 
   const renderChild = () => {
-    return React.Children.map(children, (child, index) => { 
+    return React.Children.map(children, (child: any, index: number) => { 
       return cloneWithProps(child, {
         variant,
         size,

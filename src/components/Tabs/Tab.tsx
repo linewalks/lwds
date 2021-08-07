@@ -2,7 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 
 import './Tab.scss'
-import cls from 'helpers/class'
+import cls from '@helpers/class'
 
 interface TabProps {
   id?: string

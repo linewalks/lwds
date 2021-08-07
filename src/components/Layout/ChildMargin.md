@@ -1,7 +1,7 @@
 #### Horizontal
 
 ```js
-import Button from 'components/Button/Button'
+import Button from '@components/Button/Button'
 const Horizontal = () => {
   return (
     <>
@@ -30,7 +30,7 @@ Horizontal()
 #### Vertical
 
 ```js
-import Button from 'components/Button/Button'
+import Button from '@components/Button/Button'
 const Vertical = () => {
   return (
     <>

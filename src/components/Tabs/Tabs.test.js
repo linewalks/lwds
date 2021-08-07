@@ -2,11 +2,11 @@ import React from 'react'
 import _ from 'lodash'
 import { mount } from 'enzyme'
 
-import Tab from 'components/Tabs/Tab'
-import TabPanel from 'components/Tabs/TabPanel'
-import TabPanels from 'components/Tabs/TabPanels'
-import Tabs from 'components/Tabs/Tabs'
-import cls from 'helpers/class'
+import Tab from '@components/Tabs/Tab'
+import TabPanel from '@components/Tabs/TabPanel'
+import TabPanels from '@components/Tabs/TabPanels'
+import Tabs from '@components/Tabs/Tabs'
+import cls from '@helpers/class'
 
 describe('only tabs', () => {
   const numberOfTabs = 3

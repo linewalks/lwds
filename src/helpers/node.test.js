@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 import {
   cloneWithProps,
   cloneChildrenWithProps
-} from 'helpers/node'
+} from '@helpers/node'
 
 describe('cloneWithProps', () => {
   const defaultProps = { a: 999, c: 'false' }

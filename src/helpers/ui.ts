@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import fontVariables from '!!sass-variable-loader!../assets/styles/font.scss'
+import fontVariables from 'sass-variables-loader!@assets/styles/font.scss'
 
 export const getTextWidth = (
   text: string,
-  font: string = `bold 16px ${fontVariables.font_family}`
+  font: string = `bold 16px ${fontVariables.font_familly}`
 ): number => { 
   const canvas = document.createElement("canvas")
   const context = canvas.getContext('2d')
