@@ -23,6 +23,7 @@ const WrapLayout = styled.div`
 `
 
 interface ChildMarginProps {
+  className: string
   orientation: 'horizontal' | 'vertical'
   margin: number
   style?: object
@@ -31,6 +32,7 @@ interface ChildMarginProps {
 
 const ChildMargin = (props: ChildMarginProps) => {
   const {
+    className,
     orientation,
     margin,
     style,
@@ -40,6 +42,7 @@ const ChildMargin = (props: ChildMarginProps) => {
 
   return (
     <WrapLayout
+      className={className}
       orientation={orientation}
       margin={margin}
       style={style}

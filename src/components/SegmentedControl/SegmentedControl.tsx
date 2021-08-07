@@ -3,8 +3,8 @@ import _ from 'lodash'
 import clsx from 'clsx'
 
 import './SegmentedControl.scss'
-import cls from 'helpers/class'
-import { getTextWidth } from 'helpers/ui'
+import cls from '@helpers/class'
+import { getTextWidth } from '@helpers/ui'
 
 interface ControlProps {
   id?: string

@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import TextLink from 'components/Button/TextLink'
-import cls from 'helpers/class'
+import TextLink from '@components/Button/TextLink'
+import cls from '@helpers/class'
 
 const Text = 'Link Text'
 

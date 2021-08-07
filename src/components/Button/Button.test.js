@@ -2,8 +2,8 @@ import React from 'react'
 import each from 'jest-each'
 import { mount } from 'enzyme'
 
-import Button from 'components/Button/Button'
-import cls from 'helpers/class'
+import Button from '@components/Button/Button'
+import cls from '@helpers/class'
 
 describe('default', () => {
   const ButtonText = 'Button Text'

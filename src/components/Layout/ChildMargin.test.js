@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
 
-import ChildMargin from 'components/Layout/ChildMargin'
+import ChildMargin from '@components/Layout/ChildMargin'
 
 describe('vertical', () => {
   each([

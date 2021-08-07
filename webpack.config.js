@@ -27,10 +27,18 @@ module.exports = {
           },
         ],
       },
+      // {
+      //   test: /\.(svg)(\?.*)?$/,
+      //   loader: 'file-loader',
+      //   query: { name: 'static/media/[name].[hash:8].[ext]' },
+      // },
       {
-        test: /\.(svg)(\?.*)?$/,
-        loader: 'file-loader',
-        query: { name: 'static/media/[name].[hash:8].[ext]' },
+        test: /\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+          }
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -43,13 +51,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              implementation: sass
-            },
-          },
-          {
-            loader: 'scss-loader',
-            options: {
-              implementation: sass
+              implementation: sass,
             },
           },
         ],
@@ -65,7 +67,9 @@ module.exports = {
     extensions: ['.jsx', '.ts', '.tsx', '.js'],
     alias: {
       '@src': path.resolve(__dirname, 'src/'),
-      '@components': path.resolve(__dirname, 'src/components/')
+      '@assets': path.resolve(__dirname, 'src/assets/'),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@helpers': path.resolve(__dirname, 'src/helpers/')
     },
   },
 }

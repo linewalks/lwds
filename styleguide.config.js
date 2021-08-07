@@ -1,11 +1,49 @@
+const path = require('path')
+const { version } = require('./package')
+
+const ignore = [
+  '**/__tests__/**',
+  '**/*.test.{js,jsx,ts,tsx}',
+  '**/*.spec.{js,jsx,ts,tsx}',
+  '**/*.d.ts',
+]
 
 module.exports = {
-  title: 'Hee UI Style Guide',
-  assetsDir: 'src/assets/',
-  ignore: [
-    '**/__tests__/**',
-    '**/*.test.{js,jsx,ts,tsx}'
+  title: 'MDwalks-UI Style Guide',
+  require: [
+    // path.resolve(__dirname, 'src/assets/styles/reset.css'),
+    // path.resolve(__dirname, 'src/assets/styles/spoqaHansans.css'),
   ],
+  components: [
+    // 'src/assets/styles/font.ts',
+    // 'src/components/**/*.{js,jsx,ts,tsx}',
+  ],
+  moduleAliases: {
+    '@src': path.resolve(__dirname, 'src'),
+    '@assets': path.resolve(__dirname, 'src/assets'),
+    '@components': path.resolve(__dirname, 'src/components'),
+    '@helpers': path.resolve(__dirname, 'src/helpers'),
+  },
+  version,
+  ignore: ignore.concat([
+  ]),
+  template: {
+    head: {
+      links: [
+        {
+          rel: 'stylesheet',
+          href:
+            'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css',
+        },
+      ],
+    },
+  },
+  theme: {
+    fontFamily: {
+      base: '"Spoqa Han Sans", sans-serif',
+    },
+  },
+  styleguideDir: 'docs',
   pagePerSection: true,
   sections: [
     {
@@ -17,10 +55,16 @@ module.exports = {
       ]
     },
     {
+      name: 'Forms',
+      components: () => [
+        'src/components/Forms/Checkbox.tsx'
+      ]
+    },
+    {
       name: 'Tabs',
       components: () => [
         'src/components/Tabs/Tabs.tsx'
       ]
     }
-  ],
+  ]
 }

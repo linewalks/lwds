@@ -4,8 +4,8 @@ import each from 'jest-each'
 import { mount } from 'enzyme'
 import 'jest-canvas-mock'
 
-import SegmentedControl from 'components/SegmentedControl/SegmentedControl'
-import cls from 'helpers/class'
+import SegmentedControl from '@components/SegmentedControl/SegmentedControl'
+import cls from '@helpers/class'
 
 describe('size', () => {
   const valueList = ['aaa', 'bbb', 'ccc']

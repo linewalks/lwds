@@ -1,6 +1,6 @@
 import 'jest-canvas-mock'
 
-import { getTextWidth } from 'helpers/ui'
+import { getTextWidth } from '@helpers/ui'
 
 describe('getTextWIdth', () => {
   it('with canvas', () => {
