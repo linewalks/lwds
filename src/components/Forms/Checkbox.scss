@@ -4,17 +4,30 @@ $component: #{$prefix}-checkbox;
 
 .#{$component} {
   cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
-.#{$component}-img-md {
-  width: 30px;
-  height: 301px;
+.#{$component}-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.#{$component}-img-sm {
-  width: 16px;
-  height: 16px;
+.#{$component}-box {
+  display: flex;
+  vertical-align: middle;
+}
+
+.#{$component}-box-start {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.#{$component}-box-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.#{$component}-box-end {
+  align-items: flex-end;
+  justify-content: flex-end;
 }
