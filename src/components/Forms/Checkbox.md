@@ -93,6 +93,11 @@ const Default = () => {
         >
           Checked with State
         </Checkbox>
+        <Checkbox
+          checked={true}
+        >
+          Always Checked
+        </Checkbox>
       </ChildMargin>
     </ChildMargin>
   )
