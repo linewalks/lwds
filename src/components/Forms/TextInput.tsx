@@ -8,9 +8,11 @@ interface TextInputProps {
   variant: 'outline' | 'outline_round' | string
   color: 'primary' | string
   size: 'md' | 'lg' | 'xlg' | string
+  type: 'text' | 'password' | string
   disabled: boolean
   error: boolean
   placeholder: string
+  style?: object
 }
 
 const TextInput = (props: TextInputProps) => {
@@ -18,9 +20,11 @@ const TextInput = (props: TextInputProps) => {
     variant,
     color,
     size,
+    type,
     disabled,
     error,
-    placeholder
+    placeholder,
+    style
   } = props 
   return (
     <input
@@ -31,9 +35,10 @@ const TextInput = (props: TextInputProps) => {
         cls('text', variant),
         cls('text', size)
       )}
-      type="text"
+      type={type}
       disabled={disabled}
       placeholder={placeholder}
+      style={style}
     >
     </input>
   )
@@ -43,6 +48,7 @@ TextInput.defaultProps = {
   variant: 'outline',
   color: 'primary',
   size: 'md',
+  type: 'text',
   disabled: false,
   error: false
 }
