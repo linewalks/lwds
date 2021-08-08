@@ -3,6 +3,7 @@
 $component: #{$prefix}-text;
 
 .#{$component} {
+  display: flex;
   box-sizing: border-box;
 
   & > input {
@@ -12,6 +13,7 @@ $component: #{$prefix}-text;
     border: none;
     outline: none;
     text-align: inherit;
+    font-size: inherit;
   }
 }
 
@@ -48,7 +50,7 @@ $component: #{$prefix}-text;
 .#{$component}-xlg {
   min-width: 120px;
   height: 64px;
-  padding: 24px 20px;
+  padding: 20px 24px;
   font-size: 16px;
 }
 
@@ -64,6 +66,25 @@ $component: #{$prefix}-text;
   height: 34px;
   padding: 7px 18px;
   font-size: 14px;
+}
+
+@mixin img-by-size($size, $outside, $inside) {
+  .#{$component}-#{$size}-startimg {
+    margin-left: #{$outside}px;
+    margin-right: #{$inside}px;
+  }
+  .#{$component}-#{$size}-endimg {
+    margin-left: #{$inside}px;
+    margin-right: #{$outside}px;
+  }
+}
+
+@include img-by-size(xlg, 0, 20);
+@include img-by-size(lg, -7, 13);
+@include img-by-size(md, -9, 9);
+
+.#{$component}-img-button {
+  cursor: pointer;
 }
 
 .#{$component}-outline {

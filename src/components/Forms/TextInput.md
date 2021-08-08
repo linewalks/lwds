@@ -110,3 +110,91 @@ const Default = () => {
 }
 Default()
 ```
+
+#### With Image
+```js
+import ChildMargin from '@components/Layout/ChildMargin'
+const Default = () => {
+  return (
+    <ChildMargin orientation="vertical">
+      <h5>Image Right</h5>
+      <ChildMargin>
+        <TextInput
+          size="xlg"
+          endImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+        <TextInput
+          size="lg"
+          endImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+        <TextInput
+          size="md"
+          endImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+      </ChildMargin>
+      <h5>Image Left</h5>
+      <ChildMargin>
+        <TextInput
+          size="xlg"
+          startImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+        <TextInput
+          size="lg"
+          startImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+        <TextInput
+          size="md"
+          startImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+      </ChildMargin>
+      <h5>Image Both</h5>
+      <ChildMargin>
+        <TextInput
+          size="xlg"
+          startImgSrc="/svg/icn-visibility-on-24.svg"
+          endImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+        <TextInput
+          size="lg"
+          startImgSrc="/svg/icn-visibility-on-24.svg"
+          endImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+        <TextInput
+          size="md"
+          startImgSrc="/svg/icn-visibility-on-24.svg"
+          endImgSrc="/svg/icn-visibility-on-24.svg"
+        />
+      </ChildMargin>
+    </ChildMargin>
+  )
+}
+Default()
+```
+
+#### With Image Button (Clickable)
+```js
+import ChildMargin from '@components/Layout/ChildMargin'
+const Default = () => {
+  const handleClick = () => {
+    alert('Clicked')
+  }
+  return (
+    <ChildMargin orientation="vertical">
+      <ChildMargin>
+        <TextInput
+          size="xlg"
+          endImgSrc="/svg/icn-visibility-on-24.svg"
+          endImgOnClick={handleClick}
+        />
+        <TextInput
+          size="xlg"
+          startImgSrc="/svg/icn-visibility-on-24.svg"
+          startImgOnClick={handleClick}
+        />
+      </ChildMargin>
+    </ChildMargin>
+  )
+}
+Default()
+```
+

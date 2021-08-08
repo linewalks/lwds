@@ -39,7 +39,7 @@ const Button = (props: ButtonProps) => {
   const renderStartImg = (): React.ReactNode => {
     return (
       <img
-        className={cls('button-startimg')}
+        className={cls('button', 'startimg')}
         src={startImgSrc}
         alt=""
       />
@@ -49,7 +49,7 @@ const Button = (props: ButtonProps) => {
   const renderEndImg = (): React.ReactNode => {
     return (
       <img
-        className={cls('button-endimg')}
+        className={cls('button', 'endimg')}
         src={endImgSrc}
         alt=""
       />

@@ -17,6 +17,8 @@ interface TextInputProps {
   style?: object
   startImgSrc?: string
   endImgSrc?: string
+  startImgOnClick: () => void
+  endImgOnClick: () => void
   onChange: (value: string) => void
 }
 
@@ -34,6 +36,8 @@ const TextInput = (props: TextInputProps) => {
     style,
     startImgSrc,
     endImgSrc,
+    startImgOnClick,
+    endImgOnClick,
     onChange
   } = props 
   const [value, setValue] = useState(defaultValue || propsValue || '')
@@ -51,15 +55,29 @@ const TextInput = (props: TextInputProps) => {
 
   const renderStartImg = (): React.ReactNode => {
     return (
-      <>
-      </>
+      <img
+        className={clsx(
+          cls('text', size, 'startimg'),
+          startImgOnClick && cls('text', 'img', 'button')
+        )}
+        src={startImgSrc}
+        alt=""
+        onClick={startImgOnClick}
+      />
     )
   }
 
   const renderEndImg = (): React.ReactNode => {
     return (
-      <>
-      </>
+      <img
+        className={clsx(
+          cls('text', size, 'endimg'),
+          endImgOnClick && cls('text', 'img', 'button')
+        )}
+        src={endImgSrc}
+        alt=""
+        onClick={endImgOnClick}
+      />
     )
   }
 
@@ -74,6 +92,7 @@ const TextInput = (props: TextInputProps) => {
       )}
       style={style}
     >
+      {startImgSrc && renderStartImg()}
       <input
         type={type}
         value={value}
@@ -81,6 +100,7 @@ const TextInput = (props: TextInputProps) => {
         placeholder={placeholder}
         onChange={handleChange}
       />
+      {endImgSrc && renderEndImg()}
     </div>
   )
 }

@@ -10,6 +10,7 @@ const ignore = [
 
 module.exports = {
   title: 'MDwalks-UI Style Guide',
+  assetsDir: './src/assets/',
   require: [
     // path.resolve(__dirname, 'src/assets/styles/reset.css'),
     // path.resolve(__dirname, 'src/assets/styles/spoqaHansans.css'),
