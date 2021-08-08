@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import './TextInput.scss'
@@ -9,10 +9,13 @@ interface TextInputProps {
   color: 'primary' | string
   size: 'md' | 'lg' | 'xlg' | string
   type: 'text' | 'password' | string
+  value?: string
+  defaultValue?: string
   disabled: boolean
   error: boolean
-  placeholder: string
+  placeholder?: string
   style?: object
+  onChange: (value: string) => void
 }
 
 const TextInput = (props: TextInputProps) => {
@@ -21,11 +24,27 @@ const TextInput = (props: TextInputProps) => {
     color,
     size,
     type,
+    value: propsValue,
+    defaultValue,
     disabled,
     error,
     placeholder,
-    style
+    style,
+    onChange
   } = props 
+  const [value, setValue] = useState(defaultValue || propsValue || '')
+
+  useEffect(() => {
+    if (propsValue !== undefined) {
+      setValue(propsValue)
+    }
+  }, [propsValue])
+
+  const handleChange = (e) => {
+    propsValue || setValue(e.target.value)
+    onChange && onChange(e.target.value)
+  }
+
   return (
     <input
       className={clsx(
@@ -36,11 +55,12 @@ const TextInput = (props: TextInputProps) => {
         cls('text', size)
       )}
       type={type}
+      value={value}
       disabled={disabled}
       placeholder={placeholder}
       style={style}
-    >
-    </input>
+      onChange={handleChange}
+    />
   )
 }
 
