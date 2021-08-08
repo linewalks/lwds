@@ -58,7 +58,8 @@ module.exports = {
       name: 'Forms',
       components: () => [
         'src/components/Forms/Checkbox.tsx',
-        'src/components/Forms/Radio.tsx'
+        'src/components/Forms/Radio.tsx',
+        'src/components/Forms/TextInput.tsx'
       ]
     },
     {
