@@ -71,3 +71,64 @@ describe('on change', () => {
     expect(wrapper.find('input').props().value).toBe(newValue)
   })
 })
+
+describe('with image', () => {
+  it('start image', () => {
+    const wrapper = mount(<TextInput startImgSrc='some.svg' />)
+    expect(wrapper.find('img')).toHaveLength(1)
+  })
+  it('end image', () => {
+    const wrapper = mount(<TextInput endImgSrc='some.svg' />)
+    expect(wrapper.find('img')).toHaveLength(1)
+  })
+  it('both image', () => {
+  const wrapper = mount(
+    <TextInput
+      startImgSrc='some.svg'
+      endImgSrc='some.svg'
+    />
+  )
+    expect(wrapper.find('img')).toHaveLength(2)
+  })
+})
+
+describe('with image click', () => {
+  it('start image', () => {
+    const handleClick = jest.fn()
+    const wrapper = mount(
+      <TextInput
+        startImgSrc='some.svg' 
+        startImgOnClick={handleClick}
+      />
+    )
+    wrapper.find('img').simulate('click')
+    expect(handleClick).toHaveBeenCalled()
+  })
+  it('end image', () => {
+    const handleClick = jest.fn()
+    const wrapper = mount(
+      <TextInput
+        endImgSrc='some.svg' 
+        endImgOnClick={handleClick}
+      />
+    )
+    wrapper.find('img').simulate('click')
+    expect(handleClick).toHaveBeenCalled()
+  })
+  it('both image', () => {
+    const handleStartClick = jest.fn()
+    const handleEndClick = jest.fn()
+    const wrapper = mount(
+      <TextInput
+        startImgSrc='start.svg'
+        startImgOnClick={handleStartClick}
+        endImgSrc='end.svg'
+        endImgOnClick={handleEndClick}
+      />
+    )
+    wrapper.find({ src: 'start.svg' }).simulate('click')
+    wrapper.find({ src: 'end.svg' }).simulate('click')
+    expect(handleStartClick).toHaveBeenCalledTimes(1)
+    expect(handleEndClick).toHaveBeenCalledTimes(1)
+  })
+})
