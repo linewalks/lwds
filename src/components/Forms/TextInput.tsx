@@ -15,6 +15,8 @@ interface TextInputProps {
   error: boolean
   placeholder?: string
   style?: object
+  startImgSrc?: string
+  endImgSrc?: string
   onChange: (value: string) => void
 }
 
@@ -30,6 +32,8 @@ const TextInput = (props: TextInputProps) => {
     error,
     placeholder,
     style,
+    startImgSrc,
+    endImgSrc,
     onChange
   } = props 
   const [value, setValue] = useState(defaultValue || propsValue || '')
@@ -40,13 +44,27 @@ const TextInput = (props: TextInputProps) => {
     }
   }, [propsValue])
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     propsValue || setValue(e.target.value)
     onChange && onChange(e.target.value)
   }
 
+  const renderStartImg = (): React.ReactNode => {
+    return (
+      <>
+      </>
+    )
+  }
+
+  const renderEndImg = (): React.ReactNode => {
+    return (
+      <>
+      </>
+    )
+  }
+
   return (
-    <input
+    <div
       className={clsx(
         cls('text'),
         cls('text', color),
@@ -54,13 +72,16 @@ const TextInput = (props: TextInputProps) => {
         cls('text', variant),
         cls('text', size)
       )}
-      type={type}
-      value={value}
-      disabled={disabled}
-      placeholder={placeholder}
       style={style}
-      onChange={handleChange}
-    />
+    >
+      <input
+        type={type}
+        value={value}
+        disabled={disabled}
+        placeholder={placeholder}
+        onChange={handleChange}
+      />
+    </div>
   )
 }
 
