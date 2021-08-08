@@ -26,7 +26,7 @@ describe('status', () => {
   })
   it('error', () => {
     const wrapper = mount(<TextInput error />)
-    expect(wrapper.find('input').props().className).toContain('error')
+    expect(wrapper.childAt(0).props().className).toContain('error')
   })
 })
 
