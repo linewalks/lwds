@@ -38,7 +38,7 @@ const Default = () => {
 Default()
 ```
 
-#### By Status
+#### By Type
 ```js
 import ChildMargin from '@components/Layout/ChildMargin'
 const Default = () => {
@@ -47,7 +47,6 @@ const Default = () => {
       <ChildMargin>
         <TextInput size="lg" type="text" placeholder="text" />
         <TextInput size="lg" type="password" placeholder="password" />
-        <TextInput size="lg" type="number" placeholder="number" />
       </ChildMargin>
     </ChildMargin>
   )
