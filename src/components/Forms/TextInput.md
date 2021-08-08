@@ -48,9 +48,6 @@ const Default = () => {
         <TextInput size="lg" type="text" placeholder="text" />
         <TextInput size="lg" type="password" placeholder="password" />
         <TextInput size="lg" type="number" placeholder="number" />
-        <TextInput size="lg" type="text" placeholder="text" 
-        style={{ textAlign: 'right', width: '20px' }}
-        />
       </ChildMargin>
     </ChildMargin>
   )
@@ -65,17 +62,48 @@ const Default = () => {
   return (
     <ChildMargin orientation="vertical">
       <ChildMargin>
-        <TextInput 
+        <TextInput
           placeholder="text" 
           style={{ textAlign: 'right', width: '60px', minWidth: 0 }}
         />
-        <TextInput 
+        <TextInput
           placeholder="text" 
           style={{ textAlign: 'center', width: '120px' }}
         />
-        <TextInput 
+        <TextInput
           placeholder="text" 
           style={{ textAlign: 'center', width: '120px', height: '120px', padding: 0 }}
+        />
+      </ChildMargin>
+    </ChildMargin>
+  )
+}
+Default()
+```
+
+#### With Value and Default Value
+```js
+import { useState } from 'react'
+import ChildMargin from '@components/Layout/ChildMargin'
+const Default = () => {
+  const [value, setValue] = useState('')
+  const handleChange = (value) => {
+    setValue(value)
+  }
+  return (
+    <ChildMargin orientation="vertical">
+      <ChildMargin>
+        <TextInput
+          value="value set"
+        />
+        <TextInput
+          placeholder="value controled"
+          value={value}
+          onChange={handleChange}
+        />
+        <TextInput
+          placeholder="did you erased it?"
+          defaultValue="defualt value set"
         />
       </ChildMargin>
     </ChildMargin>
