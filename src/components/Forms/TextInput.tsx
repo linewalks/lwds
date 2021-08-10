@@ -17,9 +17,10 @@ interface TextInputProps {
   style?: object
   startImgSrc?: string
   endImgSrc?: string
-  startImgOnClick: () => void
-  endImgOnClick: () => void
-  onChange: (value: string) => void
+  startImgOnClick?: () => void
+  endImgOnClick?: () => void
+  onChange?: (value: string) => void
+  onSubmit?: (value: string) => void
 }
 
 const TextInput = (props: TextInputProps) => {
@@ -38,7 +39,9 @@ const TextInput = (props: TextInputProps) => {
     endImgSrc,
     startImgOnClick,
     endImgOnClick,
-    onChange
+    onChange,
+    onSubmit,
+    ...rest
   } = props 
   const [value, setValue] = useState(defaultValue || propsValue || '')
 
@@ -51,6 +54,12 @@ const TextInput = (props: TextInputProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     propsValue || setValue(e.target.value)
     onChange && onChange(e.target.value)
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key == 'Enter') {
+      onSubmit && onSubmit(value)
+    }
   }
 
   const renderStartImg = (): React.ReactNode => {
@@ -87,6 +96,7 @@ const TextInput = (props: TextInputProps) => {
         cls('text'),
         cls('text', color),
         error && cls('text', color, 'error'),
+        disabled && cls('text', color, 'disabled'),
         cls('text', variant),
         cls('text', size)
       )}
@@ -99,6 +109,7 @@ const TextInput = (props: TextInputProps) => {
         disabled={disabled}
         placeholder={placeholder}
         onChange={handleChange}
+        onKeyPress={handleKeyPress}
       />
       {endImgSrc && renderEndImg()}
     </div>
