@@ -32,11 +32,6 @@ $component: #{$prefix}-text;
     box-shadow: 0px 0px 0px 2px $primary,
                 0px 4px 10px 0 $hover_shadow;
   }
-
-  &:disabled {
-    background-color: disabled;
-    color: $disabled_text;
-  }
 }
 
 .#{$component}-primary-error {
@@ -45,6 +40,11 @@ $component: #{$prefix}-text;
     box-shadow: 0px 0px 0px 2px $error,
                 0px 4px 10px 0 $hover_shadow;
   }
+}
+
+.#{$component}-primary-disabled {
+  background-color: $disabled;
+  color: $disabled_text;
 }
 
 .#{$component}-xlg {

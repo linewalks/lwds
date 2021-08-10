@@ -68,6 +68,12 @@ module.exports = {
       components: () => [
         'src/components/Tabs/Tabs.tsx'
       ]
+    },
+    {
+      name: 'Advanced',
+      components: () => [
+        'src/components/Search/SearchBar.tsx'
+      ]
     }
   ]
 }
