@@ -2,7 +2,7 @@ import React from 'react'
 import each from 'jest-each'
 import { mount } from 'enzyme'
 
-import TextInput from '@components/Forms/TextINput'
+import TextInput from '@components/Forms/TextInput'
 import cls from '@helpers/class'
 
 describe('variant', () => {
@@ -69,6 +69,31 @@ describe('on change', () => {
     wrapper.find('input').simulate('change', { target: { value: newValue } })
     expect(handleChange).toHaveBeenCalledWith(newValue)
     expect(wrapper.find('input').props().value).toBe(newValue)
+  })
+})
+
+describe('on key press', () => {
+  it('on press enter', () => {
+    const handleSubmit = jest.fn()
+    const value = 'abcd'
+    const wrapper = mount(
+      <TextInput
+        value={value}
+        onSubmit={handleSubmit}
+      />
+    )
+    wrapper.find('input').simulate('keypress', {key: 'Enter'})
+    expect(handleSubmit).toHaveBeenCalledWith(value)
+  })
+  it('on press other', () => {
+    const handleSubmit = jest.fn()
+    const wrapper = mount(
+      <TextInput
+        onSubmit={handleSubmit}
+      />
+    )
+    wrapper.find('input').simulate('keypress', {key: 'a'})
+    expect(handleSubmit).not.toHaveBeenCalled()
   })
 })
 
