@@ -139,3 +139,36 @@ const Default = () => {
 }
 Default()
 ```
+
+#### Setting Options
+```js
+import { useState } from 'react'
+import ChildMargin from '@components/Layout/ChildMargin'
+const Default = () => {
+  const onlyLabels = [
+    'this is option',
+    'this is option 2 with long value',
+    'short',
+    '1',
+  ]
+  const valueAndLabels = [
+    {value: 'option1', label: 'labelforvalue1'},
+    {value: 'option2', label: 'labelforvalue2'},
+    {value: 'option3', label: 'labelforvalue3'},
+    {value: 'option4', label: 'labelforvalue4'},
+  ]
+  return (
+    <ChildMargin orientation="vertical">
+      <h5>With Label List</h5>
+      <Select
+        options={onlyLabels}
+      />
+      <h5>With Value and Label Object List</h5>
+      <Select
+        options={valueAndLabels}
+      />
+    </ChildMargin>
+  )
+}
+Default()
+```
