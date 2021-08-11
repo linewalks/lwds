@@ -3,10 +3,6 @@ import _ from 'lodash'
 import clsx from 'clsx'
 
 import './Select.scss'
-import FocusedIconLarge from '@assets/svg/icn-chevron-up-24.svg'
-import NormalIconLarge from '@assets/svg/icn-chevron-down-24.svg'
-import FocusedIcon from '@assets/svg/icn-chevron-up-16.svg'
-import NormalIcon from '@assets/svg/icn-chevron-down-16.svg'
 import cls from '@helpers/class'
 
 interface SelectProps {
@@ -18,7 +14,7 @@ interface SelectProps {
   disabled: boolean
   error: boolean
   placeholder?: string
-  options: string[]
+  options: string[] | { value: string, label: string }[]
   style?: object
   onChange?: (value: string) => void
 }
@@ -66,13 +62,15 @@ const Select = (props: SelectProps) => {
             {placeholder}
           </option>
         )}
-        {_.map(options, (option, index) => {
+        {_.map(options, (option: string | { value: string, label: string }, index: number) => {
+          const value = typeof(option) === 'string' ? option : option.value
+          const label = typeof(option) === 'string' ? option : option.label
           return (
             <option
               key={`option__${index}`}
-              value={option}
+              value={value}
             >
-              {option}
+              {label}
             </option>
           )
         })}
