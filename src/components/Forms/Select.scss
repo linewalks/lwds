@@ -29,9 +29,6 @@ $component: #{$prefix}-select;
   box-shadow: 0px 0px 0px 1px $secondary_dark;
 
   color: $dark_text;
-  & > input::placeholder {
-    color: $placeholder;
-  }
 
   &:focus-within {
     box-shadow: 0px 0px 0px 2px $primary,
