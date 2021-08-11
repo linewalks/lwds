@@ -40,8 +40,7 @@ const TextInput = (props: TextInputProps) => {
     startImgOnClick,
     endImgOnClick,
     onChange,
-    onSubmit,
-    ...rest
+    onSubmit
   } = props 
   const [value, setValue] = useState(defaultValue || propsValue || '')
 
