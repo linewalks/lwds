@@ -1,0 +1,46 @@
+@import "../../../assets/styles/global.scss";
+
+$component: #{$prefix}-dropdown;
+
+.#{$component} {
+  width: fit-content;
+  height: fit-content;
+
+  background-color: white;
+  box-shadow: 0 1px 8px 0 $hover_shadow;
+  border-radius: 4px;
+  border: 1px solid $secondary_dark;
+}
+
+.#{$component}-lg {
+  min-width: 160px;
+  padding: 8px 0;
+}
+
+.#{$component}-md {
+  min-width: 136px;
+  padding: 8px 0;
+}
+
+.#{$component}-item-button {  
+  cursor: pointer;
+  &:hover {
+    background-color: $secondary_hover;
+  }
+}
+
+.#{$component}-item-lg {
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+.#{$component}-item-md {
+  font-size: 14px;
+  padding: 6px 24px;
+}
+
+.#{$component}-divider {
+  height: 1px;
+  margin: 8px 0;
+  background-color: $secondary;
+}

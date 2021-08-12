@@ -6,7 +6,7 @@ export interface RadioGroupContextProps {
   onChange: (value: string) => void
 }
 
-export const RadioGroupContext = React.createContext<RadioGroupContextProps | null>(null);
+export const RadioGroupContext = React.createContext<RadioGroupContextProps | null>(null)
 
 interface RadioGroupProps {
   name: string

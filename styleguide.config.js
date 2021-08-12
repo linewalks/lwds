@@ -71,6 +71,12 @@ module.exports = {
       ]
     },
     {
+      name: 'Menu',
+      components: () => [
+        'src/components/Menu/Dropdown/Dropdown.tsx'
+      ]
+    },
+    {
       name: 'Advanced',
       components: () => [
         'src/components/Search/SearchBar.tsx'
