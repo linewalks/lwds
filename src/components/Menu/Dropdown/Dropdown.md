@@ -2,7 +2,7 @@
 ```js
 import ChildMargin from '@components/Layout/ChildMargin'
 import DropdownItem from '@components/Menu/Dropdown/Item'
-import DropdownDivider from '@components/Menu/Dropdown/Divier'
+import DropdownDivider from '@components/Menu/Dropdown/Divider'
 
 const Default = () => {
   const handleClick = () => {
