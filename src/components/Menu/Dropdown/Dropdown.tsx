@@ -12,12 +12,14 @@ export const DropdownContext = React.createContext<DropdownContextProps | null>(
 
 interface DropdownProps {
   size: 'lg' | 'md' | string
+  style?: object
   children: React.ReactNode
 }
 
 const Dropdown = (props: DropdownProps) => {
   const {
     size,
+    style,
     children
   } = props
 
@@ -30,6 +32,7 @@ const Dropdown = (props: DropdownProps) => {
           cls('dropdown'),
           cls('dropdown', size)
         )}
+        style={style}
       >
         {children}
       </div>
