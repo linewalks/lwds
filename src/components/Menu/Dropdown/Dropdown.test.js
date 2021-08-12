@@ -55,3 +55,43 @@ describe('bold', () => {
     expect(wrapper.find(DropdownItem).childAt(0).props().style.fontWeight).toBe('bold')
   })
 })
+
+describe('item with image', () => {
+  it('start image', () => {
+    const wrapper = mount(
+      <Dropdown>
+        <DropdownItem
+          startImgSrc="/svg/some"
+        >
+          item
+        </DropdownItem>
+      </Dropdown>
+    )
+    expect(wrapper.find('img')).toHaveLength(1)
+  })
+  it('end image', () => {
+    const wrapper = mount(
+      <Dropdown>
+        <DropdownItem
+          endImgSrc="/svg/some"
+        >
+          item
+        </DropdownItem>
+      </Dropdown>
+    )
+    expect(wrapper.find('img')).toHaveLength(1)
+  })
+  it('both image', () => {
+    const wrapper = mount(
+      <Dropdown>
+        <DropdownItem
+          startImgSrc="/svg/some"
+          endImgSrc="/svg/some"
+        >
+          item
+        </DropdownItem>
+      </Dropdown>
+    )
+    expect(wrapper.find('img')).toHaveLength(2)
+  })
+})

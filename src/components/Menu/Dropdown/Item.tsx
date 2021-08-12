@@ -6,11 +6,12 @@ import {
   DropdownContextProps,
   DropdownContext
 } from '@components/Menu/Dropdown/Dropdown'
-import { isNoSubstitutionTemplateLiteral } from 'typescript'
 
 interface DropdownItemProps {
   bold: boolean
   isButton: boolean
+  startImgSrc?: string
+  endImgSrc?: string
   children: React.ReactNode
   onClick?: () => void
 }
@@ -21,9 +22,32 @@ const DropdownItem = (props: DropdownItemProps) => {
   const {
     bold,
     isButton,
+    startImgSrc,
+    endImgSrc,
     children,
     onClick
   } = props
+
+  const renderStartImg = (): React.ReactNode => {
+    return (
+      <img
+        className={cls('dropdown', 'item', 'startimg')}
+        src={startImgSrc}
+        alt=""
+      />
+    )
+  }
+
+  const renderEndImg = (): React.ReactNode => {
+    return (
+      <img
+        className={cls('dropdown', 'item', 'endimg')}
+        src={endImgSrc}
+        alt=""
+      />
+    )
+  }
+
   return (
     <div
       className={clsx(
@@ -34,7 +58,9 @@ const DropdownItem = (props: DropdownItemProps) => {
       style={{ fontWeight: bold ? 'bold' : 'normal' }}
       onClick={onClick}
     >
+      {startImgSrc && renderStartImg()}
       {children}
+      {endImgSrc && renderEndImg()}
     </div>
   )
 }
