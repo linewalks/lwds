@@ -20,7 +20,7 @@ interface ButtonProps {
   onClick?: () => void
 }
 
-const Button = (props: ButtonProps) => {
+const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) => {
   const {
     as: propsAs,
     id,
@@ -72,13 +72,14 @@ const Button = (props: ButtonProps) => {
         fontWeight: bold ? 'bold' : 'normal'
       }}
       onClick={onClick}
+      ref={ref}
     >
       {startImgSrc && renderStartImg()}
       {children}
       {endImgSrc && renderEndImg()}
     </DynamicTag>
   )
-}
+})
 
 Button.defaultProps = {
   as: 'button',
