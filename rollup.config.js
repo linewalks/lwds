@@ -29,6 +29,7 @@ export default {
       extensions: ['.js', '.ts', '.tsx'],
     }),
     alias({
+      resolve: ['.ts', '.tsx'],
       entries: [
         { find: '@src', replacement: 'src' },
         { find: '@assets', replacement: 'src/assets' },
@@ -52,9 +53,6 @@ export default {
     'react',
     'react-dom',
     'styled-components',
-    'd3',
-    'recharts',
-    'antd',
     'typescript',
     'tslib',
   ],
