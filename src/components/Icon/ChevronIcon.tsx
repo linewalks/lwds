@@ -3,9 +3,9 @@ import React from 'react'
 import SVGIcon from '@components/Icon/SVGIcon'
 
 interface ChevronProps {
-  color: string
-  width: number
-  height: number
+  color?: string
+  width?: number
+  height?: number
   direction: 'down' | 'up'
 }
 
@@ -37,6 +37,10 @@ const ChevronIcon = (props: ChevronProps) => {
       />
     </SVGIcon>
   )
+}
+
+ChevronIcon.defaultProps = {
+  direction: 'down'
 }
 
 export default ChevronIcon
