@@ -48,6 +48,12 @@ module.exports = {
   pagePerSection: true,
   sections: [
     {
+      name: 'Common',
+      components: () => [
+        'src/components/Icon/SVGIcon.tsx',
+      ]
+    },
+    {
       name: 'Controls',
       components: () => [
         'src/components/Button/Button.tsx',

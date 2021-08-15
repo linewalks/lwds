@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import fontVariables from '!!sass-variables-loader!../assets/styles/font.scss'
+import variables from '!!sass-variables-loader!../assets/styles/variables.scss'
 
 export const getTextWidth = (
   text: string,
@@ -16,4 +17,8 @@ export const getTextWidth = (
     // return the text width as a number of characters
     return text.length
   }
+}
+
+export const getColor = (colorName: string) => {
+  return variables[colorName]
 }
