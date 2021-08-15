@@ -3,9 +3,11 @@ import alias from '@rollup/plugin-alias'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
+import scssVariable from 'rollup-plugin-sass-variables'
 import json from '@rollup/plugin-json'
 import url from '@rollup/plugin-url'
 import typescript from '@rollup/plugin-typescript'
+import svgr from '@svgr/rollup'
 import pkg from './package.json'
 
 export default {
@@ -41,6 +43,7 @@ export default {
       includePaths: ['src/components', 'src/assets/styles'],
       extensions: ['.css', '.scss', '.sass'],
     }),
+    scssVariable(),
     nodeResolve({
       mainFields: ['browser', 'jsnext', 'module', 'main'],
     }),
@@ -48,6 +51,7 @@ export default {
     url(),
     json(),
     typescript(),
+    svgr()
   ],
   external: [
     'react',

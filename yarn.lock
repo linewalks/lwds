@@ -2107,6 +2107,20 @@
     deepmerge "^4.2.2"
     svgo "^1.2.2"
 
+"@svgr/rollup@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@svgr/rollup/-/rollup-5.5.0.tgz#9ceaaa6d463916e69aff8a9e10b3bb8fbb94688a"
+  integrity sha512-EiZmH2VTr+Xzyb6Ga8XtGa9MEbiU3WQnB5vHmqhwAUqibU3uwuwr7MN+QwIh/gtBk1ucMim8BCfcRTlLVREM8A==
+  dependencies:
+    "@babel/core" "^7.12.3"
+    "@babel/plugin-transform-react-constant-elements" "^7.12.1"
+    "@babel/preset-env" "^7.12.1"
+    "@babel/preset-react" "^7.12.5"
+    "@svgr/core" "^5.5.0"
+    "@svgr/plugin-jsx" "^5.5.0"
+    "@svgr/plugin-svgo" "^5.5.0"
+    rollup-pluginutils "^2.8.2"
+
 "@svgr/webpack@^5.4.0", "@svgr/webpack@^5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@svgr/webpack/-/webpack-5.5.0.tgz#aae858ee579f5fa8ce6c3166ef56c6a1b381b640"
@@ -14855,6 +14869,11 @@ rollup-plugin-postcss@^2.0.3:
     rollup-pluginutils "^2.8.2"
     safe-identifier "^0.4.1"
     style-inject "^0.3.0"
+
+rollup-plugin-sass-variables@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-sass-variables/-/rollup-plugin-sass-variables-0.1.1.tgz#6eae8a6ca9777356de9758bcfdaf3489570dd1f6"
+  integrity sha512-nTj4onwZwxI1VIkV8eMBZBOpqA9QkskGz4VSt36yHLNXnz758mHGIyaL5lMoWhplk2475TcGLZ+CSL+iMB6D5w==
 
 rollup-pluginutils@^2.8.2:
   version "2.8.2"

@@ -3,6 +3,8 @@ import _ from 'lodash'
 import clsx from 'clsx'
 
 import './Select.scss'
+import OpenIcon from '@assets/svg/icn-chevron-down-16.svg'
+import OpenIconLarge from '@assets/svg/icn-chevron-down-24.svg'
 import cls from '@helpers/class'
 
 interface SelectProps {
@@ -46,9 +48,8 @@ const Select = (props: SelectProps) => {
     onChange && onChange(e.target.value)
   }
 
-  const iconSrc = size === 'xlg' ? 
-    '/svg/icn-chevron-down-24.svg' :
-    '/svg/icn-chevron-down-16.svg'
+  const iconSrc = size === 'xlg' ? OpenIconLarge : OpenIcon
+  console.log(iconSrc)
 
   const renderOptions = () => {
     return (
