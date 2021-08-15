@@ -47,7 +47,14 @@ export default {
     nodeResolve({
       mainFields: ['browser', 'jsnext', 'module', 'main'],
     }),
-    commonjs({ extensions: ['.js', '.ts', '.tsx'] }),
+    commonjs({
+      extensions: ['.js', '.ts', '.tsx'],
+      namedExports: {
+        'node_modules/react-dom/server.browser.js': [
+          'renderToStaticMarkup'
+        ]
+      }
+    }),
     url(),
     json(),
     typescript(),

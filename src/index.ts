@@ -12,7 +12,7 @@ import Popup from '@components/Layout/Popup'
 
 import Dropdown from '@components/Menu/Dropdown/Dropdown'
 import DropdownItem from '@components/Menu/Dropdown/Item'
-import DropdownDivier from '@components/Menu/Dropdown/Divider'
+import DropdownDivider from '@components/Menu/Dropdown/Divider'
 
 import SearchBar from '@components/Search/SearchBar'
 
@@ -35,7 +35,7 @@ export {
   Popup,
   Dropdown,
   DropdownItem,
-  DropdownDivier,
+  DropdownDivider,
   SearchBar,
   SegmentedControl,
   Tab,
