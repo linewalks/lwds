@@ -1,7 +1,7 @@
 import React from 'react'
 
 export interface IconProps {
-  color: string
+  color?: string
   width: number
   height: number
   viewBox: string
@@ -23,7 +23,7 @@ const SVGIcon = (props: IconProps) => {
       width={width}
       height={height}
       viewBox={viewBox}
-      fill={color}  //"#4D5661"
+      fill={color}
     >
       {children}
     </svg>
@@ -31,7 +31,6 @@ const SVGIcon = (props: IconProps) => {
 }
 
 SVGIcon.defaultProps = {
-  color: '#000',
   width: 24,
   height: 24,
   viewBox: '0 0 24 24'
