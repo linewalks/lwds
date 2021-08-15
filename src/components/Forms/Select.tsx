@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 import './Select.scss'
-import OpenIcon from '@assets/svg/icn-chevron-down-16.svg'
-import OpenIconLarge from '@assets/svg/icn-chevron-down-24.svg'
+import ChevronIcon from '@components/Icon/ChevronIcon'
 import cls from '@helpers/class'
+import { getColor } from '@helpers/ui'
 
 interface SelectProps {
   variant: 'outline' | 'outline_round' | string
@@ -48,8 +49,15 @@ const Select = (props: SelectProps) => {
     onChange && onChange(e.target.value)
   }
 
-  const iconSrc = size === 'xlg' ? OpenIconLarge : OpenIcon
-  console.log(iconSrc)
+  const backgroundImage = useMemo(() => {
+    const iconSize = size === 'xlg' ? 24 : 16
+    const Icon = <ChevronIcon
+      width={iconSize}
+      height={iconSize}
+      color={getColor('secondary_text')}
+    />
+    return `url('data:image/svg+xml;utf8,${encodeURIComponent(renderToStaticMarkup(Icon))}')`
+  }, [size])
 
   const renderOptions = () => {
     return (
@@ -95,10 +103,7 @@ const Select = (props: SelectProps) => {
         value={value}
         disabled={disabled}
         onChange={handleChange}
-
-        style={{
-          backgroundImage: `url(${iconSrc})`
-        }}
+        style={{ backgroundImage: backgroundImage }}
       >
         {renderOptions()}
       </select>
