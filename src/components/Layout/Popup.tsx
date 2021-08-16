@@ -26,13 +26,10 @@ const Popup = (props: PopupProps) => {
     onClose
   } = props
 
-  const closePopup = () => {
-    onClose && onClose()
-  }
-
   const getPosition = () => {
-    const left = anchorRef?.current?.offsetLeft
-    const top = anchorRef?.current?.offsetTop
+    const left = anchorRef?.current?.offsetLeft || 0
+    const top = anchorRef?.current?.offsetTop || 0
+
     return {
       left: left + offsetLeft,
       top: top + offsetTop
@@ -43,7 +40,7 @@ const Popup = (props: PopupProps) => {
     <>
       {isOpen ? (
         <OutsideEventHandler
-          onClick={closePopup}
+          onClick={onClose}
         >
           <WrapperPopup
             style={
