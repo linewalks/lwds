@@ -3,35 +3,35 @@ import React, { useEffect, useRef } from 'react'
 interface OutsideEventHandlerProps {
   children: React.ReactNode,
   onClick?: () => void
-  onScroll?: () => void
+  onWheel?: () => void
 }
 
 const OutsideEventHandler = (props: OutsideEventHandlerProps) => {
   const {
     children,
     onClick,
-    onScroll
+    onWheel
   } = props
   const wrapperRef = useRef(null)
 
-  const handleMouseDown = (event) => {
+  const handleClick = (event) => {
     if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
       onClick && onClick()
     }
   }
 
-  const handleMouseWheel = (event) => {
+  const handleWheel = (event) => {
     if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-      onScroll && onScroll()
+      onWheel && onWheel()
     }
   }
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleMouseDown)
-    document.addEventListener('mousewheel', handleMouseWheel)
+    document.addEventListener('click', handleClick)
+    document.addEventListener('wheel', handleWheel)
     return () => {
-      document.removeEventListener('mousedown', handleMouseDown)
-      document.removeEventListener('mousewheel', handleMouseWheel)
+      document.removeEventListener('click', handleClick)
+      document.removeEventListener('wheel', handleWheel)
     }
   }, [])
   return <div ref={wrapperRef}>{children}</div>
