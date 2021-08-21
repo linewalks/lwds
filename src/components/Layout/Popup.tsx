@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
 import OutsideEventHandler from '@components/common/OutsideEventHandler'
@@ -13,7 +14,7 @@ interface PopupProps {
   offsetTop: number
   offsetLeft: number
   children: React.ReactNode
-  onClose: () => void
+  onClose?: () => void
 }
 
 const Popup = (props: PopupProps) => {
@@ -36,21 +37,25 @@ const Popup = (props: PopupProps) => {
     }
   }
 
+  const render = () => {
+    return ReactDOM.createPortal((
+      <OutsideEventHandler
+        onClick={onClose}
+      >
+        <WrapperPopup
+          style={
+            getPosition()
+          }
+        >
+          {children}
+        </WrapperPopup>
+      </OutsideEventHandler>
+    ), document.body)
+  }
+
   return (
     <>
-      {isOpen ? (
-        <OutsideEventHandler
-          onClick={onClose}
-        >
-          <WrapperPopup
-            style={
-              getPosition()
-            }
-          >
-            {children}
-          </WrapperPopup>
-        </OutsideEventHandler>
-      ) : null}
+      {isOpen ? render() : null}
     </>
   )
 }

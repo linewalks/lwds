@@ -65,12 +65,20 @@ import DropdownDivider from '@components/Menu/Dropdown/Divider'
 
 const Default = () => {
   const anchorRef = useRef()
+  const anchorRef2 = useRef()
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpen2, setIsOpen2] = useState(false)
   const handleClick = () => {
     setIsOpen(!isOpen)
   }
+  const handleClick2 = () => {
+    setIsOpen2(!isOpen2)
+  }
   const handleClose = () => {
     setIsOpen(false)
+  }
+  const handleClose2 = () => {
+    setIsOpen2(false)
   }
   const renderChildren = () => (
     <>
@@ -114,6 +122,23 @@ const Default = () => {
         offsetTop={10}
         offsetLeft={-10}
         onClose={handleClose}
+      >
+        <Dropdown>
+          {renderChildren()}
+        </Dropdown>
+      </Popup>
+      <Button
+        onClick={handleClick2}
+        ref={anchorRef2}
+      >
+        Open Dropdown
+      </Button>
+      <Popup
+        isOpen={isOpen2}
+        anchorRef={anchorRef2}
+        offsetTop={10}
+        offsetLeft={-10}
+        onClose={handleClose2}
       >
         <Dropdown>
           {renderChildren()}
