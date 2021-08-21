@@ -85,7 +85,8 @@ module.exports = {
     {
       name: 'Advanced',
       components: () => [
-        'src/components/Search/SearchBar.tsx'
+        'src/components/Search/SearchBar.tsx',
+        'src/components/Tooltip/Tooltip.tsx'
       ]
     }
   ]
