@@ -1,0 +1,35 @@
+@import "../../assets/styles/global.scss";
+
+$component: #{$prefix}-progressbar;
+
+.#{$component} {
+  // to make half of the height
+  border-radius: 9999px;
+}
+
+.#{$component}-filled {
+  height: 100%;
+
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.#{$component}-md {
+  width: 120px;
+  height: 6px;
+}
+
+.#{$component}-sm {
+  width: 80px;
+  height: 6px;
+}
+
+.#{$component}-primary {
+  background-color: rgba(48, 56, 65, 0.1);  
+}
+
+.#{$component}-primary-filled {
+  background-color: $primary_dark;
+}
