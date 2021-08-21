@@ -30,7 +30,7 @@ const Tooltip = (props: TooltipProps) => {
   const [isOverPopup, setOverPopup] = useState(false)
 
   const delayCall = (delay: number, callback: () => void) => {
-    setTimeout(callback, delay * 1000)
+    delay === 0 ? callback() : setTimeout(callback, delay * 1000)
   }
 
   const handleOverAnchor = () => {
