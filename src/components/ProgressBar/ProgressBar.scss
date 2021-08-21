@@ -16,6 +16,11 @@ $component: #{$prefix}-progressbar;
   border-bottom-right-radius: 0;
 }
 
+.#{$component}-filled-full {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
 .#{$component}-md {
   width: 120px;
   height: 6px;

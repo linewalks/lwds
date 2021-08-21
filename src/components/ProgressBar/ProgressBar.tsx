@@ -27,10 +27,11 @@ const ProgressBar = (props: ProgressBarProps) => {
       <div
         className={clsx(
           cls('progressbar', 'filled'),
-          cls('progressbar', color, 'filled')
+          cls('progressbar', color, 'filled'),
+          progress >= 1 && cls('progressbar', 'filled', 'full')
         )}
         style={{
-          width: `${progress * 100}%`
+          width: `${Math.min(100, progress * 100)}%`
         }}
       />
     </div>
