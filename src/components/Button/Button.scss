@@ -71,7 +71,7 @@ $component: #{$prefix}-button;
   }
 }
 
-.#{$component}-primary {
+.#{$component}-variant-primary {
   background-color: $primary;
   color: $primary_text;
   svg {
@@ -88,7 +88,7 @@ $component: #{$prefix}-button;
   }
 }
     
-.#{$component}-primary_line {
+.#{$component}-variant-primary_line {
   background-color: $white;
   color: $primary;
   svg {
@@ -106,7 +106,7 @@ $component: #{$prefix}-button;
   }
 }
     
-.#{$component}-basic {
+.#{$component}-variant-basic {
   background-color: $secondary;
   color: $secondary_text;
   svg {
@@ -123,7 +123,7 @@ $component: #{$prefix}-button;
   }
 }
 
-.#{$component}-basic_line {
+.#{$component}-variant-basic_line {
   background-color: $white;
   svg {
     fill: $secondary_text;
@@ -140,7 +140,7 @@ $component: #{$prefix}-button;
   }
 }
 
-.#{$component}-primary_light {
+.#{$component}-variant-primary_light {
   background-color: $white;
   color: $primary;
   svg {
@@ -157,7 +157,7 @@ $component: #{$prefix}-button;
   }
 }
 
-.#{$component}-basic_light {
+.#{$component}-variant-basic_light {
   background-color: $white;
   color: $secondary_text;
   svg {

@@ -68,7 +68,7 @@ const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) 
       className={clsx(
         cls('button'),
         cls('button', 'size', size),
-        cls('button', variant),
+        cls('button', 'variant', variant),
         block && cls('button', 'block')
       )}
       style={{
