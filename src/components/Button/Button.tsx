@@ -17,12 +17,15 @@ interface ButtonProps {
   id?: string
   disabled: boolean
   size: string | 'sm' | 'md' | 'lg' | 'xlg'
-  variant: string
-  color: string | 'primary' | 'basic'
+  // TODO variant => variant와 color로 나누기
+  variant: (
+    string | 'primary' | 'primary_line' | 'basic' |
+    'basic_line' | 'primary_light' | 'basic_light'
+  )
   style?: object
   bold: boolean
   block: boolean
-  startIcon?: React.ReactNode
+  startIcon?: React.ReactElement
   endIcon?: React.ReactElement
   children: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLElement>
@@ -45,7 +48,7 @@ const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) 
     ...rest
   } = props
 
-  const createIconNode = (icon, className) => {
+  const createIconNode = (icon: React.ReactElement, className: string) => {
     return icon && React.cloneElement(icon, {
       className: cls('button', className),
       width: '1em',
