@@ -14,7 +14,8 @@ const SVGIcon = (props: IconProps) => {
     width,
     height,
     viewBox,
-    children
+    children,
+    ...rest
   } = props
 
   return (
@@ -24,6 +25,7 @@ const SVGIcon = (props: IconProps) => {
       height={height}
       viewBox={viewBox}
       fill={color}
+      {...rest}
     >
       {children}
     </svg>

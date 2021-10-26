@@ -21,7 +21,7 @@
 
 #### Buttons by size
 ```js
-<div style={{ 
+<div style={{
   backgroundColor: '#eeeeee',
   display: 'flex',
   justifyContent: 'space-between',
@@ -66,7 +66,7 @@
 * Set bold as false for normal font weight.
 
 ```js
-<div style={{ 
+<div style={{
   backgroundColor: '#eeeeee',
   display: 'flex',
   justifyContent: 'space-between',
@@ -85,55 +85,60 @@
 #### With Image
 
 ```js
-<div style={{ 
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '8px'
-}}>
-  <Button
-    variant="primary"
-    size="md"
-    endImgSrc="/svg/icn_chevron_right_16.svg"
-  >
-    Let's Go!
-  </Button>
-  <Button
-    variant="basic"
-    size="md"
-    startImgSrc="/svg/icn_plus_16.svg"
-  >
-    Create
-  </Button>
-  <Button
-    variant="basic"
-    size="md"
-    startImgSrc="/svg/icn_plus_16.svg"
-    endImgSrc="/svg/icn_chevron_right_16_black.svg"
-  >
-    Chaos
-  </Button>
-  <Button
-    variant="primary"
-    size="lg"
-    endImgSrc="/svg/icn_chevron_right_16.svg"
-  >
-    Let's Go!
-  </Button>
-  <Button
-    variant="basic"
-    size="lg"
-    startImgSrc="/svg/icn_plus_16.svg"
-  >
-    Create
-  </Button>
-  <Button
-    variant="basic"
-    size="lg"
-    startImgSrc="/svg/icn_plus_16.svg"
-    endImgSrc="/svg/icn_chevron_right_16_black.svg"
-  >
-    Chaos
-  </Button>
-</div>
+import ChevronIcon from '@components/Icon/ChevronIcon'
+
+const Default = () => (
+  <div style={{ 
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '8px'
+  }}>
+    <Button
+      variant="primary"
+      size="md"
+      endIcon={<ChevronIcon direction="right" />}
+    >
+      Let's Go!
+    </Button>
+    <Button
+      variant="basic"
+      size="md"
+      startIcon={<ChevronIcon direction="left" />}
+    >
+      Create
+    </Button>
+    <Button
+      variant="basic"
+      size="md"
+      startIcon={<ChevronIcon direction="left" />}
+      endIcon={<ChevronIcon direction="right" />}
+    >
+      Chaos
+    </Button>
+    <Button
+      variant="primary"
+      size="lg"
+      endIcon={<ChevronIcon direction="right" />}
+    >
+      Let's Go!
+    </Button>
+    <Button
+      variant="basic"
+      size="lg"
+      startIcon={<ChevronIcon direction="right" />}
+    >
+      Create
+    </Button>
+    <Button
+      variant="basic"
+      size="lg"
+      startIcon={<ChevronIcon direction="right" />}
+      endIcon={<ChevronIcon direction="right" />}
+    >
+      Chaos
+    </Button>
+  </div>
+)
+Default()
 ```

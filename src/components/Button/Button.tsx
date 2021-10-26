@@ -1,23 +1,31 @@
 import React from 'react'
 import clsx from 'clsx'
+import styled from 'styled-components'
 
 import './Button.scss'
 import DynamicTag from '@components/common/DynamicTag'
 import cls from '@helpers/class'
 
+const WrapInside = styled.span`
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+`
+
 interface ButtonProps {
   as: React.ElementType
   id?: string
   disabled: boolean
-  size: string
+  size: string | 'sm' | 'md' | 'lg' | 'xlg'
   variant: string
+  color: string | 'primary' | 'basic'
   style?: object
   bold: boolean
   block: boolean
-  startImgSrc?: string
-  endImgSrc?: string
+  startIcon?: React.ReactNode
+  endIcon?: React.ReactElement
   children: React.ReactNode
-  onClick?: () => void
+  onClick?: React.MouseEventHandler<HTMLElement>
 }
 
 const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) => {
@@ -30,40 +38,33 @@ const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) 
     style,
     bold,
     block,
-    startImgSrc,
-    endImgSrc,
+    startIcon,
+    endIcon,
     children,
-    onClick
+    onClick,
+    ...rest
   } = props
 
-  const renderStartImg = (): React.ReactNode => {
-    return (
-      <img
-        className={cls('button', 'startimg')}
-        src={startImgSrc}
-        alt=""
-      />
-    )
+  const createIconNode = (icon, className) => {
+    return icon && React.cloneElement(icon, {
+      className: cls('button', className),
+      width: '1em',
+      height: '1em'
+    })
   }
 
-  const renderEndImg = (): React.ReactNode => {
-    return (
-      <img
-        className={cls('button', 'endimg')}
-        src={endImgSrc}
-        alt=""
-      />
-    )
-  }
+  const startIconNode = createIconNode(startIcon, 'starticon')
+  const endIconNode = createIconNode(endIcon, 'endicon')
 
   return (
     <DynamicTag
+      {...rest}
       as={propsAs}
       id={id}
       disabled={disabled}
       className={clsx(
         cls('button'),
-        cls('button', size),
+        cls('button', 'size', size),
         cls('button', variant),
         block && cls('button', 'block')
       )}
@@ -74,9 +75,11 @@ const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) 
       onClick={onClick}
       ref={ref}
     >
-      {startImgSrc && renderStartImg()}
-      {children}
-      {endImgSrc && renderEndImg()}
+      <WrapInside>
+        {startIconNode}
+        {children}
+        {endIconNode}
+      </WrapInside>
     </DynamicTag>
   )
 })
