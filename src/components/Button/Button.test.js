@@ -3,6 +3,7 @@ import each from 'jest-each'
 import { mount } from 'enzyme'
 
 import Button from '@components/Button/Button'
+import ChevronIcon from '@components/Icon/ChevronIcon'
 import cls from '@helpers/class'
 
 describe('default', () => {
@@ -20,7 +21,7 @@ describe('size', () => {
     'sm'
   ]).it('%s', (size) => {
     const wrapper = mount(<Button size={size} />)
-    expect(wrapper.find(`.${cls('button', size)}`)).toHaveLength(2)
+    expect(wrapper.find(`.${cls('button', 'size', size)}`)).toHaveLength(2)
   })
 })
 
@@ -34,7 +35,7 @@ describe('variant', () => {
     'basic_light'
   ]).it('%s', (variant) => {
     const wrapper = mount(<Button variant={variant} />)
-    expect(wrapper.find(`.${cls('button', variant)}`)).toHaveLength(2)
+    expect(wrapper.find(`.${cls('button', 'variant', variant)}`)).toHaveLength(2)
   })
 })
 
@@ -44,31 +45,31 @@ describe('with image', () => {
       <Button
         variant="basic"
         size="lg"
-        startImgSrc="/svg/icn_plus_16.svg"
+        startIcon={<ChevronIcon />}
       />
     )
-    expect(wrapper.find('img')).toHaveLength(1)
+    expect(wrapper.find('svg')).toHaveLength(1)
   })
   it('end', () => {
     const wrapper = mount(
       <Button
         variant="basic"
         size="lg"
-        endImgSrc="/svg/icn_plus_16.svg"
+        endIcon={<ChevronIcon />}
       />
     )
-    expect(wrapper.find('img')).toHaveLength(1)
+    expect(wrapper.find('svg')).toHaveLength(1)
   })
   it('both', () => {
     const wrapper = mount(
       <Button
         variant="basic"
         size="lg"
-        startImgSrc="/svg/icn_plus_16.svg"
-        endImgSrc="/svg/icn_plus_16.svg"
+        startIcon={<ChevronIcon />}
+        endIcon={<ChevronIcon />}
       />
     )
-    expect(wrapper.find('img')).toHaveLength(2)
+    expect(wrapper.find('svg')).toHaveLength(2)
   })
 })
 
