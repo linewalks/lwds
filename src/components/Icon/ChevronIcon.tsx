@@ -6,14 +6,15 @@ interface ChevronProps {
   color?: string
   width?: number
   height?: number
-  direction: 'down' | 'up'
+  direction: 'down' | 'up' | 'left' | 'right'
 }
 
 const ChevronIcon = (props: ChevronProps) => {
   const {
     direction
   } = props
-  const viewBoxSize = 16
+  const viewBoxSize = 24
+
   const angle = {
     down: 0,
     up: 180,
@@ -26,13 +27,7 @@ const ChevronIcon = (props: ChevronProps) => {
   return (
     <SVGIcon {...props} viewBox={`0 0 ${viewBoxSize} ${viewBoxSize}`}>
       <path
-        d="M 4.708 5.882
-           L 8 9.171 l3.293-3.289c.36-.36.928-.387
-           1.32-.083l.095.084c.361.36.39.927.084
-           1.32l-.083.093-3.293 3.29-1.416
-           1.415-1.415-1.414v-.002
-           L3.293 7.296c-.361-.36-.39-.927-.084-1.319l.083-.094h.001c.391-.39 1.024-.39 1.415 0z
-           "
+        d="M5.707 8.883L12 15.174l6.292-6.291c.39-.39 1.024-.39 1.414 0 .39.39.39 1.024 0 1.414l-7.707 7.708-.707-.708-.016-.017-6.982-6.983c-.39-.39-.39-1.024 0-1.414.39-.39 1.024-.39 1.414 0z"
         transform={rotationStr}
       />
     </SVGIcon>
