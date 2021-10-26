@@ -91,6 +91,9 @@ $component: #{$prefix}-button;
 .#{$component}-primary_line {
   background-color: $white;
   color: $primary;
+  svg {
+    fill: $primary_text;
+  }
   border: 1px solid $primary;
   &:hover {
     box-shadow: 0 1px 8px 0 $hover_shadow;
@@ -106,6 +109,9 @@ $component: #{$prefix}-button;
 .#{$component}-basic {
   background-color: $secondary;
   color: $secondary_text;
+  svg {
+    fill: $secondary_text;
+  }
   &:hover {
     background-color: $secondary_dark ;
   }
@@ -119,7 +125,9 @@ $component: #{$prefix}-button;
 
 .#{$component}-basic_line {
   background-color: $white;
-  color: $secondary_text;
+  svg {
+    fill: $secondary_text;
+  }
   border: 1px solid $secondary_dark;
   &:hover {
     box-shadow: 0 1px 8px 0 $hover_shadow;
@@ -135,6 +143,9 @@ $component: #{$prefix}-button;
 .#{$component}-primary_light {
   background-color: $white;
   color: $primary;
+  svg {
+    fill: $primary;
+  }
   &:hover {
     box-shadow: 0 1px 8px 0 $hover_shadow;
   }
@@ -149,6 +160,9 @@ $component: #{$prefix}-button;
 .#{$component}-basic_light {
   background-color: $white;
   color: $secondary_text;
+  svg {
+    fill: $secondary_text;
+  }
   &:hover {
     box-shadow: 0 1px 8px 0 $hover_shadow;
   }
