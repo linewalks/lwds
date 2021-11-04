@@ -23,7 +23,7 @@ $safe: $lw_green50;
 
 // Status Colors
 // hover
-$hover_primary: $hover_overlay;
+$hover_primary: $lw_hover_overlay;
 $hover_tertiary_button: $lw_blue50;
 
 // focus
@@ -32,7 +32,7 @@ $focus_secondary: $lw_grey70;
 $focus_error: $danger;
 
 // active
-$active_primary: $active_overlay;
+$active_primary: $lw_active_overlay;
 $active_tertiary_button: $lw_blue60;
 
 // disabled
@@ -62,20 +62,20 @@ $icon01: $lw_grey100;
 $icon02: $lw_grey90;
 $icon03: $lw_grey80;
 $icon04: $lw_grey60;
-$icon-error: $danger;
-$icon-safe: $safe;
-$icon-accent: $primary_element;
+$icon_error: $danger;
+$icon_safe: $safe;
+$icon_accent: $primary_element;
 $icon_inverse01: $lw_white;
 $icon_inverse02: $lw_grey40;
 $icon_disabled: $disabled02;
 
 // Button
 $button_primary: $primary_element;
-$button_secondary: $lwgrey30;
+$button_secondary: $lw_grey30;
 $button_tertiary: $primary_element;
 $button_disabled: $disabled01;
 $button_danger: $danger;
 
 // Field
-$field01: $lwwhite;
+$field01: $lw_white;
 $field_disabled: $disabled01;
