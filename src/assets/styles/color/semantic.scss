@@ -1,60 +1,60 @@
 @import "color.scss";
 
 // Core Colors
-$background: $lw__white;
+$background: $lw_white;
 
-$secondary_background: $lw__grey10;
+$secondary_background: $lw_grey10;
 
-$primary_element: $lw__blue50;
-$secondary_element: $lw__blue90;
+$primary_element: $lw_blue50;
+$secondary_element: $lw_blue90;
 
-$layout01: $lw__white;
-$layout02: $lw__grey10;
-$layout03: $lw__grey20;
-$layout04: $lw__grey40;
-$layout05: $lw__grey30;
+$layout01: $lw_white;
+$layout02: $lw_grey10;
+$layout03: $lw_grey20;
+$layout04: $lw_grey40;
+$layout05: $lw_grey30;
 
-$layout_emphasize01: $lw__grey70;
-$layout_emphasize02: $lw__grey80;
-$layout_emphasize03: $lw__grey90;
+$layout_emphasize01: $lw_grey70;
+$layout_emphasize02: $lw_grey80;
+$layout_emphasize03: $lw_grey90;
 
-$danger: $lw__red50;
-$safe: $lw__green50;
+$danger: $lw_red50;
+$safe: $lw_green50;
 
 // Status Colors
 // hover
 $hover_primary: $hover_overlay;
-$hover_tertiary_button: $lw__blue50;
+$hover_tertiary_button: $lw_blue50;
 
 // focus
-$focus_primary: $lw__blue50;
-$focus_secondary: $lw__grey70;
+$focus_primary: $lw_blue50;
+$focus_secondary: $lw_grey70;
 $focus_error: $danger;
 
 // active
 $active_primary: $active_overlay;
-$active_tertiary_button: $lw__blue60;
+$active_tertiary_button: $lw_blue60;
 
 // disabled
-$disabled01: $lw__grey20;
-$disabled02: $lw__grey50;
+$disabled01: $lw_grey20;
+$disabled02: $lw_grey50;
 
 // etc
-$skeleton01: $lw__grey20;
-$highlight01: $lw__highlight;
-$dimmed_overlay: $lw__dimmed_overlay;
+$skeleton01: $lw_grey20;
+$highlight01: $lw_highlight;
+$dimmed_overlay: $lw_dimmed_overlay;
 
 // Text
-$text01: $lw__grey100;
-$text02: $lw__grey90;
-$text03: $lw__grey80;
-$text04: $lw__grey70;
-$text05: $lw__grey60;
-$text_error: $lw__red60;
-$text_safe: $lw__green60;
-$text_info: $lw__blue60;
+$text01: $lw_grey100;
+$text02: $lw_grey90;
+$text03: $lw_grey80;
+$text04: $lw_grey70;
+$text05: $lw_grey60;
+$text_error: $lw_red60;
+$text_safe: $lw_green60;
+$text_info: $lw_blue60;
 $text_accent: $primary_element;
-$text_inverse: $lw__white;
+$text_inverse: $lw_white;
 $text_disabled: $disabled02;
 
 // Icon
