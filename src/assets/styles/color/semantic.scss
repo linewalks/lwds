@@ -1,0 +1,81 @@
+@import "color.scss";
+
+// Core Colors
+$background: $lw__white;
+
+$secondary_background: $lw__grey10;
+
+$primary_element: $lw__blue50;
+$secondary_element: $lw__blue90;
+
+$layout01: $lw__white;
+$layout02: $lw__grey10;
+$layout03: $lw__grey20;
+$layout04: $lw__grey40;
+$layout05: $lw__grey30;
+
+$layout_emphasize01: $lw__grey70;
+$layout_emphasize02: $lw__grey80;
+$layout_emphasize03: $lw__grey90;
+
+$danger: $lw__red50;
+$safe: $lw__green50;
+
+// Status Colors
+// hover
+$hover_primary: $hover_overlay;
+$hover_tertiary_button: $lw__blue50;
+
+// focus
+$focus_primary: $lw__blue50;
+$focus_secondary: $lw__grey70;
+$focus_error: $danger;
+
+// active
+$active_primary: $active_overlay;
+$active_tertiary_button: $lw__blue60;
+
+// disabled
+$disabled01: $lw__grey20;
+$disabled02: $lw__grey50;
+
+// etc
+$skeleton01: $lw__grey20;
+$highlight01: $lw__highlight;
+$dimmed_overlay: $lw__dimmed_overlay;
+
+// Text
+$text01: $lw__grey100;
+$text02: $lw__grey90;
+$text03: $lw__grey80;
+$text04: $lw__grey70;
+$text05: $lw__grey60;
+$text_error: $lw__red60;
+$text_safe: $lw__green60;
+$text_info: $lw__blue60;
+$text_accent: $primary_element;
+$text_inverse: $lw__white;
+$text_disabled: $disabled02;
+
+// Icon
+$icon01: $lw_grey100;
+$icon02: $lw_grey90;
+$icon03: $lw_grey80;
+$icon04: $lw_grey60;
+$icon-error: $danger;
+$icon-safe: $safe;
+$icon-accent: $primary_element;
+$icon_inverse01: $lw_white;
+$icon_inverse02: $lw_grey40;
+$icon_disabled: $disabled02;
+
+// Button
+$button_primary: $primary_element;
+$button_secondary: $lwgrey30;
+$button_tertiary: $primary_element;
+$button_disabled: $disabled01;
+$button_danger: $danger;
+
+// Field
+$field01: $lwwhite;
+$field_disabled: $disabled01;
