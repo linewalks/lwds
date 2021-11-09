@@ -9,7 +9,7 @@ const ignore = [
 ]
 
 module.exports = {
-  title: 'MDwalks-UI Style Guide',
+  title: 'LWDS Guide',
   assetsDir: './src/assets/',
   require: [
     // path.resolve(__dirname, 'src/assets/styles/reset.css'),
@@ -26,15 +26,13 @@ module.exports = {
     '@helpers': path.resolve(__dirname, 'src/helpers'),
   },
   version,
-  ignore: ignore.concat([
-  ]),
+  ignore: ignore.concat([]),
   template: {
     head: {
       links: [
         {
           rel: 'stylesheet',
-          href:
-            'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css',
+          href: 'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css',
         },
       ],
     },
@@ -49,17 +47,15 @@ module.exports = {
   sections: [
     {
       name: 'Common',
-      components: () => [
-        'src/components/Icon/SVGIcon.tsx',
-      ]
+      components: () => ['src/components/Icon/SVGIcon.tsx'],
     },
     {
       name: 'Controls',
       components: () => [
         'src/components/Button/Button.tsx',
         'src/components/Button/TextLink.tsx',
-        'src/components/SegmentedControl/SegmentedControl.tsx'
-      ]
+        'src/components/SegmentedControl/SegmentedControl.tsx',
+      ],
     },
     {
       name: 'Forms',
@@ -67,28 +63,24 @@ module.exports = {
         'src/components/Forms/Checkbox.tsx',
         'src/components/Forms/Radio.tsx',
         'src/components/Forms/TextInput.tsx',
-        'src/components/Forms/Select.tsx'
-      ]
+        'src/components/Forms/Select.tsx',
+      ],
     },
     {
       name: 'Tabs',
-      components: () => [
-        'src/components/Tabs/Tabs.tsx'
-      ]
+      components: () => ['src/components/Tabs/Tabs.tsx'],
     },
     {
       name: 'Menu',
-      components: () => [
-        'src/components/Menu/Dropdown/Dropdown.tsx'
-      ]
+      components: () => ['src/components/Menu/Dropdown/Dropdown.tsx'],
     },
     {
       name: 'Advanced',
       components: () => [
         'src/components/Search/SearchBar.tsx',
         'src/components/Tooltip/Tooltip.tsx',
-        'src/components/ProgressBar/ProgressBar.tsx'
-      ]
-    }
-  ]
+        'src/components/ProgressBar/ProgressBar.tsx',
+      ],
+    },
+  ],
 }
