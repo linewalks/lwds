@@ -41,5 +41,26 @@ export {
   Tab,
   Tabs,
   TabPanel,
-  TabPanels
+  TabPanels,
+}
+
+export default {
+  Button,
+  TextLink,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  Select,
+  TextInput,
+  ChildMargin,
+  Popup,
+  Dropdown,
+  DropdownItem,
+  DropdownDivider,
+  SearchBar,
+  SegmentedControl,
+  Tab,
+  Tabs,
+  TabPanel,
+  TabPanels,
 }
