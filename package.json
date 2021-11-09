@@ -14,7 +14,7 @@
   ],
   "homepage": "",
   "bugs": {
-    "url": "https://github.com/linewalks/ui/issues",
+    "url": "https://github.com/linewalks/lwds/issues",
     "email": "system@linewalks.com"
   },
   "license": "MIT",
@@ -29,7 +29,7 @@
   "module": "dist/index.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/linewalks/ui.git"
+    "url": "https://github.com/linewalks/lwds.git"
   },
   "scripts": {
     "test": "jest",
