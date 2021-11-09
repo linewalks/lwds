@@ -26,7 +26,7 @@ export default {
   ],
   plugins: [
     babel({
-      babelHelpers: 'bundled',
+      babelHelpers: 'runtime',
       exclude: 'node_modules/**',
       extensions: ['.js', '.ts', '.tsx'],
     }),

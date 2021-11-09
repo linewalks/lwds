@@ -3,10 +3,10 @@
 $component: #{$prefix}-button;
 
 .#{$component} {
+  @apply cursor-pointer;
   font-weight: bold;
   border: none;
   background-color: transparent;
-  cursor: pointer;
   outline: none;
   transition: background-color 0.3s, color 0.3s ease, border-color 0.3s ease;
   line-height: 1.34em;
