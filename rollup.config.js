@@ -1,13 +1,18 @@
-import { babel } from '@rollup/plugin-babel'
+import postcss from 'rollup-plugin-postcss'
+import scssVariable from 'rollup-plugin-sass-variables'
+
 import alias from '@rollup/plugin-alias'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import postcss from 'rollup-plugin-postcss'
-import scssVariable from 'rollup-plugin-sass-variables'
 import json from '@rollup/plugin-json'
 import url from '@rollup/plugin-url'
 import typescript from '@rollup/plugin-typescript'
+
 import svgr from '@svgr/rollup'
+
+import { babel } from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
+
 import pkg from './package.json'
 
 export default {
@@ -36,7 +41,7 @@ export default {
         { find: '@src', replacement: 'src' },
         { find: '@assets', replacement: 'src/assets' },
         { find: '@components', replacement: 'src/components' },
-        { find: '@helpers', replacement: 'src/helpers' }
+        { find: '@helpers', replacement: 'src/helpers' },
       ],
     }),
     postcss({
@@ -50,21 +55,14 @@ export default {
     commonjs({
       extensions: ['.js', '.ts', '.tsx'],
       namedExports: {
-        'node_modules/react-dom/server.browser.js': [
-          'renderToStaticMarkup'
-        ]
-      }
+        'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
+      },
     }),
     url(),
     json(),
     typescript(),
-    svgr()
+    svgr(),
+    terser(),
   ],
-  external: [
-    'react',
-    'react-dom',
-    'styled-components',
-    'typescript',
-    'tslib',
-  ],
+  external: ['react', 'react-dom', 'styled-components', 'typescript', 'tslib'],
 }
