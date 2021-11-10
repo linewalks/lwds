@@ -36,7 +36,7 @@ export default {
         { find: '@src', replacement: 'src' },
         { find: '@assets', replacement: 'src/assets' },
         { find: '@components', replacement: 'src/components' },
-        { find: '@helpers', replacement: 'src/helpers' }
+        { find: '@helpers', replacement: 'src/helpers' },
       ],
     }),
     postcss({
@@ -50,21 +50,13 @@ export default {
     commonjs({
       extensions: ['.js', '.ts', '.tsx'],
       namedExports: {
-        'node_modules/react-dom/server.browser.js': [
-          'renderToStaticMarkup'
-        ]
-      }
+        'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
+      },
     }),
     url(),
     json(),
     typescript(),
-    svgr()
+    svgr(),
   ],
-  external: [
-    'react',
-    'react-dom',
-    'styled-components',
-    'typescript',
-    'tslib',
-  ],
+  external: ['react', 'react-dom', 'styled-components', 'typescript', 'tslib'],
 }
