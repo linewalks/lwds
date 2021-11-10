@@ -1,13 +1,18 @@
-import { babel } from '@rollup/plugin-babel'
+import postcss from 'rollup-plugin-postcss'
+import scssVariable from 'rollup-plugin-sass-variables'
+
 import alias from '@rollup/plugin-alias'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import postcss from 'rollup-plugin-postcss'
-import scssVariable from 'rollup-plugin-sass-variables'
 import json from '@rollup/plugin-json'
 import url from '@rollup/plugin-url'
 import typescript from '@rollup/plugin-typescript'
+
 import svgr from '@svgr/rollup'
+
+import { babel } from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
+
 import pkg from './package.json'
 
 export default {
@@ -57,6 +62,7 @@ export default {
     json(),
     typescript(),
     svgr(),
+    terser(),
   ],
   external: ['react', 'react-dom', 'styled-components', 'typescript', 'tslib'],
 }
