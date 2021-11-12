@@ -1,4 +1,4 @@
-//tailwind 사용을 위해 CommonJS 방식 사용
+//tailwind.config.js 설정을 위해 CommonJS 방식 사용
 module.exports = {
   DEFAULT: '0 8px 40px 0 rgba(109, 120, 132, 0.2)',
   1: '0 8px 40px 0 rgba(109, 120, 132, 0.2)',
