@@ -4,10 +4,16 @@ module.exports = {
   purge: {},
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors,
+    colors: {
+      transparent: 'transparent',
+      ...colors
+    },
     spacing,
     size,
     boxShadow,
+    fill: theme => ({
+      background: theme('colors.background'),
+    }),
     extend: {},
   },
   variants: {
