@@ -3,82 +3,73 @@
 $component: #{$prefix}-button;
 
 .#{$component} {
-  @apply cursor-pointer;
-  font-weight: bold;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  transition: background-color 0.3s, color 0.3s ease, border-color 0.3s ease;
+  @apply cursor-pointer font-bold border-none bg-transparent outline-none;
+  transition: background-color 0.2s, color 0.2s ease, border-color 0.2s ease;
   line-height: 1.34em;
 
   &:hover {
-    text-decoration: none;
+    @apply no-underline;
   }
   &:disabled {
-    cursor: not-allowed;
+    @apply cursor-not-allowed;
   }
 
   .#{$component}-starticon {
-    margin-left: 0;
+    @apply ml-0;
   }
   .#{$component}-endicon {
-    margin-right: 0;
+    @apply mr-0
   }
 }
 
 // By Sizes
 .#{$component}-size-xlg {
+  @apply px-7 h-11;
   min-width: 120px;
-  height: 60px;
-  border-radius: 10px;
-  padding: 16px 20px;
+  border-radius: 8px;
   font-size: 18px;
   svg {
-    margin: 0 8px;
+    @apply mx-4 my-0
   }
 }
     
 .#{$component}-size-lg {
-  min-width: 100px;
-  height: 42px;
-  border-radius: 21px;
-  padding: 10px 20px;
+  @apply px-6 h-9;
+  min-width: 90px;
+  border-radius: 8px;
   font-size: 16px;
   svg {
-    margin: 0 8px;
+    @apply mx-4 my-0
   }
 }
 
 .#{$component}-size-md {
-  min-width: 90px;
-  height: 34px;
-  border-radius: 17px;
-  padding: 7px 18px;
+  @apply px-5 h-8;
+  min-width: 80px;
+  border-radius: 8px;
   font-size: 14px;
   svg {
-    margin: 0 6px;
+    @apply mx-3 my-0
   }
 }
     
 .#{$component}-size-sm {
-  min-width: 70px;
-  height: 30px;
-  border-radius: 15px;
-  padding: 5px 16px;
-  font-size: 12px;
+  @apply px-4 h-7;
+  min-width: 56px;
+  border-radius: 6px;
+  font-size: 13px;
   svg {
-    margin: 0 6px;
+    @apply mx-3 my-0
   }
 }
 
 .#{$component}-variant-primary {
-  background-color: $primary;
-  color: $primary_text;
+  @apply bg-button_primary text-text_inverse ;
   svg {
-    fill: $primary_text;
+    @apply fill-background;
   }
   &:hover {
-    background-color: $primary_dark;
+    @apply bg-hover_primary; // 겹치는게 안되네....
   }
   &:disabled {
     background-color: $disabled;
@@ -89,8 +80,8 @@ $component: #{$prefix}-button;
 }
     
 .#{$component}-variant-primary_line {
+  @apply text-button_primary;
   background-color: $white;
-  color: $primary;
   svg {
     fill: $primary_text;
   }
@@ -141,8 +132,8 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-variant-primary_light {
+  @apply text-button_primary;
   background-color: $white;
-  color: $primary;
   svg {
     fill: $primary;
   }
