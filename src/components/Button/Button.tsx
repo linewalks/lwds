@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import styled from 'styled-components'
 
 import './Button.scss'
-import DynamicTag from '@components/common/DynamicTag'
 import cls from '@helpers/class'
 
 const WrapInside = styled.span`
@@ -13,7 +12,6 @@ const WrapInside = styled.span`
 `
 
 interface ButtonProps {
-  as: React.ElementType
   id?: string
   disabled: boolean
   size: string | 'sm' | 'md' | 'lg' | 'xlg'
@@ -23,17 +21,19 @@ interface ButtonProps {
     'basic_line' | 'primary_light' | 'basic_light'
   )
   style?: object
+  ghostText: string
+  isResponsive: boolean
+  ghostType: string | 'default' | 'important' | 'danger'
   bold: boolean
   block: boolean
-  startIcon?: React.ReactElement
-  endIcon?: React.ReactElement
+  leftIcon?: React.ReactElement
+  rightIcon?: React.ReactElement
   children: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLElement>
 }
 
 const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) => {
   const {
-    as: propsAs,
     id,
     disabled,
     size,
@@ -41,10 +41,11 @@ const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) 
     style,
     bold,
     block,
-    startIcon,
-    endIcon,
+    leftIcon,
+    rightIcon,
     children,
     onClick,
+    ghostType,
     ...rest
   } = props
 
@@ -56,20 +57,20 @@ const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) 
     })
   }
 
-  const startIconNode = createIconNode(startIcon, 'starticon')
-  const endIconNode = createIconNode(endIcon, 'endicon')
+  const startIconNode = createIconNode(leftIcon, 'lefticon')
+  const endIconNode = createIconNode(rightIcon, 'righticon')
 
   return (
-    <DynamicTag
+    <button
       {...rest}
-      as={propsAs}
       id={id}
       disabled={disabled}
       className={clsx(
         cls('button'),
-        cls('button', 'size', size),
-        cls('button', 'variant', variant),
-        block && cls('button', 'block')
+        cls('button', size),
+        cls('button', variant),
+        block && cls('button', 'block'),
+        block && size === 'sm' && cls('button', 'block', size)
       )}
       style={{
         ...style,
@@ -83,17 +84,18 @@ const Button = React.forwardRef((props: ButtonProps, ref: React.RefObject<any>) 
         {children}
         {endIconNode}
       </WrapInside>
-    </DynamicTag>
+    </button>
   )
 })
 
 Button.defaultProps = {
-  as: 'button',
   disabled: false,
   size: 'md',
   variant: 'primary',
   bold: true,
-  block: false
+  block: false,
+  isResponsive: false,
+  ghostType: 'default',
 }
 
 export default Button
