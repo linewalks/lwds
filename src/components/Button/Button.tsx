@@ -4,8 +4,10 @@ import styled from 'styled-components'
 
 import './Button.scss'
 import cls from '@helpers/class'
+import _ from 'lodash'
 interface ButtonProps {
   id?: string
+  icon: boolean
   disabled: boolean
   size: string | 'sm' | 'md' | 'lg' | 'xlg'
   // TODO variant => variant와 color로 나누기
@@ -43,6 +45,7 @@ const Button = React.forwardRef(
       children,
       onClick,
       ghostType,
+      icon,
       ...rest
     } = props
 
@@ -74,6 +77,7 @@ const Button = React.forwardRef(
             cls('button', 'ghost', ghostType),
           block && cls('button', 'block'),
           block && size === 'sm' && cls('button', 'block', size),
+          icon && cls('button', 'icon'),
         )}
         style={{
           ...style,
@@ -100,6 +104,7 @@ Button.defaultProps = {
   block: false,
   isResponsive: false,
   ghostType: 'default',
+  icon: false,
 }
 
 export default Button

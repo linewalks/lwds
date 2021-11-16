@@ -52,6 +52,9 @@ $component: #{$prefix}-button;
 .#{$component}-md {
   @apply px-5 h-8;
   min-width: 80px;
+  &[data-width] {
+    min-width: 0px;
+  }
   border-radius: 8px;
   font-size: 14px;
 
@@ -214,4 +217,8 @@ $component: #{$prefix}-button;
   & + & {
     @apply mt-2;
   }
+}
+
+.#{$component}-icon {
+  @apply min-w-0 p-0 m-0 w-8;
 }

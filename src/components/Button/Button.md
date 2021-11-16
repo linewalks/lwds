@@ -191,8 +191,8 @@ import ChevronIcon from '@components/Icon/ChevronIcon'
 
 const Default = () => (
   <div>
-    <Button>
-      <ChevronIcon direction="right" />
+    <Button icon>
+      <img src="/svg/icn_plus_16.svg" />
     </Button>
   </div>
 )
