@@ -13,13 +13,6 @@ $component: #{$prefix}-button;
   &:disabled {
     @apply cursor-not-allowed;
   }
-
-  .#{$component}-lefticon {
-    @apply ml-0;
-  }
-  .#{$component}-righticon {
-    @apply mr-0;
-  }
 }
 
 // By Sizes
@@ -28,9 +21,12 @@ $component: #{$prefix}-button;
   min-width: 120px;
   border-radius: 8px;
   font-size: 18px;
-  line-height: 18px;
-  svg {
-    @apply mx-4 my-0;
+
+  & .#{$component}-lefticon {
+    @apply mr-4;
+  }
+  & .#{$component}-righticon {
+    @apply ml-4;
   }
 }
 
@@ -39,9 +35,12 @@ $component: #{$prefix}-button;
   min-width: 90px;
   border-radius: 8px;
   font-size: 16px;
-  line-height: 16px;
-  svg {
-    @apply mx-4 my-0;
+
+  & .#{$component}-lefticon {
+    @apply mr-4;
+  }
+  & .#{$component}-righticon {
+    @apply ml-4;
   }
 }
 
@@ -50,10 +49,12 @@ $component: #{$prefix}-button;
   min-width: 80px;
   border-radius: 8px;
   font-size: 14px;
-  line-height: 14px;
 
-  svg {
-    @apply mx-3 my-0;
+  & .#{$component}-lefticon {
+    @apply mr-3;
+  }
+  & .#{$component}-righticon {
+    @apply ml-3;
   }
 }
 
@@ -62,13 +63,16 @@ $component: #{$prefix}-button;
   min-width: 56px;
   border-radius: 6px;
   font-size: 13px;
-  line-height: 13px;
 
   & + & {
     margin-left: 4px;
   }
-  svg {
-    @apply mx-3 my-0;
+
+  & .#{$component}-lefticon {
+    @apply mr-3;
+  }
+  & .#{$component}-righticon {
+    @apply ml-3;
   }
 }
 
