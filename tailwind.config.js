@@ -13,6 +13,8 @@ module.exports = {
     boxShadow,
     fill: theme => ({
       background: theme('colors.background'),
+      primary: theme('colors.primary_element'),
+      danger: theme('colors.danger'),
     }),
     extend: {},
   },
