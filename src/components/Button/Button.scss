@@ -1,4 +1,4 @@
-@import "../../assets/styles/global.scss";
+@import '../../assets/styles/global.scss';
 
 $component: #{$prefix}-button;
 
@@ -18,7 +18,7 @@ $component: #{$prefix}-button;
     @apply ml-0;
   }
   .#{$component}-righticon {
-    @apply mr-0
+    @apply mr-0;
   }
 }
 
@@ -30,7 +30,7 @@ $component: #{$prefix}-button;
   font-size: 18px;
   line-height: 18px;
   svg {
-    @apply mx-4 my-0
+    @apply mx-4 my-0;
   }
 }
 
@@ -41,7 +41,7 @@ $component: #{$prefix}-button;
   font-size: 16px;
   line-height: 16px;
   svg {
-    @apply mx-4 my-0
+    @apply mx-4 my-0;
   }
 }
 
@@ -53,10 +53,10 @@ $component: #{$prefix}-button;
   line-height: 14px;
 
   svg {
-    @apply mx-3 my-0
+    @apply mx-3 my-0;
   }
 }
-    
+
 .#{$component}-sm {
   @apply px-4 h-7;
   min-width: 56px;
@@ -64,11 +64,11 @@ $component: #{$prefix}-button;
   font-size: 13px;
   line-height: 13px;
 
-  & + & { 
+  & + & {
     margin-left: 4px;
   }
   svg {
-    @apply mx-3 my-0
+    @apply mx-3 my-0;
   }
 }
 
@@ -168,14 +168,14 @@ $component: #{$prefix}-button;
       @apply fill-background;
     }
   }
-  &:active { // hover 속성을 가져와 쓰고 bg 컬러만 바꿔줌 ( + semantic color도 변경해야함)
-    @apply bg-text_error border-text_error
+  &:active {
+    // hover 속성을 가져와 쓰고 bg 컬러만 바꿔줌 ( + semantic color도 변경해야함)
+    @apply bg-text_error border-text_error;
   }
   &:disabled {
     @apply bg-button_disabled text-disabled02 border-none;
     box-shadow: none;
   }
-  
 }
 
 .#{$component}-block {

@@ -1,4 +1,9 @@
-const { colors, spacing, size, boxShadow } = require('./tailwindConfigConverter.js')
+const {
+  colors,
+  spacing,
+  size,
+  boxShadow,
+} = require('./tailwindConfigConverter.js')
 
 module.exports = {
   purge: {},
@@ -6,12 +11,12 @@ module.exports = {
   theme: {
     colors: {
       transparent: 'transparent',
-      ...colors
+      ...colors,
     },
     spacing,
     size,
     boxShadow,
-    fill: theme => ({
+    fill: (theme) => ({
       background: theme('colors.background'),
       primary: theme('colors.primary_element'),
       danger: theme('colors.danger'),
