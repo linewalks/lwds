@@ -17,6 +17,12 @@
   <Button variant="secondary">Secondary</Button>
   <Button variant="tertiary">Tertiary</Button>
   <Button variant="ghost">Ghost</Button>
+  <Button variant="ghost" ghostType="important">
+    Ghost Important
+  </Button>
+  <Button variant="ghost" ghostType="danger">
+    Ghost Danger
+  </Button>
   <Button variant="danger_primary">Danger</Button>
   <Button variant="danger_tertiary">Danger</Button>
 </div>
