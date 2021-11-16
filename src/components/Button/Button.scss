@@ -1,180 +1,196 @@
-@import "../../assets/styles/global.scss";
+@import '../../assets/styles/global.scss';
 
 $component: #{$prefix}-button;
 
 .#{$component} {
-  @apply cursor-pointer;
-  font-weight: bold;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  transition: background-color 0.3s, color 0.3s ease, border-color 0.3s ease;
-  line-height: 1.34em;
-
+  @apply cursor-pointer font-bold outline-none transition duration-200 ease-linear;
+  & + & {
+    @apply ml-4;
+  }
   &:hover {
-    text-decoration: none;
+    @apply no-underline;
   }
   &:disabled {
-    cursor: not-allowed;
-  }
-
-  .#{$component}-starticon {
-    margin-left: 0;
-  }
-  .#{$component}-endicon {
-    margin-right: 0;
+    @apply cursor-not-allowed;
   }
 }
 
 // By Sizes
-.#{$component}-size-xlg {
+.#{$component}-xlg {
+  @apply px-7 h-11;
   min-width: 120px;
-  height: 60px;
-  border-radius: 10px;
-  padding: 16px 20px;
+  border-radius: 8px;
   font-size: 18px;
-  svg {
-    margin: 0 8px;
+
+  & .#{$component}-lefticon {
+    @apply mr-4;
   }
-}
-    
-.#{$component}-size-lg {
-  min-width: 100px;
-  height: 42px;
-  border-radius: 21px;
-  padding: 10px 20px;
-  font-size: 16px;
-  svg {
-    margin: 0 8px;
+  & .#{$component}-righticon {
+    @apply ml-4;
   }
 }
 
-.#{$component}-size-md {
+.#{$component}-lg {
+  @apply px-6 h-9;
   min-width: 90px;
-  height: 34px;
-  border-radius: 17px;
-  padding: 7px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+
+  & .#{$component}-lefticon {
+    @apply mr-4;
+  }
+  & .#{$component}-righticon {
+    @apply ml-4;
+  }
+}
+
+.#{$component}-md {
+  @apply px-5 h-8;
+  min-width: 80px;
+  border-radius: 8px;
   font-size: 14px;
-  svg {
-    margin: 0 6px;
+
+  & .#{$component}-lefticon {
+    @apply mr-3;
   }
-}
-    
-.#{$component}-size-sm {
-  min-width: 70px;
-  height: 30px;
-  border-radius: 15px;
-  padding: 5px 16px;
-  font-size: 12px;
-  svg {
-    margin: 0 6px;
+  & .#{$component}-righticon {
+    @apply ml-3;
   }
 }
 
-.#{$component}-variant-primary {
-  background-color: $primary;
-  color: $primary_text;
-  svg {
-    fill: $primary_text;
+.#{$component}-sm {
+  @apply px-4 h-7;
+  min-width: 56px;
+  border-radius: 6px;
+  font-size: 13px;
+
+  & + & {
+    margin-left: 4px;
   }
-  &:hover {
-    background-color: $primary_dark;
+
+  & .#{$component}-lefticon {
+    @apply mr-3;
   }
-  &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
-    box-shadow: none;
-  }
-}
-    
-.#{$component}-variant-primary_line {
-  background-color: $white;
-  color: $primary;
-  svg {
-    fill: $primary_text;
-  }
-  border: 1px solid $primary;
-  &:hover {
-    box-shadow: 0 1px 8px 0 $hover_shadow;
-  }
-  &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
-    box-shadow: none;
+  & .#{$component}-righticon {
+    @apply ml-3;
   }
 }
-    
-.#{$component}-variant-basic {
-  background-color: $secondary;
-  color: $secondary_text;
+
+.#{$component}-primary {
+  @apply bg-button_primary text-text_inverse;
   svg {
-    fill: $secondary_text;
+    @apply fill-background;
   }
+
   &:hover {
-    background-color: $secondary_dark ;
+    @apply shadow-hover;
   }
+
+  &:active {
+    @apply shadow-active;
+  }
+
   &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
+    @apply bg-button_disabled text-disabled02;
     box-shadow: none;
   }
 }
 
-.#{$component}-variant-basic_line {
-  background-color: $white;
-  svg {
-    fill: $secondary_text;
-  }
-  border: 1px solid $secondary_dark;
+.#{$component}-secondary {
+  @apply bg-button_secondary text-text01;
   &:hover {
-    box-shadow: 0 1px 8px 0 $hover_shadow;
+    @apply shadow-hover;
+  }
+  &:active {
+    @apply shadow-active;
   }
   &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
+    @apply bg-button_disabled text-disabled02;
     box-shadow: none;
   }
 }
 
-.#{$component}-variant-primary_light {
-  background-color: $white;
-  color: $primary;
+.#{$component}-tertiary {
+  @apply bg-background text-text_accent border border-button_primary;
   svg {
-    fill: $primary;
+    @apply fill-primary;
   }
   &:hover {
-    box-shadow: 0 1px 8px 0 $hover_shadow;
+    @apply bg-hover_tertiary_button text-text_inverse;
+    svg {
+      @apply fill-background;
+    }
+  }
+  &:active {
+    @apply bg-active_tertiary_button border-active_tertiary_button;
   }
   &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
+    @apply bg-button_disabled text-disabled02 border-none;
     box-shadow: none;
   }
 }
 
-.#{$component}-variant-basic_light {
-  background-color: $white;
-  color: $secondary_text;
-  svg {
-    fill: $secondary_text;
-  }
+.#{$component}-ghost {
+  @apply bg-background text-text01;
   &:hover {
-    box-shadow: 0 1px 8px 0 $hover_shadow;
+    @apply shadow-hover;
+  }
+  &:active {
+    @apply shadow-active;
   }
   &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
+    @apply bg-button_disabled text-disabled02;
+    box-shadow: none;
+  }
+}
+
+.#{$component}-danger_primary {
+  @apply bg-danger text-text_inverse;
+  svg {
+    @apply fill-background;
+  }
+  &:hover {
+    @apply shadow-hover;
+  }
+  &:active {
+    @apply shadow-active;
+  }
+  &:disabled {
+    @apply bg-button_disabled text-disabled02;
+    box-shadow: none;
+  }
+}
+
+.#{$component}-danger_tertiary {
+  @apply bg-background text-danger border border-danger;
+  svg {
+    @apply fill-danger;
+  }
+  &:hover {
+    @apply bg-danger text-text_inverse;
+    svg {
+      @apply fill-background;
+    }
+  }
+  &:active {
+    // hover 속성을 가져와 쓰고 bg 컬러만 바꿔줌 ( + semantic color도 변경해야함)
+    @apply bg-text_error border-text_error;
+  }
+  &:disabled {
+    @apply bg-button_disabled text-disabled02 border-none;
     box-shadow: none;
   }
 }
 
 .#{$component}-block {
-  width: 100%;
-  min-width: 0px;
+  @apply w-full min-w-0;
+  & + & {
+    @apply ml-0 mt-4;
+  }
+}
+
+.#{$component}-block-sm {
+  & + & {
+    @apply mt-2;
+  }
 }

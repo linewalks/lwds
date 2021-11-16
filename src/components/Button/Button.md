@@ -1,33 +1,39 @@
 #### Buttons by variant
+
 - variants: colors and types
 - disabled style is same on all variants.
+
 ```js
-<div style={{ 
-  backgroundColor: '#eeeeee',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '8px'
-}}>
-  <Button variant="primary">primary</Button>
-  <Button variant="basic">basic</Button>
-  <Button variant="primary_line">primary_line</Button>
-  <Button variant="basic_line">basic_line</Button>
-  <Button variant="primary_light">primary_light</Button>
-  <Button variant="basic_light">basic_light</Button>
-  <Button variant="primary" disabled>disabled</Button>
+<div
+  style={{
+    backgroundColor: '#eeeeee',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '8px',
+  }}
+>
+  <Button variant="primary">Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="tertiary">Tertiary</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="danger_primary">Danger</Button>
+  <Button variant="danger_tertiary">Danger</Button>
 </div>
 ```
 
 #### Buttons by size
+
 ```js
-<div style={{
-  backgroundColor: '#eeeeee',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '8px'
-}}>
+<div
+  style={{
+    backgroundColor: '#eeeeee',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '8px',
+  }}
+>
   <Button size="sm">sm - Small</Button>
   <Button size="md">md - Normal</Button>
   <Button size="lg">lg - Large</Button>
@@ -36,49 +42,76 @@
 ```
 
 #### Block Buttons
-* width: 100%
+
+- width: 100%
+
 ```js
-<div style={{ 
-  backgroundColor: '#eeeeee',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '8px'
-}}>
-  <Button size="sm" block>sm - Small</Button>
-  <Button size="md" block>md - Normal</Button>
-  <Button size="lg" block>lg - Large</Button>
-  <Button size="xlg" block>xlg - ExtraLarge</Button>
-</div>
-<div style={{ 
-  backgroundColor: '#eeeeee',
-  padding: '8px'
-}}>
-  <Button size="sm" block style={{marginBottom: '10px'}}>sm - Small</Button>
-  <Button size="md" block style={{marginBottom: '10px'}}>md - Normal</Button>
-  <Button size="lg" block style={{marginBottom: '10px'}}>lg - Large</Button>
-  <Button size="xlg" block style={{marginBottom: '10px'}}>xlg - ExtraLarge</Button>
+<div
+  style={{
+    backgroundColor: '#eeeeee',
+    padding: '8px',
+  }}
+>
+  <Button size="sm" block>
+    sm - Small
+  </Button>
+  <Button size="sm" block>
+    sm - Small
+  </Button>
+  <Button size="md" block>
+    md - Normal
+  </Button>
+  <Button size="md" block>
+    md - Normal
+  </Button>
+  <Button size="lg" block>
+    lg - Large
+  </Button>
+  <Button size="lg" block>
+    lg - Large
+  </Button>
+  <Button size="xlg" block>
+    xlg - ExtraLarge
+  </Button>
+  <Button size="xlg" block>
+    xlg - ExtraLarge
+  </Button>
 </div>
 ```
 
 #### Bold text
-* Bold font weight is default.
-* Set bold as false for normal font weight.
+
+- Bold font weight is default.
+- Set bold as false for normal font weight.
 
 ```js
-<div style={{
-  backgroundColor: '#eeeeee',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '8px'
-}}>
-  <Button variant="primary" bold={true}>Bold</Button>
-  <Button variant="primary" bold={false}>Normal</Button>
-  <Button variant="primary_line" bold={true}>Bold</Button>
-  <Button variant="primary_line" bold={false}>Normal</Button>
-  <Button variant="primary_light" bold={true}>Bold</Button>
-  <Button variant="primary_light" bold={false}>Normal</Button>
+<div
+  style={{
+    backgroundColor: '#eeeeee',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '8px',
+  }}
+>
+  <Button variant="primary" bold={true}>
+    Bold
+  </Button>
+  <Button variant="secondary" bold={false}>
+    Normal
+  </Button>
+  <Button variant="tertiary" bold={true}>
+    Bold
+  </Button>
+  <Button variant="ghost" bold={false}>
+    Normal
+  </Button>
+  <Button variant="danger_primary" bold={true}>
+    Bold
+  </Button>
+  <Button variant="danger_tertiary" bold={false}>
+    Normal
+  </Button>
 </div>
 ```
 
@@ -88,57 +121,75 @@
 import ChevronIcon from '@components/Icon/ChevronIcon'
 
 const Default = () => (
-  <div style={{ 
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '8px'
-  }}>
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '8px',
+    }}
+  >
     <Button
       variant="primary"
       size="md"
-      endIcon={<ChevronIcon direction="right" />}
+      rightIcon={<ChevronIcon direction="right" />}
     >
       Let's Go!
     </Button>
     <Button
-      variant="basic"
+      variant="secondary"
       size="md"
-      startIcon={<ChevronIcon direction="left" />}
+      leftIcon={<ChevronIcon direction="left" />}
     >
       Create
     </Button>
     <Button
-      variant="basic"
+      variant="tertiary"
       size="md"
-      startIcon={<ChevronIcon direction="left" />}
-      endIcon={<ChevronIcon direction="right" />}
+      leftIcon={<ChevronIcon direction="left" />}
+      rightIcon={<ChevronIcon direction="right" />}
     >
       Chaos
     </Button>
     <Button
-      variant="primary"
+      variant="ghost"
       size="lg"
-      endIcon={<ChevronIcon direction="right" />}
+      rightIcon={<ChevronIcon direction="right" />}
     >
       Let's Go!
     </Button>
     <Button
-      variant="basic"
+      variant="danger_primary"
       size="lg"
-      startIcon={<ChevronIcon direction="right" />}
+      leftIcon={<ChevronIcon direction="right" />}
     >
       Create
     </Button>
     <Button
-      variant="basic"
+      variant="danger_tertiary"
       size="lg"
-      startIcon={<ChevronIcon direction="right" />}
-      endIcon={<ChevronIcon direction="right" />}
+      leftIcon={<ChevronIcon direction="right" />}
+      rightIcon={<ChevronIcon direction="right" />}
     >
       Chaos
     </Button>
   </div>
 )
+Default()
+```
+
+### (테스트) 아이콘 단독 입력 시 버튼
+
+```js
+import ChevronIcon from '@components/Icon/ChevronIcon'
+
+const Default = () => (
+  <div>
+    <Button>
+      <ChevronIcon direction="right" />
+    </Button>
+  </div>
+)
+
 Default()
 ```
