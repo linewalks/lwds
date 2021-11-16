@@ -3,10 +3,10 @@
 $component: #{$prefix}-button;
 
 .#{$component} {
-  @apply cursor-pointer font-bold border-none bg-transparent outline-none;
-  transition: background-color 0.2s, color 0.2s ease, border-color 0.2s ease;
-  line-height: 1.34em;
-
+  @apply cursor-pointer font-bold outline-none transition duration-200 ease-linear;
+  & + & {
+    @apply ml-4;
+  }
   &:hover {
     @apply no-underline;
   }
@@ -14,158 +14,179 @@ $component: #{$prefix}-button;
     @apply cursor-not-allowed;
   }
 
-  .#{$component}-starticon {
+  .#{$component}-lefticon {
     @apply ml-0;
   }
-  .#{$component}-endicon {
+  .#{$component}-righticon {
     @apply mr-0
   }
 }
 
 // By Sizes
-.#{$component}-size-xlg {
+.#{$component}-xlg {
   @apply px-7 h-11;
   min-width: 120px;
   border-radius: 8px;
   font-size: 18px;
+  line-height: 18px;
   svg {
     @apply mx-4 my-0
   }
 }
-    
-.#{$component}-size-lg {
+
+.#{$component}-lg {
   @apply px-6 h-9;
   min-width: 90px;
   border-radius: 8px;
   font-size: 16px;
+  line-height: 16px;
   svg {
     @apply mx-4 my-0
   }
 }
 
-.#{$component}-size-md {
+.#{$component}-md {
   @apply px-5 h-8;
   min-width: 80px;
   border-radius: 8px;
   font-size: 14px;
+  line-height: 14px;
+
   svg {
     @apply mx-3 my-0
   }
 }
     
-.#{$component}-size-sm {
+.#{$component}-sm {
   @apply px-4 h-7;
   min-width: 56px;
   border-radius: 6px;
   font-size: 13px;
+  line-height: 13px;
+
+  & + & { 
+    margin-left: 4px;
+  }
   svg {
     @apply mx-3 my-0
   }
 }
 
-.#{$component}-variant-primary {
-  @apply bg-button_primary text-text_inverse ;
+.#{$component}-primary {
+  @apply bg-button_primary text-text_inverse;
+  svg {
+    @apply fill-background;
+  }
+
+  &:hover {
+    @apply shadow-hover;
+  }
+
+  &:active {
+    @apply shadow-active;
+  }
+
+  &:disabled {
+    @apply bg-button_disabled text-disabled02;
+    box-shadow: none;
+  }
+}
+
+.#{$component}-secondary {
+  @apply bg-button_secondary text-text01;
+  &:hover {
+    @apply shadow-hover;
+  }
+  &:active {
+    @apply shadow-active;
+  }
+  &:disabled {
+    @apply bg-button_disabled text-disabled02;
+    box-shadow: none;
+  }
+}
+
+.#{$component}-tertiary {
+  @apply bg-background text-text_accent border border-button_primary;
+  svg {
+    @apply fill-primary;
+  }
+  &:hover {
+    @apply bg-hover_tertiary_button text-text_inverse;
+    svg {
+      @apply fill-background;
+    }
+  }
+  &:active {
+    @apply bg-active_tertiary_button border-active_tertiary_button;
+  }
+  &:disabled {
+    @apply bg-button_disabled text-disabled02 border-none;
+    box-shadow: none;
+  }
+}
+
+.#{$component}-ghost {
+  @apply bg-background text-text01;
+  &:hover {
+    @apply shadow-hover;
+  }
+  &:active {
+    @apply shadow-active;
+  }
+  &:disabled {
+    @apply bg-button_disabled text-disabled02;
+    box-shadow: none;
+  }
+}
+
+.#{$component}-danger_primary {
+  @apply bg-danger text-text_inverse;
   svg {
     @apply fill-background;
   }
   &:hover {
-    @apply bg-hover_primary; // 겹치는게 안되네....
+    @apply shadow-hover;
+  }
+  &:active {
+    @apply shadow-active;
   }
   &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
-    box-shadow: none;
-  }
-}
-    
-.#{$component}-variant-primary_line {
-  @apply text-button_primary;
-  background-color: $white;
-  svg {
-    fill: $primary_text;
-  }
-  border: 1px solid $primary;
-  &:hover {
-    box-shadow: 0 1px 8px 0 $hover_shadow;
-  }
-  &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
-    box-shadow: none;
-  }
-}
-    
-.#{$component}-variant-basic {
-  background-color: $secondary;
-  color: $secondary_text;
-  svg {
-    fill: $secondary_text;
-  }
-  &:hover {
-    background-color: $secondary_dark ;
-  }
-  &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
+    @apply bg-button_disabled text-disabled02;
     box-shadow: none;
   }
 }
 
-.#{$component}-variant-basic_line {
-  background-color: $white;
+.#{$component}-danger_tertiary {
+  @apply bg-background text-danger border border-danger;
   svg {
-    fill: $secondary_text;
-  }
-  border: 1px solid $secondary_dark;
-  &:hover {
-    box-shadow: 0 1px 8px 0 $hover_shadow;
-  }
-  &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
-    box-shadow: none;
-  }
-}
-
-.#{$component}-variant-primary_light {
-  @apply text-button_primary;
-  background-color: $white;
-  svg {
-    fill: $primary;
+    @apply fill-danger;
   }
   &:hover {
-    box-shadow: 0 1px 8px 0 $hover_shadow;
+    @apply bg-danger text-text_inverse;
+    svg {
+      @apply fill-background;
+    }
+  }
+  &:active { // hover 속성을 가져와 쓰고 bg 컬러만 바꿔줌 ( + semantic color도 변경해야함)
+    @apply bg-text_error border-text_error
   }
   &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
+    @apply bg-button_disabled text-disabled02 border-none;
     box-shadow: none;
   }
-}
-
-.#{$component}-variant-basic_light {
-  background-color: $white;
-  color: $secondary_text;
-  svg {
-    fill: $secondary_text;
-  }
-  &:hover {
-    box-shadow: 0 1px 8px 0 $hover_shadow;
-  }
-  &:disabled {
-    background-color: $disabled;
-    color: $disabled_text;
-    border: none;
-    box-shadow: none;
-  }
+  
 }
 
 .#{$component}-block {
-  width: 100%;
-  min-width: 0px;
+  @apply w-full min-w-0;
+  & + & {
+    @apply ml-0 mt-4;
+  }
+}
+
+.#{$component}-block-sm {
+  & + & {
+    @apply mt-2;
+  }
 }
