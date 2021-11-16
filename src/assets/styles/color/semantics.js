@@ -1,4 +1,5 @@
 //tailwind.config.js 설정을 위해 CommonJS 방식 사용
+const { $lw_red50 } = require('./colors')
 const colors = require('./colors')
 
 // semantic color 설정 시 무조건 colors의 값을 가져와야 함.
@@ -6,11 +7,11 @@ const colors = require('./colors')
 //   $focus_error: colors.$lw_red50 (o)
 //   $focus_error: $danger (x)
 
-module.exports =  {
+module.exports = {
   $background: colors.$lw_white,
   $secondary_background: colors.$lw_grey10,
 
-  $primary_element: colors.$lw_blue50, 
+  $primary_element: colors.$lw_blue50,
   $secondary_element: colors.$lw_blue90,
 
   $layout01: colors.$lw_white,
@@ -30,6 +31,7 @@ module.exports =  {
   // hover
   $hover_primary: colors.$lw_hover_overlay,
   $hover_tertiary_button: colors.$lw_blue50,
+  $hover_danger_tertiary_button: $lw_red50,
 
   // focus
   $focus_primary: colors.$lw_blue50,
@@ -39,6 +41,7 @@ module.exports =  {
   // active
   $active_primary: colors.$lw_active_overlay,
   $active_tertiary_button: colors.$lw_blue60,
+  $active_danger_tertiary_button: colors.$lw_red60,
 
   // disabled
   $disabled01: colors.$lw_grey20,
@@ -81,7 +84,7 @@ module.exports =  {
   $button_disabled: colors.$lw_grey20,
   $button_danger: colors.$lw_red50,
 
-// Field
+  // Field
   $field01: colors.$lw_white,
   $field_disabled: colors.$lw_grey20,
 }
