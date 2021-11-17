@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import styled from 'styled-components'
 
 import './Button.scss'
 import cls from '@helpers/class'

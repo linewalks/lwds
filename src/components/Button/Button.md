@@ -187,12 +187,19 @@ Default()
 ### (테스트) 아이콘 단독 입력 시 버튼
 
 ```js
-import ChevronIcon from '@components/Icon/ChevronIcon'
+import { ReactComponent as Plus } from '@assets/svg/icn_plus_16.svg'
+import { ReactComponent as Search } from '@assets/svg/icn-search-16.svg'
 
 const Default = () => (
   <div>
-    <Button icon>
-      <img src="/svg/icn_plus_16.svg" />
+    rotate
+    <Button icon variant="danger_tertiary">
+      <Plus transform="rotate(20)" />
+    </Button>
+    <br />
+    flip
+    <Button icon variant="tertiary">
+      <Search transform="scale(-1,1)" />
     </Button>
   </div>
 )
