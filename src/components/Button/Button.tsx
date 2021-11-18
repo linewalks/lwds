@@ -1,9 +1,11 @@
 import React from 'react'
+import _ from 'lodash'
 import clsx from 'clsx'
 
-import './Button.scss'
 import cls from '@helpers/class'
-import _ from 'lodash'
+
+import '@components/Button/Button.scss'
+
 interface ButtonProps {
   id?: string
   icon: boolean
