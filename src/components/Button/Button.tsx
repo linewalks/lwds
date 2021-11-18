@@ -13,11 +13,11 @@ interface ButtonProps {
   variant:
     | string
     | 'primary'
-    | 'primary_line'
-    | 'basic'
-    | 'basic_line'
-    | 'primary_light'
-    | 'basic_light'
+    | 'secondary'
+    | 'tertiary'
+    | 'ghost'
+    | 'danger_primary'
+    | 'danger_tertiary'
   style?: object
   isResponsive: boolean
   ghostType: string | 'default' | 'important' | 'danger'
