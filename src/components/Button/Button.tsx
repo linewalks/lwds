@@ -11,6 +11,7 @@ const WrapInside = styled.span`
   align-items: center;
 `
 
+// extends React.HTMLProps<HTMLButtonElement>
 interface ButtonProps {
   id?: string
   disabled: boolean
@@ -37,7 +38,7 @@ interface ButtonProps {
   width: number | string | 'defalut' | '100%'
 }
 
-const Button = React.forwardRef(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref: React.RefObject<any>) => {
     const {
       id,
