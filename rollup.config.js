@@ -6,7 +6,8 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import url from '@rollup/plugin-url'
-import typescript from '@rollup/plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
+import external from 'rollup-plugin-peer-deps-external'
 
 import svgr from '@svgr/rollup'
 
@@ -14,6 +15,8 @@ import { babel } from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 
 import pkg from './package.json'
+
+const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
 export default {
   input: 'src/index.ts',
@@ -30,10 +33,12 @@ export default {
     },
   ],
   plugins: [
+    external(),
     babel({
       babelHelpers: 'runtime',
       exclude: 'node_modules/**',
-      extensions: ['.js', '.ts', '.tsx'],
+      extensions,
+      include: ['./src/**/*.ts', './src/**/*.tsx'],
     }),
     alias({
       resolve: ['.ts', '.tsx'],
@@ -50,17 +55,21 @@ export default {
     }),
     scssVariable(),
     nodeResolve({
+      extensions,
       mainFields: ['browser', 'jsnext', 'module', 'main'],
     }),
     commonjs({
-      extensions: ['.js', '.ts', '.tsx'],
+      include: 'node_modules/**',
+      extensions,
       namedExports: {
         'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
       },
     }),
     url(),
     json(),
-    typescript(),
+    typescript({
+      tsconfig: 'tsconfig.json',
+    }),
     svgr(),
     terser(),
   ],
