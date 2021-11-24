@@ -20,7 +20,7 @@ $component: #{$prefix}-button;
   }
 }
 
-// By Sizes
+// By Sizes(px)
 .#{$component}-xlg {
   @apply px-7 h-11;
   min-width: 120px;
@@ -84,6 +84,24 @@ $component: #{$prefix}-button;
   }
 }
 
+// By Sizes(rem)
+.#{$component}-responsive-xlg {
+  @apply h-r11;
+}
+
+.#{$component}-responsive-lg {
+  @apply h-r9;
+}
+
+.#{$component}-responsive-md {
+  @apply h-r8;
+}
+
+.#{$component}-responsive-sm {
+  @apply px-4 h-r7;
+}
+
+// By variant
 .#{$component}-primary {
   @apply bg-button_primary text-text_inverse;
   svg {
@@ -204,21 +222,4 @@ $component: #{$prefix}-button;
     @apply bg-button_disabled text-disabled02 border-none;
     box-shadow: none;
   }
-}
-
-.#{$component}-block {
-  @apply w-full min-w-0;
-  & + & {
-    @apply ml-0 mt-4;
-  }
-}
-
-.#{$component}-block-sm {
-  & + & {
-    @apply mt-2;
-  }
-}
-
-.#{$component}-icon {
-  @apply min-w-0 p-0 m-0 w-8;
 }

@@ -2,21 +2,34 @@
   "compilerOptions": {
     "baseUrl": "./",
     "allowJs": true,
-    "target": "es5",
+    // 이하 모드는 필요에 따라 설정 변경
+    "strict": false,
+    // "noImplicitAny": true, /* 'any' 타입으로 구현된 표현식 혹은 정의 에러처리 여부 */
+    // "strictNullChecks": true, /* 엄격한 null 확인 여부 */
+    // "strictFunctionTypes": true, /* 함수 타입에 대한 엄격한 확인 여부 */
+    // "strictBindCallApply": true, /* 함수에 엄격한 'bind', 'call' 그리고 'apply' 메소드 사용 여부 */
+    // "strictPropertyInitialization": true, /* 클래스의 값 초기화에 엄격한 확인 여부 */
+    // "noImplicitThis": true, /* 'any' 타입으로 구현된 'this' 표현식 에러처리 여부 */
+    // "skipLibCheck": true, /* 정의 파일의 타입 확인을 건너 뛸 지 여부 */
+    "target": "es6",
     "lib": ["es6", "es2017", "dom", "dom.iterable", "esnext"],
     "sourceMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "module": "es2015",
+    "module": "es6",
     "moduleResolution": "node",
     "importHelpers": true,
     "resolveJsonModule": true,
     "jsx": "react",
     "types": ["node", "jest"],
-    "typeRoots": ["./typings"]
+    "typeRoots": ["./typings", "./src/**/*.ts", "./src/**/*.tsx"],
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "dist/types"
   },
-  "include": ["typings", "src/**/*"],
+  // "include": ["typings", "src/**/*"],
+  "include": ["typings", "./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": [
     "node_modules",
     "dist",
@@ -24,12 +37,12 @@
     "src/data/*",
     "src/components/paper/*",
     "src/components/notifications/*",
-    "src/components/__tests__/utils.js",
+    "src/components/__tests__/utils.js"
   ],
   "paths": {
     "@src/*": ["src/*"],
     "@assets/*": ["src/assets/*"],
     "@components/*": ["src/components/*"],
-    "@helpers/*": ["src/helpers/*"],
+    "@helpers/*": ["src/helpers/*"]
   }
 }

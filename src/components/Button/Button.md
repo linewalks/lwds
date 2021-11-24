@@ -47,9 +47,34 @@
 </div>
 ```
 
-#### Block Buttons
+#### Buttons by size(responsive)
 
-- width: 100%
+```js
+<div
+  style={{
+    backgroundColor: '#eeeeee',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '8px',
+  }}
+>
+  <Button size="sm" isResponsive>
+    sm - Small (rem)
+  </Button>
+  <Button size="md" isResponsive>
+    md - Normal (rem)
+  </Button>
+  <Button size="lg" isResponsive>
+    lg - Large (rem)
+  </Button>
+  <Button size="xlg" isResponsive>
+    xlg - ExtraLarge (rem)
+  </Button>
+</div>
+```
+
+#### Block Buttons
 
 ```js
 <div

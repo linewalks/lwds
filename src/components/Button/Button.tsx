@@ -6,6 +6,7 @@ import cls from '@helpers/class'
 
 import '@components/Button/Button.scss'
 
+// extends React.HTMLProps<HTMLButtonElement>
 interface ButtonProps {
   id?: string
   icon: boolean
@@ -24,14 +25,13 @@ interface ButtonProps {
   isResponsive: boolean
   ghostType: string | 'default' | 'important' | 'danger'
   bold: boolean
-  block: boolean
   leftIcon?: React.ReactElement
   rightIcon?: React.ReactElement
   children: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLElement>
 }
 
-const Button = React.forwardRef(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref: React.RefObject<any>) => {
     const {
       id,
@@ -40,12 +40,12 @@ const Button = React.forwardRef(
       variant,
       style,
       bold,
-      block,
       leftIcon,
       rightIcon,
       children,
       onClick,
       ghostType,
+      isResponsive,
       icon,
       ...rest
     } = props
@@ -73,11 +73,10 @@ const Button = React.forwardRef(
           cls('button'),
           cls('button', size),
           cls('button', variant),
+          isResponsive && cls('button', 'responsive', size),
           variant === 'ghost' &&
             ghostType !== 'default' &&
             cls('button', 'ghost', ghostType),
-          block && cls('button', 'block'),
-          block && size === 'sm' && cls('button', 'block', size),
           icon && cls('button', 'icon'),
         )}
         style={{
@@ -102,7 +101,6 @@ Button.defaultProps = {
   size: 'md',
   variant: 'primary',
   bold: true,
-  block: false,
   isResponsive: false,
   ghostType: 'default',
   icon: false,
