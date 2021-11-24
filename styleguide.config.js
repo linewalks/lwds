@@ -45,42 +45,42 @@ module.exports = {
   styleguideDir: 'docs',
   pagePerSection: true,
   sections: [
-    {
-      name: 'Common',
-      components: () => ['src/components/Icon/SVGIcon.tsx'],
-    },
+    // {
+    //   name: 'Common',
+    //   components: () => ['src/components/Icon/SVGIcon.tsx'],
+    // },
     {
       name: 'Controls',
       components: () => [
         'src/components/Button/Button.tsx',
-        'src/components/Button/TextLink.tsx',
-        'src/components/SegmentedControl/SegmentedControl.tsx',
+        // 'src/components/Button/TextLink.tsx',
+        // 'src/components/SegmentedControl/SegmentedControl.tsx',
       ],
     },
-    {
-      name: 'Forms',
-      components: () => [
-        'src/components/Forms/Checkbox.tsx',
-        'src/components/Forms/Radio.tsx',
-        'src/components/Forms/TextInput.tsx',
-        'src/components/Forms/Select.tsx',
-      ],
-    },
-    {
-      name: 'Tabs',
-      components: () => ['src/components/Tabs/Tabs.tsx'],
-    },
-    {
-      name: 'Menu',
-      components: () => ['src/components/Menu/Dropdown/Dropdown.tsx'],
-    },
-    {
-      name: 'Advanced',
-      components: () => [
-        'src/components/Search/SearchBar.tsx',
-        'src/components/Tooltip/Tooltip.tsx',
-        'src/components/ProgressBar/ProgressBar.tsx',
-      ],
-    },
+    // {
+    //   name: 'Forms',
+    //   components: () => [
+    //     'src/components/Forms/Checkbox.tsx',
+    //     'src/components/Forms/Radio.tsx',
+    //     'src/components/Forms/TextInput.tsx',
+    //     'src/components/Forms/Select.tsx',
+    //   ],
+    // },
+    // {
+    //   name: 'Tabs',
+    //   components: () => ['src/components/Tabs/Tabs.tsx'],
+    // },
+    // {
+    //   name: 'Menu',
+    //   components: () => ['src/components/Menu/Dropdown/Dropdown.tsx'],
+    // },
+    // {
+    //   name: 'Advanced',
+    //   components: () => [
+    //     'src/components/Search/SearchBar.tsx',
+    //     'src/components/Tooltip/Tooltip.tsx',
+    //     'src/components/ProgressBar/ProgressBar.tsx',
+    //   ],
+    // },
   ],
 }
