@@ -74,42 +74,6 @@
 </div>
 ```
 
-#### Block Buttons
-
-```js
-<div
-  style={{
-    backgroundColor: '#eeeeee',
-    padding: '8px',
-  }}
->
-  <Button size="sm" block>
-    sm - Small
-  </Button>
-  <Button size="sm" block>
-    sm - Small
-  </Button>
-  <Button size="md" block>
-    md - Normal
-  </Button>
-  <Button size="md" block>
-    md - Normal
-  </Button>
-  <Button size="lg" block>
-    lg - Large
-  </Button>
-  <Button size="lg" block>
-    lg - Large
-  </Button>
-  <Button size="xlg" block>
-    xlg - ExtraLarge
-  </Button>
-  <Button size="xlg" block>
-    xlg - ExtraLarge
-  </Button>
-</div>
-```
-
 #### Bold text
 
 - Bold font weight is default.
