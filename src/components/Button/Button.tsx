@@ -1,35 +1,29 @@
 import React from 'react'
+import _ from 'lodash'
 import clsx from 'clsx'
-import styled from 'styled-components'
 
-import './Button.scss'
 import cls from '@helpers/class'
 
-const WrapInside = styled.span`
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-`
+import '@components/Button/Button.scss'
 
 interface ButtonProps {
   id?: string
+  icon: boolean
   disabled: boolean
   size: string | 'sm' | 'md' | 'lg' | 'xlg'
   // TODO variant => variant와 color로 나누기
   variant:
     | string
     | 'primary'
-    | 'primary_line'
-    | 'basic'
-    | 'basic_line'
-    | 'primary_light'
-    | 'basic_light'
+    | 'secondary'
+    | 'tertiary'
+    | 'ghost'
+    | 'danger_primary'
+    | 'danger_tertiary'
+  style?: object
+  responsiveHeight: boolean
   ghostType: string | 'default' | 'important' | 'danger'
   bold: boolean
-  block: boolean
-  width: number | string | 'defalut' | '100%'
-  responsiveHeight: boolean
-  style?: object
   leftIcon?: React.ReactElement
   rightIcon?: React.ReactElement
   children?: React.ReactNode
@@ -51,6 +45,7 @@ function renderButton<
     width,
     responsiveHeight,
     style,
+    icon,
     leftIcon,
     rightIcon,
     children,
@@ -84,23 +79,25 @@ function renderButton<
         cls('button'),
         cls('button', size),
         cls('button', variant),
-        block && cls('button', 'block'),
-        block && size === 'sm' && cls('button', 'block', size),
         responsiveHeight && cls('button', 'responsive', size),
+        variant === 'ghost' &&
+          ghostType !== 'default' &&
+          cls('button', 'ghost', ghostType),
+        icon && cls('button', 'icon'),
+        
       )}
       style={{
         ...style,
-        width: width,
         fontWeight: bold ? 'bold' : 'normal',
       }}
       onClick={onClick}
       ref={ref}
     >
-      <WrapInside>
+      <span className={clsx(cls('button', 'inner'))}>
         {startIconNode}
         {children}
         {endIconNode}
-      </WrapInside>
+      </span>
     </button>
   )
 }
@@ -113,9 +110,9 @@ Button.defaultProps = {
   variant: 'primary',
   ghostType: 'default',
   bold: true,
-  block: false,
-  width: 'defalut',
-  responsiveHeight: false,
+  isResponsive: false,
+  ghostType: 'default',
+  icon: false,
 }
 
 export default Button

@@ -20,6 +20,7 @@ module.exports = {
       background: theme('colors.background'),
       primary: theme('colors.primary_element'),
       danger: theme('colors.danger'),
+      icon01: theme('colors.icon01'),
     }),
     extend: {},
   },
