@@ -1,32 +1,27 @@
 import React from 'react'
+import _ from 'lodash'
 import clsx from 'clsx'
-import styled from 'styled-components'
 
-import './Button.scss'
 import cls from '@helpers/class'
 
-const WrapInside = styled.span`
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-`
+import '@components/Button/Button.scss'
 
 // extends React.HTMLProps<HTMLButtonElement>
 interface ButtonProps {
   id?: string
+  icon: boolean
   disabled: boolean
   size: string | 'sm' | 'md' | 'lg' | 'xlg'
   // TODO variant => variant와 color로 나누기
   variant:
     | string
     | 'primary'
-    | 'primary_line'
-    | 'basic'
-    | 'basic_line'
-    | 'primary_light'
-    | 'basic_light'
+    | 'secondary'
+    | 'tertiary'
+    | 'ghost'
+    | 'danger_primary'
+    | 'danger_tertiary'
   style?: object
-  ghostText: string
   isResponsive: boolean
   ghostType: string | 'default' | 'important' | 'danger'
   bold: boolean
@@ -51,6 +46,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       onClick,
       ghostType,
       isResponsive,
+      icon,
       ...rest
     } = props
 
@@ -78,6 +74,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           cls('button', size),
           cls('button', variant),
           isResponsive && cls('button', 'responsive', size),
+          variant === 'ghost' &&
+            ghostType !== 'default' &&
+            cls('button', 'ghost', ghostType),
+          icon && cls('button', 'icon'),
         )}
         style={{
           ...style,
@@ -86,11 +86,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={onClick}
         ref={ref}
       >
-        <WrapInside>
+        <span className={clsx(cls('button', 'inner'))}>
           {startIconNode}
           {children}
           {endIconNode}
-        </WrapInside>
+        </span>
       </button>
     )
   },
@@ -103,6 +103,7 @@ Button.defaultProps = {
   bold: true,
   isResponsive: false,
   ghostType: 'default',
+  icon: false,
 }
 
 export default Button
