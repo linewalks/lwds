@@ -6,20 +6,18 @@ interface ChevronProps {
   color?: string
   width?: number
   height?: number
-  direction: 'down' | 'up' | 'left' | 'right'
+  direction?: string | 'down' | 'up' | 'left' | 'right'
 }
 
 const ChevronIcon = (props: ChevronProps) => {
-  const {
-    direction
-  } = props
+  const { direction } = props
   const viewBoxSize = 24
 
   const angle = {
     down: 0,
     up: 180,
     left: 90,
-    right: -90
+    right: -90,
   }[direction]
 
   const rotationStr = `rotate(${angle}, ${viewBoxSize / 2}, ${viewBoxSize / 2})`
@@ -35,7 +33,7 @@ const ChevronIcon = (props: ChevronProps) => {
 }
 
 ChevronIcon.defaultProps = {
-  direction: 'down'
+  direction: 'down',
 }
 
 export default ChevronIcon

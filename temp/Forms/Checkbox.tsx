@@ -10,24 +10,24 @@ import ChildMargin from '@components/Layout/ChildMargin'
 import cls from '@helpers/class'
 
 interface CheckboxProps {
-  size: 'sm' | 'md'
+  size: string | 'sm' | 'md'
   disabled: boolean
   checked?: boolean
   defaultChecked?: boolean
   iconWeight: 'start' | 'center' | 'end'
   children: React.ReactNode
-  onChange: (checked: boolean) => void
+  onChange: (checked?: boolean) => void
 }
 
 const IconMap = {
   sm: {
     true: CheckedIconSmall,
-    false: UncheckedIconSmall
+    false: UncheckedIconSmall,
   },
   md: {
     true: CheckedIconMedium,
-    false: UncheckedIconMedium
-  }
+    false: UncheckedIconMedium,
+  },
 }
 
 const Checkbox = (props: CheckboxProps) => {
@@ -38,10 +38,12 @@ const Checkbox = (props: CheckboxProps) => {
     defaultChecked,
     iconWeight,
     children,
-    onChange
+    onChange,
   } = props
 
-  const [checked, setChecked] = useState(defaultChecked || propsChecked || false)
+  const [checked, setChecked] = useState(
+    defaultChecked || propsChecked || false,
+  )
 
   useEffect(() => {
     if (propsChecked !== undefined) {
@@ -49,22 +51,19 @@ const Checkbox = (props: CheckboxProps) => {
     }
   }, [propsChecked])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): any => {
     propsChecked || setChecked(e.target.checked)
     onChange && onChange(e.target.checked)
   }
 
-  const getIcon = (checked: boolean, size: string): string => {
+  const getIcon = (checked: boolean, size: string): any => {
     return IconMap[size][checked]
   }
   const Icon = getIcon(checked, size)
 
   return (
     <label
-      className={clsx(
-        cls('checkbox'),
-        disabled && cls('checkbox', 'disabled')
-      )}
+      className={clsx(cls('checkbox'), disabled && cls('checkbox', 'disabled'))}
     >
       <input
         type="checkbox"
@@ -76,17 +75,17 @@ const Checkbox = (props: CheckboxProps) => {
       <ChildMargin
         className={clsx(
           cls('checkbox', 'box'),
-          cls('checkbox', 'box', iconWeight)
+          cls('checkbox', 'box', iconWeight),
         )}
         margin={12}
       >
         <div
           className={clsx(
             cls('checkbox', 'img'),
-            disabled && cls('checkbox', 'img', 'disabled')
+            disabled && cls('checkbox', 'img', 'disabled'),
           )}
         >
-          <Icon />
+          {Icon}
         </div>
         <div>{children}</div>
       </ChildMargin>
@@ -97,7 +96,7 @@ const Checkbox = (props: CheckboxProps) => {
 Checkbox.defaultProps = {
   size: 'md',
   disabled: false,
-  iconWeight: 'center'
+  iconWeight: 'center',
 }
 
 export default Checkbox

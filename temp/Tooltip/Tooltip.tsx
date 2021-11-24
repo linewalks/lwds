@@ -7,10 +7,10 @@ import cls from '@helpers/class'
 
 interface TooltipProps {
   content: React.ReactNode
-  offsetTop?: number,
-  offsetLeft?: number,
-  mouseOverDelay: number,
-  mouseOutDelay: number,
+  offsetTop?: number
+  offsetLeft?: number
+  mouseOverDelay: number
+  mouseOutDelay: number
   children: React.ReactNode
 }
 
@@ -21,7 +21,7 @@ const Tooltip = (props: TooltipProps) => {
     offsetLeft,
     mouseOverDelay,
     mouseOutDelay,
-    children
+    children,
   } = props
 
   const anchorRef = useRef()
@@ -29,7 +29,7 @@ const Tooltip = (props: TooltipProps) => {
   const [isOverAnchor, setOverAnchor] = useState(false)
   const [isOverPopup, setOverPopup] = useState(false)
 
-  const delayCall = (delay: number, callback: () => void) => {
+  const delayCall = (delay: number, callback: any) => {
     delay === 0 ? callback() : setTimeout(callback, delay * 1000)
   }
 
@@ -62,9 +62,7 @@ const Tooltip = (props: TooltipProps) => {
         offsetLeft={offsetLeft}
       >
         <div
-          className={clsx(
-            cls('tooltip')
-          )}
+          className={clsx(cls('tooltip'))}
           onMouseOver={handleOverPopup}
           onMouseOut={handleOutPopup}
         >

@@ -3,16 +3,16 @@ import styled from 'styled-components'
 
 const WrapLayout = styled.div`
   display: flex;
-  ${({ orientation, margin }: {orientation: string, margin: number}) => {
-    return orientation === 'vertical' ?
-      `flex-direction: column;
+  ${({ orientation, margin }: { orientation: string; margin: number }): any => {
+    return orientation === 'vertical'
+      ? `flex-direction: column;
       & > * {
         margin-bottom: ${margin}px;
       }
       & > *:last-child {
         margin-bottom: 0;
-      }` :
-      `flex-direction: row;
+      }`
+      : `flex-direction: row;
       & > * {
         margin-right: ${margin}px;
       }
@@ -24,21 +24,14 @@ const WrapLayout = styled.div`
 
 interface ChildMarginProps {
   className: string
-  orientation: 'horizontal' | 'vertical'
+  orientation: string | 'horizontal' | 'vertical'
   margin: number
   style?: object
-  children: React.ReactNode  
+  children: React.ReactNode
 }
 
-const ChildMargin = (props: ChildMarginProps) => {
-  const {
-    className,
-    orientation,
-    margin,
-    style,
-    children,
-    ...rest
-  } = props
+const ChildMargin = (props: ChildMarginProps): any => {
+  const { className, orientation, margin, style, children, ...rest } = props
 
   return (
     <WrapLayout
@@ -55,7 +48,7 @@ const ChildMargin = (props: ChildMarginProps) => {
 
 ChildMargin.defaultProps = {
   orientation: 'horizontal',
-  margin: 8
+  margin: 8,
 }
 
 export default ChildMargin

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import cls from '@helpers/class'
 import {
   DropdownContextProps,
-  DropdownContext
+  DropdownContext,
 } from '@components/Menu/Dropdown/Dropdown'
 
 interface DropdownItemProps {
@@ -13,20 +13,13 @@ interface DropdownItemProps {
   startImgSrc?: string
   endImgSrc?: string
   children: React.ReactNode
-  onClick?: () => void
+  onClick?: any
 }
 
 const DropdownItem = (props: DropdownItemProps) => {
   const context: DropdownContextProps = useContext(DropdownContext)
 
-  const {
-    bold,
-    isButton,
-    startImgSrc,
-    endImgSrc,
-    children,
-    onClick
-  } = props
+  const { bold, isButton, startImgSrc, endImgSrc, children, onClick } = props
 
   const renderStartImg = (): React.ReactNode => {
     return (
@@ -53,7 +46,7 @@ const DropdownItem = (props: DropdownItemProps) => {
       className={clsx(
         cls('dropdown', 'item'),
         cls('dropdown', 'item', context.size),
-        isButton && cls('dropdown', 'item', 'button')
+        isButton && cls('dropdown', 'item', 'button'),
       )}
       style={{ fontWeight: bold ? 'bold' : 'normal' }}
       onClick={onClick}
@@ -67,7 +60,7 @@ const DropdownItem = (props: DropdownItemProps) => {
 
 DropdownItem.defaultProps = {
   bold: false,
-  isButton: false
+  isButton: false,
 }
 
 export default DropdownItem

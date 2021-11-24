@@ -17,8 +17,8 @@ interface TextInputProps {
   style?: object
   startImgSrc?: string
   endImgSrc?: string
-  startImgOnClick?: () => void
-  endImgOnClick?: () => void
+  startImgOnClick?: any
+  endImgOnClick?: any
   onChange?: (value: string) => void
   onSubmit?: (value: string) => void
 }
@@ -40,8 +40,8 @@ const TextInput = (props: TextInputProps) => {
     startImgOnClick,
     endImgOnClick,
     onChange,
-    onSubmit
-  } = props 
+    onSubmit,
+  } = props
   const [value, setValue] = useState(defaultValue || propsValue || '')
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const TextInput = (props: TextInputProps) => {
       <img
         className={clsx(
           cls('text', size, 'startimg'),
-          startImgOnClick && cls('text', 'img', 'button')
+          startImgOnClick && cls('text', 'img', 'button'),
         )}
         src={startImgSrc}
         alt=""
@@ -80,7 +80,7 @@ const TextInput = (props: TextInputProps) => {
       <img
         className={clsx(
           cls('text', size, 'endimg'),
-          endImgOnClick && cls('text', 'img', 'button')
+          endImgOnClick && cls('text', 'img', 'button'),
         )}
         src={endImgSrc}
         alt=""
@@ -97,7 +97,7 @@ const TextInput = (props: TextInputProps) => {
         error && cls('text', color, 'error'),
         disabled && cls('text', color, 'disabled'),
         cls('text', variant),
-        cls('text', size)
+        cls('text', size),
       )}
       style={style}
     >
@@ -121,7 +121,7 @@ TextInput.defaultProps = {
   size: 'md',
   type: 'text',
   disabled: false,
-  error: false
+  error: false,
 }
 
 export default TextInput

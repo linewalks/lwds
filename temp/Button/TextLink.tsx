@@ -14,7 +14,7 @@ interface TextLinkProps {
   underline: boolean
   bold: boolean
   children: React.ReactNode
-  onClick?: () => void
+  onClick?: any
 }
 
 const TextLink = (props: TextLinkProps) => {
@@ -27,7 +27,7 @@ const TextLink = (props: TextLinkProps) => {
     underline,
     bold,
     children,
-    onClick
+    onClick,
   } = props
   return (
     <DynamicTag
@@ -38,11 +38,11 @@ const TextLink = (props: TextLinkProps) => {
         cls('textlink'),
         cls('textlink', variant),
         underline && cls('textlink', 'underline'),
-        disabled && cls('textlink', 'disabled')
+        disabled && cls('textlink', 'disabled'),
       )}
       style={{
         ...style,
-        fontWeight: bold ? 'bold': 'normal'
+        fontWeight: bold ? 'bold' : 'normal',
       }}
       onClick={onClick}
     >
@@ -56,7 +56,7 @@ TextLink.defaultProps = {
   disabled: false,
   variant: 'primary',
   bold: true,
-  underline: false
+  underline: false,
 }
 
 export default TextLink

@@ -14,12 +14,12 @@ interface IProps<T> {
   as: T
 }
 
-const DynamicTag = React.forwardRef(<T extends React.ElementType = 'button'>(
-  { as, ... rest }: OverwritableType<IProps<T>, T>,
-  ref: React.RefObject<any>
+const DynamicTag = (
+  { as, ...rest }: OverwritableType<IProps<T>, T>,
+  ref: React.RefObject<any>,
 ) => {
   const ElementType: React.ElementType = as
   return <ElementType {...rest} ref={ref} />
-})
+}
 
 export default DynamicTag

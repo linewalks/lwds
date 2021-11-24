@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 import clsx from 'clsx'
 
 import './Radio.scss'
@@ -6,7 +6,7 @@ import CheckedIcon from '@assets/svg/btn-radiobutton-checked-24.svg'
 import UncheckedIcon from '@assets/svg/btn-radiobutton-unchecked-24.svg'
 import {
   RadioGroupContextProps,
-  RadioGroupContext
+  RadioGroupContext,
 } from '@components/Forms/RadioGroup'
 import ChildMargin from '@components/Layout/ChildMargin'
 import cls from '@helpers/class'
@@ -14,7 +14,7 @@ import cls from '@helpers/class'
 interface RadioProps {
   size: 'md'
   disabled: boolean
-  checked?: boolean,
+  checked?: boolean
   defaultChecked?: boolean
   iconWeight: 'start' | 'center' | 'end'
   value: string
@@ -31,25 +31,20 @@ const Radio = (props: RadioProps) => {
     iconWeight,
     value,
     children,
-    onChange
+    onChange,
   } = props
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange && onChange(e.target.value)
     context?.onChange && context.onChange(e.target.value)
   }
 
-  const checked = propsChecked || (context && (context.value === value))
+  const checked: any = propsChecked || (context && context.value === value)
 
-  const Icon = checked ? CheckedIcon : UncheckedIcon
+  const Icon: any = checked ? CheckedIcon : UncheckedIcon
 
   return (
-    <label
-      className={clsx(
-        cls('radio'),
-        disabled && cls('radio', 'disabled')
-      )}
-    >
+    <label className={clsx(cls('radio'), disabled && cls('radio', 'disabled'))}>
       <input
         id={value}
         type="radio"
@@ -60,16 +55,13 @@ const Radio = (props: RadioProps) => {
         style={{ display: 'none' }}
       />
       <ChildMargin
-        className={clsx(
-          cls('radio', 'box'),
-          cls('radio', 'box', iconWeight)
-        )}
+        className={clsx(cls('radio', 'box'), cls('radio', 'box', iconWeight))}
         margin={12}
       >
         <div
           className={clsx(
             cls('radio', 'img'),
-            disabled && cls('radio', 'img', 'disabled')
+            disabled && cls('radio', 'img', 'disabled'),
           )}
         >
           <Icon />
@@ -83,7 +75,7 @@ const Radio = (props: RadioProps) => {
 Radio.defaultProps = {
   size: 'md',
   disabled: false,
-  iconWeight: 'center'
+  iconWeight: 'center',
 }
 
 export default Radio

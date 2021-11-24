@@ -1,17 +1,13 @@
 import React, { useEffect, useRef } from 'react'
 
 interface OutsideEventHandlerProps {
-  children: React.ReactNode,
-  onClick?: () => void
-  onWheel?: () => void
+  children: React.ReactNode
+  onClick?: any
+  onWheel?: any
 }
 
 const OutsideEventHandler = (props: OutsideEventHandlerProps) => {
-  const {
-    children,
-    onClick,
-    onWheel
-  } = props
+  const { children, onClick, onWheel } = props
   const wrapperRef = useRef(null)
 
   const handleClick = (event) => {
@@ -35,7 +31,6 @@ const OutsideEventHandler = (props: OutsideEventHandlerProps) => {
     }
   }, [])
   return <div ref={wrapperRef}>{children}</div>
-
 }
 
 export default OutsideEventHandler

@@ -11,19 +11,11 @@ interface TabProps {
   active: boolean
   style?: object
   children: React.ReactNode
-  onClick: () => void
+  onClick: any
 }
 
 const Tab = (props: TabProps) => {
-  const {
-    id,
-    variant,
-    size,
-    active,
-    style,
-    children,
-    onClick
-  } = props
+  const { id, variant, size, active, style, children, onClick } = props
   return (
     <div
       id={id}
@@ -31,7 +23,7 @@ const Tab = (props: TabProps) => {
         cls('tab'),
         cls('tab', variant),
         cls('tab', size),
-        active && cls('tab', variant, 'active')
+        active && cls('tab', variant, 'active'),
       )}
       style={style}
       onClick={onClick}

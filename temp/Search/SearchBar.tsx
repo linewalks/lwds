@@ -13,15 +13,8 @@ interface SearchBarProps {
 }
 
 const SearchBar = (props: SearchBarProps) => {
-  const {
-    variant,
-    color,
-    size,
-    disabled,
-    placeholder,
-    onChange,
-    onSubmit
-  } = props
+  const { variant, color, size, disabled, placeholder, onChange, onSubmit } =
+    props
 
   const [value, setValue] = useState('')
 
@@ -63,7 +56,7 @@ SearchBar.defaultProps = {
   variant: 'outline_round',
   color: 'primary',
   size: 'lg',
-  disabled: false
+  disabled: false,
 }
 
 export default SearchBar

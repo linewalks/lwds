@@ -14,18 +14,11 @@ interface PopupProps {
   offsetTop: number
   offsetLeft: number
   children: React.ReactNode
-  onClose?: () => void
+  onClose?: any
 }
 
-const Popup = (props: PopupProps) => {
-  const {
-    isOpen,
-    anchorRef,
-    offsetTop,
-    offsetLeft,
-    children,
-    onClose
-  } = props
+const Popup = (props: PopupProps): any => {
+  const { isOpen, anchorRef, offsetTop, offsetLeft, children, onClose } = props
 
   const getPosition = () => {
     const left = anchorRef?.current?.offsetLeft || 0
@@ -33,36 +26,25 @@ const Popup = (props: PopupProps) => {
 
     return {
       left: left + offsetLeft,
-      top: top + offsetTop
+      top: top + offsetTop,
     }
   }
 
   const render = () => {
-    return ReactDOM.createPortal((
-      <OutsideEventHandler
-        onClick={onClose}
-      >
-        <WrapperPopup
-          style={
-            getPosition()
-          }
-        >
-          {children}
-        </WrapperPopup>
-      </OutsideEventHandler>
-    ), document.body)
+    return ReactDOM.createPortal(
+      <OutsideEventHandler onClick={onClose}>
+        <WrapperPopup style={getPosition()}>{children}</WrapperPopup>
+      </OutsideEventHandler>,
+      document.body,
+    )
   }
 
-  return (
-    <>
-      {isOpen ? render() : null}
-    </>
-  )
+  return <>{isOpen ? render() : null}</>
 }
 
 Popup.defaultProps = {
   isOpen: false,
   offsetTop: 0,
-  offsetLeft: 0
-} 
+  offsetLeft: 0,
+}
 export default Popup
