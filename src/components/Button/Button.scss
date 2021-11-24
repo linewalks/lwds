@@ -223,3 +223,7 @@ $component: #{$prefix}-button;
     box-shadow: none;
   }
 }
+
+.#{$component}-icon {
+  @apply min-w-0 p-0 m-0 w-8;
+}
