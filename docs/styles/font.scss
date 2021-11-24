@@ -1,5 +1,6 @@
 $font_family: "Spoqa Han Sans";
 
-body, th, td, input, select, textarea, button, div {
-  font-family: $font_family
+* {
+  font-family: $font_family;
+  letter-spacing: -0.5px;
 }
