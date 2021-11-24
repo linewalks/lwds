@@ -7,11 +7,8 @@ import cls from '@helpers/class'
 import '@components/Button/Button.scss'
 
 interface ButtonProps {
-  id?: string
-  icon: boolean
-  disabled: boolean
-  size: string | 'sm' | 'md' | 'lg' | 'xlg'
   // TODO variant => variant와 color로 나누기
+  disabled: boolean
   variant:
     | string
     | 'primary'
@@ -20,10 +17,13 @@ interface ButtonProps {
     | 'ghost'
     | 'danger_primary'
     | 'danger_tertiary'
-  style?: object
-  responsiveHeight: boolean
   ghostType: string | 'default' | 'important' | 'danger'
+  size: string | 'sm' | 'md' | 'lg' | 'xlg'
   bold: boolean
+  icon: boolean
+  responsiveHeight: boolean
+  id?: string
+  style?: object
   leftIcon?: React.ReactElement
   rightIcon?: React.ReactElement
   children?: React.ReactNode
@@ -35,17 +35,15 @@ function renderButton<
   U extends React.RefObject<HTMLButtonElement>,
 >(props: T, ref: U) {
   const {
-    id,
     disabled,
-    size,
     variant,
     ghostType,
+    size,
     bold,
-    block,
-    width,
-    responsiveHeight,
-    style,
     icon,
+    responsiveHeight,
+    id,
+    style,
     leftIcon,
     rightIcon,
     children,
@@ -84,7 +82,6 @@ function renderButton<
           ghostType !== 'default' &&
           cls('button', 'ghost', ghostType),
         icon && cls('button', 'icon'),
-        
       )}
       style={{
         ...style,
@@ -106,13 +103,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(renderButton)
 
 Button.defaultProps = {
   disabled: false,
-  size: 'md',
   variant: 'primary',
   ghostType: 'default',
+  size: 'md',
   bold: true,
-  isResponsive: false,
-  ghostType: 'default',
   icon: false,
+  responsiveHeight: false,
 }
 
 export default Button
