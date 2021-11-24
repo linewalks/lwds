@@ -34,11 +34,7 @@ module.exports = {
       // },
       {
         test: /\.svg$/,
-        use: [
-          {
-            loader: '@svgr/webpack',
-          }
-        ],
+        use: ['@svgr/webpack', 'url-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -49,7 +45,7 @@ module.exports = {
             loader: 'css-loader',
           },
           {
-            loader: 'postcss-loader'
+            loader: 'postcss-loader',
           },
           {
             loader: 'sass-loader',
@@ -72,7 +68,7 @@ module.exports = {
       '@src': path.resolve(__dirname, 'src/'),
       '@assets': path.resolve(__dirname, 'src/assets/'),
       '@components': path.resolve(__dirname, 'src/components/'),
-      '@helpers': path.resolve(__dirname, 'src/helpers/')
+      '@helpers': path.resolve(__dirname, 'src/helpers/'),
     },
   },
 }

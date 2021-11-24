@@ -13,6 +13,11 @@ $component: #{$prefix}-button;
   &:disabled {
     @apply cursor-not-allowed;
   }
+
+  & > .#{$component}-inner {
+    @apply inline-flex h-full items-center;
+    line-height: 100%;
+  }
 }
 
 // By Sizes
@@ -47,6 +52,9 @@ $component: #{$prefix}-button;
 .#{$component}-md {
   @apply px-5 h-8;
   min-width: 80px;
+  &[data-width] {
+    min-width: 0px;
+  }
   border-radius: 8px;
   font-size: 14px;
 
@@ -132,6 +140,9 @@ $component: #{$prefix}-button;
 
 .#{$component}-ghost {
   @apply bg-background text-text01;
+  svg {
+    @apply fill-icon01;
+  }
   &:hover {
     @apply shadow-hover;
   }
@@ -141,6 +152,20 @@ $component: #{$prefix}-button;
   &:disabled {
     @apply bg-button_disabled text-disabled02;
     box-shadow: none;
+  }
+
+  &.#{$component}-ghost-important {
+    @apply text-text_info;
+    svg {
+      @apply fill-primary;
+    }
+  }
+
+  &.#{$component}-ghost-danger {
+    @apply text-danger;
+    svg {
+      @apply fill-danger;
+    }
   }
 }
 
@@ -167,14 +192,13 @@ $component: #{$prefix}-button;
     @apply fill-danger;
   }
   &:hover {
-    @apply bg-danger text-text_inverse;
+    @apply bg-hover_danger_tertiary_button text-text_inverse;
     svg {
       @apply fill-background;
     }
   }
   &:active {
-    // hover 속성을 가져와 쓰고 bg 컬러만 바꿔줌 ( + semantic color도 변경해야함)
-    @apply bg-text_error border-text_error;
+    @apply bg-active_danger_tertiary_button border-active_danger_tertiary_button;
   }
   &:disabled {
     @apply bg-button_disabled text-disabled02 border-none;
@@ -193,4 +217,8 @@ $component: #{$prefix}-button;
   & + & {
     @apply mt-2;
   }
+}
+
+.#{$component}-icon {
+  @apply min-w-0 p-0 m-0 w-8;
 }
