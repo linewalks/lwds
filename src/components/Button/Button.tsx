@@ -11,7 +11,6 @@ const WrapInside = styled.span`
   align-items: center;
 `
 
-// extends React.HTMLProps<HTMLButtonElement>
 interface ButtonProps {
   id?: string
   disabled: boolean
@@ -25,93 +24,98 @@ interface ButtonProps {
     | 'basic_line'
     | 'primary_light'
     | 'basic_light'
-  style?: object
-  ghostText: string
-  isResponsive: boolean
   ghostType: string | 'default' | 'important' | 'danger'
   bold: boolean
   block: boolean
+  width: number | string | 'defalut' | '100%'
+  responsiveHeight: boolean
+  style?: object
   leftIcon?: React.ReactElement
   rightIcon?: React.ReactElement
-  children: React.ReactNode
+  children?: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLElement>
-  width: number | string | 'defalut' | '100%'
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props: ButtonProps, ref: React.RefObject<any>) => {
-    const {
-      id,
-      disabled,
-      size,
-      variant,
-      style,
-      bold,
-      block,
-      leftIcon,
-      rightIcon,
-      children,
-      onClick,
-      ghostType,
-      width,
-      isResponsive,
-      ...rest
-    } = props
+function renderButton<
+  T extends ButtonProps,
+  U extends React.RefObject<HTMLButtonElement>,
+>(props: T, ref: U) {
+  const {
+    id,
+    disabled,
+    size,
+    variant,
+    ghostType,
+    bold,
+    block,
+    width,
+    responsiveHeight,
+    style,
+    leftIcon,
+    rightIcon,
+    children,
+    onClick,
+    ...rest
+  } = props
 
-    const createIconNode = (icon: React.ReactElement, className: string) => {
-      return (
-        icon &&
-        React.cloneElement(icon, {
-          className: cls('button', className),
-          width: '1em',
-          height: '1em',
-        })
-      )
-    }
-
-    const startIconNode = createIconNode(leftIcon, 'lefticon')
-    const endIconNode = createIconNode(rightIcon, 'righticon')
-
+  const createIconNode = (
+    icon: React.ReactElement,
+    className: string,
+  ): React.ReactElement => {
     return (
-      <button
-        {...rest}
-        id={id}
-        disabled={disabled}
-        className={clsx(
-          cls('button'),
-          cls('button', size),
-          cls('button', variant),
-          block && cls('button', 'block'),
-          block && size === 'sm' && cls('button', 'block', size),
-          isResponsive && cls('button', 'responsive', size),
-        )}
-        style={{
-          ...style,
-          width: width,
-          fontWeight: bold ? 'bold' : 'normal',
-        }}
-        onClick={onClick}
-        ref={ref}
-      >
-        <WrapInside>
-          {startIconNode}
-          {children}
-          {endIconNode}
-        </WrapInside>
-      </button>
+      icon &&
+      React.cloneElement(icon, {
+        className: cls('button', className),
+        width: '1em',
+        height: '1em',
+      })
     )
-  },
-)
+  }
+
+  const startIconNode = createIconNode(leftIcon, 'lefticon')
+  const endIconNode = createIconNode(rightIcon, 'righticon')
+
+  return (
+    <button
+      {...rest}
+      id={id}
+      disabled={disabled}
+      className={clsx(
+        cls('button'),
+        cls('button', size),
+        cls('button', variant),
+        block && cls('button', 'block'),
+        block && size === 'sm' && cls('button', 'block', size),
+        responsiveHeight && cls('button', 'responsive', size),
+      )}
+      style={{
+        ...style,
+        width: width,
+        fontWeight: bold ? 'bold' : 'normal',
+      }}
+      onClick={onClick}
+      ref={ref}
+    >
+      <WrapInside>
+        {startIconNode}
+        {children}
+        {endIconNode}
+      </WrapInside>
+    </button>
+  )
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(renderButton)
 
 Button.defaultProps = {
   disabled: false,
   size: 'md',
   variant: 'primary',
+  ghostType: 'default',
   bold: true,
   block: false,
-  isResponsive: false,
-  ghostType: 'default',
   width: 'defalut',
+  responsiveHeight: false,
 }
 
 export default Button
