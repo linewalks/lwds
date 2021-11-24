@@ -6,7 +6,6 @@ import cls from '@helpers/class'
 
 import '@components/Button/Button.scss'
 
-// extends React.HTMLProps<HTMLButtonElement>
 interface ButtonProps {
   id?: string
   icon: boolean
@@ -22,84 +21,94 @@ interface ButtonProps {
     | 'danger_primary'
     | 'danger_tertiary'
   style?: object
-  isResponsive: boolean
+  responsiveHeight: boolean
   ghostType: string | 'default' | 'important' | 'danger'
   bold: boolean
   leftIcon?: React.ReactElement
   rightIcon?: React.ReactElement
-  children: React.ReactNode
+  children?: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLElement>
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props: ButtonProps, ref: React.RefObject<any>) => {
-    const {
-      id,
-      disabled,
-      size,
-      variant,
-      style,
-      bold,
-      leftIcon,
-      rightIcon,
-      children,
-      onClick,
-      ghostType,
-      isResponsive,
-      icon,
-      ...rest
-    } = props
+function renderButton<
+  T extends ButtonProps,
+  U extends React.RefObject<HTMLButtonElement>,
+>(props: T, ref: U) {
+  const {
+    id,
+    disabled,
+    size,
+    variant,
+    ghostType,
+    bold,
+    block,
+    width,
+    responsiveHeight,
+    style,
+    icon,
+    leftIcon,
+    rightIcon,
+    children,
+    onClick,
+    ...rest
+  } = props
 
-    const createIconNode = (icon: React.ReactElement, className: string) => {
-      return (
-        icon &&
-        React.cloneElement(icon, {
-          className: cls('button', className),
-          width: '1em',
-          height: '1em',
-        })
-      )
-    }
-
-    const startIconNode = createIconNode(leftIcon, 'lefticon')
-    const endIconNode = createIconNode(rightIcon, 'righticon')
-
+  const createIconNode = (
+    icon: React.ReactElement,
+    className: string,
+  ): React.ReactElement => {
     return (
-      <button
-        {...rest}
-        id={id}
-        disabled={disabled}
-        className={clsx(
-          cls('button'),
-          cls('button', size),
-          cls('button', variant),
-          isResponsive && cls('button', 'responsive', size),
-          variant === 'ghost' &&
-            ghostType !== 'default' &&
-            cls('button', 'ghost', ghostType),
-          icon && cls('button', 'icon'),
-        )}
-        style={{
-          ...style,
-          fontWeight: bold ? 'bold' : 'normal',
-        }}
-        onClick={onClick}
-        ref={ref}
-      >
-        <span className={clsx(cls('button', 'inner'))}>
-          {startIconNode}
-          {children}
-          {endIconNode}
-        </span>
-      </button>
+      icon &&
+      React.cloneElement(icon, {
+        className: cls('button', className),
+        width: '1em',
+        height: '1em',
+      })
     )
-  },
-)
+  }
+
+  const startIconNode = createIconNode(leftIcon, 'lefticon')
+  const endIconNode = createIconNode(rightIcon, 'righticon')
+
+  return (
+    <button
+      {...rest}
+      id={id}
+      disabled={disabled}
+      className={clsx(
+        cls('button'),
+        cls('button', size),
+        cls('button', variant),
+        responsiveHeight && cls('button', 'responsive', size),
+        variant === 'ghost' &&
+          ghostType !== 'default' &&
+          cls('button', 'ghost', ghostType),
+        icon && cls('button', 'icon'),
+        
+      )}
+      style={{
+        ...style,
+        fontWeight: bold ? 'bold' : 'normal',
+      }}
+      onClick={onClick}
+      ref={ref}
+    >
+      <span className={clsx(cls('button', 'inner'))}>
+        {startIconNode}
+        {children}
+        {endIconNode}
+      </span>
+    </button>
+  )
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(renderButton)
 
 Button.defaultProps = {
   disabled: false,
   size: 'md',
   variant: 'primary',
+  ghostType: 'default',
   bold: true,
   isResponsive: false,
   ghostType: 'default',

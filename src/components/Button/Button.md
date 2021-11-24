@@ -59,16 +59,16 @@
     padding: '8px',
   }}
 >
-  <Button size="sm" isResponsive>
+  <Button size="sm" responsiveHeight>
     sm - Small (rem)
   </Button>
-  <Button size="md" isResponsive>
+  <Button size="md" responsiveHeight>
     md - Normal (rem)
   </Button>
-  <Button size="lg" isResponsive>
+  <Button size="lg" responsiveHeight>
     lg - Large (rem)
   </Button>
-  <Button size="xlg" isResponsive>
+  <Button size="xlg" responsiveHeight>
     xlg - ExtraLarge (rem)
   </Button>
 </div>
@@ -146,7 +146,7 @@
 </div>
 ```
 
-#### With Image
+<!-- #### With Image
 
 ```js
 import ChevronIcon from '@components/Icon/ChevronIcon'
@@ -247,4 +247,4 @@ const Default = () => (
 )
 
 Default()
-```
+``` -->
