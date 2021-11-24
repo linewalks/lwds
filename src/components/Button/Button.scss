@@ -199,16 +199,3 @@ $component: #{$prefix}-button;
     box-shadow: none;
   }
 }
-
-.#{$component}-block {
-  @apply min-w-0 block;
-  & + & {
-    @apply ml-0 mt-4;
-  }
-}
-
-.#{$component}-block-sm {
-  & + & {
-    @apply mt-2;
-  }
-}
