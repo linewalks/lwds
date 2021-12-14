@@ -59,6 +59,7 @@ export default {
       mainFields: ['browser', 'jsnext', 'module', 'main'],
     }),
     commonjs({
+      include: ['node_modules/**', 'src/assets/styles/**'],
       extensions,
       namedExports: {
         'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
