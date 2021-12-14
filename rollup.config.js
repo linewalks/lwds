@@ -59,7 +59,6 @@ export default {
       mainFields: ['browser', 'jsnext', 'module', 'main'],
     }),
     commonjs({
-      include: 'node_modules/**',
       extensions,
       namedExports: {
         'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
@@ -73,5 +72,12 @@ export default {
     svgr(),
     terser(),
   ],
-  external: ['react', 'react-dom', 'styled-components', 'typescript', 'tslib'],
+  external: [
+    'react',
+    'react-dom',
+    'styled-components',
+    'typescript',
+    'tslib',
+    'faker',
+  ],
 }
