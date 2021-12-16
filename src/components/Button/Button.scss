@@ -22,7 +22,7 @@ $component: #{$prefix}-button;
 
 // By Sizes(px)
 .#{$component}-xlg {
-  @apply px-spacing_07 h-size_11;
+  @apply px-spacing_08 h-size_05;
   min-width: 120px;
   border-radius: 8px;
   font-size: 18px;
@@ -36,7 +36,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-lg {
-  @apply px-spacing_06 h-size_09;
+  @apply px-spacing_06 h-size_06;
   min-width: 90px;
   border-radius: 8px;
   font-size: 16px;
@@ -50,7 +50,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-md {
-  @apply px-spacing_05 h-size_08;
+  @apply px-spacing_05 h-size_05;
   min-width: 80px;
   &[data-width] {
     min-width: 0px;
@@ -67,7 +67,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-sm {
-  @apply px-spacing_04 h-size_07;
+  @apply px-spacing_04 h-size_04;
   min-width: 56px;
   border-radius: 6px;
   font-size: 13px;
@@ -86,19 +86,19 @@ $component: #{$prefix}-button;
 
 // By Sizes(rem)
 .#{$component}-responsive-xlg {
-  @apply h-size_r11;
-}
-
-.#{$component}-responsive-lg {
-  @apply h-size_r09;
-}
-
-.#{$component}-responsive-md {
   @apply h-size_r08;
 }
 
+.#{$component}-responsive-lg {
+  @apply h-size_r05;
+}
+
+.#{$component}-responsive-md {
+  @apply h-size_r05;
+}
+
 .#{$component}-responsive-sm {
-  @apply px-spacing_04 h-size_r07;
+  @apply px-spacing_04 h-size_r04;
 }
 
 // By variant
@@ -225,5 +225,5 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-icon {
-  @apply min-w-size_0 p-spacing_0 m-spacing_0 w-size_08;
+  @apply min-w-size_0 p-spacing_0 m-spacing_0 w-size_05;
 }
