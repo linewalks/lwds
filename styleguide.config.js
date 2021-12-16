@@ -45,10 +45,19 @@ module.exports = {
   styleguideDir: 'docs',
   pagePerSection: true,
   sections: [
-    // {
-    //   name: 'Common',
-    //   components: () => ['src/components/Icon/SVGIcon.tsx'],
-    // },
+    {
+      name: 'Common',
+      sections: [
+        {
+          name: 'Spacing',
+          content: 'src/components/Spacing/Spacing.md',
+        },
+        {
+          name: 'Size',
+          content: 'src/components/Size/Size.md',
+        },
+      ],
+    },
     {
       name: 'Controls',
       components: () => [
