@@ -43,7 +43,7 @@
   <Button size="sm">sm - Small</Button>
   <Button size="md">md - Normal</Button>
   <Button size="lg">lg - Large</Button>
-  <Button size="xlg">xlg - ExtraLarge</Button>
+  <Button size="xl">xl - ExtraLarge</Button>
 </div>
 ```
 
@@ -68,8 +68,8 @@
   <Button size="lg" responsiveHeight>
     lg - Large (rem)
   </Button>
-  <Button size="xlg" responsiveHeight>
-    xlg - ExtraLarge (rem)
+  <Button size="xl" responsiveHeight>
+    xl - ExtraLarge (rem)
   </Button>
 </div>
 ```

@@ -5,7 +5,7 @@ $component: #{$prefix}-button;
 .#{$component} {
   @apply cursor-pointer font-bold outline-none transition duration-200 ease-linear;
   & + & {
-    @apply ml-4;
+    @apply ml-spacing_04;
   }
   &:hover {
     @apply no-underline;
@@ -21,36 +21,36 @@ $component: #{$prefix}-button;
 }
 
 // By Sizes(px)
-.#{$component}-xlg {
-  @apply px-7 h-11;
+.#{$component}-xl {
+  @apply px-spacing_08 h-size_08;
   min-width: 120px;
   border-radius: 8px;
   font-size: 18px;
 
   & .#{$component}-lefticon {
-    @apply mr-4;
+    @apply mr-spacing_04;
   }
   & .#{$component}-righticon {
-    @apply ml-4;
+    @apply ml-spacing_04;
   }
 }
 
 .#{$component}-lg {
-  @apply px-6 h-9;
+  @apply px-spacing_06 h-size_06;
   min-width: 90px;
   border-radius: 8px;
   font-size: 16px;
 
   & .#{$component}-lefticon {
-    @apply mr-4;
+    @apply mr-spacing_04;
   }
   & .#{$component}-righticon {
-    @apply ml-4;
+    @apply ml-spacing_04;
   }
 }
 
 .#{$component}-md {
-  @apply px-5 h-8;
+  @apply px-spacing_05 h-size_05;
   min-width: 80px;
   &[data-width] {
     min-width: 0px;
@@ -59,15 +59,15 @@ $component: #{$prefix}-button;
   font-size: 14px;
 
   & .#{$component}-lefticon {
-    @apply mr-3;
+    @apply mr-spacing_03;
   }
   & .#{$component}-righticon {
-    @apply ml-3;
+    @apply ml-spacing_03;
   }
 }
 
 .#{$component}-sm {
-  @apply px-4 h-7;
+  @apply px-spacing_04 h-size_04;
   min-width: 56px;
   border-radius: 6px;
   font-size: 13px;
@@ -77,28 +77,28 @@ $component: #{$prefix}-button;
   }
 
   & .#{$component}-lefticon {
-    @apply mr-3;
+    @apply mr-spacing_03;
   }
   & .#{$component}-righticon {
-    @apply ml-3;
+    @apply ml-spacing_03;
   }
 }
 
 // By Sizes(rem)
-.#{$component}-responsive-xlg {
-  @apply h-r11;
+.#{$component}-responsive-xl {
+  @apply h-size_r08;
 }
 
 .#{$component}-responsive-lg {
-  @apply h-r9;
+  @apply h-size_r05;
 }
 
 .#{$component}-responsive-md {
-  @apply h-r8;
+  @apply h-size_r05;
 }
 
 .#{$component}-responsive-sm {
-  @apply px-4 h-r7;
+  @apply px-spacing_04 h-size_r04;
 }
 
 // By variant
@@ -225,5 +225,5 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-icon {
-  @apply min-w-0 p-0 m-0 w-8;
+  @apply min-w-size_0 p-spacing_0 m-spacing_0 w-size_05;
 }
