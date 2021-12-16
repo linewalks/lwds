@@ -22,7 +22,7 @@ $component: #{$prefix}-button;
 
 // By Sizes(px)
 .#{$component}-xl {
-  @apply px-spacing_08 h-size_05;
+  @apply px-spacing_08 h-size_08;
   min-width: 120px;
   border-radius: 8px;
   font-size: 18px;
