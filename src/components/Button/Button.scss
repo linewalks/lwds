@@ -21,7 +21,7 @@ $component: #{$prefix}-button;
 }
 
 // By Sizes(px)
-.#{$component}-xlg {
+.#{$component}-xl {
   @apply px-spacing_08 h-size_05;
   min-width: 120px;
   border-radius: 8px;
@@ -85,7 +85,7 @@ $component: #{$prefix}-button;
 }
 
 // By Sizes(rem)
-.#{$component}-responsive-xlg {
+.#{$component}-responsive-xl {
   @apply h-size_r08;
 }
 
