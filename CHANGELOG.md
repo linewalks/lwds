@@ -1,3 +1,13 @@
+## [0.0.7](https://github.com/linewalks/lwds/compare/v0.0.5...v0.0.7) (2021-12-16)
+
+
+### Bug Fixes
+
+* style export 및 rollup 셋팅 수정 ([bf131d9](https://github.com/linewalks/lwds/commit/bf131d9b77591f5dc5a9734b8d7acd7bb52973ff))
+* version 및 config 수정 ([f558483](https://github.com/linewalks/lwds/commit/f55848321afdc714d7ca7158c935337430fbf983))
+
+
+
 ## [0.0.5](https://github.com/linewalks/lwds/compare/v0.0.4...v0.0.5) (2021-12-10)
 
 
