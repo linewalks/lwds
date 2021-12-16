@@ -13,8 +13,13 @@ module.exports = {
       transparent: 'transparent',
       ...colors,
     },
-    spacing,
-    size,
+    spacing: {
+      ...spacing,
+      ...size,
+    },
+    minWidth: {
+      ...size,
+    },
     boxShadow,
     fill: (theme) => ({
       background: theme('colors.background'),
