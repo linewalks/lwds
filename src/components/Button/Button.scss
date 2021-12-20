@@ -109,15 +109,15 @@ $component: #{$prefix}-button;
   }
 
   &:hover {
-    @apply shadow-hover;
+    @apply shadow-shadow_hover;
   }
 
   &:active {
-    @apply shadow-active;
+    @apply shadow-shadow_active;
   }
 
   &:disabled {
-    @apply bg-button_disabled text-disabled02;
+    @apply bg-button_disabled text-text_disabled;
     box-shadow: none;
   }
 }
@@ -125,13 +125,13 @@ $component: #{$prefix}-button;
 .#{$component}-secondary {
   @apply bg-button_secondary text-text01;
   &:hover {
-    @apply shadow-hover;
+    @apply shadow-shadow_hover;
   }
   &:active {
-    @apply shadow-active;
+    @apply shadow-shadow_active;
   }
   &:disabled {
-    @apply bg-button_disabled text-disabled02;
+    @apply bg-button_disabled text-text_disabled;
     box-shadow: none;
   }
 }
@@ -151,7 +151,7 @@ $component: #{$prefix}-button;
     @apply bg-active_tertiary_button border-active_tertiary_button;
   }
   &:disabled {
-    @apply bg-button_disabled text-disabled02 border-none;
+    @apply bg-button_disabled text-text_disabled border-none;
     box-shadow: none;
   }
 }
@@ -162,13 +162,13 @@ $component: #{$prefix}-button;
     @apply fill-icon01;
   }
   &:hover {
-    @apply shadow-hover;
+    @apply shadow-shadow_hover;
   }
   &:active {
-    @apply shadow-active;
+    @apply shadow-shadow_active;
   }
   &:disabled {
-    @apply bg-button_disabled text-disabled02;
+    @apply bg-button_disabled text-text_disabled;
     box-shadow: none;
   }
 
@@ -193,13 +193,13 @@ $component: #{$prefix}-button;
     @apply fill-background;
   }
   &:hover {
-    @apply shadow-hover;
+    @apply shadow-shadow_hover;
   }
   &:active {
-    @apply shadow-active;
+    @apply shadow-shadow_active;
   }
   &:disabled {
-    @apply bg-button_disabled text-disabled02;
+    @apply bg-button_disabled text-text_disabled;
     box-shadow: none;
   }
 }
@@ -219,7 +219,7 @@ $component: #{$prefix}-button;
     @apply bg-active_danger_tertiary_button border-active_danger_tertiary_button;
   }
   &:disabled {
-    @apply bg-button_disabled text-disabled02 border-none;
+    @apply bg-button_disabled text-text_disabled border-none;
     box-shadow: none;
   }
 }
