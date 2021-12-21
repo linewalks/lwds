@@ -11,7 +11,7 @@ export interface IconProps {
   width: number
   height: number
   viewBox: string
-  size?: string | 'icon-xs' | 'icon-sm' | 'icon-md' | 'icon-lg' | 'icon-xl'
+  size?: string | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   responsive: boolean
   children: React.ReactNode
 }
@@ -28,9 +28,7 @@ const SVGIcon = (props: IconProps) => {
       viewBox={viewBox}
       fill={color}
       className={
-        size && responsive
-          ? cls('icon', 'responsive', size.split('-')[1])
-          : cls(size)
+        size && responsive ? cls('icon', 'responsive', size) : cls('icon', size)
       }
       {...rest}
     >

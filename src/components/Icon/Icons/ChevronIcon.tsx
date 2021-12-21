@@ -8,7 +8,7 @@ interface IconProps {
   width?: number
   height?: number
   viewBox?: string
-  size?: string | 'icon-xs' | 'icon-sm' | 'icon-md' | 'icon-lg' | 'icon-xl'
+  size?: string | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   rotate?: number
   responsive?: boolean
 }
