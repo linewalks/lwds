@@ -3,7 +3,7 @@ import React from 'react'
 import SVGIcon from '@components/Icon/SVGIcon'
 import svgRotate from '@src/helpers/svgRotate'
 
-interface ChevronProps {
+interface IconProps {
   color?: string
   width?: number
   height?: number
@@ -13,7 +13,7 @@ interface ChevronProps {
   responsive?: boolean
 }
 
-const ChevronIcon = (props: ChevronProps) => {
+const ChevronIcon = (props: IconProps) => {
   const { viewBox, rotate } = props
 
   return (
