@@ -1,16 +1,10 @@
 import React from 'react'
 
-import SVGIcon from '@components/Icon/SVGIcon'
+import SVGIcon, { SVGIconProps } from '@components/Icon/SVGIcon'
 import svgRotate from '@src/helpers/svgRotate'
 
-interface IconProps {
-  color?: string
-  width?: number
-  height?: number
-  viewBox?: string
-  size?: string | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+interface IconProps extends SVGIconProps {
   rotate?: number
-  responsive?: boolean
 }
 
 const DiagonalArrowIcon = (props: IconProps) => {
