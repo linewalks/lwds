@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { $icon_md } from '@assets/styles/size/semantics'
-
 import SVGIcon from '@components/Icon/SVGIcon'
 import svgRotate from '@src/helpers/svgRotate'
 
@@ -29,7 +27,7 @@ const ChevronIcon = (props: IconProps) => {
 }
 
 ChevronIcon.defaultProps = {
-  viewBox: `0 0 ${$icon_md} ${$icon_md}`,
+  viewBox: '0 0 24 24',
   rotate: 0,
 }
 

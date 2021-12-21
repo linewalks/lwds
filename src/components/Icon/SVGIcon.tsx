@@ -41,7 +41,7 @@ SVGIcon.defaultProps = {
   color: $icon02,
   width: $icon_md,
   height: $icon_md,
-  viewBox: `0 0 ${$icon_md} ${$icon_md}`,
+  viewBox: `0 0 24 24`,
   responsive: false,
 }
 
