@@ -13,7 +13,6 @@ const SubtractIcon = (props: IconProps) => {
   return (
     <SVGIcon {...props}>
       <rect
-        fill="#3B424A"
         transform={svgRotate(rotate + 90, viewBox)}
         x="11"
         y="3"
