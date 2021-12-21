@@ -6,7 +6,7 @@ import { $icon_md } from '@assets/styles/size/semantics'
 import cls from '@helpers/class'
 import '@components/Icon/Icon.scss'
 
-export interface IconProps {
+export interface SVGIconProps {
   color: string
   width: number
   height: number
@@ -16,7 +16,7 @@ export interface IconProps {
   children: React.ReactNode
 }
 
-const SVGIcon = (props: IconProps) => {
+const SVGIcon = (props: SVGIconProps) => {
   const { color, width, height, viewBox, size, responsive, children, ...rest } =
     props
 
