@@ -60,10 +60,19 @@ module.exports = {
     },
     {
       name: 'Controls',
-      components: () => [
-        'src/components/Button/Button.tsx',
-        // 'src/components/Button/TextLink.tsx',
-        // 'src/components/SegmentedControl/SegmentedControl.tsx',
+      sections: [
+        {
+          name: 'Button',
+          components: () => [
+            'src/components/Button/Button.tsx',
+            // 'src/components/Button/TextLink.tsx',
+            // 'src/components/SegmentedControl/SegmentedControl.tsx',
+          ],
+        },
+        {
+          name: 'Icon',
+          components: () => ['src/components/Icon/SVGIcon.tsx'],
+        },
       ],
     },
     // {
