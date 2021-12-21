@@ -4,6 +4,7 @@ import { $icon02 } from '@assets/styles/color/semantics'
 import { $icon_md } from '@assets/styles/size/semantics'
 
 import cls from '@helpers/class'
+import '@components/Icon/Icon.scss'
 
 export interface IconProps {
   color: string
@@ -29,7 +30,7 @@ const SVGIcon = (props: IconProps) => {
       className={
         size && responsive
           ? cls('icon', 'responsive', size.split('-')[1])
-          : size
+          : cls(size)
       }
       {...rest}
     >
