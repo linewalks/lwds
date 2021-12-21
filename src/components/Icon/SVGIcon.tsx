@@ -1,9 +1,12 @@
 import React from 'react'
 
+import { $icon02 } from '@assets/styles/color/semantics'
+import { $icon_md } from '@assets/styles/size/semantics'
+
 import cls from '@helpers/class'
 
 export interface IconProps {
-  color?: string
+  color: string
   width: number
   height: number
   viewBox: string
@@ -36,8 +39,9 @@ const SVGIcon = (props: IconProps) => {
 }
 
 SVGIcon.defaultProps = {
-  width: 24,
-  height: 24,
+  color: $icon02,
+  width: $icon_md,
+  height: $icon_md,
   viewBox: '0 0 24 24',
   responsive: false,
 }
