@@ -1,7 +1,7 @@
 import styles from '@assets/styles'
 
 import Button from '@components/Button/Button'
-import Icon from '@components/Icon/Icons'
+import * as Icon from '@components/Icon/Icons'
 
 // import semantics from '@assets/styles/color/semantics'
 // import shadow from '@assets/styles/shadow'
