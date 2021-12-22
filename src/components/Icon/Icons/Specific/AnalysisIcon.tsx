@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SVGIcon, { SVGIconProps } from '@components/Icon/SVGIcon'
+import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 
 interface IconProps extends SVGIconProps {
   rotate?: number
@@ -11,14 +11,14 @@ const AnalysisIcon = (props: IconProps) => {
     <SVGIcon {...props}>
       <defs>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="a">
-          <stop stop-color="#848F9A" offset="0%" />
-          <stop stop-color="#4E5762" offset="38.411%" />
-          <stop stop-color="#4D5661" offset="100%" />
+          <stop stopColor="#848F9A" offset="0%" />
+          <stop stopColor="#4E5762" offset="38.411%" />
+          <stop stopColor="#4D5661" offset="100%" />
         </linearGradient>
         <linearGradient x1="28.638%" y1="100%" x2="28.64%" y2="-41.848%" id="b">
-          <stop stop-color="#96A0A9" offset="0%" />
-          <stop stop-color="#B3BBC2" offset="34.205%" />
-          <stop stop-color="#FFF" offset="100%" />
+          <stop stopColor="#96A0A9" offset="0%" />
+          <stop stopColor="#B3BBC2" offset="34.205%" />
+          <stop stopColor="#FFF" offset="100%" />
         </linearGradient>
         <filter
           x="-6.7%"
@@ -52,18 +52,18 @@ const AnalysisIcon = (props: IconProps) => {
           id="c"
         />
       </defs>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
         <g transform="translate(2.5 1.5)">
           <rect
             fill="url(#a)"
-            fill-rule="nonzero"
+            fillRule="nonzero"
             width="15"
             height="17"
             rx="1"
           />
-          <use fill="url(#b)" href="#c" />
-          <use fill="#000" filter="url(#d)" href="#c" />
+          <use fill="url(#b)" xlinkHref="#c" />
+          <use fill="#000" filter="url(#d)" xlinkHref="#c" />
           <path d="M14 15h5l-6 6v-5a1 1 0 0 1 1-1z" fill="#4D5661" />
         </g>
       </g>
