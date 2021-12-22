@@ -8,7 +8,7 @@ interface IconProps extends SVGIconProps {
 const CheckboxCheckedIcon = (props: IconProps) => {
   return (
     <SVGIcon {...props}>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <rect fill="#3B424A" width="24" height="24" rx="4" />
         <rect
           fill="#FFF"
