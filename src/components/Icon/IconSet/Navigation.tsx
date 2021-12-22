@@ -19,7 +19,7 @@ const WrapIcon = styled.div`
   border-radius: 10px;
 `
 
-const Navigation = () => {
+const Navigation = (): JSX.Element => {
   const iconNames = _.keys(NavigationIcons)
 
   return (
