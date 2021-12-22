@@ -71,7 +71,12 @@ module.exports = {
         },
         {
           name: 'Icon',
-          components: () => ['src/components/Icon/SVGIcon.tsx'],
+          components: () => [
+            'src/components/Icon/IconSet/Navigation.tsx',
+            'src/components/Icon/IconSet/Action.tsx',
+            'src/components/Icon/IconSet/Specific.tsx',
+            'src/components/Icon/IconSet/Toggle.tsx',
+          ],
         },
       ],
     },
