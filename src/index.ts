@@ -1,5 +1,8 @@
-import Button from '@components/Button/Button'
 import styles from '@assets/styles'
+
+import Button from '@components/Button/Button'
+import Icon from '@components/Icon/Icons'
+
 // import semantics from '@assets/styles/color/semantics'
 // import shadow from '@assets/styles/shadow'
 // import size from '@assets/styles/size/semantics'
@@ -30,8 +33,9 @@ import styles from '@assets/styles'
 // import TabPanels from '@components/Tabs/TabPanels'
 
 export {
-  Button,
   styles,
+  Button,
+  Icon,
   // Checkbox,
   // Radio,
   // RadioGroup,
