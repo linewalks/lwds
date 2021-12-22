@@ -7,13 +7,13 @@ import cls from '@helpers/class'
 import '@components/Icon/Icon.scss'
 
 export interface SVGIconProps {
-  color: string
-  width: number
-  height: number
-  viewBox: string
+  color?: string
+  width?: number
+  height?: number
+  viewBox?: string
   size?: string | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  responsive: boolean
-  children: React.ReactNode
+  responsive?: boolean
+  children?: React.ReactNode
 }
 
 const SVGIcon = (props: SVGIconProps) => {
