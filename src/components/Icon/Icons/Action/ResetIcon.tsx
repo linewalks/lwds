@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SVGIcon, { SVGIconProps } from '@components/Icon/SVGIcon'
+import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 import svgRotate from '@src/helpers/svgRotate'
 
 interface IconProps extends SVGIconProps {

@@ -4,7 +4,7 @@ import { $icon02 } from '@assets/styles/color/semantics'
 import { icon } from '@assets/styles/size/semantics'
 
 import cls from '@helpers/class'
-import '@components/Icon/Icon.scss'
+import '@components/Icon/Icons/Icon.scss'
 
 export interface SVGIconProps {
   color?: string
