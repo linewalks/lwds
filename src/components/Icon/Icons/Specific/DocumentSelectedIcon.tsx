@@ -15,7 +15,7 @@ const DocumentSelectedIcon = (props: IconProps) => {
           y1="86.022%"
           x2="-34.028%"
           y2="-76.822%"
-          id="a"
+          id="DocumentSelectedIcon_a"
         >
           <stop stopColor="#189BFF" offset="0%" />
           <stop stopColor="#FFF5DB" offset="100%" />
@@ -26,7 +26,7 @@ const DocumentSelectedIcon = (props: IconProps) => {
           width="113.3%"
           height="111.8%"
           filterUnits="objectBoundingBox"
-          id="c"
+          id="DocumentSelectedIcon_c"
         >
           <feGaussianBlur
             stdDeviation="1"
@@ -49,14 +49,21 @@ const DocumentSelectedIcon = (props: IconProps) => {
         </filter>
         <path
           d="M1 0h12.997a1 1 0 0 1 1 1v9.942L9 16.967H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"
-          id="b"
+          id="DocumentSelectedIcon_b"
         />
       </defs>
       <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
         <g transform="translate(4.503 3.533)">
-          <use fill="url(#a)" xlinkHref="#b" />
-          <use fill="#000" filter="url(#c)" xlinkHref="#b" />
+          <use
+            fill="url(#DocumentSelectedIcon_a)"
+            xlinkHref="#DocumentSelectedIcon_b"
+          />
+          <use
+            fill="#000"
+            filter="url(#DocumentSelectedIcon_c)"
+            xlinkHref="#DocumentSelectedIcon_b"
+          />
         </g>
         <path d="M14.5 14.5h5l-6 6v-5a1 1 0 0 1 1-1z" fill="#004191" />
       </g>

@@ -10,7 +10,13 @@ const AnalysisSelectedIcon = (props: IconProps) => {
   return (
     <SVGIcon {...props}>
       <defs>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="a">
+        <linearGradient
+          x1="50%"
+          y1="0%"
+          x2="50%"
+          y2="100%"
+          id="AnalysisSelectedIcon_a"
+        >
           <stop stopColor="#004191" offset="0%" />
           <stop stopColor="#004191" offset="38.411%" />
           <stop stopColor="#001C53" offset="100%" />
@@ -20,7 +26,7 @@ const AnalysisSelectedIcon = (props: IconProps) => {
           y1="86.022%"
           x2="-34.028%"
           y2="-76.822%"
-          id="b"
+          id="AnalysisSelectedIcon_b"
         >
           <stop stopColor="#189BFF" offset="0%" />
           <stop stopColor="#FFF5DB" offset="100%" />
@@ -31,7 +37,7 @@ const AnalysisSelectedIcon = (props: IconProps) => {
           width="113.3%"
           height="111.8%"
           filterUnits="objectBoundingBox"
-          id="d"
+          id="AnalysisSelectedIcon_d"
         >
           <feGaussianBlur
             stdDeviation="1"
@@ -54,20 +60,27 @@ const AnalysisSelectedIcon = (props: IconProps) => {
         </filter>
         <path
           d="M5.003 4.033H18a1 1 0 0 1 1 1v9.941L13.004 21h-8a1 1 0 0 1-1-1V5.033a1 1 0 0 1 1-1z"
-          id="c"
+          id="AnalysisSelectedIcon_c"
         />
       </defs>
       <g fill="none" fillRule="evenodd">
         <g transform="translate(2.5 1.5)">
           <rect
-            fill="url(#a)"
+            fill="url(#AnalysisSelectedIcon_a)"
             fillRule="nonzero"
             width="15"
             height="17"
             rx="1"
           />
-          <use fill="url(#b)" xlinkHref="#c" />
-          <use fill="#000" filter="url(#d)" xlinkHref="#c" />
+          <use
+            fill="url(#AnalysisSelectedIcon_b)"
+            xlinkHref="#AnalysisSelectedIcon_c"
+          />
+          <use
+            fill="#000"
+            filter="url(#AnalysisSelectedIcon_d)"
+            xlinkHref="#AnalysisSelectedIcon_c"
+          />
           <path d="M14 15h5l-6 6v-5a1 1 0 0 1 1-1z" fill="#004191" />
         </g>
       </g>

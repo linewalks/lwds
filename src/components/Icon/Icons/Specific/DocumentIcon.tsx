@@ -10,7 +10,13 @@ const DocumentIcon = (props: IconProps) => {
   return (
     <SVGIcon {...props}>
       <defs>
-        <linearGradient x1="28.638%" y1="100%" x2="28.64%" y2="-41.848%" id="a">
+        <linearGradient
+          x1="28.638%"
+          y1="100%"
+          x2="28.64%"
+          y2="-41.848%"
+          id="DocumentIcon_a"
+        >
           <stop stopColor="#96A0A9" offset="0%" />
           <stop stopColor="#B3BBC2" offset="34.205%" />
           <stop stopColor="#FFF" offset="100%" />
@@ -21,7 +27,7 @@ const DocumentIcon = (props: IconProps) => {
           width="113.3%"
           height="111.8%"
           filterUnits="objectBoundingBox"
-          id="c"
+          id="DocumentIcon_c"
         >
           <feGaussianBlur
             stdDeviation="1"
@@ -44,14 +50,18 @@ const DocumentIcon = (props: IconProps) => {
         </filter>
         <path
           d="M1 0h12.997a1 1 0 0 1 1 1v9.942L9 16.967H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"
-          id="b"
+          id="DocumentIcon_b"
         />
       </defs>
       <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
         <g transform="translate(4.503 3.533)">
-          <use fill="url(#a)" xlinkHref="#b" />
-          <use fill="#000" filter="url(#c)" xlinkHref="#b" />
+          <use fill="url(#DocumentIcon_a)" xlinkHref="#DocumentIcon_b" />
+          <use
+            fill="#000"
+            filter="url(#DocumentIcon_c)"
+            xlinkHref="#DocumentIcon_b"
+          />
         </g>
         <path d="M14.5 14.5h5l-6 6v-5a1 1 0 0 1 1-1z" fill="#4D5661" />
       </g>
