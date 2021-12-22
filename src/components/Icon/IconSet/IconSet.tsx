@@ -17,7 +17,7 @@ const IconSet = ({ IconModules }): JSX.Element => {
   return (
     <>
       {_.map(_.values(IconModules), (Icon, idx) => (
-        <WrapIcon>
+        <WrapIcon key={`icon__${idx}`}>
           <div style={{ margin: '5px 0 10px' }}>
             <Icon />
           </div>
