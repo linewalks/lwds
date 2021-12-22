@@ -8,3 +8,5 @@ export { default as DocumentIcon } from "./DocumentIcon";
 export { default as DocumentSelectedIcon } from "./DocumentSelectedIcon";
 export { default as DoneCircleFilledIcon } from "./DoneCircleFilledIcon";
 export { default as ExclamationCircleFilledIcon } from "./ExclamationCircleFilledIcon";
+export { default as ProjectIcon } from "./ProjectIcon";
+export { default as ProjectSelectedIcon } from "./ProjectSelectedIcon";
