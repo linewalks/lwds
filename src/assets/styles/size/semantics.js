@@ -51,5 +51,10 @@ module.exports = {
     $icon_md: iconSize.md,
     $icon_lg: iconSize.lg,
     $icon_xl: iconSize.xl,
+    $icon_xs_r: iconSize.xs_r,
+    $icon_sm_r: iconSize.sm_r,
+    $icon_md_r: iconSize.md_r,
+    $icon_lg_r: iconSize.lg_r,
+    $icon_xl_r: iconSize.xl_r,
   },
 }
