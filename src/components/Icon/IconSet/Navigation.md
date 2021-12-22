@@ -1,4 +1,4 @@
-#### Icon
+#### Navigation
 
 ```js
 import Navigation from '@components/Icon/IconSet/Navigation'
