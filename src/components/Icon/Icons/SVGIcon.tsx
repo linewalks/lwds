@@ -28,7 +28,8 @@ const SVGIcon = (props: SVGIconProps) => {
       viewBox={viewBox}
       fill={color}
       className={
-        size && responsive ? cls('icon', 'responsive', size) : cls('icon', size)
+        size &&
+        (responsive ? cls('icon', 'responsive', size) : cls('icon', size))
       }
       {...rest}
     >
