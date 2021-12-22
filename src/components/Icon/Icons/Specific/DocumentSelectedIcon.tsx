@@ -17,8 +17,8 @@ const DocumentSelectedIcon = (props: IconProps) => {
           y2="-76.822%"
           id="a"
         >
-          <stop stop-color="#189BFF" offset="0%" />
-          <stop stop-color="#FFF5DB" offset="100%" />
+          <stop stopColor="#189BFF" offset="0%" />
+          <stop stopColor="#FFF5DB" offset="100%" />
         </linearGradient>
         <filter
           x="-6.7%"
@@ -52,11 +52,11 @@ const DocumentSelectedIcon = (props: IconProps) => {
           id="b"
         />
       </defs>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
         <g transform="translate(4.503 3.533)">
-          <use fill="url(#a)" href="#b" />
-          <use fill="#000" filter="url(#c)" href="#b" />
+          <use fill="url(#a)" xlinkHref="#b" />
+          <use fill="#000" filter="url(#c)" xlinkHref="#b" />
         </g>
         <path d="M14.5 14.5h5l-6 6v-5a1 1 0 0 1 1-1z" fill="#004191" />
       </g>

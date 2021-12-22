@@ -11,9 +11,9 @@ const CohortSelectedIcon = (props: IconProps) => {
     <SVGIcon {...props}>
       <defs>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="a">
-          <stop stop-color="#004191" offset="0%" />
-          <stop stop-color="#004191" offset="38.411%" />
-          <stop stop-color="#001C53" offset="100%" />
+          <stop stopColor="#004191" offset="0%" />
+          <stop stopColor="#004191" offset="38.411%" />
+          <stop stopColor="#001C53" offset="100%" />
         </linearGradient>
         <linearGradient
           x1="65.691%"
@@ -22,8 +22,8 @@ const CohortSelectedIcon = (props: IconProps) => {
           y2="-76.822%"
           id="b"
         >
-          <stop stop-color="#189BFF" offset="0%" />
-          <stop stop-color="#FFF5DB" offset="100%" />
+          <stop stopColor="#189BFF" offset="0%" />
+          <stop stopColor="#FFF5DB" offset="100%" />
         </linearGradient>
         <filter
           x="-7.1%"
@@ -57,17 +57,17 @@ const CohortSelectedIcon = (props: IconProps) => {
           id="c"
         />
       </defs>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
         <path
           d="M8 0c4.318 0 7.837 1.283 7.994 2.888L16 3v1.59a5.5 5.5 0 0 0-4.91 9.276 7.95 7.95 0 0 0-3.297 2.004 4.478 4.478 0 0 0-1.166 2.085C2.969 17.72.161 16.553.007 15.131L0 15.007V3l.006-.112C.163 1.283 3.682 0 8 0z"
           fill="url(#a)"
-          fill-rule="nonzero"
+          fillRule="nonzero"
           transform="translate(1 1)"
         />
         <g transform="translate(1 1)">
-          <use fill="url(#b)" href="#c" />
-          <use fill="#000" filter="url(#d)" href="#c" />
+          <use fill="url(#b)" xlinkHref="#c" />
+          <use fill="#000" filter="url(#d)" xlinkHref="#c" />
         </g>
       </g>
     </SVGIcon>

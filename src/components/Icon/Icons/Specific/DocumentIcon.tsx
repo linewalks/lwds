@@ -11,9 +11,9 @@ const DocumentIcon = (props: IconProps) => {
     <SVGIcon {...props}>
       <defs>
         <linearGradient x1="28.638%" y1="100%" x2="28.64%" y2="-41.848%" id="a">
-          <stop stop-color="#96A0A9" offset="0%" />
-          <stop stop-color="#B3BBC2" offset="34.205%" />
-          <stop stop-color="#FFF" offset="100%" />
+          <stop stopColor="#96A0A9" offset="0%" />
+          <stop stopColor="#B3BBC2" offset="34.205%" />
+          <stop stopColor="#FFF" offset="100%" />
         </linearGradient>
         <filter
           x="-6.7%"
@@ -47,11 +47,11 @@ const DocumentIcon = (props: IconProps) => {
           id="b"
         />
       </defs>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
         <g transform="translate(4.503 3.533)">
-          <use fill="url(#a)" href="#b" />
-          <use fill="#000" filter="url(#c)" href="#b" />
+          <use fill="url(#a)" xlinkHref="#b" />
+          <use fill="#000" filter="url(#c)" xlinkHref="#b" />
         </g>
         <path d="M14.5 14.5h5l-6 6v-5a1 1 0 0 1 1-1z" fill="#4D5661" />
       </g>

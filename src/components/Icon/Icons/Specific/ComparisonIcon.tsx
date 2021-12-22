@@ -11,9 +11,9 @@ const ComparisonIcon = (props: IconProps) => {
     <SVGIcon {...props}>
       <defs>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="a">
-          <stop stop-color="#848F9A" offset="0%" />
-          <stop stop-color="#4E5762" offset="38.411%" />
-          <stop stop-color="#4D5661" offset="100%" />
+          <stop stopColor="#848F9A" offset="0%" />
+          <stop stopColor="#4E5762" offset="38.411%" />
+          <stop stopColor="#4D5661" offset="100%" />
         </linearGradient>
         <linearGradient
           x1="29.064%"
@@ -22,9 +22,9 @@ const ComparisonIcon = (props: IconProps) => {
           y2="-41.848%"
           id="d"
         >
-          <stop stop-color="#96A0A9" offset="0%" />
-          <stop stop-color="#B3BBC2" offset="34.205%" />
-          <stop stop-color="#FFF" offset="100%" />
+          <stop stopColor="#96A0A9" offset="0%" />
+          <stop stopColor="#B3BBC2" offset="34.205%" />
+          <stop stopColor="#FFF" offset="100%" />
         </linearGradient>
         <filter
           x="-10.7%"
@@ -89,15 +89,15 @@ const ComparisonIcon = (props: IconProps) => {
           id="e"
         />
       </defs>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
-        <g fill-rule="nonzero" transform="translate(1 4)">
-          <use fill="url(#a)" href="#b" />
-          <use fill="#000" filter="url(#c)" href="#b" />
+        <g fillRule="nonzero" transform="translate(1 4)">
+          <use fill="url(#a)" xlinkHref="#b" />
+          <use fill="#000" filter="url(#c)" xlinkHref="#b" />
         </g>
         <g transform="translate(1 4)">
-          <use fill="url(#d)" href="#e" />
-          <use fill="#000" filter="url(#f)" href="#e" />
+          <use fill="url(#d)" xlinkHref="#e" />
+          <use fill="#000" filter="url(#f)" xlinkHref="#e" />
         </g>
       </g>
     </SVGIcon>

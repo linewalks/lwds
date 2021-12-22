@@ -17,9 +17,9 @@ const ProjectSelectedIcon = (props: IconProps) => {
           y2="8.506%"
           id="a"
         >
-          <stop stop-color="#001C53" offset="0%" />
-          <stop stop-color="#0E96FD" offset="63.025%" />
-          <stop stop-color="#FFF5DB" offset="100%" />
+          <stop stopColor="#001C53" offset="0%" />
+          <stop stopColor="#0E96FD" offset="63.025%" />
+          <stop stopColor="#FFF5DB" offset="100%" />
         </linearGradient>
         <linearGradient
           x1="-48.049%"
@@ -28,12 +28,12 @@ const ProjectSelectedIcon = (props: IconProps) => {
           y2="-3.397%"
           id="b"
         >
-          <stop stop-color="#001C53" offset="0%" />
-          <stop stop-color="#0E96FD" offset="56.94%" />
-          <stop stop-color="#FFF5DB" offset="100%" />
+          <stop stopColor="#001C53" offset="0%" />
+          <stop stopColor="#0E96FD" offset="56.94%" />
+          <stop stopColor="#FFF5DB" offset="100%" />
         </linearGradient>
       </defs>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
         <path
           d="M1.25 1.25c1.889-1.889 5.495-1.566 9.218.489l.589.338c1.473.883 2.95 2.031 4.335 3.416 1.385 1.384 2.533 2.862 3.415 4.335l.339.589c2.054 3.723 2.377 7.329.489 9.218-1.889 1.888-5.495 1.565-9.218-.489l-.59-.339c-1.472-.882-2.95-2.03-4.334-3.415-1.385-1.385-2.533-2.862-3.416-4.335l-.338-.589C-.316 6.745-.64 3.138 1.249 1.25z"
