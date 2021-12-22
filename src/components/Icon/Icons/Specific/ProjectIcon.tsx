@@ -8,8 +8,6 @@ interface IconProps extends SVGIconProps {
 }
 
 const ProjectIcon = (props: IconProps) => {
-  const { viewBox, rotate } = props
-
   return (
     <SVGIcon {...props}>
       <defs>
