@@ -3,6 +3,7 @@ declare const ChevronIcon: {
     (props: any): React.FunctionComponentElement<any>;
     defaultProps: {
         viewBox: string;
+        direction: string;
         rotate: number;
     };
 };
