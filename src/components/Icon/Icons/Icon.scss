@@ -1,0 +1,34 @@
+@import '../../../assets/styles/global.scss';
+
+$component: #{$prefix}-icon;
+
+.#{$component}-xs {
+  @apply w-icon_xs h-icon_xs;
+}
+.#{$component}-sm {
+  @apply w-icon_sm h-icon_sm;
+}
+.#{$component}-md {
+  @apply w-icon_md h-icon_md;
+}
+.#{$component}-lg {
+  @apply w-icon_lg h-icon_lg;
+}
+.#{$component}-xl {
+  @apply w-icon_xl h-icon_xl;
+}
+.#{$component}-responsive-xs {
+  @apply w-icon_xs_r h-icon_xs_r;
+}
+.#{$component}-responsive-sm {
+  @apply w-icon_sm_r h-icon_sm_r;
+}
+.#{$component}-responsive-md {
+  @apply w-icon_md_r h-icon_md_r;
+}
+.#{$component}-responsive-lg {
+  @apply w-icon_lg_r h-icon_lg_r;
+}
+.#{$component}-responsive-xl {
+  @apply w-icon_xl_r h-icon_xl_r;
+}
