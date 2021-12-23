@@ -2,11 +2,7 @@ import React from 'react'
 
 import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 
-interface IconProps extends SVGIconProps {
-  rotate?: number
-}
-
-const DocumentSelectedIcon = (props: IconProps) => {
+const DocumentSelectedIcon = (props: SVGIconProps) => {
   return (
     <SVGIcon {...props}>
       <defs>
@@ -69,11 +65,6 @@ const DocumentSelectedIcon = (props: IconProps) => {
       </g>
     </SVGIcon>
   )
-}
-
-DocumentSelectedIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  rotate: 0,
 }
 
 export default DocumentSelectedIcon

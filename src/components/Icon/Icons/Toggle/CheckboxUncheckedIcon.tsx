@@ -2,11 +2,7 @@ import React from 'react'
 
 import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 
-interface IconProps extends SVGIconProps {
-  rotate?: number
-}
-
-const CheckboxUncheckedIcon = (props: IconProps) => {
+const CheckboxUncheckedIcon = (props: SVGIconProps) => {
   return (
     <SVGIcon {...props}>
       <path
@@ -16,11 +12,6 @@ const CheckboxUncheckedIcon = (props: IconProps) => {
       />
     </SVGIcon>
   )
-}
-
-CheckboxUncheckedIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  rotate: 0,
 }
 
 export default CheckboxUncheckedIcon
