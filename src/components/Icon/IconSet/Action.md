@@ -7,12 +7,6 @@ const Default = () => {
 Default()
 ```
 
-#### Additional Props
-
-|  Name  |  Type  | Default |     Description     |
-| :----: | :----: | :-----: | :-----------------: |
-| rotate | number |    0    | icon rotation angle |
-
 #### Rotate
 
 ```js

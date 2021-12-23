@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 import IconSet from '@components/Icon/IconSet/IconSet'
 import * as ActionIconModules from '@components/Icon/Icons/Action'
+// Warning: import { SVGIconProps } from '@components/Icon/Icons/SVGIcon' 으로 import 시 propsType 이 정상적으로 반영되지 않는 오류 존재
+import { SVGIconProps } from '../Icons/SVGIcon'
 
 const WrapIcons = styled.div`
   display: grid;
@@ -10,7 +12,11 @@ const WrapIcons = styled.div`
   grid-gap: 10px;
 `
 
-const Action = (): JSX.Element => {
+interface ActionIconProps extends SVGIconProps {
+  rotate?: number
+}
+
+const Action = (props: ActionIconProps): JSX.Element => {
   return (
     <WrapIcons>
       <IconSet IconModules={ActionIconModules} />
@@ -18,4 +24,13 @@ const Action = (): JSX.Element => {
   )
 }
 
-export default Action
+Action.defaultProps = {
+  color: '#3b424a',
+  width: '24px',
+  height: '24px',
+  responsive: false,
+  viewBox: '0 0 24 24',
+  rotate: 0,
+}
+
+export default Action as typeof Action
