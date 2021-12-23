@@ -1,13 +1,4 @@
 import { SVGIconProps } from '@components/Icon/Icons/SVGIcon';
-interface IconProps extends SVGIconProps {
-    rotate?: number;
-}
-declare const AnalysisIcon: {
-    (props: IconProps): JSX.Element;
-    defaultProps: {
-        viewBox: string;
-        rotate: number;
-    };
-};
+declare const AnalysisIcon: (props: SVGIconProps) => JSX.Element;
 export default AnalysisIcon;
 //# sourceMappingURL=AnalysisIcon.d.ts.map
