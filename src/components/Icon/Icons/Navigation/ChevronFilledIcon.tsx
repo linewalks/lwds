@@ -4,7 +4,7 @@ import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 import svgRotate from '@src/helpers/svgRotate'
 
 interface IconProps extends SVGIconProps {
-  direction?: string
+  direction?: string | 'right' | 'down' | 'left' | 'up'
   rotate?: number
 }
 
@@ -30,6 +30,7 @@ const ChevronFilledIcon = (props: IconProps) => {
 
 ChevronFilledIcon.defaultProps = {
   viewBox: '0 0 24 24',
+  direction: 'right',
   rotate: 0,
 }
 
