@@ -46,7 +46,7 @@
     "eslint": "eslint ./src/**/*.js ./src/**/**/*.js",
     "eslint:fix": "eslint ./src/**/*.js ./src/**/**/*.js --fix",
     "clear:branch": "git branch --merged | grep -v \\* | xargs -n 1 git branch -d",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && NODE_ENV=production yarn build && yarn build:docs && git add ."
+    "release": "standard-version"
   },
   "jest": {
     "testPathIgnorePatterns": [
