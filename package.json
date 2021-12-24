@@ -46,7 +46,7 @@
     "eslint": "eslint ./src/**/*.js ./src/**/**/*.js",
     "eslint:fix": "eslint ./src/**/*.js ./src/**/**/*.js --fix",
     "clear:branch": "git branch --merged | grep -v \\* | xargs -n 1 git branch -d",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && NODE_ENV=production yarn build && yarn build:docs && git add ."
+    "release": "standard-version"
   },
   "jest": {
     "testPathIgnorePatterns": [
@@ -78,6 +78,8 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.12.7",
+    "@babel/runtime": "^7.16.0",
+    "@babel/runtime-corejs3": "^7.16.0",
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^11.0.2",
@@ -121,6 +123,7 @@
     "minimist": "^1.2.2",
     "node-sass": "^4.13.1",
     "postcss": "^8.3.11",
+    "postcss-loader": "4.0",
     "react": "^16.9.0",
     "react-docgen": "^5.4.0",
     "react-docgen-typescript": "^2.2.2",
@@ -136,6 +139,7 @@
     "sass-loader": "^10.0.4",
     "sass-variables-loader": "^0.1.3",
     "scheduler": "0.14.0",
+    "standard-version": "^9.3.2",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.2.19",
     "ts-jest": "^26.5.0",
@@ -145,14 +149,10 @@
     "webpack": "4.44.2"
   },
   "dependencies": {
-    "@babel/runtime": "^7.16.0",
-    "@babel/runtime-corejs3": "^7.16.0",
     "@mdx-js/react": "^1.6.21",
     "antd": "^3.23.4",
     "clsx": "^1.1.1",
-    "conventional-changelog-cli": "^2.0.28",
     "lodash": "^4.17.21",
-    "postcss-loader": "4.0",
     "prop-types": "^15.7.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-transition-group": "^4.3.0",
