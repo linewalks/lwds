@@ -3,8 +3,7 @@ import styled from 'styled-components'
 
 import IconSet from '@components/Icon/IconSet/IconSet'
 import * as ToggleIconModules from '@components/Icon/Icons/Toggle'
-// Warning: import { SVGIconProps } from '@components/Icon/Icons/SVGIcon' 으로 import 시 propsType 이 정상적으로 반영되지 않는 오류 존재
-import { SVGIconProps } from '../Icons/SVGIcon'
+import { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 
 const WrapIcons = styled.div`
   display: grid;
