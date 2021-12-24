@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "outDir": "./dist",
     "allowJs": true,
     // 이하 모드는 필요에 따라 설정 변경
     "strict": false,
@@ -26,7 +27,13 @@
     "typeRoots": ["./typings", "./src/**/*.ts", "./src/**/*.tsx"],
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": "dist/types"
+    "declarationDir": "dist/types",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@helpers/*": ["src/helpers/*"]
+    }
   },
   // "include": ["typings", "src/**/*"],
   "include": ["typings", "./src/**/*.ts", "./src/**/*.tsx"],
@@ -38,11 +45,5 @@
     "src/components/paper/*",
     "src/components/notifications/*",
     "src/components/__tests__/utils.js"
-  ],
-  "paths": {
-    "@src/*": ["src/*"],
-    "@assets/*": ["src/assets/*"],
-    "@components/*": ["src/components/*"],
-    "@helpers/*": ["src/helpers/*"]
-  }
+  ]
 }
