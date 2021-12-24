@@ -15,6 +15,7 @@ interface ButtonProps {
     children?: React.ReactNode;
     onClick?: React.MouseEventHandler<HTMLElement>;
 }
-declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
-export default Button;
+declare function renderButton<T extends ButtonProps, U extends React.RefObject<HTMLButtonElement>>(props: T, ref: U): JSX.Element;
+declare const _default: typeof renderButton;
+export default _default;
 //# sourceMappingURL=Button.d.ts.map
