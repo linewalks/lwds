@@ -1,0 +1,49 @@
+{
+  "types": [
+    {
+      "type": "chore",
+      "section": "Others",
+      "hidden": true
+    },
+    {
+      "type": "feat",
+      "section": "Features",
+      "hidden": false
+    },
+    {
+      "type": "fix",
+      "section": "Bug Fixes",
+      "hidden": false
+    },
+    {
+      "type": "improvement",
+      "section": "Feature Improvements",
+      "hidden": true
+    },
+    {
+      "type": "docs",
+      "section": "Docs",
+      "hidden": false
+    },
+    {
+      "type": "style",
+      "section": "Styling",
+      "hidden": true
+    },
+    {
+      "type": "refactor",
+      "section": "Code Refactoring",
+      "hidden": true
+    },
+    {
+      "type": "test",
+      "section": "Tests",
+      "hidden": true
+    },
+    {
+      "type": "package",
+      "section": "Packages",
+      "hidden": true
+    }
+  ]
+}
