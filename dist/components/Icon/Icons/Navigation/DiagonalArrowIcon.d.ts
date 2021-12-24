@@ -3,6 +3,7 @@ declare const DiagonalArrowIcon: {
     (props: any): React.FunctionComponentElement<any>;
     defaultProps: {
         viewBox: string;
+        direction: string;
         rotate: number;
     };
 };

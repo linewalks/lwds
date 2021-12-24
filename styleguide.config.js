@@ -71,6 +71,7 @@ module.exports = {
         },
         {
           name: 'Icon',
+          content: 'src/components/Icon/Icon.md',
           components: () => [
             'src/components/Icon/IconSet/Navigation.tsx',
             'src/components/Icon/IconSet/Action.tsx',
@@ -106,4 +107,5 @@ module.exports = {
     //   ],
     // },
   ],
+  propsParser: require('react-docgen-typescript').withDefaultConfig().parse,
 }

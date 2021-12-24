@@ -2,11 +2,7 @@ import React from 'react'
 
 import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 
-interface IconProps extends SVGIconProps {
-  rotate?: number
-}
-
-const CohortIcon = (props: IconProps) => {
+const CohortIcon = (props: SVGIconProps) => {
   return (
     <SVGIcon {...props}>
       <defs>
@@ -77,11 +73,6 @@ const CohortIcon = (props: IconProps) => {
       </g>
     </SVGIcon>
   )
-}
-
-CohortIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  rotate: 0,
 }
 
 export default CohortIcon

@@ -110,10 +110,10 @@
 </div>
 ```
 
-<!-- #### With Image
+#### With Icon
 
 ```js
-import ChevronIcon from '@components/Icon/ChevronIcon'
+import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
 
 const Default = () => (
   <div
@@ -173,42 +173,45 @@ const Default = () => (
 Default()
 ```
 
-### (테스트) 아이콘 단독 입력 시 버튼
+#### With Icon alone
 
 ```js
-//svg import 방식 변경
-import { ReactComponent as Plus } from '@assets/svg/icn_plus_16.svg'
-import { ReactComponent as Search } from '@assets/svg/icn-search-16.svg'
+import styled from 'styled-components'
+import AddIcon from '@components/Icon/Icons/Action/AddIcon'
+import SearchIcon from '@components/Icon/Icons/Action/SearchIcon'
+
+const WrapButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+`
 
 const Default = () => (
-  <div>
-    rotate
-    <Button icon variant="danger_tertiary">
-      <Plus transform="rotate(20)" />
-    </Button>
-    <br />
-    flip
-    <Button icon variant="tertiary">
-      <Search transform="scale(-1,1)" />
-    </Button>
-    <br />
-    16px 기준 svg 아이콘 삽입 시
-    <Button icon>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="#4D5661"
-      >
-        <path
-          d="M6.5 1C9.538 1 12 3.462 12 6.5c0 1.161-.36 2.238-.974 3.126l3.684 3.684c.387.387.387 1.014 0 1.4-.386.387-1.013.387-1.4 0l-3.684-3.684C8.738 11.64 7.66 12 6.5 12 3.462 12 1 9.538 1 6.5S3.462 1 6.5 1zm-.02 1.98c-1.933 0-3.5 1.567-3.5 3.5s1.567 3.5 3.5 3.5 3.5-1.567 3.5-3.5-1.567-3.5-3.5-3.5z"
-          transform="translate(-130 -449) translate(48 315) translate(69 121) translate(13 13)"
-        />
-      </svg>
-    </Button>
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
+    <WrapButton>
+      <Button icon variant="danger_tertiary">
+        <AddIcon rotate={20} />
+      </Button>
+      <span>rotate</span>
+    </WrapButton>
+
+    <WrapButton>
+      <Button icon variant="tertiary">
+        <SearchIcon transform="scale(-1,1)" />
+      </Button>
+      <span>flip</span>
+    </WrapButton>
+
+    <WrapButton>
+      <Button icon>
+        <SearchIcon width="16px" height="16px" />
+      </Button>
+      <span>16px 아이콘 삽입</span>
+    </WrapButton>
   </div>
 )
 
 Default()
-``` -->
+```

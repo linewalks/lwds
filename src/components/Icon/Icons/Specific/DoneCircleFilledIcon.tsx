@@ -2,11 +2,7 @@ import React from 'react'
 
 import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 
-interface IconProps extends SVGIconProps {
-  rotate?: number
-}
-
-const DoneCircleFilledIcon = (props: IconProps) => {
+const DoneCircleFilledIcon = (props: SVGIconProps) => {
   return (
     <SVGIcon {...props}>
       <path
@@ -19,11 +15,6 @@ const DoneCircleFilledIcon = (props: IconProps) => {
       />
     </SVGIcon>
   )
-}
-
-DoneCircleFilledIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  rotate: 0,
 }
 
 export default DoneCircleFilledIcon

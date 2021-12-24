@@ -1,11 +1,8 @@
 import React from 'react'
 
 import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
-interface IconProps extends SVGIconProps {
-  rotate?: number
-}
 
-const ExclamationCircleFilledIcon = (props: IconProps) => {
+const ExclamationCircleFilledIcon = (props: SVGIconProps) => {
   return (
     <SVGIcon {...props}>
       <circle fill="#FF4C33" cx="12" cy="12" r="10" />
@@ -15,11 +12,6 @@ const ExclamationCircleFilledIcon = (props: IconProps) => {
       />
     </SVGIcon>
   )
-}
-
-ExclamationCircleFilledIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  rotate: 0,
 }
 
 export default ExclamationCircleFilledIcon

@@ -1,5 +1,3 @@
-#### Specific
-
 ```js
 import Specific from '@components/Icon/IconSet/Specific'
 

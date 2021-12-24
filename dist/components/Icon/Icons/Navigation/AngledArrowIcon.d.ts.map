@@ -1,1 +1,1 @@
-{"version":3,"file":"AngledArrowIcon.d.ts","sourceRoot":"","sources":["../../../../../src/components/Icon/Icons/Navigation/AngledArrowIcon.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,QAAA,MAAM,eAAe;;;;;;CASpB,CAAC;AAMF,eAAe,eAAe,CAAC"}
+{"version":3,"file":"AngledArrowIcon.d.ts","sourceRoot":"","sources":["../../../../../src/components/Icon/Icons/Navigation/AngledArrowIcon.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,QAAA,MAAM,eAAe;;;;;;;CAgBpB,CAAC;AAOF,eAAe,eAAe,CAAC"}

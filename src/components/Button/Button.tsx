@@ -111,4 +111,4 @@ Button.defaultProps = {
   responsiveHeight: false,
 }
 
-export default Button
+export default Button as typeof renderButton

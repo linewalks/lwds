@@ -1,5 +1,3 @@
-#### Toggle
-
 ```js
 import Toggle from '@components/Icon/IconSet/Toggle'
 

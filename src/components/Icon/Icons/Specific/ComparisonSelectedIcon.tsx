@@ -2,11 +2,7 @@ import React from 'react'
 
 import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 
-interface IconProps extends SVGIconProps {
-  rotate?: number
-}
-
-const ComparisonSelectedIcon = (props: IconProps) => {
+const ComparisonSelectedIcon = (props: SVGIconProps) => {
   return (
     <SVGIcon {...props}>
       <defs>
@@ -85,11 +81,6 @@ const ComparisonSelectedIcon = (props: IconProps) => {
       </g>
     </SVGIcon>
   )
-}
-
-ComparisonSelectedIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  rotate: 0,
 }
 
 export default ComparisonSelectedIcon

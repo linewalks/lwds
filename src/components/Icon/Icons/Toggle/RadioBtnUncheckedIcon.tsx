@@ -2,11 +2,7 @@ import React from 'react'
 
 import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 
-interface IconProps extends SVGIconProps {
-  rotate?: number
-}
-
-const RadioBtnUncheckedIcon = (props: IconProps) => {
+const RadioBtnUncheckedIcon = (props: SVGIconProps) => {
   return (
     <SVGIcon {...props}>
       <path
@@ -16,11 +12,6 @@ const RadioBtnUncheckedIcon = (props: IconProps) => {
       />
     </SVGIcon>
   )
-}
-
-RadioBtnUncheckedIcon.defaultProps = {
-  viewBox: '0 0 24 24',
-  rotate: 0,
 }
 
 export default RadioBtnUncheckedIcon
