@@ -107,11 +107,11 @@ const Box = styled.div`
 
 const ColorBox = styled.section<{ size?: number; value: string }>`
   display: inline-block;
-  width: ${(props) => (props.size ? `${props.size}px` : '100px')};
-  height: ${(props) => (props.size ? `${props.size}px` : '100px')};
-  background-color: ${(props) => props.value};
-  border: ${(props) =>
-    props.value === '#ffffff' ? `1px solid #cbd0d8` : 'none'};
+  width: ${({ size = 100 }) => `${size}px`};
+  height: ${({ size = 100 }) => `${size}px`};
+  background-color: ${({ value }) => value};
+  border: ${({ value }) =>
+    value === '#ffffff' ? `1px solid #cbd0d8` : 'none'};
 `
 
 const rgba2hex = (color: string): string => {
