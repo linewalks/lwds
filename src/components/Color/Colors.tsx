@@ -90,7 +90,6 @@ const WrapColorPalette = styled.section`
 
 const Box = styled.div`
   display: flex;
-  /* justify-content: center; */
   flex-wrap: wrap;
 
   dl {
