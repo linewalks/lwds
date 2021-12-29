@@ -49,6 +49,10 @@ module.exports = {
       name: 'Common',
       sections: [
         {
+          name: 'Colors',
+          components: () => ['src/components/Color/Colors.tsx'],
+        },
+        {
           name: 'Spacing',
           content: 'src/components/Spacing/Spacing.md',
         },
