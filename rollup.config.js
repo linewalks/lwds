@@ -14,31 +14,16 @@ import svgr from '@svgr/rollup'
 import { babel } from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 
-import pkg from './package.json'
-
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
-export default {
-  input: 'src/index.ts',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: true,
-    },
-    {
-      file: pkg.module,
-      format: 'esm',
-      sourcemap: true,
-    },
-  ],
-  plugins: [
+function commonPlugins(path) {
+  return [
     external(),
     babel({
       babelHelpers: 'runtime',
       exclude: 'node_modules/**',
       extensions,
-      include: ['./src/**/*.ts', './src/**/*.tsx'],
+      include: [`${path}/*.ts`, `${path}/*.tsx`],
     }),
     alias({
       resolve: ['.ts', '.tsx'],
@@ -50,7 +35,7 @@ export default {
       ],
     }),
     postcss({
-      includePaths: ['src/components', 'src/assets/styles'],
+      includePaths: `${path}`,
       extensions: ['.css', '.scss', '.sass'],
     }),
     scssVariable(),
@@ -68,17 +53,80 @@ export default {
     url(),
     json(),
     typescript({
+      tsconfigDefaults: { compilerOptions: { declaration: true } },
       tsconfig: 'tsconfig.json',
+      tsconfigOverride: {
+        include: [`typings`, `${path}/*.ts`, `${path}/*.tsx`],
+      },
     }),
     svgr(),
     terser(),
-  ],
-  external: [
+  ]
+}
+
+function commonExternal() {
+  return [
     'react',
     'react-dom',
     'styled-components',
     'typescript',
     'tslib',
     'faker',
-  ],
+  ]
 }
+
+export default [
+  {
+    input: 'src/assets/styles/index.js',
+    output: [
+      {
+        file: 'dist/styles/index.js',
+        format: 'cjs', // CommonJS Module 생성
+        sourcemap: true,
+        exports: 'default',
+      },
+      {
+        file: `dist/styles/index.esm.js`,
+        format: 'esm', // ECMAScript Module 생성
+        sourcemap: true,
+        exports: 'default',
+      },
+    ],
+    plugins: commonPlugins('src/assets/styles'),
+    external: commonExternal(),
+  },
+  {
+    input: 'src/components/Icon/Icons/index.ts',
+    output: [
+      {
+        file: 'dist/icons/index.js',
+        format: 'cjs', // CommonJS Module 생성
+        sourcemap: true,
+      },
+      {
+        file: `dist/icons/index.esm.js`,
+        format: 'esm', // ECMAScript Module 생성
+        sourcemap: true,
+      },
+    ],
+    plugins: commonPlugins('src/components/Icon/Icons'),
+    external: commonExternal(),
+  },
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        file: 'dist/index.js',
+        format: 'cjs', // CommonJS Module 생성
+        sourcemap: true,
+      },
+      {
+        file: `dist/index.esm.js`,
+        format: 'esm', // ECMAScript Module 생성
+        sourcemap: true,
+      },
+    ],
+    plugins: commonPlugins('src'),
+    external: commonExternal(),
+  },
+]
