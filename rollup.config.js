@@ -75,12 +75,40 @@ function commonExternal() {
   ]
 }
 
+const bundlePath = [
+  { input: 'src', output: 'dist' }, // import {} from 'lwds'
+  {
+    input: 'src/components/Icon/Icons',
+    output: 'dist/icons', // import {} from 'lwds/icons'
+  },
+]
+
 export default [
+  // default setting build
+  ...bundlePath.map(({ input, output }) => ({
+    input: `${input}/index.ts`,
+    output: [
+      {
+        file: `${output}/index.js`,
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: `${output}/index.esm.js`,
+        format: 'esm',
+        sourcemap: true,
+      },
+    ],
+    plugins: commonPlugins(input),
+    external: commonExternal(),
+  })),
+
+  // custom setting build
   {
     input: 'src/assets/styles/index.js',
     output: [
       {
-        file: 'dist/styles/index.js', // import : import {} from 'lwds/styles'
+        file: `dist/styles/index.js`, // import {} from 'lwds/styles'
         format: 'cjs',
         sourcemap: true,
         exports: 'default',
@@ -93,40 +121,6 @@ export default [
       },
     ],
     plugins: commonPlugins('src/assets/styles'),
-    external: commonExternal(),
-  },
-  {
-    input: 'src/components/Icon/Icons/index.ts',
-    output: [
-      {
-        file: 'dist/icons/index.js', // import : import {} from 'lwds/icons'
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: `dist/icons/index.esm.js`,
-        format: 'esm',
-        sourcemap: true,
-      },
-    ],
-    plugins: commonPlugins('src/components/Icon/Icons'),
-    external: commonExternal(),
-  },
-  {
-    input: 'src/index.ts',
-    output: [
-      {
-        file: 'dist/index.js', // import : import {} from 'lwds' (default)
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: `dist/index.esm.js`,
-        format: 'esm',
-        sourcemap: true,
-      },
-    ],
-    plugins: commonPlugins('src'),
     external: commonExternal(),
   },
 ]
