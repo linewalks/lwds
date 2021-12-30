@@ -17,5 +17,5 @@ module.exports = {
   ...deleteDollar(colors),
   ...deleteDollar(sizeSem.size),
   ...deleteDollar(spacing),
-  ...shadow,
+  ...deleteDollar(shadow),
 }
