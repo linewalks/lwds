@@ -60,6 +60,10 @@ module.exports = {
           name: 'Size',
           content: 'src/components/Size/Size.md',
         },
+        {
+          name: 'Font',
+          content: 'src/components/Font/Font.md',
+        },
       ],
     },
     {
