@@ -1,7 +1,6 @@
-import styles from '@assets/styles'
+// 기본 형식(import {} from 'lwds')으로 사용할 요소들만 추가
 
 import Button from '@components/Button/Button'
-import * as Icon from '@components/Icon/Icons'
 
 // import semantics from '@assets/styles/color/semantics'
 // import shadow from '@assets/styles/shadow'
@@ -33,9 +32,7 @@ import * as Icon from '@components/Icon/Icons'
 // import TabPanels from '@components/Tabs/TabPanels'
 
 export {
-  styles,
   Button,
-  Icon,
   // Checkbox,
   // Radio,
   // RadioGroup,

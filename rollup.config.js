@@ -14,31 +14,16 @@ import svgr from '@svgr/rollup'
 import { babel } from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 
-import pkg from './package.json'
-
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
-export default {
-  input: 'src/index.ts',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: true,
-    },
-    {
-      file: pkg.module,
-      format: 'esm',
-      sourcemap: true,
-    },
-  ],
-  plugins: [
+function commonPlugins(path) {
+  return [
     external(),
     babel({
       babelHelpers: 'runtime',
       exclude: 'node_modules/**',
       extensions,
-      include: ['./src/**/*.ts', './src/**/*.tsx'],
+      include: [`${path}/*.ts`, `${path}/*.tsx`],
     }),
     alias({
       resolve: ['.ts', '.tsx'],
@@ -50,7 +35,7 @@ export default {
       ],
     }),
     postcss({
-      includePaths: ['src/components', 'src/assets/styles'],
+      includePaths: `${path}`,
       extensions: ['.css', '.scss', '.sass'],
     }),
     scssVariable(),
@@ -68,17 +53,74 @@ export default {
     url(),
     json(),
     typescript({
+      tsconfigDefaults: { compilerOptions: { declaration: true } },
       tsconfig: 'tsconfig.json',
+      tsconfigOverride: {
+        include: [`typings`, `${path}/*.ts`, `${path}/*.tsx`],
+      },
     }),
     svgr(),
     terser(),
-  ],
-  external: [
+  ]
+}
+
+function commonExternal() {
+  return [
     'react',
     'react-dom',
     'styled-components',
     'typescript',
     'tslib',
     'faker',
-  ],
+  ]
 }
+
+const bundlePath = [
+  { input: 'src', output: 'dist' }, // import {} from 'lwds'
+  {
+    input: 'src/components/Icon/Icons',
+    output: 'dist/icons', // import {} from 'lwds/icons'
+  },
+]
+
+export default [
+  // default setting build
+  ...bundlePath.map(({ input, output }) => ({
+    input: `${input}/index.ts`,
+    output: [
+      {
+        file: `${output}/index.js`,
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: `${output}/index.esm.js`,
+        format: 'esm',
+        sourcemap: true,
+      },
+    ],
+    plugins: commonPlugins(input),
+    external: commonExternal(),
+  })),
+
+  // custom setting build
+  {
+    input: 'src/assets/styles/index.js',
+    output: [
+      {
+        file: `dist/styles/index.js`, // import {} from 'lwds/styles'
+        format: 'cjs',
+        sourcemap: true,
+        exports: 'default',
+      },
+      {
+        file: `dist/styles/index.esm.js`,
+        format: 'esm',
+        sourcemap: true,
+        exports: 'default',
+      },
+    ],
+    plugins: commonPlugins('src/assets/styles'),
+    external: commonExternal(),
+  },
+]
