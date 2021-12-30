@@ -80,14 +80,14 @@ export default [
     input: 'src/assets/styles/index.js',
     output: [
       {
-        file: 'dist/styles/index.js',
-        format: 'cjs', // CommonJS Module 생성
+        file: 'dist/styles/index.js', // import : import {} from 'lwds/styles'
+        format: 'cjs',
         sourcemap: true,
         exports: 'default',
       },
       {
         file: `dist/styles/index.esm.js`,
-        format: 'esm', // ECMAScript Module 생성
+        format: 'esm',
         sourcemap: true,
         exports: 'default',
       },
@@ -99,13 +99,13 @@ export default [
     input: 'src/components/Icon/Icons/index.ts',
     output: [
       {
-        file: 'dist/icons/index.js',
-        format: 'cjs', // CommonJS Module 생성
+        file: 'dist/icons/index.js', // import : import {} from 'lwds/icons'
+        format: 'cjs',
         sourcemap: true,
       },
       {
         file: `dist/icons/index.esm.js`,
-        format: 'esm', // ECMAScript Module 생성
+        format: 'esm',
         sourcemap: true,
       },
     ],
@@ -116,13 +116,13 @@ export default [
     input: 'src/index.ts',
     output: [
       {
-        file: 'dist/index.js',
-        format: 'cjs', // CommonJS Module 생성
+        file: 'dist/index.js', // import : import {} from 'lwds' (default)
+        format: 'cjs',
         sourcemap: true,
       },
       {
         file: `dist/index.esm.js`,
-        format: 'esm', // ECMAScript Module 생성
+        format: 'esm',
         sourcemap: true,
       },
     ],
