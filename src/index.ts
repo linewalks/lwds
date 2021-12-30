@@ -1,3 +1,5 @@
+// 기본 형식(import {} from 'lwds')으로 사용할 요소들만 추가
+
 import Button from '@components/Button/Button'
 
 // import semantics from '@assets/styles/color/semantics'
