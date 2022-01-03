@@ -100,6 +100,10 @@ const Box = styled.div`
     text-align: center;
   }
 
+  dd {
+    margin: 0;
+  }
+
   &:not(:last-child) {
     margin-bottom: 20px;
   }
