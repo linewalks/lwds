@@ -137,7 +137,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-tertiary {
-  @apply bg-background text-text_accent border border-button_primary;
+  @apply text-text_accent border border-button_primary;
   svg {
     @apply fill-primary;
   }
@@ -157,7 +157,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-ghost {
-  @apply bg-background text-text01;
+  @apply text-text01;
   svg {
     @apply fill-icon01;
   }
@@ -205,7 +205,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-danger_tertiary {
-  @apply bg-background text-danger border border-danger;
+  @apply text-danger border border-danger;
   svg {
     @apply fill-danger;
   }
