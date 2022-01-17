@@ -148,7 +148,7 @@ $component: #{$prefix}-button;
     }
   }
   &:active {
-    @apply bg-active_tertiary_button border-active_tertiary_button;
+    @apply bg-active_tertiary_button border-active_tertiary_button text-text_inverse;
   }
   &:disabled {
     @apply bg-button_disabled text-text_disabled border-none;
@@ -216,7 +216,7 @@ $component: #{$prefix}-button;
     }
   }
   &:active {
-    @apply bg-active_danger_tertiary_button border-active_danger_tertiary_button;
+    @apply bg-active_danger_tertiary_button border-active_danger_tertiary_button text-text_inverse;
   }
   &:disabled {
     @apply bg-button_disabled text-text_disabled border-none;
