@@ -5,10 +5,13 @@ import SVGIcon, { SVGIconProps } from '@components/Icon/Icons/SVGIcon'
 const CheckboxCheckedIcon = (props: SVGIconProps) => {
   return (
     <SVGIcon {...props}>
-      <rect fill="#3481F4" width="24" height="24" rx="4" />
       <path
+        d="M4 0h16a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"
+        fill="#3B424A"
+      />
+      <path
+        d="M4.766 11.591a1.25 1.25 0 0 1 1.768 0l3.004 3.004 7.956-7.954a1.25 1.25 0 1 1 1.768 1.768l-9.723 9.723-.707-.707-.09-.098-.087-.08-3.889-3.888a1.25 1.25 0 0 1 0-1.768z"
         fill="#FFF"
-        d="M5.075 15.51a1.5 1.5 0 1 1 2.122-2.12l1.766 1.767 7.426-7.425a1.5 1.5 0 0 1 2.121 2.122l-8.47 8.47a1.53 1.53 0 0 1-.015.015l-.016.015-1.045 1.045-3.889-3.889z"
       />
     </SVGIcon>
   )
