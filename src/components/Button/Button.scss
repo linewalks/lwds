@@ -28,10 +28,10 @@ $component: #{$prefix}-button;
   font-size: 18px;
 
   & .#{$component}-lefticon {
-    @apply mr-spacing_04;
+    @apply w-icon_md h-icon_md mr-spacing_04;
   }
   & .#{$component}-righticon {
-    @apply ml-spacing_04;
+    @apply w-icon_md h-icon_md ml-spacing_04;
   }
 }
 
@@ -42,10 +42,10 @@ $component: #{$prefix}-button;
   font-size: 16px;
 
   & .#{$component}-lefticon {
-    @apply mr-spacing_04;
+    @apply w-icon_md h-icon_md mr-spacing_04;
   }
   & .#{$component}-righticon {
-    @apply ml-spacing_04;
+    @apply w-icon_md h-icon_md ml-spacing_04;
   }
 }
 
@@ -59,10 +59,10 @@ $component: #{$prefix}-button;
   font-size: 14px;
 
   & .#{$component}-lefticon {
-    @apply mr-spacing_03;
+    @apply w-icon_sm h-icon_sm mr-spacing_03;
   }
   & .#{$component}-righticon {
-    @apply ml-spacing_03;
+    @apply w-icon_sm h-icon_sm ml-spacing_03;
   }
 }
 
@@ -77,10 +77,10 @@ $component: #{$prefix}-button;
   }
 
   & .#{$component}-lefticon {
-    @apply mr-spacing_03;
+    @apply w-icon_xs h-icon_xs mr-spacing_03;
   }
   & .#{$component}-righticon {
-    @apply ml-spacing_03;
+    @apply w-icon_xs h-icon_xs ml-spacing_03;
   }
 }
 
