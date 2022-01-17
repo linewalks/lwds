@@ -2,7 +2,7 @@ import React from 'react'
 
 import ColorPalette from '@src/components/Color/Colors'
 
-function CoreColor() {
+const CoreColors = () => {
   const ColorList = ['Common', 'Text', 'Icon', 'Button', 'Field']
 
   return (
@@ -14,4 +14,4 @@ function CoreColor() {
   )
 }
 
-export default CoreColor
+export default CoreColors

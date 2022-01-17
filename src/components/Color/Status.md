@@ -1,3 +1,5 @@
+### Status Color
+
 ```js
 <Status />
 ```

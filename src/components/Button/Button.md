@@ -4,71 +4,86 @@
 - disabled style is same on all variants.
 
 ```js
-<div
-  style={{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '8px',
-  }}
->
-  <Button variant="primary">Primary</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="tertiary">Tertiary</Button>
-  <Button variant="ghost">Ghost</Button>
-  <Button variant="ghost" ghostType="important">
-    Ghost Important
-  </Button>
-  <Button variant="ghost" ghostType="danger">
-    Ghost Danger
-  </Button>
-  <Button variant="danger_primary">Danger</Button>
-  <Button variant="danger_tertiary">Danger</Button>
-</div>
+import Button from '@components/Button/Button'
+
+const render = () => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '8px',
+    }}
+  >
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="tertiary">Tertiary</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="ghost" ghostType="important">
+      Ghost Important
+    </Button>
+    <Button variant="ghost" ghostType="danger">
+      Ghost Danger
+    </Button>
+    <Button variant="danger_primary">Danger</Button>
+    <Button variant="danger_tertiary">Danger</Button>
+  </div>
+  )
+render()
 ```
 
 #### Buttons by size
 
 ```js
-<div
-  style={{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '8px',
-  }}
->
-  <Button size="sm">sm - Small</Button>
-  <Button size="md">md - Normal</Button>
-  <Button size="lg">lg - Large</Button>
-  <Button size="xl">xl - ExtraLarge</Button>
-</div>
+import Button from '@components/Button/Button'
+
+const render = () => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '8px',
+    }}
+  >
+    <Button size="sm">sm - Small</Button>
+    <Button size="md">md - Normal</Button>
+    <Button size="lg">lg - Large</Button>
+    <Button size="xl">xl - ExtraLarge</Button>
+  </div>
+)
+render()
 ```
 
 #### Buttons by size(responsive)
 
 ```js
-<div
-  style={{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '8px',
-  }}
->
-  <Button size="sm" responsiveHeight>
-    sm - Small (rem)
-  </Button>
-  <Button size="md" responsiveHeight>
-    md - Normal (rem)
-  </Button>
-  <Button size="lg" responsiveHeight>
-    lg - Large (rem)
-  </Button>
-  <Button size="xl" responsiveHeight>
-    xl - ExtraLarge (rem)
-  </Button>
-</div>
+import Button from '@components/Button/Button'
+
+const render = () => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '8px',
+    }}
+  >
+    <Button size="sm" responsiveHeight>
+      sm - Small (rem)
+    </Button>
+    <Button size="md" responsiveHeight>
+      md - Normal (rem)
+    </Button>
+    <Button size="lg" responsiveHeight>
+      lg - Large (rem)
+    </Button>
+    <Button size="xl" responsiveHeight>
+      xl - ExtraLarge (rem)
+    </Button>
+  </div>
+)
+render()
 ```
 
 #### Bold text
@@ -77,41 +92,47 @@
 - Set bold as false for normal font weight.
 
 ```js
-<div
-  style={{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '8px',
-  }}
->
-  <Button variant="primary" bold={true}>
-    Bold
-  </Button>
-  <Button variant="secondary" bold={false}>
-    Normal
-  </Button>
-  <Button variant="tertiary" bold={true}>
-    Bold
-  </Button>
-  <Button variant="ghost" bold={false}>
-    Normal
-  </Button>
-  <Button variant="danger_primary" bold={true}>
-    Bold
-  </Button>
-  <Button variant="danger_tertiary" bold={false}>
-    Normal
-  </Button>
-</div>
+import Button from '@components/Button/Button'
+
+const render = () => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '8px',
+    }}
+  >
+    <Button variant="primary" bold={true}>
+      Bold
+    </Button>
+    <Button variant="secondary" bold={false}>
+      Normal
+    </Button>
+    <Button variant="tertiary" bold={true}>
+      Bold
+    </Button>
+    <Button variant="ghost" bold={false}>
+      Normal
+    </Button>
+    <Button variant="danger_primary" bold={true}>
+      Bold
+    </Button>
+    <Button variant="danger_tertiary" bold={false}>
+      Normal
+    </Button>
+  </div>
+)
+render()
 ```
 
 #### With Icon
 
 ```js
+import Button from '@components/Button/Button'
 import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
 
-const Default = () => (
+const render = () => (
   <div
     style={{
       display: 'flex',
@@ -166,15 +187,16 @@ const Default = () => (
     </Button>
   </div>
 )
-Default()
+render()
 ```
 
 #### With Icon Size by Button
 
 ```js
+import Button from '@components/Button/Button'
 import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
 
-const Default = () => (
+const render = () => (
   <div
     style={{
       display: 'flex',
@@ -217,13 +239,15 @@ const Default = () => (
     </Button>
   </div>
 )
-Default()
+render()
 ```
 
 #### With Icon alone
 
 ```js
 import styled from 'styled-components'
+
+import Button from '@components/Button/Button'
 import AddIcon from '@components/Icon/Icons/Action/AddIcon'
 import SearchIcon from '@components/Icon/Icons/Action/SearchIcon'
 
@@ -235,7 +259,7 @@ const WrapButton = styled.div`
   align-items: center;
 `
 
-const Default = () => (
+const render = () => (
   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
     <WrapButton>
       <Button icon variant="danger_tertiary">
@@ -259,6 +283,5 @@ const Default = () => (
     </WrapButton>
   </div>
 )
-
-Default()
+render()
 ```

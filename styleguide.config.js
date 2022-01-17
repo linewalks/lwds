@@ -70,11 +70,7 @@ module.exports = {
       sections: [
         {
           name: 'Button',
-          components: () => [
-            'src/components/Button/Button.tsx',
-            // 'src/components/Button/TextLink.tsx',
-            // 'src/components/SegmentedControl/SegmentedControl.tsx',
-          ],
+          content: 'src/components/Button/Button.md',
         },
         {
           name: 'Icon',
