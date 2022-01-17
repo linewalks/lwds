@@ -82,12 +82,6 @@ const ColorSet = {
   },
 }
 
-const WrapColorPalette = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin: 10px 10px 30px;
-`
-
 const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -118,6 +112,12 @@ const ColorBox = styled.section<{ size?: number; value: string }>`
     value === '#ffffff' ? `1px solid #cbd0d8` : 'none'};
 `
 
+const WrapColorPalette = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px 30px;
+`
+
 const rgba2hex = (color: string): string => {
   const rgbaRegex = /^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i
   const colorRemoveSpace = color.replace(/\s/g, '')
@@ -141,7 +141,7 @@ const rgba2hex = (color: string): string => {
 }
 
 const ColorPalette = ({ themeName }) => (
-  <>
+  <WrapColorPalette>
     <h2 style={{ fontSize: '18px', fontWeight: 'bold' }}>{themeName}</h2>
     <Box>
       {_.map(ColorSet[themeName], (value, key) => (
@@ -154,32 +154,6 @@ const ColorPalette = ({ themeName }) => (
         </dl>
       ))}
     </Box>
-  </>
+  </WrapColorPalette>
 )
-
-const Colors = () => {
-  const ColorList = [
-    'Common',
-    'Icon',
-    'Button',
-    'Field',
-    'hover',
-    'focus',
-    'active',
-    'disabled',
-    'etc',
-  ]
-
-  return (
-    <>
-      {_.map(ColorList, (themeName) => (
-        <WrapColorPalette key={themeName}>
-          <ColorPalette themeName={themeName} />
-        </WrapColorPalette>
-      ))}
-    </>
-  )
-}
-
-/** @component */
-export default Colors
+export default ColorPalette
