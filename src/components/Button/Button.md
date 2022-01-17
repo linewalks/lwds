@@ -173,6 +173,57 @@ const Default = () => (
 Default()
 ```
 
+#### With Icon Size by Button
+
+```js
+import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
+
+const Default = () => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '8px',
+    }}
+  >
+    <Button
+      variant="primary"
+      size="sm"
+      leftIcon={<ChevronIcon direction="left" />}
+      rightIcon={<ChevronIcon direction="right" />}
+    >
+      sm (icon 16px)
+    </Button>
+    <Button
+      variant="primary"
+      size="md"
+      leftIcon={<ChevronIcon direction="left" />}
+      rightIcon={<ChevronIcon direction="right" />}
+    >
+      md (icon 20px)
+    </Button>
+    <Button
+      variant="primary"
+      size="lg"
+      leftIcon={<ChevronIcon direction="left" />}
+      rightIcon={<ChevronIcon direction="right" />}
+    >
+      lg (icon 24px)
+    </Button>
+    <Button
+      variant="primary"
+      size="xl"
+      leftIcon={<ChevronIcon direction="left" />}
+      rightIcon={<ChevronIcon direction="right" />}
+    >
+      xl (icon 24px)
+    </Button>
+  </div>
+)
+Default()
+```
+
 #### With Icon alone
 
 ```js
