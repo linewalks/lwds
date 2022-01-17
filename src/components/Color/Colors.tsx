@@ -41,7 +41,7 @@ const ColorSet = {
     icon_inverse01: colors.$icon_inverse01,
     icon_inverse02: colors.$icon_inverse02,
     icon_disabled: colors.$icon_disabled,
-    icon_error: colors.$icon_error,
+    icon_danger: colors.$icon_danger,
     icon_safe: colors.$icon_safe,
     icon_accent: colors.$icon_accent,
   },
