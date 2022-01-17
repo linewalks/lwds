@@ -6,7 +6,6 @@
 ```js
 <div
   style={{
-    backgroundColor: '#eeeeee',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -33,7 +32,6 @@
 ```js
 <div
   style={{
-    backgroundColor: '#eeeeee',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -52,7 +50,6 @@
 ```js
 <div
   style={{
-    backgroundColor: '#eeeeee',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -82,7 +79,6 @@
 ```js
 <div
   style={{
-    backgroundColor: '#eeeeee',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
