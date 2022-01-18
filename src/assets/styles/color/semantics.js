@@ -61,6 +61,7 @@ module.exports = {
   $text_safe: colors.$lw_green60,
   $text_info: colors.$lw_blue60,
   $text_accent: colors.$lw_blue50,
+  $text_danger: colors.$lw_red50,
   $text_inverse: colors.$lw_white,
   $text_disabled: colors.$lw_grey50,
 
