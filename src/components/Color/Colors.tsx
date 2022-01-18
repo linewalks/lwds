@@ -30,6 +30,7 @@ const ColorSet = {
     text_safe: colors.$text_safe,
     text_info: colors.$text_info,
     text_accent: colors.$text_accent,
+    text_danger: colors.$text_danger,
     text_inverse: colors.$text_inverse,
     text_disabled: colors.$text_disabled,
   },

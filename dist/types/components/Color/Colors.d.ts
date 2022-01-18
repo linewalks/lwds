@@ -1,4 +1,5 @@
-declare const Colors: () => JSX.Element;
-/** @component */
-export default Colors;
+declare const ColorPalette: ({ themeName }: {
+    themeName: any;
+}) => JSX.Element;
+export default ColorPalette;
 //# sourceMappingURL=Colors.d.ts.map

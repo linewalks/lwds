@@ -1,1 +1,1 @@
-{"version":3,"file":"Colors.d.ts","sourceRoot":"","sources":["../../../../src/components/Color/Colors.tsx"],"names":[],"mappings":"AA+JA,QAAA,MAAM,MAAM,mBAsBX,CAAA;AAED,iBAAiB;AACjB,eAAe,MAAM,CAAA"}
+{"version":3,"file":"Colors.d.ts","sourceRoot":"","sources":["../../../../src/components/Color/Colors.tsx"],"names":[],"mappings":"AA+IA,QAAA,MAAM,YAAY;;iBAejB,CAAA;AACD,eAAe,YAAY,CAAA"}
