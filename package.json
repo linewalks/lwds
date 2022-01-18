@@ -1,6 +1,6 @@
 {
   "name": "lwds",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Linewalks Design System",
   "keywords": [
     "lwds",
@@ -39,7 +39,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --coverage",
-    "build": "rm -rf dist && rollup -c",
+    "build": "rmdir /s /q dist && rollup -c",
     "styleguide": "styleguidist server",
     "build:docs": "styleguidist build",
     "eslint": "eslint ./src/**/*.js ./src/**/**/*.js",
