@@ -46,11 +46,14 @@ module.exports = {
   pagePerSection: true,
   sections: [
     {
-      name: 'Common',
+      name: 'Foundation',
       sections: [
         {
-          name: 'Colors',
-          components: () => ['src/components/Color/Colors.tsx'],
+          name: 'Color',
+          components: () => [
+            'src/components/Color/Core.tsx',
+            'src/components/Color/Status.tsx',
+          ],
         },
         {
           name: 'Spacing',
@@ -63,15 +66,11 @@ module.exports = {
       ],
     },
     {
-      name: 'Controls',
+      name: 'Component',
       sections: [
         {
           name: 'Button',
-          components: () => [
-            'src/components/Button/Button.tsx',
-            // 'src/components/Button/TextLink.tsx',
-            // 'src/components/SegmentedControl/SegmentedControl.tsx',
-          ],
+          content: 'src/components/Button/Button.md',
         },
         {
           name: 'Icon',

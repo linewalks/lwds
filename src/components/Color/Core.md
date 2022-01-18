@@ -1,0 +1,5 @@
+### Core Color
+
+```js
+<Core />
+```

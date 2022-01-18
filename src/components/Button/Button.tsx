@@ -99,6 +99,10 @@ function renderButton<
   )
 }
 
+/**
+ * Button
+ * @visibleName Button
+ */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(renderButton)
 
 Button.defaultProps = {

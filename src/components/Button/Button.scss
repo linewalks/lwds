@@ -28,10 +28,10 @@ $component: #{$prefix}-button;
   font-size: 18px;
 
   & .#{$component}-lefticon {
-    @apply mr-spacing_04;
+    @apply w-icon_md h-icon_md mr-spacing_04;
   }
   & .#{$component}-righticon {
-    @apply ml-spacing_04;
+    @apply w-icon_md h-icon_md ml-spacing_04;
   }
 }
 
@@ -42,10 +42,10 @@ $component: #{$prefix}-button;
   font-size: 16px;
 
   & .#{$component}-lefticon {
-    @apply mr-spacing_04;
+    @apply w-icon_md h-icon_md mr-spacing_04;
   }
   & .#{$component}-righticon {
-    @apply ml-spacing_04;
+    @apply w-icon_md h-icon_md ml-spacing_04;
   }
 }
 
@@ -59,10 +59,10 @@ $component: #{$prefix}-button;
   font-size: 14px;
 
   & .#{$component}-lefticon {
-    @apply mr-spacing_03;
+    @apply w-icon_sm h-icon_sm mr-spacing_03;
   }
   & .#{$component}-righticon {
-    @apply ml-spacing_03;
+    @apply w-icon_sm h-icon_sm ml-spacing_03;
   }
 }
 
@@ -77,10 +77,10 @@ $component: #{$prefix}-button;
   }
 
   & .#{$component}-lefticon {
-    @apply mr-spacing_03;
+    @apply w-icon_xs h-icon_xs mr-spacing_03;
   }
   & .#{$component}-righticon {
-    @apply ml-spacing_03;
+    @apply w-icon_xs h-icon_xs ml-spacing_03;
   }
 }
 
@@ -90,7 +90,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-responsive-lg {
-  @apply h-size_r05;
+  @apply h-size_r06;
 }
 
 .#{$component}-responsive-md {
@@ -137,7 +137,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-tertiary {
-  @apply bg-background text-text_accent border border-button_primary;
+  @apply text-text_accent border border-button_primary;
   svg {
     @apply fill-primary;
   }
@@ -148,7 +148,7 @@ $component: #{$prefix}-button;
     }
   }
   &:active {
-    @apply bg-active_tertiary_button border-active_tertiary_button;
+    @apply bg-active_tertiary_button border-active_tertiary_button text-text_inverse;
   }
   &:disabled {
     @apply bg-button_disabled text-text_disabled border-none;
@@ -157,7 +157,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-ghost {
-  @apply bg-background text-text01;
+  @apply text-text01;
   svg {
     @apply fill-icon01;
   }
@@ -205,7 +205,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-danger_tertiary {
-  @apply bg-background text-danger border border-danger;
+  @apply text-danger border border-danger;
   svg {
     @apply fill-danger;
   }
@@ -216,7 +216,7 @@ $component: #{$prefix}-button;
     }
   }
   &:active {
-    @apply bg-active_danger_tertiary_button border-active_danger_tertiary_button;
+    @apply bg-active_danger_tertiary_button border-active_danger_tertiary_button text-text_inverse;
   }
   &:disabled {
     @apply bg-button_disabled text-text_disabled border-none;
