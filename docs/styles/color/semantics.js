@@ -61,6 +61,7 @@ module.exports = {
   $text_safe: colors.$lw_green60,
   $text_info: colors.$lw_blue60,
   $text_accent: colors.$lw_blue50,
+  $text_danger: colors.$lw_red50,
   $text_inverse: colors.$lw_white,
   $text_disabled: colors.$lw_grey50,
 
@@ -69,7 +70,7 @@ module.exports = {
   $icon02: colors.$lw_grey90,
   $icon03: colors.$lw_grey80,
   $icon04: colors.$lw_grey60,
-  $icon_error: colors.$lw_red50,
+  $icon_danger: colors.$lw_red50,
   $icon_safe: colors.$lw_green50,
   $icon_accent: colors.$lw_blue50,
   $icon_inverse01: colors.$lw_white,
