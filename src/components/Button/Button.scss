@@ -22,7 +22,7 @@ $component: #{$prefix}-button;
 
 // By Sizes(px)
 .#{$component}-xl {
-  @apply px-spacing_08 h-size_08;
+  @apply px-spacing_08 h-xl;
   min-width: 120px;
   border-radius: 8px;
   font-size: 18px;
@@ -33,10 +33,18 @@ $component: #{$prefix}-button;
   & .#{$component}-righticon {
     @apply w-icon_md h-icon_md ml-spacing_04;
   }
+
+  &.#{$component}-icon {
+    @apply w-xl min-w-size_0 p-spacing_0 m-spacing_0;
+
+    svg {
+      @apply w-icon_md h-icon_md;
+    }
+  }
 }
 
 .#{$component}-lg {
-  @apply px-spacing_06 h-size_06;
+  @apply px-spacing_06 h-lg;
   min-width: 90px;
   border-radius: 8px;
   font-size: 16px;
@@ -47,10 +55,18 @@ $component: #{$prefix}-button;
   & .#{$component}-righticon {
     @apply w-icon_md h-icon_md ml-spacing_04;
   }
+
+  &.#{$component}-icon {
+    @apply w-lg min-w-size_0 p-spacing_0 m-spacing_0;
+
+    svg {
+      @apply w-icon_md h-icon_md;
+    }
+  }
 }
 
 .#{$component}-md {
-  @apply px-spacing_05 h-size_05;
+  @apply px-spacing_05 h-md;
   min-width: 80px;
   &[data-width] {
     min-width: 0px;
@@ -64,10 +80,18 @@ $component: #{$prefix}-button;
   & .#{$component}-righticon {
     @apply w-icon_sm h-icon_sm ml-spacing_03;
   }
+
+  &.#{$component}-icon {
+    @apply w-md min-w-size_0 p-spacing_0 m-spacing_0;
+
+    svg {
+      @apply w-icon_sm h-icon_sm;
+    }
+  }
 }
 
 .#{$component}-sm {
-  @apply px-spacing_04 h-size_04;
+  @apply px-spacing_04 h-sm;
   min-width: 56px;
   border-radius: 6px;
   font-size: 13px;
@@ -81,6 +105,14 @@ $component: #{$prefix}-button;
   }
   & .#{$component}-righticon {
     @apply w-icon_xs h-icon_xs ml-spacing_02;
+  }
+
+  &.#{$component}-icon {
+    @apply w-sm min-w-size_0 p-spacing_0 m-spacing_0;
+
+    svg {
+      @apply w-icon_xs h-icon_xs;
+    }
   }
 }
 
@@ -104,6 +136,7 @@ $component: #{$prefix}-button;
 // By variant
 .#{$component}-primary {
   @apply bg-button_primary text-text_inverse;
+
   svg {
     @apply fill-background;
   }
@@ -124,6 +157,7 @@ $component: #{$prefix}-button;
 
 .#{$component}-secondary {
   @apply bg-button_secondary text-text01;
+
   &:hover {
     @apply shadow-shadow_hover;
   }
@@ -194,6 +228,7 @@ $component: #{$prefix}-button;
 
 .#{$component}-danger_primary {
   @apply bg-danger text-text_inverse;
+
   svg {
     @apply fill-background;
   }
@@ -232,8 +267,4 @@ $component: #{$prefix}-button;
     @apply bg-button_disabled text-text_disabled border-none;
     box-shadow: none;
   }
-}
-
-.#{$component}-icon {
-  @apply min-w-size_0 p-spacing_0 m-spacing_0 w-size_05;
 }

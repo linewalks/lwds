@@ -249,7 +249,7 @@ import styled from 'styled-components'
 
 import Button from '@components/Button/Button'
 import AddIcon from '@components/Icon/Icons/Action/AddIcon'
-import SearchIcon from '@components/Icon/Icons/Action/SearchIcon'
+import CloseIcon from '@components/Icon/Icons/Navigation/CloseIcon'
 
 const WrapButton = styled.div`
   display: flex;
@@ -262,24 +262,31 @@ const WrapButton = styled.div`
 const render = () => (
   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
     <WrapButton>
-      <Button icon variant="danger_tertiary">
-        <AddIcon rotate={20} />
+      <span>sm - icon(xs)</span>
+      <Button variant="primary" size="sm" icon>
+        <AddIcon />
       </Button>
-      <span>rotate</span>
     </WrapButton>
 
     <WrapButton>
-      <Button icon variant="tertiary">
-        <SearchIcon transform="scale(-1,1)" />
+      <span>md - icon(sm)</span>
+      <Button variant="tertiary" size="md" icon>
+        <AddIcon />
       </Button>
-      <span>flip</span>
     </WrapButton>
 
     <WrapButton>
-      <Button icon>
-        <SearchIcon width="16px" height="16px" />
+      <span>lg - icon(md)</span>
+      <Button variant="danger_primary" size="lg" icon>
+        <CloseIcon />
       </Button>
-      <span>16px 아이콘 삽입</span>
+    </WrapButton>
+
+    <WrapButton>
+      <span>xl - icon(md)</span>
+      <Button variant="danger_tertiary" size="xl" icon>
+        <CloseIcon  />
+      </Button>
     </WrapButton>
   </div>
 )
