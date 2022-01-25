@@ -143,12 +143,17 @@ $component: #{$prefix}-button;
   }
   &:hover {
     @apply bg-hover_tertiary_button text-text_inverse;
+
     svg {
       @apply fill-background;
     }
   }
   &:active {
     @apply bg-active_tertiary_button border-active_tertiary_button text-text_inverse;
+
+    svg {
+      @apply fill-background;
+    }
   }
   &:disabled {
     @apply bg-button_disabled text-text_disabled border-none;
@@ -211,12 +216,17 @@ $component: #{$prefix}-button;
   }
   &:hover {
     @apply bg-hover_danger_tertiary_button text-text_inverse;
+
     svg {
       @apply fill-background;
     }
   }
   &:active {
     @apply bg-active_danger_tertiary_button border-active_danger_tertiary_button text-text_inverse;
+
+    svg {
+      @apply fill-background;
+    }
   }
   &:disabled {
     @apply bg-button_disabled text-text_disabled border-none;
