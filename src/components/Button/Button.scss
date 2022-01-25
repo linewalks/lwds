@@ -77,10 +77,10 @@ $component: #{$prefix}-button;
   }
 
   & .#{$component}-lefticon {
-    @apply w-icon_xs h-icon_xs mr-spacing_03;
+    @apply w-icon_xs h-icon_xs mr-spacing_02;
   }
   & .#{$component}-righticon {
-    @apply w-icon_xs h-icon_xs ml-spacing_03;
+    @apply w-icon_xs h-icon_xs ml-spacing_02;
   }
 }
 
