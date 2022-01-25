@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { $icon02 } from '@assets/styles/color/semantics'
+import { $icon_02 } from '@assets/styles/color/semantics'
 import { icon } from '@assets/styles/size/semantics'
 
 import cls from '@helpers/class'
@@ -39,7 +39,7 @@ const SVGIcon = (props: SVGIconProps) => {
 }
 
 SVGIcon.defaultProps = {
-  color: $icon02,
+  color: $icon_02,
   width: icon.$icon_md,
   height: icon.$icon_md,
   viewBox: `0 0 24 24`,

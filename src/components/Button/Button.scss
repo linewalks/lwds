@@ -156,7 +156,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-secondary {
-  @apply bg-button_secondary text-text01;
+  @apply bg-button_secondary text-text_01;
 
   &:hover {
     @apply shadow-shadow_hover;
@@ -196,7 +196,7 @@ $component: #{$prefix}-button;
 }
 
 .#{$component}-ghost {
-  @apply text-text01;
+  @apply text-text_01;
   svg {
     @apply fill-icon01;
   }
