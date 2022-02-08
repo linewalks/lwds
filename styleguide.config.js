@@ -56,6 +56,10 @@ module.exports = {
           ],
         },
         {
+          name: 'Shadow',
+          content: 'src/components/Shadow/Shadow.md',
+        },
+        {
           name: 'Spacing',
           content: 'src/components/Spacing/Spacing.md',
         },
