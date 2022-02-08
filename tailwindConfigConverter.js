@@ -10,5 +10,5 @@ module.exports = {
   colors: deleteDollars(colorSem),
   size: deleteDollars({ ...sizeSem.size, ...sizeSem.button, ...sizeSem.icon }),
   spacing: deleteDollars(spacingSem),
-  boxShadow: deleteDollars(boxShadowSem),
+  boxShadow: boxShadowSem,
 }
