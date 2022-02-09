@@ -1,11 +1,6 @@
 ```js
 import styled from 'styled-components'
-import {
-  shadow_1,
-  shadow_2,
-  shadow_3,
-  shadow_4,
-} from '@assets/styles/shadow/semantics'
+import { shadow_v1, shadow_v2, shadow_v3, shadow_v4 } from '@assets/styles'
 
 const WrapContainer = styled.section`
   display: flex;
@@ -20,10 +15,10 @@ const WrapBox = styled.div`
 const render = () => {
   return (
     <WrapContainer>
-      <WrapBox style={{ boxShadow: shadow_1 }} />
-      <WrapBox style={{ boxShadow: shadow_2 }} />
-      <WrapBox style={{ boxShadow: shadow_3 }} />
-      <WrapBox style={{ boxShadow: shadow_4 }} />
+      <WrapBox style={{ boxShadow: shadow_v1 }}>shadow_v1</WrapBox>
+      <WrapBox style={{ boxShadow: shadow_v2 }}>shadow_v2</WrapBox>
+      <WrapBox style={{ boxShadow: shadow_v3 }}>shadow_v3</WrapBox>
+      <WrapBox style={{ boxShadow: shadow_v4 }}>shadow_v4</WrapBox>
     </WrapContainer>
   )
 }
