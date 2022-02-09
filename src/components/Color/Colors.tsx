@@ -78,6 +78,8 @@ const ColorSet = {
     disabled_02: colors.$disabled_02,
   },
   etc: {
+    shadow_01: colors.$shadow_01,
+    shadow_02: colors.$shadow_02,
     skeleton_01: colors.$skeleton_01,
     highlight_01: colors.$highlight_01,
     dimmed_overlay: colors.$dimmed_overlay,
