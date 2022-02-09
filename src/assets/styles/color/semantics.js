@@ -48,6 +48,8 @@ module.exports = {
   $disabled_02: colors.$lw_grey50,
 
   // etc
+  $shadow_01: colors.$lw_shadow_01,
+  $shadow_02: colors.$lw_shadow_02,
   $skeleton_01: colors.$lw_grey20,
   $highlight_01: colors.$lw_highlight,
   $dimmed_overlay: colors.$lw_dimmed_overlay,
