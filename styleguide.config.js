@@ -32,14 +32,14 @@ module.exports = {
       links: [
         {
           rel: 'stylesheet',
-          href: 'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css',
+          href: 'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css',
         },
       ],
     },
   },
   theme: {
     fontFamily: {
-      base: '"Spoqa Han Sans", sans-serif',
+      base: '"Spoqa Han Sans Neo"',
     },
   },
   styleguideDir: 'docs',
