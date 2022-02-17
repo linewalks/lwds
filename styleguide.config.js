@@ -32,7 +32,7 @@ module.exports = {
       links: [
         {
           rel: 'stylesheet',
-          href: 'https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css',
+          href: '/src/assets/styles/font/SpoqaHanSansNeo.scss',
         },
       ],
     },
@@ -66,6 +66,10 @@ module.exports = {
         {
           name: 'Size',
           content: 'src/components/Size/Size.md',
+        },
+        {
+          name: 'Typography',
+          content: 'src/components/Typography/Typography.md',
         },
       ],
     },

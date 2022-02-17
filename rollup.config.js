@@ -50,7 +50,6 @@ function commonPlugins(path) {
         'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
       },
     }),
-    url(),
     json(),
     typescript({
       tsconfigDefaults: { compilerOptions: { declaration: true } },
@@ -122,5 +121,18 @@ export default [
     ],
     plugins: commonPlugins('src/assets/styles'),
     external: commonExternal(),
+  },
+  {
+    input: 'src/assets/styles/index.scss',
+    output: {
+      file: 'dist/lwds.css',
+      format: 'es',
+    },
+    plugins: [
+      postcss({
+        modules: false,
+        extract: true,
+      }),
+    ],
   },
 ]

@@ -39,7 +39,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --coverage",
-    "build": "rmdir /s /q dist && rollup -c",
+    "build": "rm -rf dist && rollup -c",
     "styleguide": "styleguidist server",
     "build:docs": "styleguidist build",
     "eslint": "eslint ./src/**/*.js ./src/**/**/*.js",
@@ -173,6 +173,7 @@
   },
   "exports": {
     ".": "./dist/index.js",
+    "./typography.css": "./dist/lwds.css",
     "./icons": "./dist/icons/index.js",
     "./styles": "./dist/styles/index.js"
   }
