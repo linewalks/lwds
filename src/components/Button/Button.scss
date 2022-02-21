@@ -312,9 +312,9 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
           $variant ==
           'secondary'
       ) {
-        border-color: #fff transparent transparent;
+        border-color: #fff transparent transparent; //layout_01
       } @else {
-        border-color: grey transparent transparent;
+        border-color: #535e6a transparent transparent; // layout_emphasize_02
       }
     }
   }
