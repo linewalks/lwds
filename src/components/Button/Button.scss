@@ -275,7 +275,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   }
 }
 
-%loading-circle {
+%loading-spinner {
   position: absolute;
   content: '';
   top: 50%;
@@ -291,10 +291,12 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   .#{$component}-#{$variant}-loading {
     color: transparent !important;
     &:before {
-      @extend %loading-circle;
+      //spinner background
+      @extend %loading-spinner;
     }
     &:after {
-      @extend %loading-circle;
+      //moving spinner
+      @extend %loading-spinner;
       border-style: solid;
       border-width: 0.2em;
       box-shadow: 0 0 0 1px transparent;
