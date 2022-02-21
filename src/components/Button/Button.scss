@@ -21,8 +21,10 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
     line-height: 100%;
   }
 
-  &:focus {
-    @apply shadow-shadow_focus;
+  &:focus-visible {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2.5px #094cae;
+    // layout_01, focus_primary
+    // 220221 SCSS 내부에서 직접 semantic color를 사용할 수 없어 위와 같이 설정. 방법 모색해야 함
   }
 }
 
@@ -276,7 +278,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 }
 
 %loading-spinner {
-  position: absolute;
+  @apply absolute;
   content: '';
   top: 50%;
   left: 50%;
@@ -284,7 +286,6 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   width: 1.7em;
   height: 1.7em;
   border-radius: 50%;
-  border: 0.2em solid rgba(36, 41, 45, 0.18);
 }
 
 @each $variant in $variants {
@@ -293,15 +294,16 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
     &:before {
       //spinner background
       @extend %loading-spinner;
+      border: 0.2em solid rgba(36, 41, 45, 0.18);
     }
     &:after {
       //moving spinner
       @extend %loading-spinner;
-      border-style: solid;
-      border-width: 0.2em;
       box-shadow: 0 0 0 1px transparent;
       animation: button-spin 0.6s linear;
       animation-iteration-count: infinite;
+      border-style: solid;
+      border-width: 0.2em;
       @if (
         $variant ==
           'primary' or
@@ -320,15 +322,11 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 
 @keyframes button-spin {
   from {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
