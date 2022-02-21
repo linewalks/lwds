@@ -5,7 +5,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   'danger_tertiary';
 
 .#{$component} {
-  @apply cursor-pointer font-bold outline-none transition duration-200 ease-linear relative;
+  @apply bg-background cursor-pointer font-bold outline-none transition duration-200 ease-linear relative;
   & + & {
     @apply ml-spacing_04;
   }
@@ -22,9 +22,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 2.5px #094cae;
-    // layout_01, focus_primary
-    // 220221 SCSS 내부에서 직접 semantic color를 사용할 수 없어 위와 같이 설정. 방법 모색해야 함
+    @apply shadow-shadow_focus;
   }
 }
 
@@ -290,9 +288,9 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 
 @each $variant in $variants {
   .#{$component}-#{$variant}-loading {
-    color: transparent;
+    color: transparent !important;
     & > span > svg {
-      fill: transparent;
+      fill: transparent !important;
     }
     &:before {
       //spinner background
