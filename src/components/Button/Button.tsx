@@ -21,6 +21,7 @@ interface ButtonProps {
   size: string | 'sm' | 'md' | 'lg' | 'xl'
   bold: boolean
   icon: boolean
+  loading: boolean
   responsiveHeight: boolean
   id?: string
   style?: object
@@ -41,6 +42,7 @@ function renderButton<
     size,
     bold,
     icon,
+    loading,
     responsiveHeight,
     id,
     style,
@@ -82,6 +84,7 @@ function renderButton<
           ghostType !== 'default' &&
           cls('button', 'ghost', ghostType),
         icon && cls('button', 'icon'),
+        loading && cls('button', 'loading'),
       )}
       style={{
         ...style,
@@ -112,7 +115,16 @@ Button.defaultProps = {
   size: 'md',
   bold: true,
   icon: false,
+  loading: false,
   responsiveHeight: false,
 }
 
 export default Button as typeof renderButton
+
+// focus
+// loading
+
+// 1. loading === true일때, button 안에 있는 텍스트는 보이면 안된다.
+// 2. size마다 spinner의 사이즈는 달라야 한다.
+// 3. variant가 tertiary일 경우 spinner 색상이 달라야 한다.
+// 4. (선택)before, after 가상 선택자 활용하기 (dom에 표시하기엔 자원 낭비)

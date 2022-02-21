@@ -3,7 +3,7 @@
 $component: #{$prefix}-button;
 
 .#{$component} {
-  @apply cursor-pointer font-bold outline-none transition duration-200 ease-linear;
+  @apply cursor-pointer font-bold outline-none transition duration-200 ease-linear relative;
   & + & {
     @apply ml-spacing_04;
   }
@@ -270,5 +270,52 @@ $component: #{$prefix}-button;
   &:disabled {
     @apply bg-button_disabled text-text_disabled border-none;
     box-shadow: none;
+  }
+}
+
+.#{$component}-loading {
+  color: transparent;
+  &:before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    margin: -0.85em 0 0 -0.85em;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 500rem;
+    border: 0.2em solid rgba(36, 41, 45, 0.18);
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    margin: -0.85em 0 0 -0.85em;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 500rem;
+    border-style: solid;
+    border-width: 0.2em;
+    box-shadow: 0 0 0 1px transparent;
+    animation: button-spin 0.6s linear;
+    animation-iteration-count: infinite;
+    border-color: #fff transparent transparent;
+  }
+}
+
+@keyframes button-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
