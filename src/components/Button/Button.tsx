@@ -84,7 +84,7 @@ function renderButton<
           ghostType !== 'default' &&
           cls('button', 'ghost', ghostType),
         icon && cls('button', 'icon'),
-        loading && cls('button', 'loading'),
+        loading && cls('button', variant, 'loading'),
       )}
       style={{
         ...style,
