@@ -28,7 +28,7 @@ const render = () => (
     <Button variant="danger_primary">Danger</Button>
     <Button variant="danger_tertiary">Danger</Button>
   </div>
-  )
+)
 render()
 ```
 
@@ -285,9 +285,79 @@ const render = () => (
     <WrapButton>
       <span>xl - icon(md)</span>
       <Button variant="danger_tertiary" size="xl" icon>
-        <CloseIcon  />
+        <CloseIcon />
       </Button>
     </WrapButton>
+  </div>
+)
+render()
+```
+
+#### Loading indicator
+
+- by variants
+
+```js
+import Button from '@components/Button/Button'
+
+const render = () => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '8px',
+    }}
+  >
+    <Button loading variant="primary">
+      Primary
+    </Button>
+    <Button loading variant="secondary">
+      Secondary
+    </Button>
+    <Button loading variant="tertiary">
+      Tertiary
+    </Button>
+    <Button loading variant="ghost">
+      Ghost
+    </Button>
+    <Button loading variant="danger_primary">
+      Danger
+    </Button>
+    <Button loading variant="danger_tertiary">
+      Danger
+    </Button>
+  </div>
+)
+render()
+```
+
+- by sizes
+
+```js
+import Button from '@components/Button/Button'
+
+const render = () => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '8px',
+    }}
+  >
+    <Button loading size="sm">
+      sm - Small
+    </Button>
+    <Button loading size="md">
+      md - Normal
+    </Button>
+    <Button loading size="lg">
+      lg - Large
+    </Button>
+    <Button loading size="xl">
+      xl - ExtraLarge
+    </Button>
   </div>
 )
 render()
