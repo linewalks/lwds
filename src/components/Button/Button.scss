@@ -290,7 +290,10 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 
 @each $variant in $variants {
   .#{$component}-#{$variant}-loading {
-    color: transparent !important;
+    color: transparent;
+    & > span > svg {
+      fill: transparent;
+    }
     &:before {
       //spinner background
       @extend %loading-spinner;
