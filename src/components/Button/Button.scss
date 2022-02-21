@@ -18,6 +18,10 @@ $component: #{$prefix}-button;
     @apply inline-flex h-full items-center;
     line-height: 100%;
   }
+
+  &:focus {
+    @apply shadow-shadow_focus;
+  }
 }
 
 // By Sizes(px)

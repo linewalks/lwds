@@ -12,4 +12,6 @@ module.exports = {
   $shadow_hover: `inset 5rem 5rem ${colors.$lw_hover_overlay}`,
   $shadow_active: `inset 5rem 5rem ${colors.$lw_active_overlay}`,
   $shadow_dimmed: `inset 5rem 5rem ${colors.$lw_dimmed_overlay}`,
+
+  $shadow_focus: ` 0 0 0 1px ${colors.$lw_white}, 0 0 0 2.5px ${colors.$lw_blue70}`,
 }
