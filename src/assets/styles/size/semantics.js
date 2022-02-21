@@ -6,7 +6,7 @@ const iconSize = require('./iconSize')
 module.exports = {
   size: {
     // px
-    $size_0: size.p0,
+    $size_00: size.p00,
     $size_04: size.p04,
     $size_08: size.p08,
     $size_10: size.p10,
@@ -21,7 +21,7 @@ module.exports = {
     $size_44: size.p44,
     $size_48: size.p48,
     // rem
-    $size_r0: size.r0,
+    $size_r00: size.r00,
     $size_r04: size.r04,
     $size_r08: size.r08,
     $size_r10: size.r10,

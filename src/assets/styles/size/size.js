@@ -1,7 +1,7 @@
 //tailwind.config.js 설정을 위해 CommonJS 방식 사용
 module.exports = {
   // px
-  p0: '0px',
+  p00: '0px',
   p04: '8px',
   p08: '16px',
   p10: '20px',
@@ -16,7 +16,7 @@ module.exports = {
   p44: '88px',
   p48: '96px',
   // rem
-  r0: '0rem',
+  r00: '0rem',
   r04: '0.5rem',
   r08: '1rem',
   r10: '1.25rem',

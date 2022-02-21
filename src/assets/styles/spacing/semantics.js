@@ -3,7 +3,7 @@ const spacing = require('./spacing')
 
 module.exports = {
   // px
-  $spacing_0: spacing.p0,
+  $spacing_00: spacing.p00,
   $spacing_01: spacing.p01,
   $spacing_02: spacing.p02,
   $spacing_03: spacing.p03,
@@ -29,7 +29,7 @@ module.exports = {
   $spacing_48: spacing.p48,
   $spacing_56: spacing.p56,
   // rem
-  $spacing_r0: spacing.r0,
+  $spacing_r00: spacing.r00,
   $spacing_r01: spacing.r01,
   $spacing_r02: spacing.r02,
   $spacing_r03: spacing.r03,
