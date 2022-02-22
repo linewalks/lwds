@@ -287,6 +287,9 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 }
 
 @each $variant in $variants {
+  $white-wheel: #fff transparent transparent; //layout_01
+  $grey-wheel: #535e6a transparent transparent; // layout_emphasize_02
+
   .#{$component}-#{$variant}-loading {
     color: transparent !important;
     & > span > svg {
@@ -313,9 +316,23 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
           $variant ==
           'secondary'
       ) {
-        border-color: #fff transparent transparent; //layout_01
+        border-color: $white-wheel;
       } @else {
-        border-color: #535e6a transparent transparent; // layout_emphasize_02
+        border-color: $grey-wheel;
+      }
+    }
+
+    &:hover:after,
+    &:active:after {
+      @if (
+        $variant ==
+          'ghost' or
+          $variant ==
+          'tertiary' or
+          $variant ==
+          'danger_tertiary'
+      ) {
+        border-color: $white-wheel;
       }
     }
   }
