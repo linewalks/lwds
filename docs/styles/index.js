@@ -1,7 +1,8 @@
-const colors = require('./color/semantics')
-const sizeSem = require('./size/semantics')
-const spacing = require('./spacing/semantics')
-const shadow = require('./shadow/semantics')
+// lwds/styles 구성 modules (docs 상에서는 ECMAScript 사용)
+import colors from './color/semantics'
+import sizeSem from './size/semantics'
+import spacing from './spacing/semantics'
+import shadow from './shadow/semantics'
 
 // lodash 사용시 불필요한 모듈도 export 되어 js 내에서 해결
 const deleteDollar = (obj) => {
@@ -13,7 +14,7 @@ const deleteDollar = (obj) => {
   return ret
 }
 
-module.exports = {
+export default {
   ...deleteDollar(colors),
   ...deleteDollar(sizeSem.size),
   ...deleteDollar(spacing),

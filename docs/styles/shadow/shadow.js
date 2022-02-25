@@ -1,15 +1,17 @@
-const semantics = require('../color/semantics')
+// tailwindCSS 에서 사용하기 위한 용도
+const colors = require('../color/colors')
+const colorSemantics = require('../color/semantics')
 
-//tailwind.config.js 설정을 위해 CommonJS 방식 사용
+// tailwind.config.js 설정을 위해 CommonJS 방식 사용
 module.exports = {
-  DEFAULT: '0 8px 40px 0 rgba(109, 120, 132, 0.2)',
-  $shadow_01: '0 8px 40px 0 rgba(109, 120, 132, 0.2)',
-  $shadow_02: '0 3px 22px 0 rgba(109, 120, 132, 0.24)',
-  $shadow_03: '0 2px 18px 0 rgba(109, 120, 132, 0.28)',
-  $shadow_04: '0 1px 8px 0 rgba(109, 120, 132, 0.36)',
-  $shadow_05: '0 1px 4px 0 rgba(109, 120, 132, 0.48)',
-  $shadow_06: '0 0 3px 0 rgba(109, 120, 132, 0.6)',
-  hover: `inset 5rem 5rem ${semantics.$hover_primary}`, // hover, active, dimmed는 기존 background 위에 덮어씌워야 하기 때문에 inset shadow로 설정
-  active: `inset 5rem 5rem ${semantics.$active_primary}`,
-  dimmed: `inset 5rem 5rem ${semantics.$dimmed_overlay}`,
+  $shadow_v1: `0 0 4px 0 ${colors.$lw_shadow_01}`,
+  $shadow_v2: `0 1px 8px 0 ${colors.$lw_shadow_01}`,
+  $shadow_v3: `0 2px 14px 0 ${colors.$lw_shadow_02}`,
+  $shadow_v4: `0 3px 24px 0 ${colors.$lw_shadow_02}`,
+
+  // hover, active, dimmed는 기존 background 위에 덮어씌워야 하기 때문에 inset shadow로 설정
+  $shadow_hover: `inset 5rem 5rem ${colorSemantics.$hover_primary}`,
+  $shadow_active: `inset 5rem 5rem ${colorSemantics.$active_primary}`,
+  $shadow_dimmed: `inset 5rem 5rem ${colorSemantics.$dimmed_overlay}`,
+  $shadow_focus: ` 0 0 0 1px ${colorSemantics.$layout_01}, 0 0 0 2.5px ${colorSemantics.$focus_primary}`,
 }
