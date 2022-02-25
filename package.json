@@ -39,7 +39,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --coverage",
-    "build": "rmdir /s /q dist && rollup -c",
+    "build": "rm -rf dist && rollup -c",
+    "build:prod": "NODE_ENV=production yarn build",
     "styleguide": "styleguidist server",
     "build:docs": "styleguidist build",
     "eslint": "eslint ./src/**/*.js ./src/**/**/*.js",

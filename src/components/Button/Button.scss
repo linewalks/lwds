@@ -28,7 +28,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 
 // By Sizes(px)
 .#{$component}-xl {
-  @apply px-spacing_08 h-xl;
+  @apply px-spacing_12 h-xl;
   min-width: 120px;
   border-radius: 8px;
   font-size: 18px;
@@ -41,7 +41,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   }
 
   &.#{$component}-icon {
-    @apply w-xl min-w-size_0 p-spacing_0 m-spacing_0;
+    @apply w-xl min-w-size_00 p-spacing_00 m-spacing_00;
 
     svg {
       @apply w-icon_md h-icon_md;
@@ -50,7 +50,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 }
 
 .#{$component}-lg {
-  @apply px-spacing_06 h-lg;
+  @apply px-spacing_08 h-lg;
   min-width: 90px;
   border-radius: 8px;
   font-size: 16px;
@@ -63,7 +63,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   }
 
   &.#{$component}-icon {
-    @apply w-lg min-w-size_0 p-spacing_0 m-spacing_0;
+    @apply w-lg min-w-size_00 p-spacing_00 m-spacing_00;
 
     svg {
       @apply w-icon_md h-icon_md;
@@ -72,7 +72,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 }
 
 .#{$component}-md {
-  @apply px-spacing_05 h-md;
+  @apply px-spacing_06 h-md;
   min-width: 80px;
   &[data-width] {
     min-width: 0px;
@@ -88,7 +88,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   }
 
   &.#{$component}-icon {
-    @apply w-md min-w-size_0 p-spacing_0 m-spacing_0;
+    @apply w-md min-w-size_00 p-spacing_00 m-spacing_00;
 
     svg {
       @apply w-icon_sm h-icon_sm;
@@ -114,7 +114,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   }
 
   &.#{$component}-icon {
-    @apply w-sm min-w-size_0 p-spacing_0 m-spacing_0;
+    @apply w-sm min-w-size_00 p-spacing_00 m-spacing_00;
 
     svg {
       @apply w-icon_xs h-icon_xs;
@@ -124,19 +124,19 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 
 // By Sizes(rem)
 .#{$component}-responsive-xl {
-  @apply h-size_r08;
+  @apply h-size_r28;
 }
 
 .#{$component}-responsive-lg {
-  @apply h-size_r06;
+  @apply h-size_r20;
 }
 
 .#{$component}-responsive-md {
-  @apply h-size_r05;
+  @apply h-size_r16;
 }
 
 .#{$component}-responsive-sm {
-  @apply px-spacing_04 h-size_r04;
+  @apply px-spacing_04 h-size_r12;
 }
 
 // By variant
