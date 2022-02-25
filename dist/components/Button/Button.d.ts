@@ -7,6 +7,7 @@ interface ButtonProps {
     size: string | 'sm' | 'md' | 'lg' | 'xl';
     bold: boolean;
     icon: boolean;
+    loading: boolean;
     responsiveHeight: boolean;
     id?: string;
     style?: object;
