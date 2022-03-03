@@ -5,10 +5,6 @@ $component: #{$prefix}-button;
 .#{$component} {
   @apply cursor-pointer font-bold outline-none transition duration-200 ease-linear;
 
-  & {
-    line-height: 1.5 !important;
-  }
-
   & + & {
     @apply ml-spacing_04;
   }
