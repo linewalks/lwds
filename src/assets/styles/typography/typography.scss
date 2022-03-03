@@ -72,7 +72,7 @@ $subtitle_multi_size: '02' 16px 26px -0.5px, '01' 14px 22px -0.3px;
 // name, size, line-height, letter-spacing, multi single diff
 $body_r_size: '06' 22px 27px -0.5px 6px, '05' 18px 22px -0.5px 5px,
   '04' 16px 21px -0.5px 4px, '03' 15px 19px -0.4px 3px,
-  '02' 14px 18px -0.3px 2px, '01' 13px 17px -0.3px 1px;
+  '02' 14px 18px -0.3px 3px;
 
 @each $name, $size, $lh, $ls, $diff in $body_r_size {
   .body_#{$name}_r {
@@ -90,9 +90,8 @@ $body_r_size: '06' 22px 27px -0.5px 6px, '05' 18px 22px -0.5px 5px,
 }
 
 // name, size, line-height, letter-spacing, multi single diff
-$body_m_size: '06' 22px 33px -0.5px 5px, '05' 18px 27px -0.5px 4px,
-  '04' 16px 25px -0.5px 3px, '03' 15px 21px -0.4px 2px,
-  '02' 14px 20px -0.3px 2px, '01' 13px 19px -0.3px 1px;
+$body_m_size: '03' 15px 22px -0.4px 2px, '02' 14px 20px -0.3px 2px,
+  '01' 13px 19px -0.3px 1px;
 
 @each $name, $size, $lh, $ls, $diff in $body_m_size {
   .body_#{$name}_m {
