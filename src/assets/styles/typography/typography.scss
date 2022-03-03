@@ -1,0 +1,131 @@
+// 사용자가 먼저 선언한 변수 값이 있다면 그 값을 활용하기 위해 !default 정의
+$font_family: 'Spoqa Han Sans Neo' !default;
+
+$bold: 700 !default;
+$medium: 500 !default;
+$regular: 400 !default;
+
+.font-family {
+  font-family: $font_family;
+}
+
+.heading {
+  @extend .font-family;
+  font-weight: $bold;
+  letter-spacing: -0.5px;
+}
+
+// name, font-size, line-height
+$heading_size: '04' 32px 47px, '03' 28px 40px, '02' 22px 32px, '01' 18px 25px;
+
+@each $name, $size, $lh in $heading_size {
+  .heading_#{$name} {
+    @extend .heading;
+    font-size: #{$size};
+    line-height: #{$lh};
+  }
+}
+
+$heading_multi_size: '02' 22px 35px, '01' 18px 28px;
+
+@each $name, $size, $lh in $heading_multi_size {
+  .heading_#{$name}_multi {
+    @extend .heading;
+    font-size: #{$size};
+    line-height: #{$lh};
+  }
+}
+
+.subtitle {
+  @extend .font-family;
+  font-weight: $bold;
+}
+
+$subtitle_size: '02' 16px 23px -0.5px, '01' 14px 20px -0.3px;
+
+@each $name, $size, $lh, $ls in $subtitle_size {
+  .subtitle_#{$name} {
+    @extend .subtitle;
+    letter-spacing: #{$ls};
+    font-size: #{$size};
+    line-height: #{$lh};
+  }
+}
+
+$subtitle_multi_size: '02' 16px 26px -0.5px, '01' 14px 22px -0.3px;
+
+@each $name, $size, $lh, $ls in $subtitle_multi_size {
+  .subtitle_#{$name}_multi {
+    @extend .subtitle;
+    letter-spacing: #{$ls};
+    font-size: #{$size};
+    line-height: #{$lh};
+  }
+}
+
+.body {
+  @extend .font-family;
+  text-decoration: inherit;
+  text-transform: inherit;
+}
+
+// name, size, line-height, letter-spacing, multi single diff
+$body_r_size: '06' 22px 27px -0.5px 6px, '05' 18px 22px -0.5px 5px,
+  '04' 16px 21px -0.5px 4px, '03' 15px 19px -0.4px 3px,
+  '02' 14px 18px -0.3px 3px;
+
+@each $name, $size, $lh, $ls, $diff in $body_r_size {
+  .body_#{$name}_r {
+    @extend .body;
+    font-weight: $regular;
+    letter-spacing: #{$ls};
+    font-size: #{$size};
+    line-height: #{$lh};
+  }
+
+  .body_#{$name}_r_multi {
+    @extend .body_#{$name}_r;
+    line-height: calc(#{$lh} + #{$diff});
+  }
+}
+
+// name, size, line-height, letter-spacing, multi single diff
+$body_m_size: '03' 15px 22px -0.4px 2px, '02' 14px 20px -0.3px 2px,
+  '01' 13px 19px -0.3px 1px;
+
+@each $name, $size, $lh, $ls, $diff in $body_m_size {
+  .body_#{$name}_m {
+    @extend .body;
+    font-weight: $medium;
+    letter-spacing: #{$ls};
+    font-size: #{$size};
+    line-height: calc(#{$lh} + #{$diff});
+  }
+
+  .body_#{$name}_m_multi {
+    @extend .body_#{$name}_m;
+    line-height: calc(#{$lh} + (#{$diff} * 2));
+  }
+}
+
+.caption {
+  @extend .font-family;
+  letter-spacing: -0.2px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.caption_m {
+  @extend .caption;
+  font-weight: $medium;
+}
+
+.caption_r {
+  @extend .caption;
+  font-weight: $regular;
+}
+
+.caption_b {
+  @extend .caption;
+  font-weight: $bold;
+}

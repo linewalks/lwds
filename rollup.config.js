@@ -123,4 +123,17 @@ export default [
     plugins: commonPlugins('src/assets/styles'),
     external: commonExternal(),
   },
+  {
+    input: 'src/assets/styles/index.scss',
+    output: {
+      file: 'dist/typography.css',
+      format: 'es',
+    },
+    plugins: [
+      postcss({
+        modules: false,
+        extract: true,
+      }),
+    ],
+  },
 ]
