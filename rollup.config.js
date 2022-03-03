@@ -50,6 +50,7 @@ function commonPlugins(path) {
         'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
       },
     }),
+    url(),
     json(),
     typescript({
       tsconfigDefaults: { compilerOptions: { declaration: true } },
