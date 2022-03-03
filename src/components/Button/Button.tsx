@@ -21,6 +21,7 @@ interface ButtonProps {
   size: string | 'sm' | 'md' | 'lg' | 'xl'
   bold: boolean
   icon: boolean
+  loading: boolean
   responsiveHeight: boolean
   id?: string
   style?: object
@@ -41,6 +42,7 @@ function renderButton<
     size,
     bold,
     icon,
+    loading,
     responsiveHeight,
     id,
     style,
@@ -82,6 +84,7 @@ function renderButton<
           ghostType !== 'default' &&
           cls('button', 'ghost', ghostType),
         icon && cls('button', 'icon'),
+        loading && cls('button', variant, 'loading'),
       )}
       style={{
         ...style,
@@ -112,6 +115,7 @@ Button.defaultProps = {
   size: 'md',
   bold: true,
   icon: false,
+  loading: false,
   responsiveHeight: false,
 }
 

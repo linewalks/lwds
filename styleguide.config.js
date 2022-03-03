@@ -86,6 +86,7 @@ module.exports = {
           components: () => [
             'src/components/Icon/IconSet/Navigation.tsx',
             'src/components/Icon/IconSet/Action.tsx',
+            'src/components/Icon/IconSet/Domain.tsx',
             'src/components/Icon/IconSet/Specific.tsx',
             'src/components/Icon/IconSet/Toggle.tsx',
           ],
