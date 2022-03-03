@@ -125,7 +125,7 @@ export default [
   {
     input: 'src/assets/styles/index.scss',
     output: {
-      file: 'dist/lwds.css',
+      file: 'dist/typography.css',
       format: 'es',
     },
     plugins: [
