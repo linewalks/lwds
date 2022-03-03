@@ -48,6 +48,11 @@
     "clear:branch": "git branch --merged | grep -v \\* | xargs -n 1 git branch -d",
     "release": "standard-version"
   },
+  "standard-version": {
+    "scripts": {
+      "pretag": "yarn build:docs"
+    }
+  },
   "jest": {
     "testPathIgnorePatterns": [
       "<rootDir>/src/components/__tests__/__snapshots__/",
