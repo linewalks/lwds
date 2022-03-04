@@ -13,9 +13,9 @@ const ConceptSetIcon = (props: SVGIconProps) => {
           y2="41.621%"
           id="96whp9apva"
         >
-          <stop stop-color="#848F9A" offset="0%" />
-          <stop stop-color="#4E5762" offset="66.259%" />
-          <stop stop-color="#4D5661" offset="100%" />
+          <stop stopColor="#848F9A" offset="0%" />
+          <stop stopColor="#4E5762" offset="66.259%" />
+          <stop stopColor="#4D5661" offset="100%" />
         </linearGradient>
         <linearGradient
           x1="50%"
@@ -24,9 +24,9 @@ const ConceptSetIcon = (props: SVGIconProps) => {
           y2="100%"
           id="25j2332z2b"
         >
-          <stop stop-color="#848F9A" offset="0%" />
-          <stop stop-color="#4E5762" offset="66.259%" />
-          <stop stop-color="#4D5661" offset="100%" />
+          <stop stopColor="#848F9A" offset="0%" />
+          <stop stopColor="#4E5762" offset="66.259%" />
+          <stop stopColor="#4D5661" offset="100%" />
         </linearGradient>
         <linearGradient
           x1="0%"
@@ -35,9 +35,9 @@ const ConceptSetIcon = (props: SVGIconProps) => {
           y2="39.784%"
           id="fzyky4csdc"
         >
-          <stop stop-color="#96A0A9" offset="0%" />
-          <stop stop-color="#B3BBC2" offset="48.569%" />
-          <stop stop-color="#FFF" offset="100%" />
+          <stop stopColor="#96A0A9" offset="0%" />
+          <stop stopColor="#B3BBC2" offset="48.569%" />
+          <stop stopColor="#FFF" offset="100%" />
         </linearGradient>
         <linearGradient
           x1="22.655%"
@@ -46,9 +46,9 @@ const ConceptSetIcon = (props: SVGIconProps) => {
           y2="38.285%"
           id="joqx3vufef"
         >
-          <stop stop-color="#96A0A9" offset="0%" />
-          <stop stop-color="#B3BBC2" offset="34.205%" />
-          <stop stop-color="#FFF" offset="100%" />
+          <stop stopColor="#96A0A9" offset="0%" />
+          <stop stopColor="#B3BBC2" offset="34.205%" />
+          <stop stopColor="#FFF" offset="100%" />
         </linearGradient>
         <filter
           x="-7.1%"
@@ -113,9 +113,9 @@ const ConceptSetIcon = (props: SVGIconProps) => {
           id="dltkpkqnmg"
         />
       </defs>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path d="M0 0h24v24H0z" />
-        <g fill-rule="nonzero">
+        <g fillRule="nonzero">
           <path
             d="M0 2.5h14v10.406c0 1.433-3.134 2.594-7 2.594-3.77 0-6.843-1.104-6.994-2.487L0 12.906V2.5z"
             fill="url(#96whp9apva)"
