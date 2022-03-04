@@ -6,9 +6,6 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 
 .#{$component} {
   @apply bg-background cursor-pointer font-bold outline-none transition duration-200 ease-linear relative;
-  & + & {
-    @apply ml-spacing_04;
-  }
   &:hover {
     @apply no-underline;
   }
@@ -101,10 +98,6 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   min-width: 56px;
   border-radius: 6px;
   font-size: 13px;
-
-  & + & {
-    margin-left: 4px;
-  }
 
   & .#{$component}-lefticon {
     @apply w-icon_xs h-icon_xs mr-spacing_02;
