@@ -6,9 +6,6 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 
 .#{$component} {
   @apply bg-background cursor-pointer font-bold outline-none transition duration-200 ease-linear relative;
-  & + & {
-    @apply ml-spacing_04;
-  }
   &:hover {
     @apply no-underline;
   }
@@ -102,10 +99,6 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   border-radius: 6px;
   font-size: 13px;
 
-  & + & {
-    margin-left: 4px;
-  }
-
   & .#{$component}-lefticon {
     @apply w-icon_xs h-icon_xs mr-spacing_02;
   }
@@ -177,7 +170,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 }
 
 .#{$component}-tertiary {
-  @apply text-text_accent border border-button_primary;
+  @apply text-text_accent border-2 border-button_primary;
   svg {
     @apply fill-primary;
   }
@@ -221,6 +214,11 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
     @apply text-text_info;
     svg {
       @apply fill-primary;
+    }
+
+    &:disabled {
+      @apply bg-button_disabled text-text_disabled;
+      box-shadow: none;
     }
   }
 
