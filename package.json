@@ -43,6 +43,7 @@
     "build:prod": "NODE_ENV=production yarn build",
     "styleguide": "styleguidist server",
     "build:docs": "styleguidist build",
+    "build:commit": "git add . && git commit -m \"chore(build): build\"",
     "eslint": "eslint ./src/**/*.js ./src/**/**/*.js",
     "eslint:fix": "eslint ./src/**/*.js ./src/**/**/*.js --fix",
     "clear:branch": "git branch --merged | grep -v \\* | xargs -n 1 git branch -d",
@@ -50,7 +51,7 @@
   },
   "standard-version": {
     "scripts": {
-      "pretag": "yarn build:docs"
+      "postcommit": "yarn build:docs && yarn build && yarn build:commit"
     }
   },
   "jest": {
