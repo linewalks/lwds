@@ -4,17 +4,16 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.16](https://github.com/linewalks/lwds/compare/v0.0.15...v0.0.16) (2022-03-22)
 
-
 ### Bug Fixes
 
-* **icon:** ObservationIcon 수정 ([6d78690](https://github.com/linewalks/lwds/commit/6d78690cdc252cf82262ce6d02367284c67451fd))
+- **icon:** ObservationIcon 수정 ([6d78690](https://github.com/linewalks/lwds/commit/6d78690cdc252cf82262ce6d02367284c67451fd))
+- **icon:** ConceptSetIcon 수정 ([6f7a6be](https://github.com/linewalks/lwds/pull/133))
 
 ### [0.0.15](https://github.com/linewalks/lwds/compare/v0.0.14...v0.0.15) (2022-03-04)
 
-
 ### Bug Fixes
 
-* **Button:** button style bug 수정 ([0c996ba](https://github.com/linewalks/lwds/commit/0c996babcc70b8c7ece2f63dc2c4eb37d28e917b))
+- **Button:** button style bug 수정 ([0c996ba](https://github.com/linewalks/lwds/commit/0c996babcc70b8c7ece2f63dc2c4eb37d28e917b))
 
 ### [0.0.14](https://github.com/linewalks/lwds/compare/v0.0.8...v0.0.14) (2022-03-04)
 
