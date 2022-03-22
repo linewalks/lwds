@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/linewalks/lwds/compare/v0.0.15...v0.0.16) (2022-03-22)
+
+
+### Bug Fixes
+
+* **icon:** ObservationIcon 수정 ([6d78690](https://github.com/linewalks/lwds/commit/6d78690cdc252cf82262ce6d02367284c67451fd))
+
 ### [0.0.15](https://github.com/linewalks/lwds/compare/v0.0.14...v0.0.15) (2022-03-04)
 
 
