@@ -90,6 +90,7 @@ const ColorSet = {
 
 const Box = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 
   dl {
@@ -99,30 +100,38 @@ const Box = styled.div`
     padding: 5px;
     text-align: center;
   }
-
-  dd {
-    margin: 0;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 20px;
-  }
 `
 
-const ColorBox = styled.section<{ size?: number; value: string }>`
-  display: inline-block;
-  width: ${({ size = 100 }) => `${size}px`};
-  height: ${({ size = 100 }) => `${size}px`};
-  background-color: ${({ value }) => value};
-  border: ${({ value }) =>
-    value === '#ffffff' ? `1px solid #cbd0d8` : 'none'};
+const ColorBox = styled.div<{ color: string; isBright: boolean }>`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 50px;
+  background-color: ${({ color }) => color};
+  border: ${({ color }) =>
+    color === '#ffffff' ? `1px solid #cbd0d8` : 'none'};
+
+  color: ${({ isBright }) => (isBright ? 'black' : 'white')};
 `
 
-const WrapColorPalette = styled.section`
+const WrapColorPalette = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px 10px 30px;
+  width: 350px;
 `
+
+const hexBrightness = (color: string) => {
+  const hasFullSpec = color.length == 7
+  const splitStr = color.substr(1).match(hasFullSpec ? /(\S{2})/g : /(\S{1})/g)
+
+  const r = parseInt(splitStr[0] + (hasFullSpec ? '' : splitStr[0]), 16)
+  const g = parseInt(splitStr[1] + (hasFullSpec ? '' : splitStr[1]), 16)
+  const b = parseInt(splitStr[2] + (hasFullSpec ? '' : splitStr[2]), 16)
+
+  // brightness 계산 참고 (http://alienryderflex.com/hsp.html)
+  return Math.sqrt((r * r * 299 + g * g * 587 + b * b * 114) / 1000)
+}
 
 const rgba2hex = (color: string): string => {
   const rgbaRegex = /^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i
@@ -147,16 +156,18 @@ const rgba2hex = (color: string): string => {
 }
 
 const ColorPalette = ({ themeName }) => (
-  <WrapColorPalette>
+  <WrapColorPalette className="color_palette">
     <h2 style={{ fontSize: '18px', fontWeight: 'bold' }}>{themeName}</h2>
     <Box>
       {_.map(ColorSet[themeName], (value, key) => (
         <dl key={key}>
-          <dt>{key}</dt>
-          <dt style={{ marginBottom: '5px' }}>{rgba2hex(value)}</dt>
-          <dd>
-            <ColorBox value={value} />
-          </dd>
+          <ColorBox
+            color={value}
+            isBright={hexBrightness(rgba2hex(value)) > 255 * 0.6}
+          >
+            <dt>{key}</dt> &nbsp;
+            <dd style={{ marginBottom: '5px' }}>({rgba2hex(value)})</dd>
+          </ColorBox>
         </dl>
       ))}
     </Box>
