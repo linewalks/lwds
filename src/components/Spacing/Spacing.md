@@ -38,9 +38,9 @@
 | spacing_r04 |  0.5rem  |
 | spacing_r06 | 0.75rem  |
 | spacing_r08 |   1rem   |
-| spacing_r10 |  1.5rem  |
-| spacing_r12 | 1.25rem  |
-| spacing_r14 |  1.5rem  |
+| spacing_r10 | 1.25rem  |
+| spacing_r12 |  1.5rem  |
+| spacing_r14 | 1.75rem  |
 | spacing_r16 |   2rem   |
 | spacing_r18 | 2.25rem  |
 | spacing_r20 |  2.5rem  |
