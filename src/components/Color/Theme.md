@@ -1,0 +1,5 @@
+### Theme Color
+
+```js
+<Theme />
+```

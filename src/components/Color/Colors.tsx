@@ -3,158 +3,133 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import * as colors from '@assets/styles/color/semantics'
 
+import { rgba2hex, hexBrightness } from '@src/helpers/color'
+
 const ColorSet = {
   Common: {
-    background: colors.$background,
-    secondary_background: colors.$secondary_background,
-    layout_01: colors.$layout_01,
-    layout_02: colors.$layout_02,
-    layout_03: colors.$layout_03,
-    layout_04: colors.$layout_04,
-    layout_05: colors.$layout_05,
-    layout_emphasize_01: colors.$layout_emphasize_01,
-    layout_emphasize_02: colors.$layout_emphasize_02,
-    layout_emphasize_03: colors.$layout_emphasize_03,
-    primary_element: colors.$primary_element,
-    secondary_element: colors.$secondary_element,
-    danger: colors.$danger,
-    safe: colors.$safe,
+    color_background: colors.$color_background,
+    color_secondary_background: colors.$color_secondary_background,
+    color_layout_01: colors.$color_layout_01,
+    color_layout_02: colors.$color_layout_02,
+    color_layout_03: colors.$color_layout_03,
+    color_layout_04: colors.$color_layout_04,
+    color_layout_05: colors.$color_layout_05,
+    color_layout_emphasize_01: colors.$color_layout_emphasize_01,
+    color_layout_emphasize_02: colors.$color_layout_emphasize_02,
+    color_layout_emphasize_03: colors.$color_layout_emphasize_03,
+    color_primary_element: colors.$color_primary_element,
+    color_secondary_element: colors.$color_secondary_element,
+    color_danger: colors.$color_danger,
+    color_safe: colors.$color_safe,
   },
   Text: {
-    text_01: colors.$text_01,
-    text_02: colors.$text_02,
-    text_03: colors.$text_03,
-    text_04: colors.$text_04,
-    text_05: colors.$text_05,
-    text_error: colors.$text_error,
-    text_safe: colors.$text_safe,
-    text_info: colors.$text_info,
-    text_accent: colors.$text_accent,
-    text_danger: colors.$text_danger,
-    text_inverse: colors.$text_inverse,
-    text_disabled: colors.$text_disabled,
+    color_text_01: colors.$color_text_01,
+    color_text_02: colors.$color_text_02,
+    color_text_03: colors.$color_text_03,
+    color_text_04: colors.$color_text_04,
+    color_text_05: colors.$color_text_05,
+    color_text_error: colors.$color_text_error,
+    color_text_safe: colors.$color_text_safe,
+    color_text_info: colors.$color_text_info,
+    color_text_accent: colors.$color_text_accent,
+    color_text_danger: colors.$color_text_danger,
+    color_text_inverse: colors.$color_text_inverse,
+    color_text_disabled: colors.$color_text_disabled,
   },
   Icon: {
-    icon_01: colors.$icon_01,
-    icon_02: colors.$icon_02,
-    icon_03: colors.$icon_03,
-    icon_04: colors.$icon_04,
-    icon_inverse_01: colors.$icon_inverse_01,
-    icon_inverse_02: colors.$icon_inverse_02,
-    icon_disabled: colors.$icon_disabled,
-    icon_danger: colors.$icon_danger,
-    icon_safe: colors.$icon_safe,
-    icon_accent: colors.$icon_accent,
+    color_icon_01: colors.$color_icon_01,
+    color_icon_02: colors.$color_icon_02,
+    color_icon_03: colors.$color_icon_03,
+    color_icon_04: colors.$color_icon_04,
+    color_icon_inverse_01: colors.$color_icon_inverse_01,
+    color_icon_inverse_02: colors.$color_icon_inverse_02,
+    color_icon_disabled: colors.$color_icon_disabled,
+    color_icon_danger: colors.$color_icon_danger,
+    color_icon_safe: colors.$color_icon_safe,
+    color_icon_accent: colors.$color_icon_accent,
   },
   Button: {
-    button_primary: colors.$button_primary,
-    button_secondary: colors.$button_secondary,
-    button_tertiary: colors.$button_tertiary,
-    button_disabled: colors.$button_disabled,
-    button_danger: colors.$button_danger,
+    color_button_primary: colors.$color_button_primary,
+    color_button_secondary: colors.$color_button_secondary,
+    color_button_tertiary: colors.$color_button_tertiary,
+    color_button_disabled: colors.$color_button_disabled,
+    color_button_danger: colors.$color_button_danger,
   },
   Field: {
-    field_01: colors.$field_01,
-    field_disabled: colors.$field_disabled,
+    color_field_01: colors.$color_field_01,
+    color_field_disabled: colors.$color_field_disabled,
   },
   hover: {
-    hover_primary: colors.$hover_primary,
-    hover_tertiary_button: colors.$hover_tertiary_button,
-    hover_danger_tertiary_button: colors.$hover_danger_tertiary_button,
+    color_hover_primary: colors.$color_hover_primary,
+    color_hover_tertiary_button: colors.$color_hover_tertiary_button,
+    color_hover_danger_tertiary_button:
+      colors.$color_hover_danger_tertiary_button,
   },
   focus: {
-    focus_primary: colors.$focus_primary,
-    focus_accent: colors.$focus_accent,
-    focus_secondary: colors.$focus_secondary,
-    focus_error: colors.$focus_error,
+    color_focus_primary: colors.$color_focus_primary,
+    color_focus_accent: colors.$color_focus_accent,
+    color_focus_secondary: colors.$color_focus_secondary,
+    color_focus_error: colors.$color_focus_error,
   },
   active: {
-    active_primary: colors.$active_primary,
-    active_tertiary_button: colors.$active_tertiary_button,
-    active_danger_tertiary_button: colors.$active_danger_tertiary_button,
+    color_active_primary: colors.$color_active_primary,
+    color_active_tertiary_button: colors.$color_active_tertiary_button,
+    color_active_danger_tertiary_button:
+      colors.$color_active_danger_tertiary_button,
   },
   disabled: {
-    disabled_01: colors.$disabled_01,
-    disabled_02: colors.$disabled_02,
+    color_disabled_01: colors.$color_disabled_01,
+    color_disabled_02: colors.$color_disabled_02,
   },
   etc: {
-    shadow_01: colors.$shadow_01,
-    shadow_02: colors.$shadow_02,
-    skeleton_01: colors.$skeleton_01,
-    highlight_01: colors.$highlight_01,
-    dimmed_overlay: colors.$dimmed_overlay,
+    color_shadow_01: colors.$color_shadow_01,
+    color_shadow_02: colors.$color_shadow_02,
+    color_skeleton_01: colors.$color_skeleton_01,
+    color_highlight_01: colors.$color_highlight_01,
+    color_dimmed_overlay: colors.$color_dimmed_overlay,
   },
 }
+
+const WrapColorPalette = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 370px;
+`
 
 const Box = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   dl {
-    display: inline-flex;
-    flex-direction: column;
-    width: 175px;
     padding: 5px;
-    text-align: center;
-  }
-
-  dd {
-    margin: 0;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 20px;
   }
 `
 
-const ColorBox = styled.section<{ size?: number; value: string }>`
-  display: inline-block;
-  width: ${({ size = 100 }) => `${size}px`};
-  height: ${({ size = 100 }) => `${size}px`};
-  background-color: ${({ value }) => value};
-  border: ${({ value }) =>
-    value === '#ffffff' ? `1px solid #cbd0d8` : 'none'};
+const ColorBox = styled.div<{ color: string; isBright: boolean }>`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 360px;
+  height: 50px;
+  background-color: ${({ color }) => color};
+  border: ${({ color }) =>
+    color === '#ffffff' ? `1px solid #cbd0d8` : 'none'};
+  color: ${({ isBright }) => (isBright ? 'black' : 'white')};
 `
-
-const WrapColorPalette = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin: 10px 10px 30px;
-`
-
-const rgba2hex = (color: string): string => {
-  const rgbaRegex = /^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i
-  const colorRemoveSpace = color.replace(/\s/g, '')
-
-  if (!colorRemoveSpace.match(rgbaRegex)) {
-    return color
-  }
-
-  const rgb = color.replace(/\s/g, '').match(rgbaRegex)
-  const alpha = ((rgb && rgb[4]) || '').trim()
-  const hex = rgb
-    ? (Number(rgb[1]) | (1 << 8)).toString(16).slice(1) +
-      (Number(rgb[2]) | (1 << 8)).toString(16).slice(1) +
-      (Number(rgb[3]) | (1 << 8)).toString(16).slice(1)
-    : color
-
-  let alp = alpha === '' ? 1 : alpha
-  alp = ((Number(alp) * 255) | (1 << 8)).toString(16).slice(1)
-
-  return '#' + hex + alp
-}
 
 const ColorPalette = ({ themeName }) => (
-  <WrapColorPalette>
+  <WrapColorPalette className="color_palette">
     <h2 style={{ fontSize: '18px', fontWeight: 'bold' }}>{themeName}</h2>
     <Box>
       {_.map(ColorSet[themeName], (value, key) => (
         <dl key={key}>
-          <dt>{key}</dt>
-          <dt style={{ marginBottom: '5px' }}>{rgba2hex(value)}</dt>
-          <dd>
-            <ColorBox value={value} />
-          </dd>
+          <ColorBox
+            color={value}
+            isBright={hexBrightness(rgba2hex(value)) > 255 * 0.6}
+          >
+            <dt>{key}</dt> &nbsp;
+            <dd>({rgba2hex(value)})</dd>
+          </ColorBox>
         </dl>
       ))}
     </Box>

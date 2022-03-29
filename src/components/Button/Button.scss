@@ -5,7 +5,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   'danger_tertiary';
 
 .#{$component} {
-  @apply bg-background cursor-pointer font-bold outline-none transition duration-200 ease-linear relative;
+  @apply bg-color_background cursor-pointer font-bold outline-none transition duration-200 ease-linear relative;
   &:hover {
     @apply no-underline;
   }
@@ -134,10 +134,10 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 
 // By variant
 .#{$component}-primary {
-  @apply bg-button_primary text-text_inverse;
+  @apply bg-color_button_primary text-color_text_inverse;
 
   svg {
-    @apply fill-background;
+    @apply fill-color_background;
   }
 
   &:hover {
@@ -149,13 +149,13 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   }
 
   &:disabled {
-    @apply bg-button_disabled text-text_disabled;
+    @apply bg-color_button_disabled text-color_text_disabled;
     box-shadow: none;
   }
 }
 
 .#{$component}-secondary {
-  @apply bg-button_secondary text-text_01;
+  @apply bg-color_button_secondary text-color_text_01;
 
   &:hover {
     @apply shadow-shadow_hover;
@@ -164,40 +164,40 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
     @apply shadow-shadow_active;
   }
   &:disabled {
-    @apply bg-button_disabled text-text_disabled;
+    @apply bg-color_button_disabled text-color_text_disabled;
     box-shadow: none;
   }
 }
 
 .#{$component}-tertiary {
-  @apply text-text_accent border border-button_primary;
+  @apply text-color_text_accent border border-color_button_primary;
   svg {
-    @apply fill-primary;
+    @apply fill-color_primary_element;
   }
   &:hover {
-    @apply bg-hover_tertiary_button text-text_inverse;
+    @apply bg-color_hover_tertiary_button text-color_text_inverse;
 
     svg {
-      @apply fill-background;
+      @apply fill-color_background;
     }
   }
   &:active {
-    @apply bg-active_tertiary_button border-active_tertiary_button text-text_inverse;
+    @apply bg-color_active_tertiary_button border-color_active_tertiary_button text-color_text_inverse;
 
     svg {
-      @apply fill-background;
+      @apply fill-color_background;
     }
   }
   &:disabled {
-    @apply bg-button_disabled text-text_disabled border-none;
+    @apply bg-color_button_disabled text-color_text_disabled border-none;
     box-shadow: none;
   }
 }
 
 .#{$component}-ghost {
-  @apply text-text_01;
+  @apply text-color_text_01;
   svg {
-    @apply fill-icon01;
+    @apply fill-color_icon_01;
   }
   &:hover {
     @apply shadow-shadow_hover;
@@ -206,35 +206,35 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
     @apply shadow-shadow_active;
   }
   &:disabled {
-    @apply bg-button_disabled text-text_disabled;
+    @apply bg-color_button_disabled text-color_text_disabled;
     box-shadow: none;
   }
 
   &.#{$component}-ghost-important {
-    @apply text-text_info;
+    @apply text-color_text_info;
     svg {
-      @apply fill-primary;
+      @apply fill-color_primary_element;
     }
 
     &:disabled {
-      @apply bg-button_disabled text-text_disabled;
+      @apply bg-color_button_disabled text-color_text_disabled;
       box-shadow: none;
     }
   }
 
   &.#{$component}-ghost-danger {
-    @apply text-danger;
+    @apply text-color_danger;
     svg {
-      @apply fill-danger;
+      @apply fill-color_danger;
     }
   }
 }
 
 .#{$component}-danger_primary {
-  @apply bg-danger text-text_inverse;
+  @apply bg-color_danger text-color_text_inverse;
 
   svg {
-    @apply fill-background;
+    @apply fill-color_background;
   }
   &:hover {
     @apply shadow-shadow_hover;
@@ -243,32 +243,32 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
     @apply shadow-shadow_active;
   }
   &:disabled {
-    @apply bg-button_disabled text-text_disabled;
+    @apply bg-color_button_disabled text-color_text_disabled;
     box-shadow: none;
   }
 }
 
 .#{$component}-danger_tertiary {
-  @apply text-danger border border-danger;
+  @apply text-color_danger border border-color_danger;
   svg {
-    @apply fill-danger;
+    @apply fill-color_danger;
   }
   &:hover {
-    @apply bg-hover_danger_tertiary_button text-text_inverse;
+    @apply bg-color_hover_danger_tertiary_button text-color_text_inverse;
 
     svg {
-      @apply fill-background;
+      @apply fill-color_background;
     }
   }
   &:active {
-    @apply bg-active_danger_tertiary_button border-active_danger_tertiary_button text-text_inverse;
+    @apply bg-color_active_danger_tertiary_button border-color_active_danger_tertiary_button text-color_text_inverse;
 
     svg {
-      @apply fill-background;
+      @apply fill-color_background;
     }
   }
   &:disabled {
-    @apply bg-button_disabled text-text_disabled border-none;
+    @apply bg-color_button_disabled text-color_text_disabled border-none;
     box-shadow: none;
   }
 }

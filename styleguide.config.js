@@ -53,6 +53,7 @@ module.exports = {
           components: () => [
             'src/components/Color/Core.tsx',
             'src/components/Color/Status.tsx',
+            'src/components/Color/Theme.tsx',
           ],
         },
         {

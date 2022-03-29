@@ -26,7 +26,7 @@ module.exports = {
   $lw_green50: '#0cb639',
   $lw_green60: '#087d27',
   $lw_green90: '#013c12',
-  $lw_highlight: '#fff000',
+  $lw_highlight: 'rgba(255, 240, 0, 0.24)',
   $lw_dimmed_overlay: 'rgba(36, 41, 45, 0.34)',
   $lw_active_overlay: 'rgba(36, 41, 45, 0.12)',
   $lw_hover_overlay: 'rgba(36, 41, 45, 0.08)',
