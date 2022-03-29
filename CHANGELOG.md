@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.0.17](https://github.com/linewalks/lwds/compare/v0.0.15...v0.0.17) (2022-03-29)
+### [0.0.18](https://github.com/linewalks/lwds/compare/v0.0.17...v0.0.18) (2022-03-29)
+
+### Bug Fixes
+
+- Shadow 내 Color Semantics 적용 오류 ([c760f78](https://github.com/linewalks/lwds/commit/
+
+### [0.0.17](https://github.com/linewalks/lwds/compare/v0.0.16...v0.0.17) (2022-03-29)
 
 ### Bug Fixes
 
