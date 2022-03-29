@@ -99,12 +99,12 @@ $body_m_size: '03' 15px 22px -0.4px 2px, '02' 14px 20px -0.3px 2px,
     font-weight: $medium;
     letter-spacing: #{$ls};
     font-size: #{$size};
-    line-height: calc(#{$lh} + #{$diff});
+    line-height: #{$lh};
   }
 
   .body_#{$name}_m_multi {
     @extend .body_#{$name}_m;
-    line-height: calc(#{$lh} + (#{$diff} * 2));
+    line-height: calc(#{$lh} + #{$diff});
   }
 }
 
