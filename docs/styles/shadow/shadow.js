@@ -10,8 +10,8 @@ module.exports = {
   $shadow_v4: `0 3px 24px 0 ${colors.$lw_shadow_02}`,
 
   // hover, active, dimmed는 기존 background 위에 덮어씌워야 하기 때문에 inset shadow로 설정
-  $shadow_hover: `inset 5rem 5rem ${colorSemantics.$hover_primary}`,
-  $shadow_active: `inset 5rem 5rem ${colorSemantics.$active_primary}`,
-  $shadow_dimmed: `inset 5rem 5rem ${colorSemantics.$dimmed_overlay}`,
-  $shadow_focus: ` 0 0 0 1px ${colorSemantics.$layout_01}, 0 0 0 2.5px ${colorSemantics.$focus_primary}`,
+  $shadow_hover: `inset 5rem 5rem ${colorSemantics.$color_hover_primary}`,
+  $shadow_active: `inset 5rem 5rem ${colorSemantics.$color_active_primary}`,
+  $shadow_dimmed: `inset 5rem 5rem ${colorSemantics.$color_dimmed_overlay}`,
+  $shadow_focus: ` 0 0 0 1px ${colorSemantics.$color_layout_01}, 0 0 0 2.5px ${colorSemantics.$color_focus_primary}`,
 }
