@@ -28,12 +28,7 @@ module.exports = {
       ...defaultStyle.minWidth,
     },
     boxShadow,
-    fill: (theme) => ({
-      background: theme('colors.background'),
-      primary: theme('colors.primary_element'),
-      danger: theme('colors.danger'),
-      icon01: theme('colors.icon01'),
-    }),
+    fill: colors,
     extend: {},
   },
   variants: {
