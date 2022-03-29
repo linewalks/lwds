@@ -1,5 +1,6 @@
 // lwds/styles 구성 modules (docs 상에서는 ECMAScript 사용)
 import colors from './color/semantics'
+import colorsTheme from './color/colors'
 import sizeSem from './size/semantics'
 import spacing from './spacing/semantics'
 import shadow from './shadow/semantics'
@@ -16,6 +17,7 @@ const deleteDollar = (obj) => {
 
 export default {
   ...deleteDollar(colors),
+  ...deleteDollar(colorsTheme),
   ...deleteDollar(sizeSem.size),
   ...deleteDollar(spacing),
   ...deleteDollar(shadow),

@@ -7,4 +7,11 @@ module.exports = {
     max: 'max-content',
     fit: 'fit-content',
   },
+  borderWidth: {
+    DEFAULT: '1px',
+    0: '0px',
+    2: '2px',
+    4: '4px',
+    8: '8px',
+  },
 }

@@ -218,33 +218,33 @@
   font-weight: 500;
   letter-spacing: -0.4px;
   font-size: 15px;
-  line-height: calc(22px + 2px);
+  line-height: 22px;
 }
 
 .body_03_m_multi {
-  line-height: calc(22px + (2px * 2));
+  line-height: calc(22px + 2px);
 }
 
 .body_02_m, .body_02_m_multi {
   font-weight: 500;
   letter-spacing: -0.3px;
   font-size: 14px;
-  line-height: calc(20px + 2px);
+  line-height: 20px;
 }
 
 .body_02_m_multi {
-  line-height: calc(20px + (2px * 2));
+  line-height: calc(20px + 2px);
 }
 
 .body_01_m, .body_01_m_multi {
   font-weight: 500;
   letter-spacing: -0.3px;
   font-size: 13px;
-  line-height: calc(19px + 1px);
+  line-height: 19px;
 }
 
 .body_01_m_multi {
-  line-height: calc(19px + (1px * 2));
+  line-height: calc(19px + 1px);
 }
 
 .caption, .caption_m, .caption_r, .caption_b {
