@@ -12,6 +12,9 @@ module.exports = {
   purge: {},
   darkMode: false, // or 'media' or 'class'
   theme: {
+    borderWidth: {
+      ...defaultStyle.borderWidth,
+    },
     colors: {
       transparent: 'transparent',
       ...colors,

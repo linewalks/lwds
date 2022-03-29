@@ -170,7 +170,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 }
 
 .#{$component}-tertiary {
-  @apply text-text_accent border-2 border-button_primary;
+  @apply text-text_accent border border-button_primary;
   svg {
     @apply fill-primary;
   }
