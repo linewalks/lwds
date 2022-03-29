@@ -94,6 +94,12 @@ const WrapColorPalette = styled.div`
   display: flex;
   flex-direction: column;
   width: 370px;
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
 `
 
 const Box = styled.div`
@@ -101,7 +107,11 @@ const Box = styled.div`
   flex-direction: column;
 
   dl {
+    margin: 0;
     padding: 5px;
+  }
+  dd {
+    margin: 0;
   }
 `
 
@@ -119,7 +129,7 @@ const ColorBox = styled.div<{ color: string; isBright: boolean }>`
 
 const ColorPalette = ({ themeName }) => (
   <WrapColorPalette className="color_palette">
-    <h2 style={{ fontSize: '18px', fontWeight: 'bold' }}>{themeName}</h2>
+    <h2>{themeName}</h2>
     <Box>
       {_.map(ColorSet[themeName], (value, key) => (
         <dl key={key}>
