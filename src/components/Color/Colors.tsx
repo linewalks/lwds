@@ -88,17 +88,18 @@ const ColorSet = {
   },
 }
 
+const WrapColorPalette = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 370px;
+`
+
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
 
   dl {
-    display: inline-flex;
-    flex-direction: column;
-    width: 175px;
     padding: 5px;
-    text-align: center;
   }
 `
 
@@ -106,31 +107,25 @@ const ColorBox = styled.div<{ color: string; isBright: boolean }>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 350px;
+  width: 360px;
   height: 50px;
   background-color: ${({ color }) => color};
   border: ${({ color }) =>
     color === '#ffffff' ? `1px solid #cbd0d8` : 'none'};
-
   color: ${({ isBright }) => (isBright ? 'black' : 'white')};
 `
 
-const WrapColorPalette = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 350px;
-`
-
 const hexBrightness = (color: string) => {
-  const hasFullSpec = color.length == 7
-  const splitStr = color.substr(1).match(hasFullSpec ? /(\S{2})/g : /(\S{1})/g)
+  const hasOpacity = color.length == 9
+  const splitStr = color.substr(1).match(/(\S{2})/g)
 
-  const r = parseInt(splitStr[0] + (hasFullSpec ? '' : splitStr[0]), 16)
-  const g = parseInt(splitStr[1] + (hasFullSpec ? '' : splitStr[1]), 16)
-  const b = parseInt(splitStr[2] + (hasFullSpec ? '' : splitStr[2]), 16)
+  const r = parseInt(splitStr[0], 16)
+  const g = parseInt(splitStr[1], 16)
+  const b = parseInt(splitStr[2], 16)
+  const a = hasOpacity ? parseInt(splitStr[3], 16) : 1
 
   // brightness 계산 참고 (http://alienryderflex.com/hsp.html)
-  return Math.sqrt((r * r * 299 + g * g * 587 + b * b * 114) / 1000)
+  return Math.sqrt(((r * r * 299 + g * g * 587 + b * b * 114) * a) / 1000)
 }
 
 const rgba2hex = (color: string): string => {
@@ -166,7 +161,7 @@ const ColorPalette = ({ themeName }) => (
             isBright={hexBrightness(rgba2hex(value)) > 255 * 0.6}
           >
             <dt>{key}</dt> &nbsp;
-            <dd style={{ marginBottom: '5px' }}>({rgba2hex(value)})</dd>
+            <dd>({rgba2hex(value)})</dd>
           </ColorBox>
         </dl>
       ))}
