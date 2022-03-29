@@ -21,6 +21,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
+- **color:** icon_04, highlight color 수정 ([333e8fa](https://github.com/linewalks/lwds/pull/139))
+- **button:** tertiary button border 수정 ([333e8fa](https://github.com/linewalks/lwds/pull/139))
+- **typo:** body medium line height 수정 ([333e8fa](https://github.com/linewalks/lwds/pull/139))
 - **icon:** ObservationIcon 수정 ([6d78690](https://github.com/linewalks/lwds/commit/6d78690cdc252cf82262ce6d02367284c67451fd))
 - **icon:** ConceptSetIcon 수정 ([6f7a6be](https://github.com/linewalks/lwds/pull/133))
 
