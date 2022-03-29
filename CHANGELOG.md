@@ -4,17 +4,20 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.17](https://github.com/linewalks/lwds/compare/v0.0.15...v0.0.17) (2022-03-29)
 
-
 ### Bug Fixes
 
-* **button:** tertiary button border width ([060afe4](https://github.com/linewalks/lwds/commit/060afe4d2ae524b24284268c451540b0247b20b2))
-* **color:** update icon_04 color value ([7c02232](https://github.com/linewalks/lwds/commit/7c022329a878068dfb38117bacba358e3ee96158))
-* **docs:** wrong spacing size in spacing docs ([e0784b7](https://github.com/linewalks/lwds/commit/e0784b70d36c6e009da941e1512d4e39a5bf7ab1))
-* **icon:** ObservationIcon 수정 ([6d78690](https://github.com/linewalks/lwds/commit/6d78690cdc252cf82262ce6d02367284c67451fd))
-* missing color opacity in highlight color ([5623434](https://github.com/linewalks/lwds/commit/562343497d3d28c14143b235805b0d97724c7153))
-* **typography:** body medium line height ([a48b5b7](https://github.com/linewalks/lwds/commit/a48b5b7fcab3a68c4521e9aff4002dfc0b51da94))
+- **button:** tertiary button border width ([060afe4](https://github.com/linewalks/lwds/commit/060afe4d2ae524b24284268c451540b0247b20b2))
+- **color:** update icon_04 color value ([7c02232](https://github.com/linewalks/lwds/commit/7c022329a878068dfb38117bacba358e3ee96158))
+- **docs:** wrong spacing size in spacing docs ([e0784b7](https://github.com/linewalks/lwds/commit/e0784b70d36c6e009da941e1512d4e39a5bf7ab1))
+- **icon:** ObservationIcon 수정 ([6d78690](https://github.com/linewalks/lwds/commit/6d78690cdc252cf82262ce6d02367284c67451fd))
+- missing color opacity in highlight color ([5623434](https://github.com/linewalks/lwds/commit/562343497d3d28c14143b235805b0d97724c7153))
+- **typography:** body medium line height ([a48b5b7](https://github.com/linewalks/lwds/commit/a48b5b7fcab3a68c4521e9aff4002dfc0b51da94))
 
 ### [0.0.16](https://github.com/linewalks/lwds/compare/v0.0.15...v0.0.16) (2022-03-22)
+
+### Feature
+
+- **color:** color prefix 와 theme color 추가 ([53a7f57](https://github.com/linewalks/lwds/pull/140))
 
 ### Bug Fixes
 
