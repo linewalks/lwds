@@ -61,7 +61,7 @@ const WrapColorPalette = styled.div`
   text-align: center;
 
   h2 {
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     font-size: 18px;
     font-weight: bold;
   }
@@ -73,9 +73,12 @@ const Box = styled.div`
 
   dl {
     display: flex;
+    margin: 0;
     padding: 5px;
   }
   dt {
+    display: flex;
+    align-items: center;
     margin-left: 10px;
   }
 `
