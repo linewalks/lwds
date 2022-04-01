@@ -57,6 +57,17 @@ module.exports = {
           ],
         },
         {
+          name: 'Icon',
+          content: 'src/components/Icon/Icon.md',
+          components: () => [
+            'src/components/Icon/IconSet/Navigation.tsx',
+            'src/components/Icon/IconSet/Action.tsx',
+            'src/components/Icon/IconSet/Domain.tsx',
+            'src/components/Icon/IconSet/Specific.tsx',
+            'src/components/Icon/IconSet/Toggle.tsx',
+          ],
+        },
+        {
           name: 'Shadow',
           content: 'src/components/Shadow/Shadow.md',
         },
@@ -80,17 +91,6 @@ module.exports = {
         {
           name: 'Button',
           content: 'src/components/Button/Button.md',
-        },
-        {
-          name: 'Icon',
-          content: 'src/components/Icon/Icon.md',
-          components: () => [
-            'src/components/Icon/IconSet/Navigation.tsx',
-            'src/components/Icon/IconSet/Action.tsx',
-            'src/components/Icon/IconSet/Domain.tsx',
-            'src/components/Icon/IconSet/Specific.tsx',
-            'src/components/Icon/IconSet/Toggle.tsx',
-          ],
         },
       ],
     },
