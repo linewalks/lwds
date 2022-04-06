@@ -11,10 +11,7 @@ const ignore = [
 module.exports = {
   title: 'LWDS Guide',
   assetsDir: './src/assets/',
-  require: [
-    // path.resolve(__dirname, 'src/assets/styles/reset.css'),
-    // path.resolve(__dirname, 'src/assets/styles/spoqaHansans.css'),
-  ],
+  require: [path.resolve(__dirname, 'src/assets/styles/reset.scss')],
   components: [
     // 'src/assets/styles/font.ts',
     // 'src/components/**/*.{js,jsx,ts,tsx}',
@@ -32,7 +29,7 @@ module.exports = {
       links: [
         {
           rel: 'stylesheet',
-          href: '/src/assets/styles/font/SpoqaHanSansNeo.scss',
+          href: '//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css',
         },
       ],
     },
