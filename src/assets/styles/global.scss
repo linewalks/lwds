@@ -7,6 +7,7 @@
 @import './typography/typography.scss';
 
 @import 'variables.scss';
+@import 'reset.scss';
 
 button,
 input,
@@ -15,4 +16,8 @@ select,
 textarea {
   line-height: 1.15;
   letter-spacing: -0.5px;
+}
+
+* {
+  font-family: 'Spoqa Han Sans Neo', sans-serif;
 }
