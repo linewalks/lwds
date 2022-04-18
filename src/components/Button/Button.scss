@@ -211,9 +211,9 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   }
 
   &.#{$component}-ghost-important {
-    @apply text-color_text_info;
+    @apply text-color_text_accent;
     svg {
-      @apply fill-color_primary_element;
+      @apply text-color_text_accent;
     }
 
     &:disabled {
