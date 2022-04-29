@@ -31,6 +31,11 @@ interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLElement>
 }
 
+const FONT_WEIGHT = {
+  BOLD: 700,
+  NORMAL: 500,
+}
+
 function renderButton<
   T extends ButtonProps,
   U extends React.RefObject<HTMLButtonElement>,
@@ -88,7 +93,7 @@ function renderButton<
       )}
       style={{
         ...style,
-        fontWeight: bold ? 'bold' : 'normal',
+        fontWeight: bold ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL,
       }}
       onClick={onClick}
       ref={ref}
