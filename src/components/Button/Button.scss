@@ -151,6 +151,10 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   &:disabled {
     @apply bg-color_button_disabled text-color_text_disabled;
     box-shadow: none;
+
+    svg {
+      @apply fill-color_icon_disabled;
+    }
   }
 }
 
@@ -166,6 +170,10 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   &:disabled {
     @apply bg-color_button_disabled text-color_text_disabled;
     box-shadow: none;
+
+    svg {
+      @apply fill-color_icon_disabled;
+    }
   }
 }
 
@@ -191,6 +199,10 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   &:disabled {
     @apply bg-color_button_disabled text-color_text_disabled border-none;
     box-shadow: none;
+
+    svg {
+      @apply fill-color_icon_disabled;
+    }
   }
 }
 
@@ -205,27 +217,29 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   &:active {
     @apply shadow-shadow_active;
   }
-  &:disabled {
-    @apply bg-color_button_disabled text-color_text_disabled;
-    box-shadow: none;
-  }
 
   &.#{$component}-ghost-important {
     @apply text-color_text_accent;
-    svg {
-      @apply text-color_text_accent;
-    }
 
-    &:disabled {
-      @apply bg-color_button_disabled text-color_text_disabled;
-      box-shadow: none;
+    svg {
+      @apply fill-color_text_accent;
     }
   }
 
   &.#{$component}-ghost-danger {
     @apply text-color_danger;
+
     svg {
       @apply fill-color_danger;
+    }
+  }
+
+  &:disabled {
+    @apply bg-color_button_disabled text-color_text_disabled;
+    box-shadow: none;
+
+    svg {
+      @apply fill-color_icon_disabled;
     }
   }
 }
@@ -245,6 +259,10 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   &:disabled {
     @apply bg-color_button_disabled text-color_text_disabled;
     box-shadow: none;
+
+    svg {
+      @apply fill-color_icon_disabled;
+    }
   }
 }
 
@@ -270,6 +288,10 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
   &:disabled {
     @apply bg-color_button_disabled text-color_text_disabled border-none;
     box-shadow: none;
+
+    svg {
+      @apply fill-color_icon_disabled;
+    }
   }
 }
 
