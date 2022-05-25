@@ -89,6 +89,10 @@ module.exports = {
           name: 'Button',
           content: 'src/components/Button/Button.md',
         },
+        {
+          name: 'Dropdown',
+          content: 'src/components/Dropdown/c.md',
+        },
       ],
     },
     // {
