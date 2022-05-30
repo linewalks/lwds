@@ -11,6 +11,15 @@ interface DropdownProps {
   children?: React.ReactElement
 }
 
+interface DropdownItemProps {
+  option: string
+  desc?: string
+  type?: 'default' | 'danger'
+  icon?: React.ReactElement | null
+  className?: string
+  style?: object
+}
+
 const Dropdown = ({
   isOpen = false,
   size = 'md',
@@ -28,6 +37,29 @@ const Dropdown = ({
         {children}
       </dl>
     )
+  )
+}
+
+Dropdown.Item = ({
+  option,
+  desc,
+  type = 'default',
+  icon,
+  className,
+  style,
+}: DropdownItemProps) => {
+  return (
+    <div
+      role="dropdown-menu"
+      className={clsx(`dropdown_item_${type}`, className)}
+      style={style}
+    >
+      <dt>
+        {icon && <i>{icon}</i>}
+        {option}
+      </dt>
+      {desc && <dd>{desc}</dd>}
+    </div>
   )
 }
 
