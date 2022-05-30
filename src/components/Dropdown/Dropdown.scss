@@ -1,0 +1,87 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-dropdown;
+
+@mixin dropdown-menu-common {
+  &:hover {
+    @apply bg-color_hover_primary;
+  }
+  &:active {
+    @apply bg-color_active_primary;
+  }
+}
+
+@mixin dropdown-menu-md {
+  display: flex;
+  width: 136px;
+  border-radius: 4px;
+
+  .#{$component}-menu-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.#{$component} {
+  @apply p-spacing_02 border-color_layout_04 shadow-shadow_v2 cursor-pointer;
+}
+
+.#{$component}-menu {
+  @include dropdown-menu-common;
+}
+
+.#{$component}-multiLine-menu {
+  @include dropdown-menu-common;
+  flex-direction: column;
+}
+
+.#{$component}-menu-term {
+  @apply text-color_text_01;
+
+  display: flex;
+  align-items: center;
+}
+
+.#{$component}-menu-desc {
+  @apply text-color_text_04;
+
+  margin-top: 4px;
+}
+
+//  By Dropdown Size
+.#{$component}-md {
+  width: 144px;
+  border-radius: 6px;
+  font-size: 14px;
+
+  .#{$component}-menu {
+    @include dropdown-menu-md;
+    @apply h-size_16 px-spacing_06;
+  }
+
+  .#{$component}-multiLine-menu {
+    @include dropdown-menu-md;
+    @apply px-spacing_06 py-spacing_03;
+
+    .icon-space {
+      margin-left: 24px;
+    }
+  }
+}
+
+// By Dropdown Item Type
+.#{$component}-menu-danger {
+  .#{$component}-menu-term {
+    @apply text-color_text_danger;
+  }
+
+  svg {
+    @apply fill-color_danger;
+  }
+}
