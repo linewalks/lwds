@@ -91,7 +91,7 @@ module.exports = {
         },
         {
           name: 'Dropdown',
-          content: 'src/components/Dropdown/c.md',
+          content: 'src/components/Dropdown/Dropdown.md',
         },
       ],
     },
