@@ -18,6 +18,7 @@ interface DropdownItemProps {
   desc?: string
   type?: 'danger'
   icon?: React.ReactElement | null
+  disabled?: boolean
   className?: string
   style?: object
 }
@@ -47,6 +48,7 @@ Dropdown.Item = ({
   desc,
   type,
   icon,
+  disabled,
   className,
   style,
 }: DropdownItemProps) => {
@@ -56,6 +58,7 @@ Dropdown.Item = ({
       className={clsx(
         cls('dropdown', desc && 'multiLine', 'menu'),
         type && cls('dropdown', 'menu', type),
+        disabled && cls('dropdown', 'menu', 'disabled'),
         className,
       )}
       style={style}
