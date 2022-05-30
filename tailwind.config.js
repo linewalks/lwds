@@ -27,6 +27,10 @@ module.exports = {
       ...size,
       ...defaultStyle.minWidth,
     },
+    height: {
+      ...size,
+      ...defaultStyle.height,
+    },
     boxShadow,
     fill: colors,
     extend: {},
