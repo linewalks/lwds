@@ -3,6 +3,8 @@
 $component: #{$prefix}-dropdown;
 
 @mixin dropdown-menu-common {
+  display: flex;
+
   &:hover {
     @apply bg-color_hover_primary;
   }
@@ -12,7 +14,6 @@ $component: #{$prefix}-dropdown;
 }
 
 @mixin dropdown-menu-md {
-  display: flex;
   width: 136px;
   border-radius: 4px;
 
@@ -24,6 +25,22 @@ $component: #{$prefix}-dropdown;
     svg {
       width: 16px;
       height: 16px;
+    }
+  }
+}
+
+@mixin dropdown-menu-lg {
+  width: 152px;
+  border-radius: 4px;
+
+  .#{$component}-menu-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 }
@@ -54,7 +71,7 @@ $component: #{$prefix}-dropdown;
   margin-top: 4px;
 }
 
-//  By Dropdown Size
+// By Dropdown Size
 .#{$component}-md {
   width: 144px;
   border-radius: 6px;
@@ -71,6 +88,26 @@ $component: #{$prefix}-dropdown;
 
     .icon-space {
       margin-left: 24px;
+    }
+  }
+}
+
+.#{$component}-lg {
+  width: 160px;
+  border-radius: 8px;
+  font-size: 16px;
+
+  .#{$component}-menu {
+    @include dropdown-menu-lg;
+    @apply h-size_20 px-spacing_06;
+  }
+
+  .#{$component}-multiLine-menu {
+    @include dropdown-menu-lg;
+    @apply px-spacing_06 py-spacing_04;
+
+    .icon-space {
+      margin-left: 32px;
     }
   }
 }
