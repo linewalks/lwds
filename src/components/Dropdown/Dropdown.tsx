@@ -1,6 +1,8 @@
 import React from 'react'
 import clsx from 'clsx'
 
+import cls from '@helpers/class'
+
 import '@components/Dropdown/Dropdown.scss'
 
 interface DropdownProps {
@@ -14,7 +16,7 @@ interface DropdownProps {
 interface DropdownItemProps {
   option: string
   desc?: string
-  type?: 'default' | 'danger'
+  type?: 'danger'
   icon?: React.ReactElement | null
   className?: string
   style?: object
@@ -31,7 +33,7 @@ const Dropdown = ({
     isOpen && (
       <dl
         role="dropdown-menu-list"
-        className={clsx(`dropdown_${size}`, className)}
+        className={clsx(cls('dropdown'), cls('dropdown', size), className)}
         style={style}
       >
         {children}
@@ -43,7 +45,7 @@ const Dropdown = ({
 Dropdown.Item = ({
   option,
   desc,
-  type = 'default',
+  type,
   icon,
   className,
   style,
@@ -51,14 +53,28 @@ Dropdown.Item = ({
   return (
     <div
       role="dropdown-menu"
-      className={clsx(`dropdown_item_${type}`, className)}
+      className={clsx(
+        cls('dropdown', desc && 'multiLine', 'menu'),
+        type && cls('dropdown', 'menu', type),
+        className,
+      )}
       style={style}
     >
-      <dt>
-        {icon && <i>{icon}</i>}
+      <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
+        {icon && <i className={cls('dropdown', 'menu', 'icon')}>{icon}</i>}
         {option}
       </dt>
-      {desc && <dd>{desc}</dd>}
+      {desc && (
+        <dd
+          role="dropdown-menu-desc"
+          className={clsx(
+            cls('dropdown', 'menu', 'desc'),
+            icon && 'icon-space',
+          )}
+        >
+          {desc}
+        </dd>
+      )}
     </div>
   )
 }
