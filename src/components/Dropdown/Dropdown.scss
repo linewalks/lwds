@@ -25,6 +25,7 @@ $icon-mr-lg: 12px;
 
 // dropdown menu 공통 스타일
 @mixin dropdown-menu-common {
+  @apply cursor-pointer;
   display: flex;
 
   &:hover {
@@ -52,7 +53,7 @@ $icon-mr-lg: 12px;
 }
 
 .#{$component} {
-  @apply p-spacing_02 border-color_layout_04 shadow-shadow_v2 cursor-pointer;
+  @apply p-spacing_02 border-color_layout_04 shadow-shadow_v2;
 }
 
 .#{$component}-menu {
@@ -125,6 +126,26 @@ $icon-mr-lg: 12px;
   }
 
   svg {
-    @apply fill-color_danger;
+    @apply fill-color_icon_danger;
+  }
+}
+
+// By Dropdown Item Disabled
+.#{$component}-menu-disabled {
+  @apply cursor-not-allowed;
+
+  &:hover,
+  &:active {
+    @apply bg-transparent;
+  }
+
+  .#{$component}-menu-term {
+    @apply text-color_text_disabled;
+  }
+  .#{$component}-menu-desc {
+    @apply text-color_text_disabled;
+  }
+  svg {
+    @apply fill-color_icon_disabled;
   }
 }
