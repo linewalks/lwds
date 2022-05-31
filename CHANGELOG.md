@@ -7,11 +7,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 - **button:** disabled 상태 svg 아이콘 스타일 버그 수정 ([5a3723e](https://github.com/linewalks/lwds/commit/5a3723e782a2a05662ffeced2bf8bb693993bdc1))
-- **button:** tertiary button border width ([060afe4](https://github.com/linewalks/lwds/commit/060afe4d2ae524b24284268c451540b0247b20b2))
-
-### Docs
-
-- icon 문서 카테고리 변경 ([34e60af](https://github.com/linewalks/lwds/commit/34e60afaa9444da290cbe90a02ed47665ac8fd57))
 
 ### [0.0.19](https://github.com/linewalks/lwds/compare/v0.0.15...v0.0.19) (2022-04-29)
 
