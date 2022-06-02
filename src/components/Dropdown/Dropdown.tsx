@@ -8,6 +8,7 @@ import '@components/Dropdown/Dropdown.scss'
 interface DropdownProps {
   isOpen: boolean
   size?: 'md' | 'lg'
+  direction?: 'left' | 'center' | 'right'
   className?: string
   onClick?: Function
   style?: object
@@ -28,6 +29,7 @@ interface DropdownItemProps {
 const Dropdown = ({
   isOpen = false,
   size = 'md',
+  direction = 'left',
   className,
   onClick,
   style,
@@ -43,7 +45,12 @@ const Dropdown = ({
     isOpen && (
       <dl
         role="dropdown-menu-list"
-        className={clsx(cls('dropdown'), cls('dropdown', size), className)}
+        className={clsx(
+          cls('dropdown'),
+          cls('dropdown', size),
+          cls('dropdown', direction),
+          className,
+        )}
         onClick={handleClick}
         style={style}
       >
