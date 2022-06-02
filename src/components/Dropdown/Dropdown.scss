@@ -90,6 +90,10 @@ $icon-mr-lg: 12px;
   -webkit-line-clamp: 2;
 }
 
+.#{$component}-divider {
+  @apply my-spacing_02 text-color_layout_05;
+}
+
 // By Dropdown Size
 .#{$component}-md {
   width: 144px;

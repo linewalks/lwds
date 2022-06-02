@@ -82,6 +82,8 @@ Dropdown.Item = ({
   )
 }
 
-Dropdown.Divider = () => ({})
+Dropdown.Divider = () => {
+  return <hr className={cls('dropdown', 'divider')} />
+}
 
 export default Dropdown
