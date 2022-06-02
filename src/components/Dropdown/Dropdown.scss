@@ -9,6 +9,9 @@ $icon-w-lg: 20px;
 $icon-h-lg: 20px;
 $icon-mr-lg: 12px;
 
+$menu-h-md: 32px;
+$menu-h-lg: 40px;
+
 // dropdown menu icon 스타일
 @mixin dropdown-menu-icon($width, $height, $margin-right) {
   .#{$component}-menu-icon {
@@ -54,6 +57,12 @@ $icon-mr-lg: 12px;
 
 .#{$component} {
   @apply p-spacing_02 border-color_layout_04 shadow-shadow_v2;
+
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .#{$component}-menu {
@@ -97,6 +106,7 @@ $icon-mr-lg: 12px;
 // By Dropdown Size
 .#{$component}-md {
   width: 144px;
+  max-height: $menu-h-md * 6.5 + 4px;
   border-radius: 6px;
   font-size: 14px;
 
@@ -117,6 +127,7 @@ $icon-mr-lg: 12px;
 
 .#{$component}-lg {
   width: 160px;
+  max-height: $menu-h-lg * 6.5 + 4px;
   border-radius: 8px;
   font-size: 16px;
 
