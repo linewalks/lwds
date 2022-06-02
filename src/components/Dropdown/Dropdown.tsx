@@ -9,11 +9,13 @@ interface DropdownProps {
   isOpen: boolean
   size?: 'md' | 'lg'
   className?: string
+  onClick?: Function
   style?: object
   children?: React.ReactElement
 }
 
 interface DropdownItemProps {
+  id: string | number
   option: string
   desc?: string
   type?: 'danger'
@@ -27,14 +29,22 @@ const Dropdown = ({
   isOpen = false,
   size = 'md',
   className,
+  onClick,
   style,
   children,
 }: DropdownProps) => {
+  const handleClick = (e) => {
+    const dropdownMenu = e.target.closest(`.${cls('dropdown', 'menu')}`)
+
+    onClick && onClick(dropdownMenu.dataset.id)
+  }
+
   return (
     isOpen && (
       <dl
         role="dropdown-menu-list"
         className={clsx(cls('dropdown'), cls('dropdown', size), className)}
+        onClick={handleClick}
         style={style}
       >
         {children}
@@ -44,6 +54,7 @@ const Dropdown = ({
 }
 
 Dropdown.Item = ({
+  id,
   option,
   desc,
   type,
@@ -54,13 +65,16 @@ Dropdown.Item = ({
 }: DropdownItemProps) => {
   return (
     <div
+      data-id={id}
       role="dropdown-menu"
       className={clsx(
-        cls('dropdown', desc && 'multiLine', 'menu'),
+        cls('dropdown', 'menu'),
+        desc && cls('dropdown', 'multiLine', 'menu'),
         type && cls('dropdown', 'menu', type),
         disabled && cls('dropdown', 'menu', 'disabled'),
         className,
       )}
+      onClick={(e) => disabled && e.stopPropagation()}
       style={style}
     >
       <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
