@@ -12,33 +12,6 @@ $icon-mr-lg: 12px;
 $menu-h-md: 32px;
 $menu-h-lg: 40px;
 
-// dropdown menu icon 스타일
-@mixin dropdown-menu-icon($width, $height, $margin-right) {
-  .#{$component}-menu-icon {
-    width: $width;
-    height: $height;
-    margin-right: $margin-right;
-
-    svg {
-      width: $width;
-      height: $height;
-    }
-  }
-}
-
-// dropdown menu 공통 스타일
-@mixin dropdown-menu-common {
-  @apply cursor-pointer;
-  display: flex;
-
-  &:hover {
-    @apply bg-color_hover_primary;
-  }
-  &:active {
-    @apply bg-color_active_primary;
-  }
-}
-
 // dropdown menu md size 스타일 (single, multi)
 @mixin dropdown-menu-md {
   width: 136px;
@@ -55,6 +28,20 @@ $menu-h-lg: 40px;
   @include dropdown-menu-icon($icon-w-lg, $icon-h-lg, $icon-mr-lg);
 }
 
+// dropdown menu icon 스타일
+@mixin dropdown-menu-icon($width, $height, $margin-right) {
+  .#{$component}-menu-icon {
+    width: $width;
+    height: $height;
+    margin-right: $margin-right;
+
+    svg {
+      width: $width;
+      height: $height;
+    }
+  }
+}
+
 .#{$component} {
   @apply p-spacing_02 border-color_layout_04 shadow-shadow_v2;
 
@@ -66,11 +53,18 @@ $menu-h-lg: 40px;
 }
 
 .#{$component}-menu {
-  @include dropdown-menu-common;
+  @apply cursor-pointer;
+  display: flex;
+
+  &:hover {
+    @apply bg-color_hover_primary;
+  }
+  &:active {
+    @apply bg-color_active_primary;
+  }
 }
 
 .#{$component}-multiLine-menu {
-  @include dropdown-menu-common;
   flex-direction: column;
 }
 
