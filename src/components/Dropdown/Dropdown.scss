@@ -12,22 +12,6 @@ $icon-mr-lg: 12px;
 $menu-h-md: 32px;
 $menu-h-lg: 40px;
 
-// dropdown menu md size 스타일 (single, multi)
-@mixin dropdown-menu-md {
-  width: 136px;
-  border-radius: 4px;
-
-  @include dropdown-menu-icon($icon-w-md, $icon-h-md, $icon-mr-md);
-}
-
-// dropdown menu lg size 스타일 (single, multi)
-@mixin dropdown-menu-lg {
-  width: 152px;
-  border-radius: 4px;
-
-  @include dropdown-menu-icon($icon-w-lg, $icon-h-lg, $icon-mr-lg);
-}
-
 // dropdown menu icon 스타일
 @mixin dropdown-menu-icon($width, $height, $margin-right) {
   .#{$component}-menu-icon {
@@ -42,6 +26,18 @@ $menu-h-lg: 40px;
   }
 }
 
+// dropdown menu md size 스타일 (single, multi)
+@mixin dropdown-menu-md {
+  width: 136px;
+  border-radius: 4px;
+}
+
+// dropdown menu lg size 스타일 (single, multi)
+@mixin dropdown-menu-lg {
+  width: 152px;
+  border-radius: 4px;
+}
+
 .#{$component} {
   @apply mt-spacing_01 p-spacing_02 bg-color_layout_01 border-color_layout_04 shadow-shadow_v2;
 
@@ -51,15 +47,34 @@ $menu-h-lg: 40px;
   &::-webkit-scrollbar {
     display: none;
   }
-  .#{$component}-left {
+  &.#{$component}-left {
     left: 0;
   }
-  .#{$component}-center {
+  &.#{$component}-center {
     left: 50%;
     transform: translate(-50%, 0);
   }
-  .#{$component}-right {
+  &.#{$component}-right {
     right: 0;
+  }
+
+  .#{$component}-menu-icon {
+    display: none;
+  }
+}
+
+// icon 옵션이 추가될 때 Dropdown
+.#{$component}-icon-list {
+  .#{$component}-menu-icon {
+    display: inline;
+  }
+
+  &.#{$component}-md .#{$component}-menu-desc {
+    margin-left: $icon-w-md + $icon-mr-md;
+  }
+
+  &.#{$component}-lg .#{$component}-menu-desc {
+    margin-left: $icon-w-lg + $icon-mr-lg;
   }
 }
 
@@ -110,6 +125,8 @@ $menu-h-lg: 40px;
 
 // By Dropdown Size
 .#{$component}-md {
+  @include dropdown-menu-icon($icon-w-md, $icon-h-md, $icon-mr-md);
+
   width: 144px;
   max-height: $menu-h-md * 6.5 + 4px;
   border-radius: 6px;
@@ -117,20 +134,22 @@ $menu-h-lg: 40px;
 
   .#{$component}-menu {
     @include dropdown-menu-md;
-    @apply h-size_16 px-spacing_06;
+    @apply px-spacing_06;
+  }
+
+  .#{$component}-singleLine-menu {
+    @apply h-size_16;
   }
 
   .#{$component}-multiLine-menu {
     @include dropdown-menu-md;
-    @apply px-spacing_06 py-spacing_03;
-
-    .icon-space {
-      margin-left: $icon-w-md + $icon-mr-md;
-    }
+    @apply py-spacing_03;
   }
 }
 
 .#{$component}-lg {
+  @include dropdown-menu-icon($icon-w-lg, $icon-h-lg, $icon-mr-lg);
+
   width: 160px;
   max-height: $menu-h-lg * 6.5 + 4px;
   border-radius: 8px;
@@ -138,16 +157,15 @@ $menu-h-lg: 40px;
 
   .#{$component}-menu {
     @include dropdown-menu-lg;
-    @apply h-size_20 px-spacing_06;
+    @apply px-spacing_06;
+  }
+
+  .#{$component}-single-menu {
+    @apply h-size_20;
   }
 
   .#{$component}-multiLine-menu {
-    @include dropdown-menu-lg;
-    @apply px-spacing_06 py-spacing_04;
-
-    .icon-space {
-      margin-left: $icon-w-lg + $icon-mr-lg;
-    }
+    @apply py-spacing_04;
   }
 }
 

@@ -8,6 +8,7 @@ import '@components/Dropdown/Dropdown.scss'
 interface DropdownProps {
   isOpen: boolean
   size?: 'md' | 'lg'
+  icon?: boolean
   direction?: 'left' | 'center' | 'right'
   className?: string
   onClick?: Function
@@ -29,6 +30,7 @@ interface DropdownItemProps {
 const Dropdown = ({
   isOpen = false,
   size = 'md',
+  icon,
   direction = 'left',
   className,
   onClick,
@@ -49,6 +51,7 @@ const Dropdown = ({
           cls('dropdown'),
           cls('dropdown', size),
           cls('dropdown', direction),
+          icon && cls('dropdown', 'icon', 'list'),
           className,
         )}
         onClick={handleClick}
@@ -76,7 +79,7 @@ Dropdown.Item = ({
       role="dropdown-menu"
       className={clsx(
         cls('dropdown', 'menu'),
-        desc && cls('dropdown', 'multiLine', 'menu'),
+        cls('dropdown', desc ? 'multiLine' : 'singleLine', 'menu'),
         type && cls('dropdown', 'menu', type),
         disabled && cls('dropdown', 'menu', 'disabled'),
         className,
@@ -85,16 +88,13 @@ Dropdown.Item = ({
       style={style}
     >
       <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
-        {icon && <i className={cls('dropdown', 'menu', 'icon')}>{icon}</i>}
+        <i className={cls('dropdown', 'menu', 'icon')}>{icon}</i>
         <span className={cls('dropdown', 'menu', 'name')}>{option}</span>
       </dt>
       {desc && (
         <dd
           role="dropdown-menu-desc"
-          className={clsx(
-            cls('dropdown', 'menu', 'desc'),
-            icon && 'icon-space',
-          )}
+          className={clsx(cls('dropdown', 'menu', 'desc'))}
         >
           {desc}
         </dd>
