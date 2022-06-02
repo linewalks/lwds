@@ -65,7 +65,7 @@ Dropdown.Item = ({
     >
       <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
         {icon && <i className={cls('dropdown', 'menu', 'icon')}>{icon}</i>}
-        {option}
+        <span className={cls('dropdown', 'menu', 'name')}>{option}</span>
       </dt>
       {desc && (
         <dd

@@ -70,12 +70,24 @@ $icon-mr-lg: 12px;
 
   display: flex;
   align-items: center;
+
+  .#{$component}-menu-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
 
 .#{$component}-menu-desc {
   @apply text-color_text_04;
 
+  display: -webkit-box;
   margin-top: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 // By Dropdown Size
