@@ -94,7 +94,7 @@ Dropdown.Item = ({
       {desc && (
         <dd
           role="dropdown-menu-desc"
-          className={clsx(cls('dropdown', 'menu', 'desc'))}
+          className={cls('dropdown', 'menu', 'desc')}
         >
           {desc}
         </dd>
@@ -104,7 +104,9 @@ Dropdown.Item = ({
 }
 
 Dropdown.Divider = () => {
-  return <hr className={cls('dropdown', 'divider')} />
+  return (
+    <hr role="dropdown-menu-divider" className={cls('dropdown', 'divider')} />
+  )
 }
 
 export default Dropdown
