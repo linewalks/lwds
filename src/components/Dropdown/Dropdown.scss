@@ -142,7 +142,6 @@ $menu-h-lg: 40px;
   }
 
   .#{$component}-multiLine-menu {
-    @include dropdown-menu-md;
     @apply py-spacing_03;
   }
 }
@@ -160,7 +159,7 @@ $menu-h-lg: 40px;
     @apply px-spacing_06;
   }
 
-  .#{$component}-single-menu {
+  .#{$component}-singleLine-menu {
     @apply h-size_20;
   }
 
