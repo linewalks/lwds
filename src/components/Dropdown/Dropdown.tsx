@@ -30,7 +30,7 @@ interface DropdownItemProps {
 const Dropdown = ({
   isOpen = false,
   size = 'md',
-  icon,
+  icon = false,
   direction = 'left',
   className,
   onClick,
