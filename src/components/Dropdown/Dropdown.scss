@@ -120,7 +120,9 @@ $menu-h-lg: 40px;
 }
 
 .#{$component}-divider {
-  @apply my-spacing_02 text-color_layout_05;
+  @apply my-spacing_02 border-solid border-color_layout_05;
+
+  border-top-width: 1px;
 }
 
 // By Dropdown Size
