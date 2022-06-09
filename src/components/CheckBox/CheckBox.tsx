@@ -10,7 +10,6 @@ interface CheckBoxProps {
   color: 'primary' | 'black'
   defaultChecked: boolean
   disabled: boolean
-  id: string
   mixed: boolean
   size: 'sm' | 'md'
   text: string
@@ -21,7 +20,6 @@ const CheckBox = ({
   color = 'primary',
   defaultChecked = false,
   disabled = false,
-  id = _.uniqueId('checkbox'),
   mixed = false,
   size = 'md',
   text = '',
@@ -38,7 +36,7 @@ const CheckBox = ({
   }, [defaultChecked])
 
   return (
-    <div className={clsx(cls('checkbox', 'container'))}>
+    <div className={clsx(cls('container'))}>
       <input
         type="checkbox"
         className={clsx(
@@ -47,14 +45,19 @@ const CheckBox = ({
           cls('checkbox', size),
           mixed && cls('checkbox', 'mixed'),
         )}
-        id={id}
         checked={checked}
         disabled={disabled}
         onChange={handleOnChange}
       />
-      <label className={clsx(cls('checkbox', 'label'))} htmlFor={id}>
+      <div
+        className={clsx(
+          cls('label'),
+          cls('label', size),
+          !checked && cls('label', 'unchecked'),
+        )}
+      >
         {text}
-      </label>
+      </div>
     </div>
   )
 }
