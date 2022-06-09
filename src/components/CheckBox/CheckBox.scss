@@ -1,0 +1,75 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-checkbox;
+$lw_blue30: #a3c6fa;
+$lw_grey60: #8d98a5;
+
+.#{$component} {
+  @apply bg-color_background border-2 border-solid;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-color: $lw_grey60;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &.#{$component}:disabled {
+    @apply border-color_icon_disabled;
+    cursor: not-allowed;
+  }
+
+  &.#{$component}:checked {
+    @apply bg-color_button_primary border-0;
+
+    &.#{$component}:after {
+      @apply block;
+    }
+
+    &.#{$component}:disabled {
+      @apply border-0;
+      background: $lw_blue30;
+    }
+  }
+}
+
+.#{$component}-black {
+  &.#{$component}:checked {
+    @apply bg-color_icon_02;
+
+    &.#{$component}:disabled {
+      @apply bg-color_icon_disabled;
+    }
+  }
+}
+
+.#{$component}::after {
+  @apply hidden relative border-solid border-color_background;
+  content: '';
+  left: 8px;
+  top: 4px;
+  width: 7px;
+  height: 14px;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.#{$component}-mixed::after {
+  @apply bg-color_background;
+  left: 5px;
+  top: 10.5px;
+  width: 14px;
+  height: 1px;
+  border-radius: 3px;
+  transform: rotate(0deg);
+}
+
+.#{$component}-container {
+  @apply flex items-center;
+}
+
+.#{$component}-label {
+  @apply ml-spacing_06;
+  font-family: 'Spoqa Han Sans Neo';
+}
