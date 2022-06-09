@@ -23,7 +23,7 @@ const CheckBox = ({
   disabled = false,
   id = _.uniqueId('checkbox'),
   mixed = false,
-  size = 'sm',
+  size = 'md',
   text = '',
   onChange = (e) => {},
 }: CheckBoxProps) => {
@@ -44,6 +44,7 @@ const CheckBox = ({
         className={clsx(
           cls('checkbox'),
           cls('checkbox', color),
+          cls('checkbox', size),
           mixed && cls('checkbox', 'mixed'),
         )}
         id={id}
