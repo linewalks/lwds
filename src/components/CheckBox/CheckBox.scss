@@ -3,6 +3,7 @@
 $container: #{$prefix}-container;
 $component: #{$prefix}-checkbox;
 $label: #{$prefix}-label;
+$number: #{$prefix}-number;
 
 $lw_blue30: #a3c6fa;
 $lw_grey60: #8d98a5;
@@ -106,6 +107,8 @@ $lw_grey60: #8d98a5;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
   color: #3b424a;
   font-family: 'Spoqa Han Sans Neo';
 
@@ -114,6 +117,13 @@ $lw_grey60: #8d98a5;
   }
 
   &.#{$label}-unchecked {
+    color: #8d98a5;
+  }
+}
+
+.#{$number} {
+  color: #6c7a89;
+  &.#{$number}-unchecked {
     color: #8d98a5;
   }
 }

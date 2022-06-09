@@ -11,6 +11,7 @@ interface CheckBoxProps {
   defaultChecked: boolean
   disabled: boolean
   mixed: boolean
+  number: number
   size: 'sm' | 'md'
   text: string
   onChange: (e: React.FormEventHandler<HTMLInputElement>) => void
@@ -21,6 +22,7 @@ const CheckBox = ({
   defaultChecked = false,
   disabled = false,
   mixed = false,
+  number = null,
   size = 'md',
   text = '',
   onChange = (e) => {},
@@ -49,15 +51,24 @@ const CheckBox = ({
         disabled={disabled}
         onChange={handleOnChange}
       />
-      <div
-        className={clsx(
-          cls('label'),
-          cls('label', size),
-          !checked && cls('label', 'unchecked'),
-        )}
-      >
-        {text}
-      </div>
+      {(text || number) && (
+        <div
+          className={clsx(
+            cls('label'),
+            cls('label', size),
+            !checked && cls('label', 'unchecked'),
+          )}
+        >
+          {text}
+          &nbsp;
+          <div
+            className={clsx(
+              cls('number'),
+              !checked && cls('number', 'unchecked'),
+            )}
+          >{`(${number})`}</div>
+        </div>
+      )}
     </div>
   )
 }
