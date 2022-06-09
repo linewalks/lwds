@@ -97,6 +97,10 @@ module.exports = {
           name: 'ProgressBar',
           content: 'src/components/ProgressBar/ProgressBar.md',
         },
+        {
+          name: 'Checkbox',
+          content: 'src/components/Checkbox/Checkbox.md',
+        },
       ],
     },
     // {
