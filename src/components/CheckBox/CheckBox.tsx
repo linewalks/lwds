@@ -7,7 +7,7 @@ import cls from '@helpers/class'
 import '@components/CheckBox/CheckBox.scss'
 
 interface CheckBoxProps {
-  color: 'primary' | 'black'
+  color?: 'primary' | 'black'
   className?: string
   containerChecked?: boolean
   defaultChecked?: boolean
@@ -15,7 +15,7 @@ interface CheckBoxProps {
   id?: string
   mixed?: boolean
   number?: number
-  size: 'sm' | 'md'
+  size?: 'sm' | 'md'
   style?: object
   text?: string
   onChange: (id: string, checked: boolean) => void
@@ -27,13 +27,13 @@ const CheckBox = ({
   containerChecked,
   defaultChecked = false,
   disabled = false,
-  id = _.uniqueId('id'),
+  id = _.uniqueId('checkBox'),
   mixed = false,
   number,
   size = 'md',
   style,
-  text = '123123123',
-  onChange = (id, checked) => console.log(),
+  text,
+  onChange,
 }: CheckBoxProps) => {
   const [checked, setChecked] = useState(defaultChecked)
   const handleOnChange = (evt) => {
@@ -46,8 +46,8 @@ const CheckBox = ({
     setChecked(defaultChecked)
   }, [defaultChecked])
 
+  // set에서 활용될 경우
   useEffect(() => {
-    console.log(containerChecked, 123, !_.isNil(containerChecked))
     if (!_.isNil(containerChecked)) setChecked(containerChecked)
   }, [containerChecked])
 
