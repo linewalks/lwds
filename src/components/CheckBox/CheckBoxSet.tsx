@@ -12,15 +12,16 @@ interface CheckBoxItemList {
   id: string
   text: string
   number?: number
-  defaultChecked: boolean
+  defaultChecked?: boolean
 }
 
 interface CheckBoxSetProps {
-  color: 'primary' | 'black'
-  defaultChecked: boolean
-  disabled: boolean
+  color?: 'primary' | 'black'
+  defaultChecked?: boolean
+  disabled?: boolean
+  id?: string
   itemList: Array<CheckBoxItemList>
-  size: 'sm' | 'md'
+  size?: 'sm' | 'md'
   style?: object
   text: string
   onChange: (id: string, checked: boolean) => void
@@ -29,15 +30,12 @@ interface CheckBoxSetProps {
 const CheckBoxSet = ({
   color = 'primary',
   disabled = false,
-  itemList = [
-    { id: 'test', text: 'text', defaultChecked: true },
-    { id: 'test2', text: 'text2', defaultChecked: true },
-    { id: 'test3', text: 'text3', defaultChecked: true },
-  ],
+  id = _.uniqueId('checkBoxSet'),
+  itemList = [],
   size = 'md',
   style,
-  text = '123213',
-  onChange = (id, checked) => console.log(),
+  text,
+  onChange,
 }: CheckBoxSetProps) => {
   // 좋은 방법있으면 공모받습니다.
   // 자식 state에 따라서 모체 state가 변해야하는 상황
@@ -52,6 +50,7 @@ const CheckBoxSet = ({
 
   const handleContainerCheckBox = (id, checked) => {
     setCheckedCount(checked ? itemList.length : 0)
+    // 모두 보내줘야 할까, 'all 한번에 퉁치는게 좋을까'
     _.forEach(itemList, (item) => {
       onChange(item.id, checked)
     })
@@ -75,6 +74,7 @@ const CheckBoxSet = ({
         color={color}
         defaultChecked={checkedCount ? true : false}
         disabled={disabled}
+        id={id}
         mixed={checkedCount !== 0 && checkedCount !== itemList.length}
         size={size}
         style={style}
