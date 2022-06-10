@@ -112,6 +112,7 @@ $lw_grey60: #8d98a5;
 }
 
 .#{$component}-label-unchecked {
+  @apply cursor-not-allowed;
   color: #8d98a5;
 }
 
