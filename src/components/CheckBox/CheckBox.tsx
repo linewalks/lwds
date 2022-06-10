@@ -8,66 +8,90 @@ import '@components/CheckBox/CheckBox.scss'
 
 interface CheckBoxProps {
   color: 'primary' | 'black'
-  defaultChecked: boolean
-  disabled: boolean
-  mixed: boolean
-  number: number
+  className?: string
+  containerChecked?: boolean
+  defaultChecked?: boolean
+  disabled?: boolean
+  id?: string
+  mixed?: boolean
+  number?: number
   size: 'sm' | 'md'
-  text: string
-  onChange: (e: React.FormEventHandler<HTMLInputElement>) => void
+  style?: object
+  text?: string
+  onChange: (id: string, checked: boolean) => void
 }
 
 const CheckBox = ({
   color = 'primary',
+  className,
+  containerChecked,
   defaultChecked = false,
   disabled = false,
+  id = _.uniqueId('id'),
   mixed = false,
-  number = null,
+  number,
   size = 'md',
-  text = '',
-  onChange = (e) => {},
+  style,
+  text = '123123123',
+  onChange = (id, checked) => console.log(),
 }: CheckBoxProps) => {
   const [checked, setChecked] = useState(defaultChecked)
   const handleOnChange = (evt) => {
-    setChecked(evt.target.checked)
-    onChange(evt.target.checked)
+    const checked = evt.target.checked
+    setChecked(checked)
+    onChange(id, checked)
   }
 
   useEffect(() => {
     setChecked(defaultChecked)
   }, [defaultChecked])
 
+  useEffect(() => {
+    console.log(containerChecked, 123, !_.isNil(containerChecked))
+    if (!_.isNil(containerChecked)) setChecked(containerChecked)
+  }, [containerChecked])
+
   return (
-    <div className={clsx(cls('container'))}>
+    <div className={clsx(cls('checkbox', 'container'))}>
       <input
         type="checkbox"
+        id={id}
         className={clsx(
           cls('checkbox'),
           cls('checkbox', color),
           cls('checkbox', size),
           mixed && cls('checkbox', 'mixed'),
+          className,
         )}
         checked={checked}
         disabled={disabled}
         onChange={handleOnChange}
       />
-      {(text || number) && (
-        <div
+      {/* Checkbox.Lable 등 {children} 으로 받고 싶은데,
+      모체 id, size, checked 값을 전달 받아야 함
+      깔끔하게 처리할 수 있는 방식은 없을까 */}
+      {text && (
+        <label
           className={clsx(
-            cls('label'),
-            cls('label', size),
-            !checked && cls('label', 'unchecked'),
+            cls('checkbox', 'label'),
+            cls('checkbox', 'label', size),
+            !checked && cls('checkbox', 'label', 'unchecked'),
           )}
+          style={style}
+          htmlFor={id}
         >
           {text}
-          &nbsp;
-          <div
-            className={clsx(
-              cls('number'),
-              !checked && cls('number', 'unchecked'),
-            )}
-          >{`(${number})`}</div>
-        </div>
+          {number && (
+            <div
+              className={clsx(
+                cls('checkbox', 'number'),
+                !checked && cls('checkbox', 'label', 'unchecked'),
+              )}
+            >
+              &nbsp;{`(${number})`}
+            </div>
+          )}
+        </label>
       )}
     </div>
   )
