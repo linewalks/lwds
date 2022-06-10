@@ -1,15 +1,13 @@
 @import '../../assets/styles/global.scss';
 
-$container: #{$prefix}-container;
 $component: #{$prefix}-checkbox;
-$label: #{$prefix}-label;
-$number: #{$prefix}-number;
+$setComponent: #{$prefix}-checkboxset;
 
 $lw_blue30: #a3c6fa;
 $lw_grey60: #8d98a5;
 
 .#{$component} {
-  @apply bg-color_background border-2 border-solid;
+  @apply bg-color_background border-2 border-solid cursor-pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -17,11 +15,9 @@ $lw_grey60: #8d98a5;
   height: 24px;
   border-color: $lw_grey60;
   border-radius: 4px;
-  cursor: pointer;
 
   &.#{$component}:disabled {
-    @apply border-color_icon_disabled;
-    cursor: not-allowed;
+    @apply border-color_icon_disabled cursor-not-allowed;
   }
 
   &.#{$component}:checked {
@@ -89,41 +85,48 @@ $lw_grey60: #8d98a5;
   }
 }
 
-.#{$container} {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.#{$component}-container {
+  @apply flex;
+
   & + & {
     @apply mt-spacing_06;
 
-    &.#{$container}-sm {
+    &.#{$component}-sm {
       @apply mt-spacing_04;
     }
   }
 }
 
-.#{$label} {
-  @apply ml-spacing_06;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  overflow: hidden;
+.#{$component}-label {
+  @apply flex items-center justify-center flex-wrap overflow-hidden ml-spacing_06 cursor-pointer;
   color: #3b424a;
   font-family: 'Spoqa Han Sans Neo';
 
-  &.#{$label}-sm {
+  &.#{$component}-sm {
     @apply ml-spacing_04;
-  }
-
-  &.#{$label}-unchecked {
-    color: #8d98a5;
   }
 }
 
-.#{$number} {
+.#{$component}-number {
   color: #6c7a89;
-  &.#{$number}-unchecked {
-    color: #8d98a5;
+}
+
+.#{$component}-label-unchecked {
+  color: #8d98a5;
+}
+
+.#{$setComponent}-container {
+  @apply flex flex-col items-start;
+
+  & + & {
+    @apply mt-spacing_06;
+
+    &.#{$setComponent}-sm {
+      @apply mt-spacing_04;
+    }
+  }
+
+  div:not(:first-child) {
+    @apply ml-spacing_18;
   }
 }
