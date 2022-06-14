@@ -6,7 +6,7 @@ $component: #{$prefix}-progressbar;
   @apply relative flex justify-center items-center;
 }
 
-.#{$component}__label {
+.#{$component}-label {
   @apply sticky;
 
   &-sm {
@@ -15,22 +15,6 @@ $component: #{$prefix}-progressbar;
 
   &-md {
     font-size: 16px;
-  }
-
-  &-sm &-prefix {
-    @apply mr-spacing_01;
-  }
-
-  &-sm &-suffix {
-    @apply ml-spacing_01;
-  }
-
-  &-md &-prefix {
-    @apply mr-spacing_02;
-  }
-
-  &-md &-suffix {
-    @apply ml-spacing_02;
   }
 }
 
@@ -52,7 +36,7 @@ $component: #{$prefix}-progressbar;
   }
 }
 
-.#{$component}__state {
+.#{$component}-state {
   @apply flex rounded-sm bg-color_layout_03;
 
   &-current {
@@ -83,7 +67,7 @@ $component: #{$prefix}-progressbar;
 }
 
 @mixin margin-class($side) {
-  .#{$component}__label-#{$side} {
+  .#{$component}-label-#{$side} {
     @if $side == 'top' {
       @apply mb-spacing_02 text-center;
     } @else if $side == 'bottom' {
