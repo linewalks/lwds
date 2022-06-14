@@ -93,6 +93,10 @@ module.exports = {
           name: 'Dropdown',
           content: 'src/components/Dropdown/Dropdown.md',
         },
+        {
+          name: 'ProgressBar',
+          content: 'src/components/ProgressBar/ProgressBar.md',
+        },
       ],
     },
     // {
