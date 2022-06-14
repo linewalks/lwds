@@ -16,28 +16,56 @@ $component: #{$prefix}-popover;
   display: none;
 }
 
+// top
+.#{$component}-top .#{$component}-content {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, calc(-100% - 2px));
+}
+
+.#{$component}-top-left .#{$component}-content {
+  top: 0;
+  left: 0;
+  transform: translate(0, calc(-100% - 2px));
+}
+
+.#{$component}-top-right .#{$component}-content {
+  top: 0;
+  right: 0;
+  transform: translate(0, calc(-100% - 2px));
+}
+
+// bottom
 .#{$component}-bottom .#{$component}-content {
   left: 50%;
   bottom: 0;
   transform: translate(-50%, calc(100% + 2px));
 }
 
-.#{$component}-right .#{$component}-content {
-  right: 0;
-  bottom: 50%;
-  transform: translate(calc(100% + 2px), 50%);
+.#{$component}-bottom-left .#{$component}-content {
+  left: 0;
+  bottom: 0;
+  transform: translate(0, calc(100% + 2px));
 }
 
+.#{$component}-bottom-right .#{$component}-content {
+  right: 0;
+  bottom: 0;
+  transform: translate(0, calc(100% + 2px));
+}
+
+// left
 .#{$component}-left .#{$component}-content {
   left: 0;
   bottom: 50%;
   transform: translate(calc(-100% - 2px), 50%);
 }
 
-.#{$component}-top .#{$component}-content {
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, calc(-100% - 2px));
+// right
+.#{$component}-right .#{$component}-content {
+  right: 0;
+  bottom: 50%;
+  transform: translate(calc(100% + 2px), 50%);
 }
 
 .#{$component}:focus-within .#{$component}-content {
