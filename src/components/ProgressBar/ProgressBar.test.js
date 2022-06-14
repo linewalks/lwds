@@ -3,18 +3,21 @@ import { mount } from 'enzyme'
 
 import cls from '@helpers/class'
 
-import ProgressBar from '@components/Progressbar/ProgressBar'
+import ProgressBar, {
+  validateNumber,
+  getMax,
+} from '@components/Progressbar/ProgressBar'
 
 describe('ProgressBar', () => {
   const setup = (options) => {
     const wrapper = mount(<ProgressBar {...options} />)
 
-    const state = wrapper.find(`.${cls('progressbar__state')}`)
-    const label = wrapper.find(`.${cls('progressbar__label')}`)
-    const prefix = wrapper.find(`.${cls('progressbar__label-prefix')}`)
-    const suffix = wrapper.find(`.${cls('progressbar__label-suffix')}`)
-    const text = wrapper.find(`.${cls('progressbar__label-text')}`)
-    const current = wrapper.find(`.${cls('progressbar__state-current')}`)
+    const state = wrapper.find(`.${cls('progressbar', 'state')}`)
+    const label = wrapper.find(`.${cls('progressbar', 'label')}`)
+    const prefix = wrapper.find(`.${cls('progressbar', 'label', 'prefix')}`)
+    const suffix = wrapper.find(`.${cls('progressbar', 'label', 'suffix')}`)
+    const text = wrapper.find(`.${cls('progressbar', 'label', 'text')}`)
+    const current = wrapper.find(`.${cls('progressbar', 'state', 'current')}`)
 
     return {
       wrapper,
@@ -28,51 +31,54 @@ describe('ProgressBar', () => {
   }
 
   it('default', () => {
-    const { label, state } = setup({ value: 0.4 })
+    const { label, state } = setup({ value: 40 })
     expect(label).toHaveLength(1)
     expect(state).toHaveLength(1)
   })
 
   it('size', () => {
     const { wrapper } = setup({ size: 'sm' })
-    expect(wrapper.find(`.${cls('progressbar__label-sm')}`)).toHaveLength(1)
+    expect(wrapper.find(`.${cls('progressbar', 'label', 'sm')}`)).toHaveLength(
+      1,
+    )
 
     const { wrapper: mdWrapper } = setup({ size: 'md' })
-    expect(mdWrapper.find(`.${cls('progressbar__label-md')}`)).toHaveLength(1)
+    expect(
+      mdWrapper.find(`.${cls('progressbar', 'label', 'md')}`),
+    ).toHaveLength(1)
   })
 
   it('placement', () => {
     let placement = 'top'
     const { wrapper: topWrapper } = setup({ placement })
-    expect(topWrapper.find(`.${cls(`progressbar__label-${placement}`)}`))
+    expect(topWrapper.find(`.${cls('progressbar', 'label', `${placement}`)}`))
 
     placement = 'bottom'
     const { wrapper: bottomWrapper } = setup({ placement })
-    expect(bottomWrapper.find(`.${cls(`progressbar__label-${placement}`)}`))
+    expect(
+      bottomWrapper.find(`.${cls('progressbar', 'label', `${placement}`)}`),
+    )
 
     placement = 'right'
     const { wrapper: rightWrapper } = setup({ placement })
-    expect(rightWrapper.find(`.${cls(`progressbar__label-${placement}`)}`))
+    expect(rightWrapper.find(`.${cls('progressbar', 'label', `${placement}`)}`))
 
     placement = 'left'
     const { wrapper: leftWrapper } = setup({ placement: 'left' })
-    expect(leftWrapper.find(`.${cls(`progressbar__label-${placement}`)}`))
+    expect(leftWrapper.find(`.${cls('progressbar', 'label', `${placement}`)}`))
   })
 
   it('state', () => {
-    const { wrapper, state } = setup({ value: 0.4 })
-    expect(wrapper.find(`.${cls('progressbar__state-current')}`)).toHaveLength(
-      1,
-    )
-    expect(state).toHaveLength(1)
+    const value = 40
+    const { wrapper, state } = setup({ value, max: 100 })
     expect(
-      wrapper.find(`.${cls(`progressbar__state-${0.4 * 100}`)}`), // 백분율 환산
+      wrapper.find(`.${cls('progressbar', 'state', 'current')}`),
     ).toHaveLength(1)
-  })
+    expect(state).toHaveLength(1)
 
-  it('isNotExistLabel', () => {
-    const { label } = setup({ value: 0.4, isNotExistLabel: true })
-    expect(label).toHaveLength(0)
+    expect(
+      wrapper.find(`.${cls('progressbar', 'state', `${value}`)}`), // 백분율 환산
+    ).toHaveLength(1)
   })
 
   it('strokeColor', () => {
@@ -83,45 +89,61 @@ describe('ProgressBar', () => {
 
   it('isInfinite', () => {
     const { wrapper } = setup({ isInfinite: true })
-    expect(wrapper.find(`.${cls('progressbar__state-infinite')}`)).toHaveLength(
-      1,
-    )
-  })
-
-  it('customLabel', () => {
-    const label = 'progressing'
-    const { text } = setup({ customLabel: label })
-    expect(text.text()).toBe(label)
-
-    const customLabel = (val) => `${val} ea`
-    const { text: newText } = setup({ customLabel, value: 0.4 })
-    expect(newText.text()).toBe('0.4 ea')
+    expect(
+      wrapper.find(`.${cls('progressbar', 'state', 'infinite')}`),
+    ).toHaveLength(1)
   })
 
   it('width, thickness', () => {
     const thickness = 10
     const width = 120
-    const { state, current } = setup({ value: 0.4, width, thickness })
+    const { state, current } = setup({ value: 40, max: 100, width, thickness })
 
     expect(state.prop('style').height).toBe(thickness)
     expect(state.prop('style').minWidth).toBe(width)
     expect(current.prop('style').width).toBe('40%')
   })
 
-  it('affix', () => {
-    const _prefix = '₩'
-    const _suffix = '원'
-    const { prefix, suffix } = setup({
-      value: 0.4,
-      prefix: _prefix,
-      suffix: _suffix,
-    })
+  it('label', () => {
+    const value = 100
+    const wrapper = mount(
+      <ProgressBar value={value} max={100}>
+        {value}
+      </ProgressBar>,
+    )
 
-    expect(prefix.text()).toBe(_prefix)
-    expect(suffix.text()).toBe(_suffix)
+    expect(wrapper.find(`.${cls('progressbar', 'label', 'text')}`).text()).toBe(
+      String(value),
+    )
   })
 
-  it('value error case', () => {
-    expect(() => setup({ value: 'abc' })).toThrowError()
+  it('error case', () => {
+    const { wrapper } = setup({ value: 40 })
+    // ProgressBar doesn't have max value, so it has a 100% width
+    expect(wrapper.find(`.${cls('progressbar', 'state', '100')}`)).toHaveLength(
+      1,
+    )
+
+    const { current } = setup({ value: -5 })
+    // ProgressBar value is negative number, so it has a 0% width
+    expect(current.prop('style').width).toBe('0%')
+
+    const { current: fullCurrent } = setup({ value: 100, max: 'linewalks' })
+    // ProgressBar max is not a number, so it has a 100% width
+    expect(fullCurrent.prop('style').width).toBe('100%')
+  })
+
+  it('validateNumber', () => {
+    expect(validateNumber(123)).toBeTruthy()
+    expect(validateNumber('123')).toBeTruthy()
+    expect(validateNumber(null)).toBeFalsy()
+    expect(validateNumber(undefined)).toBeFalsy()
+    expect(validateNumber(0.1234)).toBeTruthy()
+  })
+
+  it('getMax', () => {
+    expect(getMax(1, '5')).toBe(5)
+    expect(getMax('1', '5')).toBe(5)
+    expect(getMax(1, 'ab')).toBe(1)
   })
 })
