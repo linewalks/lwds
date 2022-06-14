@@ -1,0 +1,106 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-progressbar;
+
+.#{$component} {
+  @apply relative flex justify-center items-center;
+}
+
+.#{$component}__label {
+  @apply sticky;
+
+  &-sm {
+    font-size: 12px;
+  }
+
+  &-md {
+    font-size: 16px;
+  }
+
+  &-sm &-prefix {
+    @apply mr-spacing_01;
+  }
+
+  &-sm &-suffix {
+    @apply ml-spacing_01;
+  }
+
+  &-md &-prefix {
+    @apply mr-spacing_02;
+  }
+
+  &-md &-suffix {
+    @apply ml-spacing_02;
+  }
+}
+
+@keyframes infiniteAnimation {
+  0% {
+    transform: translateX(0) scaleX(0);
+  }
+  25% {
+    transform: translateX(25%) scaleX(0.3);
+  }
+  50% {
+    transform: translateX(50%) scaleX(0.5);
+  }
+  75% {
+    transform: translateX(75%) scaleX(0.25);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0);
+  }
+}
+
+.#{$component}__state {
+  @apply flex rounded-sm bg-color_layout_03;
+
+  &-current {
+    @apply bg-color_primary_element rounded-sm;
+    height: 100%;
+    transition: width 0.7s ease-in;
+  }
+
+  &-infinite {
+    animation: infiniteAnimation 1s infinite linear;
+    transform-origin: 0%;
+  }
+}
+
+// label placement
+@mixin position-class($side) {
+  .#{$component}-#{$side} {
+    @if $side == 'top' {
+      @apply flex-col;
+    } @else if $side == 'bottom' {
+      @apply flex-col-reverse;
+    } @else if $side == 'left' {
+      @apply flex-row;
+    } @else {
+      @apply flex-row-reverse;
+    }
+  }
+}
+
+@mixin margin-class($side) {
+  .#{$component}__label-#{$side} {
+    @if $side == 'top' {
+      @apply mb-spacing_02 text-center;
+    } @else if $side == 'bottom' {
+      @apply mt-spacing_02 text-center;
+    } @else if $side == 'left' {
+      @apply mr-spacing_04;
+    } @else {
+      @apply ml-spacing_04;
+    }
+  }
+}
+
+$sides: ('top', 'right', 'bottom', 'left');
+@mixin generate-margin {
+  @each $side in $sides {
+    @include margin-class($side);
+    @include position-class($side);
+  }
+}
+@include generate-margin();
