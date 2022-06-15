@@ -105,6 +105,10 @@ module.exports = {
           name: 'Toast',
           content: 'src/components/Toast/Toast.md',
         },
+        {
+          name: 'Popover',
+          content: 'src/components/Popover/Popover.md',
+        },
       ],
     },
     // {

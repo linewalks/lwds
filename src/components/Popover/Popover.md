@@ -22,33 +22,70 @@ const render = () => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
       <WrapButton>
-        <Popover caret align="top-left" text="hello">
+        <Popover caret text="hello">
           <Button variant="primary" size="sm" icon>
             <AddIcon />
+          </Button>
+        </Popover>
+      </WrapButton>
+
+      <WrapButton>
+        <Popover caret align="right" text="hello">
+          <Button variant="tertiary" size="md" icon>
+            <AddIcon />
+          </Button>
+        </Popover>
+      </WrapButton>
+
+      <WrapButton>
+        <Popover caret align="left" text="hiasdfwer">
+          <Button variant="primary" size="sm" icon>
+            <AddIcon />
+          </Button>
+        </Popover>
+      </WrapButton>
+
+      <WrapButton>
+        <Popover caret align="top" text="hiasdfwer">
+          <Button variant="tertiary" size="lg">
+            <AddIcon />
+            asdlfkqlwkmelr
+          </Button>
+        </Popover>
+      </WrapButton>
+
+      <WrapButton>
+        <Popover caret align="top-left" text="helloqwerwerw">
+          <Button variant="primary" size="sm">
+            <AddIcon />
+            asdfwerwer
           </Button>
         </Popover>
       </WrapButton>
 
       <WrapButton>
         <Popover caret align="top-right" text="hello">
-          <Button variant="tertiary" size="md" icon>
+          <Button variant="tertiary" size="md">
             <AddIcon />
+            sdfwer
           </Button>
         </Popover>
       </WrapButton>
 
       <WrapButton>
         <Popover caret align="bottom-left" text="hiasdfwer">
-          <Button variant="primary" size="sm" icon>
+          <Button variant="primary" size="sm">
             <AddIcon />
+            asdfasdfwer
           </Button>
         </Popover>
       </WrapButton>
 
       <WrapButton>
         <Popover caret align="bottom-right" text="hiasdfwer">
-          <Button variant="tertiary" size="md" icon>
+          <Button variant="tertiary" size="md">
             <AddIcon />
+            asdfwerwer
           </Button>
         </Popover>
       </WrapButton>
