@@ -6,35 +6,35 @@ import cls from '@helpers/class'
 
 import './ProgressBar.scss'
 
-interface ProgressBarProps {
-  placement?: 'top' | 'right' | 'bottom' | 'left'
-  value: string | number
-  size?: 'sm' | 'md'
-  width?: string | number
-  thickness?: string | number
-  strokeColor?: string
-  max?: string | number
-  isInfinite?: boolean
-  children?: React.ReactNode
-}
+type InnerNumberType = number | string
 
-export const validateNumber = (num) =>
+export const validateNumber = (num: any): boolean =>
   !_.isNil(num) &&
   typeof Number(num) === 'number' &&
   !isNaN(num) &&
   Number(num) >= 0
 
-export const getMax = (val, max) => {
-  let result = val
-  if (validateNumber(max) && val < max) {
-    result = max
-  }
-  return Number(result)
-}
+export const getMax = (val: InnerNumberType, max: InnerNumberType): number =>
+  validateNumber(max) && val < max ? Number(max) : Number(val)
 
-const calculatePercent = (val, max) => {
+const calculatePercent = (
+  val: InnerNumberType,
+  max: InnerNumberType,
+): number => {
   const result = _.ceil((Number(val) / Number(max)) * 100)
   return isNaN(result) ? 0 : result
+}
+
+interface ProgressBarProps {
+  placement?: 'top' | 'right' | 'bottom' | 'left'
+  value: InnerNumberType
+  size?: 'sm' | 'md'
+  width?: InnerNumberType
+  thickness?: InnerNumberType
+  strokeColor?: string
+  max?: InnerNumberType
+  isInfinite?: boolean
+  children?: React.ReactNode
 }
 
 const ProgressBar = ({

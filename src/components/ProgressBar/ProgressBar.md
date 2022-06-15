@@ -8,7 +8,7 @@ const show = () => {
   return (
     <section>
       <div>
-        <ProgressBar placement="top" value={0}>
+        <ProgressBar placement="top" value={100}>
           0 %
         </ProgressBar>
       </div>
@@ -27,6 +27,12 @@ const show = () => {
       <br />
       <div>
         <ProgressBar placement="bottom" max={100} value={10} />
+      </div>
+      <br />
+      <div>
+        <ProgressBar placement="bottom" value={100} max={0}>
+          case max 0
+        </ProgressBar>
       </div>
       <br />
       <div>
