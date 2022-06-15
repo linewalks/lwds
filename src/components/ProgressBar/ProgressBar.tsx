@@ -7,6 +7,8 @@ import cls from '@helpers/class'
 import './ProgressBar.scss'
 
 type InnerNumberType = number | string
+type PlacementType = 'top' | 'right' | 'bottom' | 'left'
+type SizeType = 'sm' | 'md'
 
 export const validateNumber = (num: any): boolean =>
   !_.isNil(num) &&
@@ -26,9 +28,9 @@ const calculatePercent = (
 }
 
 interface ProgressBarProps {
-  placement?: 'top' | 'right' | 'bottom' | 'left'
+  placement?: PlacementType
   value: InnerNumberType
-  size?: 'sm' | 'md'
+  size?: SizeType
   width?: InnerNumberType
   thickness?: InnerNumberType
   strokeColor?: string
