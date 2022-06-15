@@ -1,6 +1,10 @@
 @import '../../assets/styles/global.scss';
 
 $component: #{$prefix}-popover;
+$popover-height: 24px;
+$popover-margin: 4px;
+$caret-side-width: 4px;
+$caret-radius: 3px;
 
 .#{$component} {
   @apply relative;
@@ -9,6 +13,8 @@ $component: #{$prefix}-popover;
 .#{$component}-content {
   @apply bg-color_layout_emphasize_01 text-color_icon_inverse_01 px-spacing_03 py-spacing_02 text-center hidden absolute;
   border-radius: 4px;
+  z-index: 5000;
+  height: #{$popover-height};
 }
 
 .#{$prefix}-caret {
@@ -20,52 +26,168 @@ $component: #{$prefix}-popover;
 .#{$component}-top .#{$component}-content {
   top: 0;
   left: 50%;
-  transform: translate(-50%, calc(-100% - 2px));
+  transform: translate(-50%, calc(-100% - #{$popover-margin}));
+}
+
+// content with caret
+.#{$component}-caret {
+  .#{$component}-top.#{$component}-content {
+    transform: translate(
+      -50%,
+      calc(-100% - #{$popover-margin} - #{$caret-side-width})
+    );
+  }
+  .#{$component}-top-left.#{$component}-content {
+    transform: translate(
+      0,
+      calc(-100% - #{$popover-margin} - #{$caret-side-width})
+    );
+  }
+  .#{$component}-top-right.#{$component}-content {
+    transform: translate(
+      0,
+      calc(-100% - #{$popover-margin} - #{$caret-side-width})
+    );
+  }
+  .#{$component}-bottom.#{$component}-content {
+    transform: translate(
+      -50%,
+      calc(100% + #{$popover-margin} + #{$caret-side-width})
+    );
+  }
+  .#{$component}-bottom-left.#{$component}-content {
+    transform: translate(
+      0,
+      calc(100% + #{$popover-margin} + #{$caret-side-width})
+    );
+  }
+  .#{$component}-bottom-right.#{$component}-content {
+    transform: translate(
+      0,
+      calc(100% + #{$popover-margin} + #{$caret-side-width})
+    );
+  }
+  .#{$component}-left.#{$component}-content {
+    transform: translate(
+      calc(-100% - #{$popover-margin} - #{$caret-side-width}),
+      50%
+    );
+  }
+  .#{$component}-right.#{$component}-content {
+    transform: translate(
+      calc(100% + #{$popover-margin} + #{$caret-side-width}),
+      50%
+    );
+  }
 }
 
 .#{$component}-top-left .#{$component}-content {
   top: 0;
   left: 0;
-  transform: translate(0, calc(-100% - 2px));
+  transform: translate(0, calc(-100% - #{$popover-margin}));
 }
 
 .#{$component}-top-right .#{$component}-content {
   top: 0;
   right: 0;
-  transform: translate(0, calc(-100% - 2px));
+  transform: translate(0, calc(-100% - #{$popover-margin}));
 }
 
 // bottom
 .#{$component}-bottom .#{$component}-content {
   left: 50%;
   bottom: 0;
-  transform: translate(-50%, calc(100% + 2px));
+  transform: translate(-50%, calc(100% + #{$popover-margin}));
 }
 
 .#{$component}-bottom-left .#{$component}-content {
   left: 0;
   bottom: 0;
-  transform: translate(0, calc(100% + 2px));
+  transform: translate(0, calc(100% + #{$popover-margin}));
 }
 
 .#{$component}-bottom-right .#{$component}-content {
   right: 0;
   bottom: 0;
-  transform: translate(0, calc(100% + 2px));
+  transform: translate(0, calc(100% + #{$popover-margin}));
 }
 
 // left
 .#{$component}-left .#{$component}-content {
   left: 0;
   bottom: 50%;
-  transform: translate(calc(-100% - 2px), 50%);
+  transform: translate(calc(-100% - #{$popover-margin}), 50%);
 }
 
 // right
 .#{$component}-right .#{$component}-content {
   right: 0;
   bottom: 50%;
-  transform: translate(calc(100% + 2px), 50%);
+  transform: translate(calc(100% + #{$popover-margin}), 50%);
+}
+
+.#{$component}-caret:hover:before,
+.#{$component}-caret:focus-within:before {
+  @apply border-color_layout_emphasize_01 border-solid;
+  position: absolute;
+  content: '';
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-width: #{$caret-side-width};
+  z-index: 5001;
+  border-radius: 0 #{$caret-radius} 0 0;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+}
+
+.#{$component}-top.#{$component}-caret::before,
+.#{$component}-top-left.#{$component}-caret::before,
+.#{$component}-top-right.#{$component}-caret::before {
+  top: 0;
+  transform: translate(-50%, calc(-100% - #{$popover-margin})) rotate(135deg);
+}
+.#{$component}-top.#{$component}-caret::before {
+  left: 50%;
+}
+.#{$component}-top-left.#{$component}-caret::before {
+  left: calc(#{$caret-radius + ($caret-side-width * 2)});
+}
+.#{$component}-top-right.#{$component}-caret::before {
+  right: #{$caret-radius};
+}
+
+.#{$component}-bottom.#{$component}-caret::before,
+.#{$component}-bottom-left.#{$component}-caret::before,
+.#{$component}-bottom-right.#{$component}-caret::before {
+  bottom: 0;
+  transform: translate(
+      -50%,
+      calc(-100% - #{$popover-margin} + #{$popover-height})
+    )
+    rotate(-45deg);
+}
+
+.#{$component}-bottom.#{$component}-caret::before {
+  left: 50%;
+}
+.#{$component}-bottom-left.#{$component}-caret::before {
+  left: calc(#{$caret-radius + ($caret-side-width * 2)});
+}
+.#{$component}-bottom-right.#{$component}-caret::before {
+  right: #{$caret-radius};
+}
+
+.#{$component}-left.#{$component}-caret::before {
+  left: 0;
+  bottom: 50%;
+  transform: translate(calc(-100% - #{$popover-margin} - 0.4px), 50%)
+    rotate(45deg);
+}
+
+.#{$component}-right.#{$component}-caret::before {
+  right: 0;
+  bottom: 50%;
+  transform: translate(calc(100% + #{$popover-margin}), 50%) rotate(-135deg);
 }
 
 .#{$component}:focus-within .#{$component}-content {
