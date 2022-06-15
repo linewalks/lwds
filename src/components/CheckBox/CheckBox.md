@@ -28,27 +28,21 @@ const render = () => {
     <div>
       <CheckBox
         number={30}
-        text="CheckBox test code"
-        onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-      <CheckBox
-        color="black"
-        number={30}
-        text="CheckBox test code"
+        text="Uncheck Default"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
 
       <CheckBox
         defaultChecked={true}
         number={30}
-        text="CheckBox test code"
+        text="Checked Default"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
       <CheckBox
         color="black"
         defaultChecked={true}
         number={30}
-        text="CheckBox test code"
+        text="Checked Default (Black)"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
 
@@ -56,7 +50,7 @@ const render = () => {
         defaultChecked={true}
         mixed={true}
         number={30}
-        text="CheckBox test code"
+        text="Mixed Default"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
       <CheckBox
@@ -64,21 +58,14 @@ const render = () => {
         defaultChecked={true}
         mixed={true}
         number={30}
-        text="CheckBox test code"
+        text="Mixed Default (Black)"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
 
       <CheckBox
         disabled={true}
         number={30}
-        text="CheckBox test code"
-        onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-      <CheckBox
-        color="black"
-        disabled={true}
-        number={30}
-        text="CheckBox test code"
+        text="Unchecked Disabled"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
 
@@ -86,7 +73,7 @@ const render = () => {
         defaultChecked={true}
         disabled={true}
         number={30}
-        text="CheckBox test code"
+        text="Checked Diasabled"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
       <CheckBox
@@ -94,7 +81,7 @@ const render = () => {
         defaultChecked={true}
         disabled={true}
         number={30}
-        text="CheckBox test code"
+        text="Checked Diasabled (Black)"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
 
@@ -103,7 +90,7 @@ const render = () => {
         disabled={true}
         mixed={true}
         number={30}
-        text="CheckBox test code"
+        text="Mixed Diasabled"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
       <CheckBox
@@ -112,7 +99,7 @@ const render = () => {
         disabled={true}
         mixed={true}
         number={30}
-        text="CheckBox test code"
+        text="Mixed Diasabled (Black)"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
     </div>
@@ -130,24 +117,48 @@ import CheckBoxSet from '@components/CheckBox/CheckBoxSet'
 
 const render = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        height: '150px',
+        justifyContent: 'space-around',
+      }}
+    >
       <CheckBoxSet
         itemList={[
-          { id: 'test1', text: 'test', defaultChecked: true },
-          { id: 'test2', text: 'test', defaultChecked: true },
-          { id: 'test3', text: 'test', defaultChecked: true },
+          { id: 'test1', text: 'test', defaultChecked: false },
+          { id: 'test2', text: 'test', defaultChecked: false },
+          { id: 'test3', text: 'test', defaultChecked: false },
         ]}
-        text="CheckBox test code"
+        text="CheckBoxSet Default"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
       <CheckBoxSet
-        color="black"
         itemList={[
           { id: 'test01', text: 'test', defaultChecked: true },
           { id: 'test02', text: 'test', defaultChecked: true },
           { id: 'test03', text: 'test', defaultChecked: true },
         ]}
-        text="CheckBox test code"
+        text="CheckBoxSet checked"
+        onChange={(id, checked) => console.log('CheckBox', id, checked)}
+      />
+      <CheckBoxSet
+        color="black"
+        itemList={[
+          { id: 'test001', text: 'test', defaultChecked: true },
+          { id: 'test002', text: 'test', defaultChecked: true },
+          { id: 'test003', text: 'test', defaultChecked: true },
+        ]}
+        text="CheckBoxSet checked (Black)"
+        onChange={(id, checked) => console.log('CheckBox', id, checked)}
+      />
+      <CheckBoxSet
+        itemList={[
+          { id: 'test0001', text: 'test', defaultChecked: true },
+          { id: 'test0002', text: 'test', defaultChecked: true },
+          { id: 'test0003', text: 'test', defaultChecked: false },
+        ]}
+        text="CheckBoxSet Mixed"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
     </div>
