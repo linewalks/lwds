@@ -38,6 +38,7 @@ const render = () => {
         text="Checked Default"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
+
       <CheckBox
         color="black"
         defaultChecked={true}
@@ -100,6 +101,19 @@ const render = () => {
         mixed={true}
         number={30}
         text="Mixed Diasabled (Black)"
+        onChange={(id, checked) => console.log('CheckBox', id, checked)}
+      />
+
+      <CheckBox
+        number={30}
+        size="sm"
+        onChange={(id, checked) => console.log('CheckBox', id, checked)}
+      />
+
+      <CheckBox
+        defaultChecked={true}
+        number={30}
+        size="sm"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
     </div>
