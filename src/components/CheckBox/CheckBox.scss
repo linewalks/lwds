@@ -88,6 +88,8 @@ $lw_grey60: #8d98a5;
 .#{$component}-container {
   @apply flex;
 
+  // 해당 css는 component 사용범위를 제한적으로 만드는데
+  // 사용자가 아닌 라이브러리 단에서 지정을 해줘야 하는지 의문
   & + & {
     @apply mt-spacing_06;
 
@@ -112,19 +114,18 @@ $lw_grey60: #8d98a5;
 }
 
 .#{$component}-label-unchecked {
-  @apply cursor-not-allowed;
   color: #8d98a5;
+}
+
+.#{$component}-label-disabled {
+  @apply cursor-not-allowed;
 }
 
 .#{$setComponent}-container {
   @apply flex flex-col items-start;
 
-  & + & {
-    @apply mt-spacing_06;
-
-    &.#{$setComponent}-sm {
-      @apply mt-spacing_04;
-    }
+  &.#{$setComponent}-sm {
+    @apply mt-spacing_04;
   }
 
   div:not(:first-child) {
