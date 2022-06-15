@@ -60,7 +60,8 @@ Linewalks 사내 디자인 시스템을 React 환경에서 사용하기 쉽게 �
 ```js
 import * as React from 'react'
 import ReactDOM from 'react-dom'
-import Button from '@LWDS/Button'
+import Button from 'lwds/Button'
+// import styles from 'lwds/styles'
 
 function App() {
   return <Button variant="contained">Hello World</Button>
