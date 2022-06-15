@@ -14,8 +14,6 @@ describe('ProgressBar', () => {
 
     const state = wrapper.find(`.${cls('progressbar', 'state')}`)
     const label = wrapper.find(`.${cls('progressbar', 'label')}`)
-    const prefix = wrapper.find(`.${cls('progressbar', 'label', 'prefix')}`)
-    const suffix = wrapper.find(`.${cls('progressbar', 'label', 'suffix')}`)
     const text = wrapper.find(`.${cls('progressbar', 'label', 'text')}`)
     const current = wrapper.find(`.${cls('progressbar', 'state', 'current')}`)
 
@@ -23,8 +21,6 @@ describe('ProgressBar', () => {
       wrapper,
       label,
       state,
-      prefix,
-      suffix,
       text,
       current,
     }
