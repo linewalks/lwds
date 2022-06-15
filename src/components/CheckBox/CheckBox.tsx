@@ -75,6 +75,7 @@ const CheckBox = ({
           className={clsx(
             cls('checkbox', 'label'),
             cls('checkbox', 'label', size),
+            disabled && cls('checkbox', 'label', 'disabled'),
             !checked && cls('checkbox', 'label', 'unchecked'),
           )}
           style={style}
