@@ -14,11 +14,7 @@ interface PopoverProps {
     | 'bottom-left'
     | 'bottom-right'
     | 'left'
-    | 'left-bottom'
-    | 'left-top'
     | 'right'
-    | 'right-bottom'
-    | 'right-top'
   caret?: boolean
   open: boolean
   className?: string
