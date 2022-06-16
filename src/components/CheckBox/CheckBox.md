@@ -27,20 +27,20 @@ const render = () => {
   return (
     <div>
       <CheckBox
-        defaultChecked={true}
+        defaultChecked
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Checked Default
       </CheckBox>
       <CheckBox
         color="black"
-        defaultChecked={true}
+        defaultChecked
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Checked Default (Black)
       </CheckBox>
       <CheckBox
-        defaultChecked={true}
+        defaultChecked
         mixed={true}
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
@@ -48,7 +48,7 @@ const render = () => {
       </CheckBox>
       <CheckBox
         color="black"
-        defaultChecked={true}
+        defaultChecked
         mixed={true}
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
@@ -61,7 +61,7 @@ const render = () => {
         Unchecked Disabled
       </CheckBox>
       <CheckBox
-        defaultChecked={true}
+        defaultChecked
         disabled={true}
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
@@ -69,14 +69,14 @@ const render = () => {
       </CheckBox>
       <CheckBox
         color="black"
-        defaultChecked={true}
+        defaultChecked
         disabled={true}
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Checked Diasabled (Black)
       </CheckBox>
       <CheckBox
-        defaultChecked={true}
+        defaultChecked
         disabled={true}
         mixed={true}
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
@@ -85,7 +85,7 @@ const render = () => {
       </CheckBox>
       <CheckBox
         color="black"
-        defaultChecked={true}
+        defaultChecked
         disabled={true}
         mixed={true}
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
@@ -97,13 +97,13 @@ const render = () => {
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
       <CheckBox
-        defaultChecked={true}
+        defaultChecked
         size="sm"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
       <CheckBox
         color="black"
-        defaultChecked={true}
+        defaultChecked
         size="sm"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />

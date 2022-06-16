@@ -83,7 +83,7 @@ const CheckBoxSet = ({
   }, [checkList])
 
   return (
-    <div className={clsx(cls('checkboxset'))} style={style}>
+    <div className={cls('checkboxset')} style={style}>
       <CheckBox
         color={color}
         checked={_.some(checkedList, { checked: true })}
