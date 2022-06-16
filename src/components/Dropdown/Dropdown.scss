@@ -39,7 +39,7 @@ $menu-h-lg: 40px;
 }
 
 .#{$component} {
-  @apply mt-spacing_01 p-spacing_02 bg-color_layout_01 border-color_layout_04 shadow-shadow_v2;
+  @apply mt-spacing_01 p-spacing_02 bg-color_layout_01 border border-solid border-color_layout_04 shadow-shadow_v2;
 
   position: absolute;
   overflow: scroll;
