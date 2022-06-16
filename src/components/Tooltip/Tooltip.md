@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 
 import Button from '@components/Button/Button'
-import Popover from '@components/Popover/Popover'
+import Tooltip from '@components/Tooltip/Tooltip'
 
 import AddIcon from '@components/Icon/Icons/Action/AddIcon'
 import CloseIcon from '@components/Icon/Icons/Navigation/CloseIcon'
@@ -22,72 +22,77 @@ const render = () => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
       <WrapButton>
-        <Popover caret text="hello">
+        <Tooltip caret text="icon">
           <Button variant="primary" size="sm" icon>
             <AddIcon />
           </Button>
-        </Popover>
+        </Tooltip>
       </WrapButton>
 
       <WrapButton>
-        <Popover caret align="right" text="hello">
-          <Button variant="tertiary" size="md" icon>
-            <AddIcon />
+        <Tooltip caret text="basic button">
+          <Button variant="primary" size="sm">
+            basic button (bottom)
           </Button>
-        </Popover>
+        </Tooltip>
       </WrapButton>
 
       <WrapButton>
-        <Popover caret align="left" text="hiasdfwer">
+        <Tooltip caret align="right" text="right">
+          <Button variant="tertiary" size="md">
+            right
+          </Button>
+        </Tooltip>
+      </WrapButton>
+
+      <WrapButton>
+        <Tooltip caret align="left" text="left">
           <Button variant="primary" size="sm" icon>
-            <AddIcon />
+            left
           </Button>
-        </Popover>
+        </Tooltip>
       </WrapButton>
 
       <WrapButton>
-        <Popover caret align="top" text="hiasdfwer">
+        <Tooltip caret align="top" text="top">
           <Button variant="tertiary" size="lg">
             <AddIcon />
-            asdlfkqlwkmelr
+            top
           </Button>
-        </Popover>
+        </Tooltip>
       </WrapButton>
 
       <WrapButton>
-        <Popover caret align="top-left" text="helloqwerwerw">
+        <Tooltip caret align="top-left" text="top-left">
           <Button variant="primary" size="sm">
-            <AddIcon />
-            asdfwerwer
+            top-left
           </Button>
-        </Popover>
+        </Tooltip>
       </WrapButton>
 
       <WrapButton>
-        <Popover caret align="top-right" text="hello">
+        <Tooltip caret align="top-right" text="top-right">
           <Button variant="tertiary" size="md">
             <AddIcon />
-            sdfwer
+            top-right
           </Button>
-        </Popover>
+        </Tooltip>
       </WrapButton>
 
       <WrapButton>
-        <Popover caret align="bottom-left" text="hiasdfwer">
+        <Tooltip caret align="bottom-left" text="bottom-left">
           <Button variant="primary" size="sm">
-            <AddIcon />
-            asdfasdfwer
+            bottom-left
           </Button>
-        </Popover>
+        </Tooltip>
       </WrapButton>
 
       <WrapButton>
-        <Popover caret align="bottom-right" text="hiasdfwer">
+        <Tooltip caret align="bottom-right" text="bottom-right">
           <Button variant="tertiary" size="md">
-            <AddIcon />
-            asdfwerwer
+            bottom-right
           </Button>
-        </Popover>
+        </Tooltip>
       </WrapButton>
     </div>
   )

@@ -94,13 +94,12 @@ module.exports = {
           content: 'src/components/Dropdown/Dropdown.md',
         },
         {
-<<<<<<< HEAD
-          name: 'Popover',
-          content: 'src/components/Popover/Popover.md',
-=======
+          name: 'Tooltip',
+          content: 'src/components/Tooltip/Tooltip.md',
+        },
+        {
           name: 'ProgressBar',
           content: 'src/components/ProgressBar/ProgressBar.md',
->>>>>>> 5787024f125ce96e480df0bc233dbb4144d3df08
         },
       ],
     },
