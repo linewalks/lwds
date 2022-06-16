@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'reset.scss';
+@import 'variables.scss';
+
 @import './color/fontColors.scss';
 @import './font/font.scss';
 @import './typography/typography.scss';
-
-@import 'variables.scss';
-@import 'reset.scss';
 
 button,
 input,
