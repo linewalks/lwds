@@ -8,92 +8,66 @@ import '@components/CheckBox/CheckBox.scss'
 
 interface CheckBoxProps {
   color?: 'primary' | 'black'
+  checked: boolean
   className?: string
-  containerChecked?: boolean
   defaultChecked?: boolean
   disabled?: boolean
-  id?: string
+  id: string
   mixed?: boolean
-  number?: number
   size?: 'sm' | 'md'
   style?: object
-  text?: string
-  onChange: (id: string, checked: boolean) => void
+  children: React.ReactElement
+  onChange: (checked: boolean, id: string) => void
 }
 
 const CheckBox = ({
   color = 'primary',
   className,
-  containerChecked,
   defaultChecked = false,
   disabled = false,
   id = _.uniqueId('checkBox'),
   mixed = false,
-  number,
+  checked: propsChecked,
   size = 'md',
   style,
-  text,
+  children,
   onChange,
 }: CheckBoxProps) => {
-  const [checked, setChecked] = useState(defaultChecked)
+  const [checked, setChecked] = useState(
+    defaultChecked || propsChecked || false,
+  )
+
   const handleOnChange = (evt) => {
     const checked = evt.target.checked
-    setChecked(checked)
-    onChange(id, checked)
+    propsChecked || setChecked(checked)
+    onChange && onChange(checked, id)
   }
 
   useEffect(() => {
-    setChecked(defaultChecked)
-  }, [defaultChecked])
-
-  // set에서 활용될 경우
-  useEffect(() => {
-    if (!_.isNil(containerChecked)) setChecked(containerChecked)
-  }, [containerChecked])
+    if (!_.isNil(propsChecked)) setChecked(propsChecked)
+  }, [propsChecked])
 
   return (
-    <div className={clsx(cls('checkbox', 'container'))}>
+    <div
+      className={clsx(
+        cls('checkbox'),
+        cls('checkbox', color),
+        cls('checkbox', size),
+        mixed && cls('checkbox', 'mixed'),
+        checked && cls('checkbox', 'checked'),
+        disabled && cls('checkbox', 'disabled'),
+        className,
+      )}
+      style={style}
+    >
       <input
         type="checkbox"
         id={id}
-        className={clsx(
-          cls('checkbox'),
-          cls('checkbox', color),
-          cls('checkbox', size),
-          mixed && cls('checkbox', 'mixed'),
-          className,
-        )}
         checked={checked}
         disabled={disabled}
         onChange={handleOnChange}
       />
-      {/* Checkbox.Lable 등 {children} 으로 받고 싶은데,
-      모체 id, size, checked 값을 전달 받아야 함
-      깔끔하게 처리할 수 있는 방식은 없을까 */}
-      {text && (
-        <label
-          className={clsx(
-            cls('checkbox', 'label'),
-            cls('checkbox', 'label', size),
-            disabled && cls('checkbox', 'label', 'disabled'),
-            !checked && cls('checkbox', 'label', 'unchecked'),
-          )}
-          style={style}
-          htmlFor={id}
-        >
-          {text}
-          {number && (
-            <div
-              className={clsx(
-                cls('checkbox', 'number'),
-                !checked && cls('checkbox', 'label', 'unchecked'),
-              )}
-            >
-              &nbsp;{`(${number})`}
-            </div>
-          )}
-        </label>
-      )}
+      <label htmlFor={id}>{children}</label>
     </div>
   )
 }
