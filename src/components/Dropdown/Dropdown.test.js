@@ -40,9 +40,14 @@ describe('Dropdown test', () => {
   it.each(['md', 'lg'])('size(%s) test', (size) => {
     setup({ size })
 
-    expect(screen.getByRole('dropdown-menu-list')).toHaveClass(
-      cls('dropdown', size),
-    )
+    const fontClass = {
+      md: 'body_02_r',
+      lg: 'body_04_r',
+    }
+    const dropdownMenuList = screen.getByRole('dropdown-menu-list')
+
+    expect(dropdownMenuList).toHaveClass(cls('dropdown', size))
+    expect(dropdownMenuList).toHaveClass(fontClass[size])
   })
 
   it('icon test', () => {
@@ -72,6 +77,24 @@ describe('Dropdown test', () => {
     expect(screen.getByRole('dropdown-menu-list')).toHaveClass(
       cls('dropdown', 'scrollable'),
     )
+  })
+
+  describe('props validate check', () => {
+    it('wrong size props', () => {
+      setup({ size: 'xl' })
+
+      expect(screen.getByRole('dropdown-menu-list')).toHaveClass(
+        cls('dropdown', 'md'),
+      )
+    })
+
+    it('wrong direction props', () => {
+      setup({ direction: 'bottom' })
+
+      expect(screen.getByRole('dropdown-menu-list')).toHaveClass(
+        cls('dropdown', 'left'),
+      )
+    })
   })
 })
 

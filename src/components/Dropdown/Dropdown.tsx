@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useCallback } from 'react'
 import clsx from 'clsx'
 
 import cls from '@helpers/class'
@@ -28,6 +28,17 @@ interface DropdownItemProps {
   style?: object
 }
 
+const validateCheck = (key: string, target: string) => {
+  const checkSet = {
+    size: ['md', 'lg'],
+    direction: ['left', 'center', 'right'],
+  }
+
+  if (!checkSet[key]) throw new Error('Wrong Validate Check Key')
+
+  return checkSet[key].includes(target) ? target : checkSet[key][0]
+}
+
 const Dropdown = ({
   isOpen = false,
   size = 'md',
@@ -39,22 +50,19 @@ const Dropdown = ({
   style,
   children,
 }: DropdownProps) => {
-  const handleClick = (e) => {
+  const fontClass = useMemo(
+    () => ({
+      md: 'body_02_r',
+      lg: 'body_04_r',
+    }),
+    [],
+  )
+
+  const handleClick = useCallback((e) => {
     const dropdownMenu = e.target.closest(`.${cls('dropdown', 'menu')}`)
 
     onClick && onClick(dropdownMenu.dataset.id)
-  }
-
-  const fontClass = () => {
-    switch (size) {
-      case 'md':
-        return 'body_02_r'
-      case 'lg':
-        return 'body_04_r'
-      default:
-        return null
-    }
-  }
+  }, [])
 
   return (
     isOpen && (
@@ -62,11 +70,11 @@ const Dropdown = ({
         role="dropdown-menu-list"
         className={clsx(
           cls('dropdown'),
-          cls('dropdown', size),
-          cls('dropdown', direction),
+          cls('dropdown', validateCheck('size', size)),
+          cls('dropdown', validateCheck('direction', direction)),
           scrollable && cls('dropdown', 'scrollable'),
           icon && cls('dropdown', 'icon', 'list'),
-          fontClass(),
+          fontClass[validateCheck('size', size)],
           className,
         )}
         onClick={handleClick}
