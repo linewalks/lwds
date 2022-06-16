@@ -27,92 +27,83 @@ const render = () => {
   return (
     <div>
       <CheckBox
-        number={30}
-        text="Uncheck Default"
-        onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-
-      <CheckBox
         defaultChecked={true}
-        number={30}
-        text="Checked Default"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-
+      >
+        Checked Default
+      </CheckBox>
       <CheckBox
         color="black"
         defaultChecked={true}
-        number={30}
-        text="Checked Default (Black)"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-
+      >
+        Checked Default (Black)
+      </CheckBox>
       <CheckBox
         defaultChecked={true}
         mixed={true}
-        number={30}
-        text="Mixed Default"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
+      >
+        Mixed Default
+      </CheckBox>
       <CheckBox
         color="black"
         defaultChecked={true}
         mixed={true}
-        number={30}
-        text="Mixed Default (Black)"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-
+      >
+        Mixed Default (Black)
+      </CheckBox>
       <CheckBox
         disabled={true}
-        number={30}
-        text="Unchecked Disabled"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-
+      >
+        Unchecked Disabled
+      </CheckBox>
       <CheckBox
         defaultChecked={true}
         disabled={true}
-        number={30}
-        text="Checked Diasabled"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
+      >
+        Checked Diasabled
+      </CheckBox>
       <CheckBox
         color="black"
         defaultChecked={true}
         disabled={true}
-        number={30}
-        text="Checked Diasabled (Black)"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-
+      >
+        Checked Diasabled (Black)
+      </CheckBox>
       <CheckBox
         defaultChecked={true}
         disabled={true}
         mixed={true}
-        number={30}
-        text="Mixed Diasabled"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
+      >
+        Mixed Diasabled
+      </CheckBox>
       <CheckBox
         color="black"
         defaultChecked={true}
         disabled={true}
         mixed={true}
-        number={30}
-        text="Mixed Diasabled (Black)"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-
+      >
+        Mixed Diasabled (Black)
+      </CheckBox>
       <CheckBox
-        number={30}
         size="sm"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
-
       <CheckBox
         defaultChecked={true}
-        number={30}
+        size="sm"
+        onChange={(id, checked) => console.log('CheckBox', id, checked)}
+      />
+      <CheckBox
+        color="black"
+        defaultChecked={true}
         size="sm"
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       />
@@ -139,42 +130,54 @@ const render = () => {
       }}
     >
       <CheckBoxSet
-        itemList={[
-          { id: 'test1', text: 'test', defaultChecked: false },
-          { id: 'test2', text: 'test', defaultChecked: false },
-          { id: 'test3', text: 'test', defaultChecked: false },
+        checkList={[
+          { id: '1', children: 'Test' },
+          { id: '2', children: 'Test' },
+          { id: '3', children: 'Test' },
         ]}
-        text="CheckBoxSet Default"
-        onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
+        onChange={(id, checked) =>
+          console.log('CheckBoxkSet Test', id, checked)
+        }
+      >
+        CheckBoxSet Default
+      </CheckBoxSet>
       <CheckBoxSet
-        itemList={[
-          { id: 'test01', text: 'test', defaultChecked: true },
-          { id: 'test02', text: 'test', defaultChecked: true },
-          { id: 'test03', text: 'test', defaultChecked: true },
+        checkList={[
+          { id: '01', children: 'Test', defaultChecked: true },
+          { id: '02', children: 'Test', defaultChecked: true },
+          { id: '03', children: 'Test', defaultChecked: true },
         ]}
-        text="CheckBoxSet checked"
-        onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
+        onChange={(id, checked) =>
+          console.log('CheckBoxkSet Test', id, checked)
+        }
+      >
+        CheckBoxSet Checked
+      </CheckBoxSet>
+      <CheckBoxSet
+        checkList={[
+          { id: '001', children: 'Test', defaultChecked: true },
+          { id: '002', children: 'Test', defaultChecked: false },
+          { id: '003', children: 'Test', defaultChecked: false },
+        ]}
+        onChange={(id, checked) =>
+          console.log('CheckBoxkSet Test', id, checked)
+        }
+      >
+        CheckBoxSet Mixed
+      </CheckBoxSet>
       <CheckBoxSet
         color="black"
-        itemList={[
-          { id: 'test001', text: 'test', defaultChecked: true },
-          { id: 'test002', text: 'test', defaultChecked: true },
-          { id: 'test003', text: 'test', defaultChecked: true },
+        checkList={[
+          { id: '0001', children: 'Test', defaultChecked: true },
+          { id: '0002', children: 'Test', defaultChecked: true },
+          { id: '0003', children: 'Test', defaultChecked: true },
         ]}
-        text="CheckBoxSet checked (Black)"
-        onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
-      <CheckBoxSet
-        itemList={[
-          { id: 'test0001', text: 'test', defaultChecked: true },
-          { id: 'test0002', text: 'test', defaultChecked: true },
-          { id: 'test0003', text: 'test', defaultChecked: false },
-        ]}
-        text="CheckBoxSet Mixed"
-        onChange={(id, checked) => console.log('CheckBox', id, checked)}
-      />
+        onChange={(id, checked) =>
+          console.log('CheckBoxkSet Test', id, checked)
+        }
+      >
+        CheckBoxSet checked (Black)
+      </CheckBoxSet>
     </div>
   )
 }
