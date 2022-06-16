@@ -16,6 +16,7 @@
 |    size    |        'md', 'lg'         |  'md'   |
 |    icon    |          boolean          |  false  |
 | direction  | 'left', 'center', 'right' | 'left'  |
+| scrollable |          boolean          |  false  |
 | className  |          string           |         |
 |  onClick   |         Function          |         |
 |   style    |          object           |         |
@@ -173,6 +174,72 @@ const render = () => {
           <Dropdown.Item id="edit" option="Edit" />
           <Dropdown.Item id="duplicate" option="Dupliate" />
           <Dropdown.Item id="delete" option="Delete" />
+        </Dropdown>
+      </span>
+    </div>
+  )
+}
+
+render()
+```
+
+#### scrollable props
+
+- If adjust scrollable props, render 6.5 default Dropdown.Item height
+
+```js
+import React, { useState } from 'react'
+import Button from '@components/Button/Button'
+import Dropdown from '@components/Dropdown/Dropdown'
+
+const dropDownData = [
+  { id: 1, option: 'option1' },
+  { id: 2, option: 'option2' },
+  { id: 3, option: 'option3' },
+  { id: 4, option: 'option4' },
+  { id: 5, option: 'option5' },
+  { id: 6, option: 'option6' },
+  { id: 7, option: 'option7' },
+]
+
+const render = () => {
+  const [isOpen, setIsOpen] = useState({
+    default: false,
+    scroll: false,
+  })
+
+  const handleButtonClick = (id) => {
+    setIsOpen({
+      ...isOpen,
+      [id]: !isOpen[id],
+    })
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        height: '300px',
+        justifyContent: 'space-around',
+      }}
+    >
+      <span style={{ position: 'relative' }}>
+        <Button onClick={() => handleButtonClick('default')}>Default</Button>
+        <Dropdown isOpen={isOpen.default}>
+          {dropDownData.map(({ id, option }) => (
+            <Dropdown.Item key={`Dropdown__item__${id}`} option={option} />
+          ))}
+        </Dropdown>
+      </span>
+
+      <span style={{ position: 'relative' }}>
+        <Button onClick={() => handleButtonClick('scroll')}>
+          With scrollable
+        </Button>
+        <Dropdown isOpen={isOpen.scroll} scrollable>
+          {dropDownData.map(({ id, option }) => (
+            <Dropdown.Item key={`Dropdown__item__${id}`} option={option} />
+          ))}
         </Dropdown>
       </span>
     </div>

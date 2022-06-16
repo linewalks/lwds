@@ -130,8 +130,11 @@ $menu-h-lg: 40px;
   @include dropdown-menu-icon($icon-w-md, $icon-h-md, $icon-mr-md);
 
   width: 144px;
-  max-height: $menu-h-md * 6.5 + 4px;
   border-radius: 6px;
+
+  &.#{$component}-scrollable {
+    max-height: $menu-h-md * 6.5 + 4px;
+  }
 
   .#{$component}-menu {
     @include dropdown-menu-md;
@@ -151,8 +154,11 @@ $menu-h-lg: 40px;
   @include dropdown-menu-icon($icon-w-lg, $icon-h-lg, $icon-mr-lg);
 
   width: 160px;
-  max-height: $menu-h-lg * 6.5 + 4px;
   border-radius: 8px;
+
+  &.#{$component}-scrollable {
+    max-height: $menu-h-lg * 6.5 + 4px;
+  }
 
   .#{$component}-menu {
     @include dropdown-menu-lg;

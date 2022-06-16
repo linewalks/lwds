@@ -10,6 +10,7 @@ interface DropdownProps {
   size?: 'md' | 'lg'
   icon?: boolean
   direction?: 'left' | 'center' | 'right'
+  scrollable?: boolean
   className?: string
   onClick?: Function
   style?: object
@@ -32,6 +33,7 @@ const Dropdown = ({
   size = 'md',
   icon = false,
   direction = 'left',
+  scrollable = false,
   className,
   onClick,
   style,
@@ -62,6 +64,7 @@ const Dropdown = ({
           cls('dropdown'),
           cls('dropdown', size),
           cls('dropdown', direction),
+          scrollable && cls('dropdown', 'scrollable'),
           icon && cls('dropdown', 'icon', 'list'),
           fontClass(),
           className,

@@ -3,11 +3,7 @@ import { screen } from '@testing-library/dom'
 import { cleanup, fireEvent, render } from '@testing-library/react'
 
 import Dropdown from '@components/Dropdown/Dropdown'
-import {
-  PencilIcon,
-  DuplicateIcon,
-  TrashIcon,
-} from '@components/Icon/Icons/Action'
+import { PencilIcon, TrashIcon } from '@components/Icon/Icons/Action'
 
 import cls from '@helpers/class'
 
@@ -67,6 +63,14 @@ describe('Dropdown test', () => {
 
     expect(screen.getByRole('dropdown-menu-list')).toHaveClass(
       cls('dropdown', direction),
+    )
+  })
+
+  it('scrollable test', () => {
+    setup({ scrollable: true })
+
+    expect(screen.getByRole('dropdown-menu-list')).toHaveClass(
+      cls('dropdown', 'scrollable'),
     )
   })
 })
