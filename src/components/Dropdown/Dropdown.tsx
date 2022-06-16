@@ -43,6 +43,17 @@ const Dropdown = ({
     onClick && onClick(dropdownMenu.dataset.id)
   }
 
+  const fontClass = () => {
+    switch (size) {
+      case 'md':
+        return 'body_02_r'
+      case 'lg':
+        return 'body_04_r'
+      default:
+        return null
+    }
+  }
+
   return (
     isOpen && (
       <dl
@@ -52,6 +63,7 @@ const Dropdown = ({
           cls('dropdown', size),
           cls('dropdown', direction),
           icon && cls('dropdown', 'icon', 'list'),
+          fontClass(),
           className,
         )}
         onClick={handleClick}
