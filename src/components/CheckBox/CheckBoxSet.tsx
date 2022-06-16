@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
-
-import '@components/CheckBox/CheckBox.scss'
 
 import cls from '@helpers/class'
 
 import CheckBox from '@components/CheckBox/CheckBox'
 
-interface CheckBoxItemList {
-  id: string
-  text: string
-  number?: number
+import '@components/CheckBox/CheckBox.scss'
+
+interface CheckList {
+  id?: string
+  checked?: boolean
+  children: React.ReactElement
   defaultChecked?: boolean
 }
 
@@ -20,88 +20,95 @@ interface CheckBoxSetProps {
   defaultChecked?: boolean
   disabled?: boolean
   id?: string
-  itemList: Array<CheckBoxItemList>
-  size?: 'sm' | 'md'
+  checkList: Array<CheckList>
   style?: object
-  text: string
-  onChange: (id: string, checked: boolean) => void
+  children: React.ReactElement
+  onChange: (checked: boolean, id: string) => void
 }
 
 const CheckBoxSet = ({
   color = 'primary',
   disabled = false,
   id = _.uniqueId('checkBoxSet'),
-  itemList = [],
-  size = 'md',
+  checkList,
   style,
-  text,
+  children,
   onChange,
 }: CheckBoxSetProps) => {
-  // 좋은 방법있으면 공모받습니다.
-  // 자식 state에 따라서 모체 state가 변해야하는 상황
-  // 자식 state가 모체에서 뿌려지는게 아니기에 모체가 알 수 없음
-  // 모체에서 자체 state를 만들어서 관리해야 함
-  // 별도 stateList를 만들 시에 매번 이벤트가 일어날 때마다
-  // 해당 list를 업데이트하고 list를 완탐하며 type을 추출해야함
-  // count 방식으로 보다 심플하게 우회
-  const [checkedCount, setCheckedCount] = useState(
-    _.reduce(itemList, (acc, cur) => (cur.defaultChecked ? acc + 1 : acc), 0),
+  const [isPropsChecked, setIsPropsChecked] = useState(
+    !_.isNil(checkList[0]?.checked),
+  )
+  const [checkedList, setCheckedList] = useState(
+    _.reduce(
+      checkList,
+      (acc, cur) => {
+        cur.checked = cur.defaultChecked || cur.checked || false
+        return acc
+      },
+      checkList,
+    ),
   )
 
-  const handleContainerCheckBox = (id, checked) => {
-    setCheckedCount(checked ? itemList.length : 0)
-    // 모두 보내줘야 할까, 'all 한번에 퉁치는게 좋을까'
-    _.forEach(itemList, (item) => {
-      onChange(item.id, checked)
-    })
+  const handleContainerCheckBox = (checked, id) => {
+    if (!isPropsChecked) {
+      setCheckedList(
+        _.reduce(
+          checkedList,
+          (acc, cur) => {
+            acc.push({ ...cur, checked })
+            return acc
+          },
+          [],
+        ),
+      )
+    }
+    onChange &&
+      _.forEach(checkedList, (item) => {
+        onChange(checked, item.id)
+      })
   }
 
-  const handleOnChange = (id, checked) => {
-    onChange(id, checked)
-    setCheckedCount((checkedCount) =>
-      checked ? checkedCount + 1 : checkedCount - 1,
-    )
+  const handleOnChange = (checked, id) => {
+    if (!isPropsChecked) {
+      const newList = [...checkedList]
+      const targetIndex = _.findIndex(checkedList, (item) => item.id === id)
+      newList[targetIndex] = { ...newList[targetIndex], checked }
+      setCheckedList(newList)
+    }
+    onChange && onChange(id, checked)
   }
+
+  useEffect(() => {
+    if (!_.isEmpty(checkList)) setCheckedList(checkList)
+  }, [checkList])
 
   return (
-    <div
-      className={clsx(
-        cls('checkboxset', 'container'),
-        cls('checkboxset', size),
-      )}
-    >
+    <div className={clsx(cls('checkboxset'))} style={style}>
       <CheckBox
         color={color}
-        defaultChecked={checkedCount ? true : false}
+        checked={_.some(checkedList, { checked: true })}
         disabled={disabled}
         id={id}
-        mixed={checkedCount !== 0 && checkedCount !== itemList.length}
-        size={size}
-        style={style}
-        text={text}
+        mixed={
+          !_.every(checkedList, { checked: false }) &&
+          !_.every(checkedList, { checked: true })
+        }
         onChange={handleContainerCheckBox}
-      />
-      {_.map(itemList, ({ id, text, number, defaultChecked }, idx) => {
+      >
+        {children}
+      </CheckBox>
+      {_.map(checkedList, ({ id, children, checked }, idx) => {
         return (
           <CheckBox
             key={`CheckBox__${idx}`}
             color={color}
-            containerChecked={
-              checkedCount === 0
-                ? false
-                : checkedCount === itemList.length
-                ? true
-                : null
-            }
-            defaultChecked={defaultChecked}
+            checked={checked}
             disabled={disabled}
             id={id}
-            number={number}
-            size={size}
-            style={style}
-            text={text}
             onChange={handleOnChange}
-          />
+          >
+            {children}
+          </CheckBox>
         )
       })}
     </div>
