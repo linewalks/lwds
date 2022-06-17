@@ -129,8 +129,7 @@ $tooltip-z-index: 5000;
 // caret
 .#{$component}-caret:hover:before,
 .#{$component}-caret:focus-within:before {
-  @apply bg-color_layout_emphasize_01 border-color_layout_emphasize_01 border-solid;
-  position: absolute;
+  @apply absolute bg-color_layout_emphasize_01 border-color_layout_emphasize_01 border-solid;
   content: '';
   width: 1px;
   height: 1px;
@@ -143,7 +142,7 @@ $tooltip-z-index: 5000;
 .#{$component}-top.#{$component}-caret::before,
 .#{$component}-top-left.#{$component}-caret::before,
 .#{$component}-top-right.#{$component}-caret::before {
-  top: 0;
+  @apply top-spacing_00;
   transform: translate(-50%, calc(-100% - #{$tooltip-margin})) rotate(135deg);
 }
 .#{$component}-top.#{$component}-caret::before {
