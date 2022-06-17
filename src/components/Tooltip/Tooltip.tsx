@@ -20,7 +20,6 @@ interface TooltipProps {
   className?: string
   text: string
   children: React.ReactElement
-  childRef: any
 }
 
 const component = 'tooltip'
@@ -34,7 +33,6 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
       caret = false,
       className: customClassName,
       children,
-      childRef,
       text,
       ...rest
     } = props
@@ -53,14 +51,13 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
           cls(component),
           cls(component, align),
           showTooltip && caret && cls(component, 'caret'),
-          customClassName && customClassName,
+          customClassName,
         )}
         {...rest}
       >
         {children}
         {showTooltip && (
           <div
-            ref={ref}
             className={clsx(cls(component, align), cls(component, 'content'))}
           >
             {text}
