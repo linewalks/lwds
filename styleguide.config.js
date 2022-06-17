@@ -94,6 +94,10 @@ module.exports = {
           content: 'src/components/Dropdown/Dropdown.md',
         },
         {
+          name: 'Tooltip',
+          content: 'src/components/Tooltip/Tooltip.md',
+        },
+        {
           name: 'ProgressBar',
           content: 'src/components/ProgressBar/ProgressBar.md',
         },
