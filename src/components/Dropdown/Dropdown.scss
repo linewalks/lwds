@@ -2,11 +2,11 @@
 
 $component: #{$prefix}-dropdown;
 
-$icon-w-md: 16px;
-$icon-h-md: 16px;
+$icon-w-md: 20px;
+$icon-h-md: 20px;
 $icon-mr-md: 8px;
-$icon-w-lg: 20px;
-$icon-h-lg: 20px;
+$icon-w-lg: 24px;
+$icon-h-lg: 24px;
 $icon-mr-lg: 12px;
 
 $menu-h-md: 32px;
@@ -39,7 +39,7 @@ $menu-h-lg: 40px;
 }
 
 .#{$component} {
-  @apply mt-spacing_01 p-spacing_02 bg-color_layout_01 border-color_layout_04 shadow-shadow_v2;
+  @apply mt-spacing_01 p-spacing_02 bg-color_layout_01 border border-solid border-color_layout_04 shadow-shadow_v2;
 
   position: absolute;
   overflow: scroll;
@@ -130,9 +130,11 @@ $menu-h-lg: 40px;
   @include dropdown-menu-icon($icon-w-md, $icon-h-md, $icon-mr-md);
 
   width: 144px;
-  max-height: $menu-h-md * 6.5 + 4px;
   border-radius: 6px;
-  font-size: 14px;
+
+  &.#{$component}-scrollable {
+    max-height: $menu-h-md * 6.5 + 4px;
+  }
 
   .#{$component}-menu {
     @include dropdown-menu-md;
@@ -152,9 +154,11 @@ $menu-h-lg: 40px;
   @include dropdown-menu-icon($icon-w-lg, $icon-h-lg, $icon-mr-lg);
 
   width: 160px;
-  max-height: $menu-h-lg * 6.5 + 4px;
   border-radius: 8px;
-  font-size: 16px;
+
+  &.#{$component}-scrollable {
+    max-height: $menu-h-lg * 6.5 + 4px;
+  }
 
   .#{$component}-menu {
     @include dropdown-menu-lg;
