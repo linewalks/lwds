@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/linewalks/lwds/compare/v0.0.15...v0.1.2) (2022-06-17)
+
+### Features
+
+- **ProgressBar** progressbar 컴포넌트 구성 ([937dbae](https://github.com/linewalks/lwds/commit/937dbaea1f25fdfe95f19c86dd4fb21b2cd8cb28))
+
+### Bug Fixes
+
+- **Dropdown** dropdown 스타일 수정 ([74f3804](https://github.com/linewalks/lwds/commit/74f3804cfcb3758ede3c9d780351cd212d82f486))
+
 ### [0.1.1](https://github.com/linewalks/lwds/compare/v0.1.0...v0.1.1) (2022-06-08)
 
 ### Bug Fixes
