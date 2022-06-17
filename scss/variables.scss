@@ -1,0 +1,201 @@
+// Colors
+
+$lw_blue10: #ebf3fe !default;
+$lw_blue20: #d4e4fd !default;
+$lw_blue30: #a3c6fa !default;
+$lw_blue40: #6ea6f7 !default;
+$lw_blue50: #3481f4 !default;
+$lw_blue60: #0d66e7 !default;
+$lw_blue70: #094cae !default;
+$lw_blue80: #07377e !default;
+$lw_blue90: #05285c !default;
+$lw_white: #ffffff !default;
+$lw_grey10: #f6f7f9 !default;
+$lw_grey20: #eaedf0 !default;
+$lw_grey30: #dcdfe5 !default;
+$lw_grey40: #cbd0d8 !default;
+$lw_grey50: #b0bac4 !default;
+$lw_grey60: #8d98a5 !default;
+$lw_grey70: #6c7a89 !default;
+$lw_grey80: #535e6a !default;
+$lw_grey90: #3b424a !default;
+$lw_grey100: #24292d !default;
+$lw_red50: #ff4c33 !default;
+$lw_red60: #e81f02 !default;
+$lw_red90: #4d0900 !default;
+$lw_green50: #0cb639 !default;
+$lw_green60: #087d27 !default;
+$lw_green90: #013c12 !default;
+$lw_highlight: rgba(255, 240, 0, 0.24) !default;
+$lw_dimmed_overlay: rgba(36, 41, 45, 0.34) !default;
+$lw_active_overlay: rgba(36, 41, 45, 0.12) !default;
+$lw_hover_overlay: rgba(36, 41, 45, 0.08) !default;
+$lw_shadow_01: rgba(36, 41, 45, 0.28) !default;
+$lw_shadow_02: rgba(36, 41, 45, 0.24) !default;
+
+$color_background: $lw_white !default;
+$color_secondary_background: $lw_grey10 !default;
+
+$color_primary_element: $lw_blue50 !default;
+$color_secondary_element: $lw_blue90 !default;
+
+$color_layout_01: $lw_white !default;
+$color_layout_02: $lw_grey10 !default;
+$color_layout_03: $lw_grey20 !default;
+$color_layout_04: $lw_grey40 !default;
+$color_layout_05: $lw_grey30 !default;
+
+$color_layout_emphasize_01: $lw_grey70 !default;
+$color_layout_emphasize_02: $lw_grey80 !default;
+$color_layout_emphasize_03: $lw_grey90 !default;
+
+$color_danger: $lw_red50 !default;
+$color_safe: $lw_green50 !default;
+
+$color_hover_primary: $lw_hover_overlay !default;
+$color_hover_tertiary_button: $lw_blue50 !default;
+$color_hover_danger_tertiary_button: $lw_red50 !default;
+
+$color_focus_primary: $lw_blue70 !default;
+$color_focus_accent: $lw_blue50 !default;
+$color_focus_secondary: $lw_grey70 !default;
+$color_focus_error: $lw_red50 !default;
+
+$color_active_primary: $lw_active_overlay !default;
+$color_active_tertiary_button: $lw_blue60 !default;
+$color_active_danger_tertiary_button: $lw_red60 !default;
+
+$color_disabled_01: $lw_grey20 !default;
+$color_disabled_02: $lw_grey50 !default;
+
+$color_shadow_01: $lw_shadow_01 !default;
+$color_shadow_02: $lw_shadow_02 !default;
+$color_skeleton_01: $lw_grey20 !default;
+$color_highlight_01: $lw_highlight !default;
+$color_dimmed_overlay: $lw_dimmed_overlay !default;
+
+$color_text_01: $lw_grey100 !default;
+$color_text_02: $lw_grey90 !default;
+$color_text_03: $lw_grey80 !default;
+$color_text_04: $lw_grey70 !default;
+$color_text_05: $lw_grey60 !default;
+$color_text_error: $lw_red60 !default;
+$color_text_safe: $lw_green60 !default;
+$color_text_info: $lw_blue60 !default;
+$color_text_accent: $lw_blue50 !default;
+$color_text_danger: $lw_red50 !default;
+$color_text_inverse: $lw_white !default;
+$color_text_disabled: $lw_grey50 !default;
+
+$color_icon_01: $lw_grey100 !default;
+$color_icon_02: $lw_grey90 !default;
+$color_icon_03: $lw_grey80 !default;
+$color_icon_04: $lw_grey70 !default;
+$color_icon_danger: $lw_red50 !default;
+$color_icon_safe: $lw_green50 !default;
+$color_icon_accent: $lw_blue50 !default;
+$color_icon_inverse_01: $lw_white !default;
+$color_icon_inverse_02: $lw_grey40 !default;
+$color_icon_disabled: $lw_grey50 !default;
+
+$color_button_primary: $lw_blue50 !default;
+$color_button_secondary: $lw_grey30 !default;
+$color_button_tertiary: $lw_blue50 !default;
+$color_button_disabled: $lw_grey20 !default;
+$color_button_danger: $lw_red50 !default;
+
+$color_field_01: $lw_white !default;
+$color_field_disabled: $lw_grey20 !default;
+
+// Space
+
+$spacing_00: 0px !default;
+$spacing_01: 2px !default;
+$spacing_02: 4px !default;
+$spacing_03: 6px !default;
+$spacing_04: 8px !default;
+$spacing_06: 12px !default;
+$spacing_08: 16px !default;
+$spacing_10: 20px !default;
+$spacing_12: 24px !default;
+$spacing_14: 28px !default;
+$spacing_16: 32px !default;
+$spacing_18: 36px !default;
+$spacing_20: 40px !default;
+$spacing_22: 44px !default;
+$spacing_24: 48px !default;
+$spacing_26: 52px !default;
+$spacing_28: 56px !default;
+$spacing_30: 60px !default;
+$spacing_32: 64px !default;
+$spacing_34: 68px !default;
+$spacing_36: 72px !default;
+$spacing_40: 80px !default;
+$spacing_44: 88px !default;
+$spacing_48: 96px !default;
+$spacing_56: 112px !default;
+
+$spacing_r00: 0rem !default;
+$spacing_r01: 0.125rem !default;
+$spacing_r02: 0.25rem !default;
+$spacing_r03: 0.375rem !default;
+$spacing_r04: 0.5rem !default;
+$spacing_r06: 0.75rem !default;
+$spacing_r08: 1rem !default;
+$spacing_r10: 1.25rem !default;
+$spacing_r12: 1.5rem !default;
+$spacing_r14: 1.75rem !default;
+$spacing_r16: 2rem !default;
+$spacing_r18: 2.25rem !default;
+$spacing_r20: 2.5rem !default;
+$spacing_r22: 2.75rem !default;
+$spacing_r24: 3rem !default;
+$spacing_r26: 3.25rem !default;
+$spacing_r28: 3.5rem !default;
+$spacing_r30: 3.75rem !default;
+$spacing_r32: 4rem !default;
+$spacing_r34: 4.25rem !default;
+$spacing_r36: 4.5rem !default;
+$spacing_r40: 5rem !default;
+$spacing_r44: 5.5rem !default;
+$spacing_r48: 6rem !default;
+$spacing_r56: 7rem !default;
+
+// Size
+$size_00: 0px !default;
+$size_04: 8px !default;
+$size_08: 16px !default;
+$size_10: 20px !default;
+$size_12: 24px !default;
+$size_16: 32px !default;
+$size_20: 40px !default;
+$size_24: 48px !default;
+$size_28: 56px !default;
+$size_32: 64px !default;
+$size_36: 72px !default;
+$size_40: 80px !default;
+$size_44: 88px !default;
+$size_48: 96px !default;
+
+$size_r00: 0rem !default;
+$size_r04: 0.5rem !default;
+$size_r08: 1rem !default;
+$size_r10: 1.25rem !default;
+$size_r12: 1.5rem !default;
+$size_r16: 2rem !default;
+$size_r20: 2.5rem !default;
+$size_r24: 3rem !default;
+$size_r28: 3.5rem !default;
+$size_r32: 4rem !default;
+$size_r36: 4.5rem !default;
+$size_r40: 5rem !default;
+$size_r44: 5.5rem !default;
+$size_r48: 6rem !default;
+$size_r56: 7rem !default;
+
+// Shadow
+
+$shadow_v1: 0 0 4px 0 $lw_shadow_01 !default;
+$shadow_v2: 0 1px 8px 0 $lw_shadow_01 !default;
+$shadow_v3: 0 2px 14px 0 $lw_shadow_02 !default;
+$shadow_v4: 0 3px 24px 0 $lw_shadow_02 !default;
