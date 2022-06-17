@@ -1,0 +1,141 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-checkbox;
+$setComponent: #{$prefix}-checkboxset;
+
+$lw_blue30: #a3c6fa;
+$lw_grey60: #8d98a5;
+
+.#{$component} {
+  @apply flex;
+
+  // 해당 css는 component 사용범위를 제한적으로 만드는데
+  // 사용자가 아닌 라이브러리 단에서 지정을 해줘야 하는지 의문
+  & + & {
+    @apply mt-spacing_06;
+
+    &.#{$component}-sm {
+      @apply mt-spacing_04;
+    }
+  }
+
+  input {
+    @apply bg-color_background border-2 border-solid cursor-pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-color: $lw_grey60;
+    border-radius: 4px;
+
+    &:after {
+      @apply hidden relative border-solid border-color_background;
+      content: '';
+      left: 8px;
+      top: 4px;
+      width: 7px;
+      height: 14px;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    // difault unchecked
+    &:disabled {
+      @apply border-color_icon_disabled cursor-not-allowed;
+    }
+
+    // checked
+    &:checked {
+      @apply bg-color_button_primary border-0;
+
+      &:after {
+        @apply block;
+      }
+
+      &:disabled {
+        @apply border-0;
+        background: $lw_blue30;
+      }
+    }
+  }
+
+  label {
+    @apply flex items-center justify-center flex-wrap overflow-hidden ml-spacing_06 cursor-pointer;
+    font-family: 'Spoqa Han Sans Neo';
+    color: #8d98a5;
+
+    &.#{$component}-sm {
+      @apply ml-spacing_04;
+    }
+  }
+}
+
+.#{$component}-checked {
+  label {
+    @apply text-color_text_02;
+  }
+}
+
+.#{$component}-disabled {
+  label {
+    @apply cursor-not-allowed;
+  }
+}
+
+.#{$component}-mixed {
+  input::after {
+    @apply bg-color_background;
+    left: 5px;
+    top: 10px;
+    width: 14px;
+    height: 1px;
+    border-radius: 3px;
+    transform: rotate(0deg);
+  }
+}
+
+// sm size에서는 label 미사용
+.#{$component}-sm {
+  input {
+    width: 16px;
+    height: 16px;
+
+    &:after {
+      left: 5.5px;
+      top: 3px;
+      width: 5px;
+      height: 9px;
+      border-width: 0 2px 2px 0;
+    }
+  }
+
+  &.#{$component}-mixed {
+    input::after {
+      left: 4.5px;
+      top: 7px;
+      width: 7px;
+      height: 1px;
+    }
+  }
+}
+
+.#{$component}-black {
+  input {
+    &:checked {
+      @apply bg-color_icon_02;
+
+      &:disabled {
+        @apply bg-color_icon_disabled;
+      }
+    }
+  }
+}
+
+.#{$setComponent} {
+  @apply flex flex-col items-start;
+
+  div:not(:first-child) {
+    @apply ml-spacing_18;
+  }
+}
