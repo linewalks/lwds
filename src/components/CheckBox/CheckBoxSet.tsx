@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 
@@ -35,9 +35,7 @@ const CheckBoxSet = ({
   children,
   onChange,
 }: CheckBoxSetProps) => {
-  const [isPropsChecked, setIsPropsChecked] = useState(
-    !_.isNil(checkList[0]?.checked),
-  )
+  const isPropsChecked = useMemo(() => !_.isNil(checkList[0]?.checked), [])
   const [checkedList, setCheckedList] = useState(
     _.reduce(
       checkList,
