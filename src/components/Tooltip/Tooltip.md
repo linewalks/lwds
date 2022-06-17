@@ -1,4 +1,24 @@
-#### With Icon alone
+<br />
+
+### Usage
+
+- describe button (including icon-only button)
+- Use when defining a term or inline item
+
+<br />
+
+### Props
+
+| Props Name |                                       Types                                       | Default  |
+| :--------: | :-------------------------------------------------------------------------------: | :------: |
+|   align    | 'top','bottom','left','right','top-left','top-right','bottom-left','bottom-right' | 'bottom' |
+|   caret    |                                      boolean                                      |  false   |
+|    text    |                                      string                                       |          |
+| className  |                                      string                                       |          |
+
+<br />
+
+### Example Code
 
 ```js
 import styled from 'styled-components'
