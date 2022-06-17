@@ -12,10 +12,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 - **Dropdown** dropdown 스타일 수정 ([74f3804](https://github.com/linewalks/lwds/commit/74f3804cfcb3758ede3c9d780351cd212d82f486))
 
-### Docs
-
-- icon 문서 카테고리 변경 ([34e60af](https://github.com/linewalks/lwds/commit/34e60afaa9444da290cbe90a02ed47665ac8fd57))
-
 ### [0.1.1](https://github.com/linewalks/lwds/compare/v0.1.0...v0.1.1) (2022-06-08)
 
 ### Bug Fixes
