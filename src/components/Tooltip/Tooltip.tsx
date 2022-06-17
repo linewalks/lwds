@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import clsx from 'clsx'
-
 import cls from '@helpers/class'
-
 import '@components/Tooltip/Tooltip.scss'
+
+const COMPONENT = 'tooltip'
 
 interface TooltipProps {
   align:
@@ -15,14 +15,11 @@ interface TooltipProps {
     | 'bottom-right'
     | 'left'
     | 'right'
-  caret?: boolean
-  open: boolean
-  className?: string
   text: string
+  hasCaret?: boolean
+  className?: string
   children: React.ReactElement
 }
-
-const component = 'tooltip'
 
 const Tooltip = React.forwardRef<HTMLInputElement>(
   (props: TooltipProps, ref) => {
@@ -30,7 +27,7 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
 
     const {
       align = 'bottom',
-      caret = false,
+      hasCaret = false,
       className: customClassName,
       children,
       text,
@@ -48,9 +45,9 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
         onMouseOver={showContent}
         onMouseLeave={removeContent}
         className={clsx(
-          cls(component),
-          cls(component, align),
-          showTooltip && caret && cls(component, 'caret'),
+          cls(COMPONENT),
+          cls(COMPONENT, align),
+          showTooltip && hasCaret && cls(COMPONENT, 'caret'),
           customClassName,
         )}
         {...rest}
@@ -58,7 +55,7 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
         {children}
         {showTooltip && (
           <div
-            className={clsx(cls(component, align), cls(component, 'content'))}
+            className={clsx(cls(COMPONENT, align), cls(COMPONENT, 'content'))}
           >
             {text}
           </div>
