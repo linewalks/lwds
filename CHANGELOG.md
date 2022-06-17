@@ -4,31 +4,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.1.2](https://github.com/linewalks/lwds/compare/v0.0.15...v0.1.2) (2022-06-17)
 
-
 ### Features
 
-* apply font config ([5e56512](https://github.com/linewalks/lwds/commit/5e56512461b7d95e34e4345d7fb29da495a32738))
-* **dropdown:** dropdown 컴포넌트 구성 ([ac226bf](https://github.com/linewalks/lwds/commit/ac226bf093a6f37a57474e4d6095a7151546eb9c))
-* ProgressBar ([937dbae](https://github.com/linewalks/lwds/commit/937dbaea1f25fdfe95f19c86dd4fb21b2cd8cb28))
-
+- **ProgressBar** progressbar 컴포넌트 구성 ([937dbae](https://github.com/linewalks/lwds/commit/937dbaea1f25fdfe95f19c86dd4fb21b2cd8cb28))
 
 ### Bug Fixes
 
-* button normal fontweight change 400 to 500 ([92b100f](https://github.com/linewalks/lwds/commit/92b100fb7ec7e1ad6b48502a070c3c1f7efd504e))
-* **button:** disabled 상태 svg 아이콘 스타일 버그 수정 ([5a3723e](https://github.com/linewalks/lwds/commit/5a3723e782a2a05662ffeced2bf8bb693993bdc1))
-* **button:** tertiary button border width ([060afe4](https://github.com/linewalks/lwds/commit/060afe4d2ae524b24284268c451540b0247b20b2))
-* **color:** update icon_04 color value ([7c02232](https://github.com/linewalks/lwds/commit/7c022329a878068dfb38117bacba358e3ee96158))
-* **docs:** wrong spacing size in spacing docs ([e0784b7](https://github.com/linewalks/lwds/commit/e0784b70d36c6e009da941e1512d4e39a5bf7ab1))
-* ghost important color ([7f40645](https://github.com/linewalks/lwds/commit/7f40645af456969a2d57be50551c2b03128bfba8))
-* **icon:** ObservationIcon 수정 ([6d78690](https://github.com/linewalks/lwds/commit/6d78690cdc252cf82262ce6d02367284c67451fd))
-* missing color opacity in highlight color ([5623434](https://github.com/linewalks/lwds/commit/562343497d3d28c14143b235805b0d97724c7153))
-* Shadow 내 Color Semantics 적용 오류 ([c760f78](https://github.com/linewalks/lwds/commit/c760f78c814ca66cd20cd0324696ee5a01d45719))
-* **typography:** body medium line height ([a48b5b7](https://github.com/linewalks/lwds/commit/a48b5b7fcab3a68c4521e9aff4002dfc0b51da94))
-
+- **Dropdown** dropdown 스타일 수정 ([74f3804](https://github.com/linewalks/lwds/commit/74f3804cfcb3758ede3c9d780351cd212d82f486))
 
 ### Docs
 
-* icon 문서 카테고리 변경  ([34e60af](https://github.com/linewalks/lwds/commit/34e60afaa9444da290cbe90a02ed47665ac8fd57))
+- icon 문서 카테고리 변경 ([34e60af](https://github.com/linewalks/lwds/commit/34e60afaa9444da290cbe90a02ed47665ac8fd57))
 
 ### [0.1.1](https://github.com/linewalks/lwds/compare/v0.1.0...v0.1.1) (2022-06-08)
 
