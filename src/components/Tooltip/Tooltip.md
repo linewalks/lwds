@@ -12,7 +12,7 @@
 | Props Name |                                       Types                                       | Default  |
 | :--------: | :-------------------------------------------------------------------------------: | :------: |
 |   align    | 'top','bottom','left','right','top-left','top-right','bottom-left','bottom-right' | 'bottom' |
-|   caret    |                                      boolean                                      |  false   |
+|  hasCaret  |                                      boolean                                      |  false   |
 |    text    |                                      string                                       |          |
 | className  |                                      string                                       |          |
 
@@ -36,9 +36,9 @@ const GridBox = styled.div`
 
 const render = () => (
   <GridBox>
-    <Tooltip caret align="top-left" text="top-left">
+    <Tooltip hasCaret align="top-left" text="top-left">
       <Button variant="tertiary" size="md">
-        top-left (+caret)
+        top-left (+ hasCaret)
       </Button>
     </Tooltip>
 
@@ -47,15 +47,15 @@ const render = () => (
         top
       </Button>
     </Tooltip>
-    <Tooltip caret align="top-right" text="top-right">
+    <Tooltip hasCaret align="top-right" text="top-right">
       <Button variant="tertiary" size="md">
-        top-right (+caret)
+        top-right (+ hasCaret)
       </Button>
     </Tooltip>
 
-    <Tooltip caret align="left" text="left">
+    <Tooltip hasCaret align="left" text="left">
       <Button variant="tertiary" size="md">
-        left (+caret)
+        left (+ hasCaret)
       </Button>
     </Tooltip>
 
@@ -65,15 +65,15 @@ const render = () => (
       </Button>
     </Tooltip>
 
-    <Tooltip caret align="right" text="right">
+    <Tooltip hasCaret align="right" text="right">
       <Button variant="tertiary" size="md">
-        right (+caret)
+        right (+ hasCaret)
       </Button>
     </Tooltip>
 
-    <Tooltip caret align="bottom-left" text="bottom-left">
+    <Tooltip hasCaret align="bottom-left" text="bottom-left">
       <Button variant="tertiary" size="md">
-        bottom-left (+caret)
+        bottom-left (+ hasCaret)
       </Button>
     </Tooltip>
 
@@ -83,9 +83,9 @@ const render = () => (
       </Button>
     </Tooltip>
 
-    <Tooltip caret align="bottom-right" text="bottom-right">
+    <Tooltip hasCaret align="bottom-right" text="bottom-right">
       <Button variant="tertiary" size="md">
-        bottom-right (+caret)
+        bottom-right (+ hasCaret)
       </Button>
     </Tooltip>
   </GridBox>
