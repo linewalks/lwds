@@ -33,6 +33,8 @@
   },
   "files": [
     "dist",
+    "less",
+    "scss",
     "styles.js",
     "icons.js"
   ],
