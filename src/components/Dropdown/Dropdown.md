@@ -185,7 +185,7 @@ render()
 
 #### scrollable props
 
-- If adjust scrollable props, render 6.5 default Dropdown.Item height
+- If scrollable is true, height of the dropdown area will be set to 6.5 times height of Dropdown.Item
 
 ```js
 import React, { useState } from 'react'
