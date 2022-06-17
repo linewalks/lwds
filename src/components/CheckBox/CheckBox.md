@@ -41,7 +41,7 @@ const render = () => {
       </CheckBox>
       <CheckBox
         defaultChecked
-        mixed={true}
+        mixed
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Mixed Default
@@ -49,20 +49,20 @@ const render = () => {
       <CheckBox
         color="black"
         defaultChecked
-        mixed={true}
+        mixed
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Mixed Default (Black)
       </CheckBox>
       <CheckBox
-        disabled={true}
+        disabled
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Unchecked Disabled
       </CheckBox>
       <CheckBox
         defaultChecked
-        disabled={true}
+        disabled
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Checked Diasabled
@@ -70,15 +70,15 @@ const render = () => {
       <CheckBox
         color="black"
         defaultChecked
-        disabled={true}
+        disabled
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Checked Diasabled (Black)
       </CheckBox>
       <CheckBox
         defaultChecked
-        disabled={true}
-        mixed={true}
+        disabled
+        mixed
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Mixed Diasabled
@@ -86,8 +86,8 @@ const render = () => {
       <CheckBox
         color="black"
         defaultChecked
-        disabled={true}
-        mixed={true}
+        disabled
+        mixed
         onChange={(id, checked) => console.log('CheckBox', id, checked)}
       >
         Mixed Diasabled (Black)

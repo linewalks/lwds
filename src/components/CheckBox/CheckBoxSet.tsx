@@ -37,14 +37,10 @@ const CheckBoxSet = ({
 }: CheckBoxSetProps) => {
   const isPropsChecked = useMemo(() => !_.isNil(checkList[0]?.checked), [])
   const [checkedList, setCheckedList] = useState(
-    _.reduce(
-      checkList,
-      (acc, cur) => {
-        cur.checked = cur.defaultChecked || cur.checked || false
-        return acc
-      },
-      checkList,
-    ),
+    _.map(checkList, (item) => {
+      item.checked = item.defaultChecked || item.checked || false
+      return item
+    }),
   )
 
   const handleContainerCheckBox = (checked, id) => {
