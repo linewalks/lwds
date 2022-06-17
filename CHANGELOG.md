@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.1.2](https://github.com/linewalks/lwds/compare/v0.0.15...v0.1.2) (2022-06-17)
+## [0.2.0](https://github.com/linewalks/lwds/compare/v0.1.2...v0.2.0) (2022-06-17)
+
+### Features
+
+- **style:** sass, less semantics 변수 추가 ([de8b38e](https://github.com/linewalks/lwds/commit/de8b38ef84c04c8a958713b5b2fabe56bd636f63))
+
+### [0.1.2](https://github.com/linewalks/lwds/compare/v0.1.1...v0.1.2) (2022-06-17)
 
 ### Features
 
