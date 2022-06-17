@@ -23,10 +23,6 @@ interface TooltipProps {
   childRef: any
 }
 
-interface TooltipContentProps {
-  children?: React.ReactElement
-}
-
 const component = 'tooltip'
 
 const Tooltip = React.forwardRef<HTMLInputElement>(
