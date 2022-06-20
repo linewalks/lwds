@@ -19,8 +19,10 @@ export const ToastProvider = ({
   const [toastList, setToastList] = useState([])
   const [isBrowser, setIsBrowser] = useState(false)
 
-  const addToast = (toast) =>
+  const addToast = (toast) => {
+    if (_.isNil(toast.id)) toast.toastId = _.uniqueId('toast')
     setToastList((prevToastList) => [...prevToastList, toast])
+  }
 
   const removeToast = (id) =>
     setToastList((prevToastList) =>

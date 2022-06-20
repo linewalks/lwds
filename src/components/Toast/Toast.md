@@ -3,7 +3,7 @@
 - 프로젝트 root component를 ToastProvider로 감싸줍니다.
 - Toast를 사용하는 곳에서 useToast를 import한 후, useToast를 실행하여 add, remove, removeAll 함수를 변수에 할당하여 사용합니다.
 - Toast를 추가할 때, add함수에 이하 양식의 Toast(add)를 인자로 넣어 호출합니다.
-- 특정 Toast 삭제가 필요한 경우, add 시 전달한 유니크한 toastId를 동일하게 remove에 넣어 호출합니다.
+- 특정 Toast 삭제가 필요한 경우, add 시 전달한 toastId와 동일하게 id를 인자로 remove를 호출합니다.
 - Toast 전체 초기화가 필요할 경우, removeAll 함수를 호출합니다.
 - message는 커스텀이 가능하며, callback 함수를 활용하여 '바로가기' 버튼을 활성화 할 수 있습니다.
 
@@ -24,15 +24,15 @@
 
 ##### Toast(add) Parameters
 
-| Parameters Name |       Types        |       Default        |
-| :-------------: | :----------------: | :------------------: |
-|    className    |       string       |                      |
-|     toastId     |       string       | \_.uniqueId('toast') |
-|    duration     |       number       |         4000         |
-|     message     | string, React.Node |        false         |
-|      type       | 'success', 'fail'  |      'success'       |
-|      style      |       object       |                      |
-|    callback     |      function      |                      |
+| Parameters Name |       Types        |  Default  |
+| :-------------: | :----------------: | :-------: |
+|    className    |       string       |           |
+|     toastId     |       string       |           |
+|    duration     |       number       |   4000    |
+|     message     | string, React.Node |   false   |
+|      type       | 'success', 'fail'  | 'success' |
+|      style      |       object       |           |
+|    callback     |      function      |           |
 
 <br />
 

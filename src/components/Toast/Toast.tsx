@@ -44,7 +44,7 @@ const Icon = {
 
 const Toast = ({
   className,
-  toastId = _.uniqueId('toast'),
+  toastId,
   duration,
   message,
   type,
