@@ -101,6 +101,10 @@ module.exports = {
           name: 'Checkbox',
           content: 'src/components/Checkbox/Checkbox.md',
         },
+        {
+          name: 'Toast',
+          content: 'src/components/Toast/Toast.md',
+        },
       ],
     },
     // {
