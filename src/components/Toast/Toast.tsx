@@ -59,7 +59,7 @@ const Toast = ({
     }, duration)
 
     return () => clearTimeout(timeoutId)
-  }, [toastId, duration, remove])
+  }, [])
 
   return (
     <ToastBox
@@ -72,10 +72,7 @@ const Toast = ({
         <div>{message}</div>
       </div>
       {callback && (
-        <button
-          className={clsx(cls('toast', 'button', 'action'))}
-          onClick={callback}
-        >
+        <button className={cls('toast', 'button', 'action')} onClick={callback}>
           <div>바로가기</div>
           <img src={Chevron} width={5} height={7} alt="callback icon" />
         </button>

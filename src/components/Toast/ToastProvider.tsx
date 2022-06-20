@@ -17,7 +17,7 @@ export const ToastProvider = ({
   children,
 }: IToastProvider) => {
   const [toastList, setToastList] = useState([])
-  const [isBrowser, setIsBrowser] = useState(false)
+  const [canUseDOM, setCanUseDOM] = useState(false)
 
   const addToast = (toast) => {
     if (_.isNil(toast.id)) toast.toastId = _.uniqueId('toast')
@@ -32,12 +32,12 @@ export const ToastProvider = ({
   const removeAllToast = () => setToastList([])
 
   useEffect(() => {
-    setIsBrowser(true)
+    setCanUseDOM(true)
   }, [])
 
   return (
     <ToastContext.Provider value={{ addToast, removeToast, removeAllToast }}>
-      {isBrowser &&
+      {canUseDOM &&
         ReactDOM.createPortal(
           <div className={clsx(cls('toastProvider'), className)} style={style}>
             {!_.isEmpty(toastList) &&
