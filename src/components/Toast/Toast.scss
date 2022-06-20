@@ -22,9 +22,9 @@ $component: #{$prefix}-toast;
   }
 
   // 기획 변경 예정
-  // & + & {
-  //   margin-top: -35px;
-  // }
+  & + & {
+    @apply mt-spacing_02;
+  }
 }
 
 .#{$component}-message {
