@@ -24,15 +24,16 @@
 
 ##### Toast(add) Parameters
 
-| Parameters Name |       Types        |  Default  |
-| :-------------: | :----------------: | :-------: |
-|    className    |       string       |           |
-|     toastId     |       string       |           |
-|    duration     |       number       |   4000    |
-|     message     | string, React.Node |   false   |
-|      type       | 'success', 'fail'  | 'success' |
-|      style      |       object       |           |
-|    callback     |      function      |           |
+| Parameters Name |       Types        |  Default   |
+| :-------------: | :----------------: | :--------: |
+|    className    |       string       |            |
+|     toastId     |       string       |            |
+| callbackMessage | string, React.Node | '바로가기' |
+|    duration     |       number       |    4000    |
+|     message     | string, React.Node |            |
+|      type       | 'success', 'fail'  | 'success'  |
+|      style      |       object       |            |
+|    callback     |      function      |            |
 
 <br />
 
