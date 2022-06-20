@@ -43,7 +43,11 @@ $component: #{$prefix}-toast;
   font-weight: 700;
   font-size: 8px;
 
-  img {
+  div {
+    padding-top: 1px;
+  }
+
+  svg {
     @apply ml-spacing_03;
   }
 }

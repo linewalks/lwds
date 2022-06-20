@@ -4,7 +4,8 @@ import clsx from 'clsx'
 import styled, { keyframes } from 'styled-components'
 
 import cls from '@helpers/class'
-import Chevron from '@assets/svg/icn_navigation_chevron_bold.svg'
+
+import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
 import FailCircleIcon from '@assets/svg/icn_specific_alert_exclamation_circle_filled.svg'
 import FailCloseIcon from '@assets/svg/icn_navigation_close_fail.svg'
 import SuccessCircleIcon from '@assets/svg/icn_specific_alert_done_circle_filled_success.svg'
@@ -45,6 +46,7 @@ const Icon = {
 const Toast = ({
   className,
   toastId,
+  callbackMessage = '바로가기',
   duration,
   message,
   type,
@@ -73,8 +75,8 @@ const Toast = ({
       </div>
       {callback && (
         <button className={cls('toast', 'button', 'action')} onClick={callback}>
-          <div>바로가기</div>
-          <img src={Chevron} width={5} height={7} alt="callback icon" />
+          <div>{callbackMessage}</div>
+          <ChevronIcon width={12} height={12} />
         </button>
       )}
       <button

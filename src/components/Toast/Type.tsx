@@ -1,6 +1,7 @@
 export interface IToast {
   className?: string
   toastId: string
+  callbackMessage: string
   duration?: number
   message: string | React.ReactNode
   type?: 'success' | 'fail'

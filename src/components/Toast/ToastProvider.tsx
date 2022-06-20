@@ -20,7 +20,7 @@ export const ToastProvider = ({
   const [canUseDOM, setCanUseDOM] = useState(false)
 
   const addToast = (toast) => {
-    if (_.isNil(toast.id)) toast.toastId = _.uniqueId('toast')
+    if (_.isNil(toast.toastId)) toast.toastId = _.uniqueId('toast')
     setToastList((prevToastList) => [...prevToastList, toast])
   }
 
@@ -46,6 +46,7 @@ export const ToastProvider = ({
                   {
                     className,
                     toastId,
+                    callbackMessage,
                     duration,
                     message,
                     type,
@@ -58,6 +59,7 @@ export const ToastProvider = ({
                     key={`Toast__${idx}`}
                     className={className}
                     toastId={toastId}
+                    callbackMessage={callbackMessage}
                     duration={duration}
                     message={message}
                     type={type}
