@@ -1,7 +1,7 @@
-export interface IToast {
+export interface IAddToast {
   className?: string
-  toastId: string
-  callbackMessage: string
+  toastId?: string
+  callbackMessage?: string
   duration?: number
   message: string | React.ReactNode
   type?: 'success' | 'fail'
@@ -9,9 +9,13 @@ export interface IToast {
   callback?: () => void
 }
 
+export interface IToast extends IAddToast {
+  onRemove: (toastId: string) => void
+}
+
 export interface IToastCtx {
-  addToast: (toast: IToast) => void
-  removeToast: (id: string) => void
+  addToast: (toast: IAddToast) => void
+  removeToast: (toastId: string) => void
   removeAllToast: () => void
 }
 
