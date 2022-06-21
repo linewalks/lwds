@@ -105,6 +105,10 @@ module.exports = {
           name: 'Checkbox',
           content: 'src/components/Checkbox/Checkbox.md',
         },
+        {
+          name: 'Tabs',
+          content: 'src/components/Tabs/Tabs.md',
+        },
       ],
     },
     // {
