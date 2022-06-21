@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 import styled, { keyframes } from 'styled-components'
@@ -11,7 +11,6 @@ import FailCloseIcon from '@assets/svg/icn_navigation_close_fail.svg'
 import SuccessCircleIcon from '@assets/svg/icn_specific_alert_done_circle_filled_success.svg'
 import SuccessCloseIcon from '@assets/svg/icn_navigation_close_success.svg'
 
-import { useToast } from '@components/Toast/ToastProvider'
 import { IToast, IToastBox } from '@components/Toast/Type'
 
 const animationDuration = 0.2
@@ -46,23 +45,14 @@ const Icon = {
 const Toast = ({
   className,
   toastId,
-  callbackMessage = '바로가기',
+  callbackMessage,
   duration,
   message,
   type,
   style,
+  onRemove,
   callback,
 }: IToast) => {
-  const { remove } = useToast()
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      remove(toastId)
-    }, duration)
-
-    return () => clearTimeout(timeoutId)
-  }, [])
-
   return (
     <ToastBox
       className={clsx(cls('toast'), cls('toast', type), className)}
@@ -81,7 +71,7 @@ const Toast = ({
       )}
       <button
         className={clsx(cls('toast', 'button', 'close'))}
-        onClick={() => remove(toastId)}
+        onClick={() => onRemove(toastId)}
       >
         <img src={Icon[type].close} width={9} height={9} alt="close icon" />
       </button>
@@ -90,8 +80,9 @@ const Toast = ({
 }
 
 Toast.defaultProps = {
-  type: 'success',
+  callbackMessage: '바로가기',
   duration: 4000,
+  type: 'success',
 }
 
 export default Toast
