@@ -1,0 +1,45 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-tabs;
+
+.#{$component} {
+  @apply bg-color_background max-w-full;
+}
+
+.#{$component}-tablist {
+  @apply flex justify-start items-center max-w-full;
+
+  &-md {
+    font-size: 16px;
+  }
+
+  &-lg {
+    font-size: 24px;
+  }
+
+  &-rtl {
+    @apply justify-end;
+  }
+}
+
+.#{$component}-tab {
+  @apply py-spacing_06 px-spacing_08 max-w-full text-color_text_04;
+  width: fit-content;
+
+  &-selected {
+    @apply text-color_text_accent;
+  }
+}
+
+.#{$component}-tab-indicator {
+  @apply bg-color_primary_element max-w-full;
+  height: 2px;
+}
+
+.#{$component}-panel {
+  @apply hidden;
+
+  &-selected {
+    @apply bg-color_layout_02 block;
+  }
+}
