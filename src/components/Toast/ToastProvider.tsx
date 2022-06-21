@@ -21,19 +21,36 @@ export const ToastProvider = ({
 
   const addToast = (toast) => {
     if (_.isNil(toast.toastId)) toast.toastId = _.uniqueId('toast')
+    if (_.isNil(toast.duration)) toast.duration = 4000
+    toast.initTime = Date.now()
     setToastList((prevToastList) => [...prevToastList, toast])
   }
 
-  const removeToast = (id) =>
+  const removeToast = (id) => {
     setToastList((prevToastList) =>
       prevToastList.filter((toast) => id !== toast.toastId),
     )
+  }
 
   const removeAllToast = () => setToastList([])
+
+  const intervalRemoveToast = () => {
+    _.forEach(toastList, (item) => {
+      if (Date.now() - item.initTime > item.duration) removeToast(item.toastId)
+    })
+  }
 
   useEffect(() => {
     setCanUseDOM(true)
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      intervalRemoveToast()
+    }, 4000)
+
+    return () => clearInterval(timer)
+  }, [toastList])
 
   return (
     <ToastContext.Provider value={{ addToast, removeToast, removeAllToast }}>
@@ -64,6 +81,7 @@ export const ToastProvider = ({
                     message={message}
                     type={type}
                     style={style}
+                    onRemove={removeToast}
                     callback={callback}
                   />
                 ),
