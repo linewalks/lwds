@@ -9,20 +9,14 @@
 
 ---
 
-### Toast Props
-
-<br />
-
-##### ToastProvider
+### ToastProvider Props
 
 | Props Name | Types  | Default |
 | :--------: | :----: | :-----: |
 | className  | string |         |
 |   style    | object |         |
 
-<br />
-
-##### Toast(add) Parameters
+### Add Toast Method Parameters
 
 | Parameters Name |       Types        |  Default   |
 | :-------------: | :----------------: | :--------: |
@@ -35,15 +29,11 @@
 |      style      |       object       |            |
 |    callback     |      function      |            |
 
-<br />
-
-##### Toast(remove) Parameter
+### Remove Toast Method Parameters
 
 | Parameters Name | Types  | Default |
 | :-------------: | :----: | :-----: | --- |
 |     toastId     | string |         | 　  |
-
-<br />
 
 ### Basic Toast
 
