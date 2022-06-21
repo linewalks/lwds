@@ -5,11 +5,15 @@ import styled, { keyframes } from 'styled-components'
 
 import cls from '@helpers/class'
 
-import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
-import FailCircleIcon from '@assets/svg/icn_specific_alert_exclamation_circle_filled.svg'
-import FailCloseIcon from '@assets/svg/icn_navigation_close_fail.svg'
 import SuccessCircleIcon from '@assets/svg/icn_specific_alert_done_circle_filled_success.svg'
-import SuccessCloseIcon from '@assets/svg/icn_navigation_close_success.svg'
+import {
+  $color_icon_danger,
+  $color_icon_safe,
+} from '@assets/styles/color/semantics'
+
+import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
+import CloseIcon from '@components/Icon/Icons/Navigation/CloseIcon'
+import ExclamationCircleFilledIcon from '@components/Icon/Icons/Specific/ExclamationCircleFilledIcon'
 
 import { IToast, IToastBox } from '@components/Toast/Type'
 
@@ -31,17 +35,6 @@ const ToastBox = styled.div<IToastBox>`
     ${({ duration }) => getAnimationDelayTime(duration)}s 1 forwards;
 `
 
-const Icon = {
-  success: {
-    circle: SuccessCircleIcon,
-    close: SuccessCloseIcon,
-  },
-  fail: {
-    circle: FailCircleIcon,
-    close: FailCloseIcon,
-  },
-}
-
 const Toast = ({
   className,
   toastId,
@@ -60,7 +53,11 @@ const Toast = ({
       style={style}
     >
       <div className={clsx(cls('toast', 'message'))}>
-        <img src={Icon[type].circle} width={15} height={15} alt="circle icon" />
+        {type === 'success' ? (
+          <img src={SuccessCircleIcon} width={16} height={16} />
+        ) : (
+          <ExclamationCircleFilledIcon width={16} height={16} />
+        )}
         <div>{message}</div>
       </div>
       {callback && (
@@ -73,7 +70,11 @@ const Toast = ({
         className={clsx(cls('toast', 'button', 'close'))}
         onClick={() => onRemove(toastId)}
       >
-        <img src={Icon[type].close} width={9} height={9} alt="close icon" />
+        <CloseIcon
+          width={9}
+          height={9}
+          color={type === 'success' ? $color_icon_safe : $color_icon_danger}
+        />
       </button>
     </ToastBox>
   )
