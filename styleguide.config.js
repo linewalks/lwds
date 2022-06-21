@@ -106,16 +106,16 @@ module.exports = {
           content: 'src/components/Toast/Toast.md',
         },
         {
-          name: 'Popover',
-          content: 'src/components/Popover/Popover.md',
-        },
-        {
           name: 'Tooltip',
           content: 'src/components/Tooltip/Tooltip.md',
         },
         {
           name: 'ProgressBar',
           content: 'src/components/ProgressBar/ProgressBar.md',
+        },
+        {
+          name: 'Radio',
+          content: 'src/components/Radio/Radio.md',
         },
       ],
     },
