@@ -1,0 +1,193 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-tabs;
+
+$tab-md-width: 48px;
+$tab-md-height: 48px;
+$tab-md-font-size: 16px;
+
+$tab-lg-width: 60px;
+$tab-lg-height: 60px;
+$tab-lg-font-size: 24px;
+
+$tab-minimum-width: 48px;
+
+$bg-color_background: #fff;
+$bg-color_transparent: #fff0;
+
+$scroll-button-wrap-width: 48px;
+$scroll-button-width: 40px;
+$scroll-button-height: 40px;
+$scroll-button-tail-width: 16px;
+
+.#{$component} {
+  @apply relative bg-color_background w-full;
+}
+
+.#{$component}-tablist {
+  @apply relative w-full h-max border-color_layout_05 border-solid;
+  border-bottom-width: 1px;
+
+  &-no-border {
+    border-bottom-width: 0;
+  }
+
+  &-wrapper {
+    @apply flex justify-start items-center max-w-full overflow-hidden overflow-x-scroll;
+
+    // scrollbar hide logic
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* for Chrome, Safari, and Opera */
+    }
+  }
+}
+
+.#{$component}-scroll {
+  @apply absolute h-full bg-color_background flex items-center;
+  width: #{$scroll-button-wrap-width};
+  z-index: 1;
+
+  &-hidden {
+    display: none;
+  }
+
+  &-left {
+    @apply justify-start top-spacing_00 left-spacing_00 bottom-spacing_00;
+
+    &::after {
+      @apply absolute h-full;
+      content: '';
+      z-index: 1;
+      left: #{$tab-md-width};
+      width: #{$scroll-button-tail-width};
+      background: linear-gradient(
+        to right,
+        $bg-color_background,
+        $bg-color_transparent
+      );
+    }
+  }
+
+  &-right {
+    @apply justify-end top-spacing_00 right-spacing_00 bottom-spacing_00;
+
+    &::before {
+      @apply absolute h-full;
+      content: '';
+      z-index: 1;
+      right: #{$tab-md-width};
+      width: #{$scroll-button-tail-width};
+      background-image: linear-gradient(
+        to left,
+        $bg-color_background,
+        $bg-color_transparent
+      );
+    }
+  }
+
+  &-button {
+    @apply flex items-center justify-center;
+    width: #{$scroll-button-width};
+    height: #{$scroll-button-height};
+
+    &:active {
+      @apply bg-color_active_primary;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      @apply bg-color_layout_03;
+      border-radius: 50%;
+    }
+  }
+}
+
+.#{$component}-tab {
+  @apply py-spacing_06 px-spacing_08 w-max h-full bg-color_background text-color_text_04 font-bold;
+  min-width: #{$tab-minimum-width};
+  z-index: 1;
+
+  &-wrapper {
+    @apply relative;
+  }
+
+  &:hover {
+    @apply bg-color_hover_primary text-color_text_02;
+  }
+
+  &:focus,
+  &:active {
+    @apply bg-color_active_primary text-color_text_02;
+  }
+
+  &-selected {
+    @apply text-color_text_accent;
+
+    &:hover {
+      @apply text-color_text_accent;
+    }
+  }
+
+  &-md {
+    min-height: #{$tab-md-height};
+    font-size: #{$tab-md-font-size};
+  }
+
+  &-lg {
+    min-height: #{$tab-lg-height};
+    font-size: #{$tab-lg-font-size};
+  }
+
+  &-disabled {
+    @apply bg-color_background text-color_text_disabled cursor-default;
+
+    &:hover {
+      @apply bg-color_background text-color_text_disabled;
+    }
+  }
+}
+
+.#{$component}-tab-indicator {
+  @apply bg-color_primary_element w-full absolute bottom-spacing_00 left-spacing_00;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.#{$component}-panel {
+  @apply hidden;
+
+  &-selected {
+    @apply bg-color_layout_02 block;
+  }
+}
+
+$variants: 'primary', 'default', 'danger';
+@each $variant in $variants {
+  .#{$component}-tablist-#{$variant} {
+    @if $variant == 'primary' {
+      .#{$component}-tab-selected {
+        @apply text-color_text_accent;
+      }
+      .#{$component}-tab-indicator {
+        @apply bg-color_primary_element;
+      }
+    } @else if $variant == 'default' {
+      .#{$component}-tab-selected {
+        @apply text-color_text_01;
+      }
+      .#{$component}-tab-indicator {
+        // 향후 수정 가능성이 있어 상수화하지 않음
+        background-color: rgba(36, 41, 45, 1);
+      }
+    } @else if $variant == 'danger' {
+      .#{$component}-tab-selected {
+        @apply text-color_text_danger;
+      }
+      .#{$component}-tab-indicator {
+        @apply bg-color_danger;
+      }
+    }
+  }
+}
