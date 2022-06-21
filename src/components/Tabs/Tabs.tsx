@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useRef,
-  useState,
-  useContext,
-  useMemo,
-} from 'react'
+import React, { createContext, useRef, useState, useContext } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 
@@ -31,6 +25,7 @@ interface ITabsContext {
   _index: number
   _variant: TVariantType
   _tickSpeed: number
+  _noIndicator: boolean
   _onChange: Function
 }
 
@@ -38,10 +33,17 @@ interface ITabsProps {
   selectedIndex?: number
   size?: TSizeType
   variant?: TVariantType
-  className?: string
   tickSpeed?: number
+  noIndicator?: boolean
+  className?: string
   onChange?: Function
-  children?: React.ReactChildren
+  children?: React.ReactNode
+}
+
+interface ITabListProps {
+  className?: string
+  noBorder?: boolean
+  children?: React.ReactNode
 }
 
 // handle the over all state of Tabs
@@ -58,6 +60,7 @@ export default function Tabs({
   size = 'md',
   variant = 'primary',
   tickSpeed = SCROLL_DEFAULT_SPEED,
+  noIndicator = false,
   className,
   onChange,
   children,
@@ -72,21 +75,22 @@ export default function Tabs({
   useIsomorphicLayoutEffect(() => {
     if (typeof selectedIndex === 'number') {
       setIndex(selectedIndex)
+    } else {
+      console.error('SelectedIndex must is number.')
     }
   }, [selectedIndex])
 
-  const value: ITabsContext = useMemo(
-    () => ({
-      _size: size,
-      _index,
-      _variant: variant,
-      _tickSpeed: !isNaN(tickSpeed)
-        ? _.floor(tickSpeed) // tickSpeed 만약 floating number 일 경우 대비 내림 처리
-        : SCROLL_DEFAULT_SPEED,
-      _onChange,
-    }),
-    [selectedIndex, _index, size, variant, tickSpeed],
-  )
+  const value: ITabsContext = {
+    _size: size,
+    _index,
+    _variant: variant,
+    _tickSpeed: !isNaN(tickSpeed)
+      ? _.floor(tickSpeed) // tickSpeed 만약 floating number 일 경우 대비 내림 처리
+      : SCROLL_DEFAULT_SPEED,
+    _noIndicator: noIndicator,
+    _onChange,
+  }
+
   return (
     <TabsContext.Provider value={value}>
       <section
@@ -100,7 +104,12 @@ export default function Tabs({
   )
 }
 
-export function TabList({ className, children, ...rest }) {
+export function TabList({
+  noBorder,
+  className,
+  children,
+  ...rest
+}: ITabListProps) {
   const [isScrollable, setScrollable] = useState(false)
   const [curPosX, setCurPosX] = useState<number>(null)
   const [maxPosX, setMaxPosX] = useState<number>(null)
@@ -115,14 +124,12 @@ export function TabList({ className, children, ...rest }) {
     // 초기 페이지 로드 후 scroll 이 노출되는 형태인지를 구분
     const tabList = listRef.current!
 
-    if (tabList) {
-      // tabList의 clientWidth(실제 노출되는 영역 Width) 가 scrollWidth(스크롤이 적용될 영역 width) 보다 작을 경우 scroll 에 대한 로직이 동작
-      if (tabList.clientWidth < tabList.scrollWidth) {
-        setScrollable(true)
-        setCurPosX(0)
-        setMaxPosX(tabList.scrollWidth - tabList.offsetWidth) // 현재 스크롤 가능한 최대 offset
-        listRef.current.addEventListener('scroll', handleScroll)
-      }
+    // tabList의 clientWidth(실제 노출되는 영역 Width) 가 scrollWidth(스크롤이 적용될 영역 width) 보다 작을 경우 scroll 에 대한 로직이 동작
+    if (tabList.clientWidth < tabList.scrollWidth) {
+      setScrollable(true)
+      setCurPosX(0)
+      setMaxPosX(tabList.scrollWidth - tabList.offsetWidth) // 현재 스크롤 가능한 최대 offset
+      listRef.current.addEventListener('scroll', handleScroll)
     }
     return () => {
       listRef.current.removeEventListener('scroll', handleScroll)
@@ -198,6 +205,7 @@ export function TabList({ className, children, ...rest }) {
       role="tab-list"
       className={clsx(
         cls('tabs', 'tablist'),
+        noBorder && cls('tabs', 'tablist', 'no-border'),
         cls('tabs', 'tablist', _variant),
         className,
       )}
@@ -222,8 +230,8 @@ export function TabList({ className, children, ...rest }) {
           <ChevronIcon direction="left" width={24} height={24} />
         </button>
       </div>
-      <div className={clsx(cls('tabs', 'tablist', 'wrapper'))} ref={listRef}>
-        {children.map((child, index) => {
+      <div className={cls('tabs', 'tablist', 'wrapper')} ref={listRef}>
+        {React.Children.map(children, (child, index) => {
           const key = `Tabs__Tab__${index}`
           return (
             <React.Fragment key={key}>
@@ -256,7 +264,7 @@ export function TabList({ className, children, ...rest }) {
 }
 
 export function Tab({ className, disabled, children, ...rest }) {
-  const { _index, _onChange, _size } = useContext(TabsContext)
+  const { _index, _onChange, _size, _noIndicator } = useContext(TabsContext)
   const tabIndex = useContext(TabContext)
   const [isSelected, setSelected] = useState<boolean>(false)
 
@@ -284,7 +292,7 @@ export function Tab({ className, disabled, children, ...rest }) {
       >
         {children}
       </button>
-      {isSelected && <TabIndicator />}
+      {!_noIndicator && isSelected && <TabIndicator />}
     </div>
   )
 }
@@ -302,7 +310,7 @@ export function TabPanels({ className, children, ...rest }) {
       className={clsx(cls('tabs', 'panel', 'wrapper'), className)}
       {...rest}
     >
-      {children.map((child, index) => {
+      {React.Children.map(children, (child, index) => {
         const key = `Tabs__TabPanel__${index}`
         return (
           <React.Fragment key={key}>

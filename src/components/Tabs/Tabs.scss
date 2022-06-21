@@ -21,21 +21,15 @@ $scroll-button-height: 40px;
 $scroll-button-tail-width: 16px;
 
 .#{$component} {
-  @apply relative bg-color_background max-w-full;
+  @apply relative bg-color_background w-full;
 }
 
 .#{$component}-tablist {
-  @apply relative w-full border-color_layout_05 border-solid;
-
+  @apply relative w-full h-max border-color_layout_05 border-solid;
   border-bottom-width: 1px;
-  transform: all 0.5s ease-in;
 
-  &-md {
-    height: #{$tab-md-height};
-  }
-
-  &-lg {
-    height: #{$tab-lg-height};
+  &-no-border {
+    border-bottom-width: 0;
   }
 
   &-wrapper {
@@ -111,9 +105,8 @@ $scroll-button-tail-width: 16px;
 }
 
 .#{$component}-tab {
-  @apply py-spacing_06 px-spacing_08 bg-color_background text-color_text_04 font-bold;
+  @apply py-spacing_06 px-spacing_08 w-max h-full bg-color_background text-color_text_04 font-bold;
   min-width: #{$tab-minimum-width};
-  width: max-content;
   z-index: 1;
 
   &-wrapper {
@@ -138,12 +131,12 @@ $scroll-button-tail-width: 16px;
   }
 
   &-md {
-    height: #{$tab-md-height};
+    min-height: #{$tab-md-height};
     font-size: #{$tab-md-font-size};
   }
 
   &-lg {
-    height: #{$tab-lg-height};
+    min-height: #{$tab-lg-height};
     font-size: #{$tab-lg-font-size};
   }
 
