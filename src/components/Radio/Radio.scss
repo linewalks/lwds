@@ -1,0 +1,90 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-radio;
+
+$lw_blue30: #a3c6fa;
+$lw_grey60: #8d98a5;
+
+.#{$component} {
+  @apply flex;
+
+  & + & {
+    @apply mt-spacing_06;
+
+    &.#{$component}-sm {
+      @apply mt-spacing_04;
+    }
+  }
+
+  input {
+    @apply bg-color_background border-2 border-solid cursor-pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-color: $lw_grey60;
+    border-radius: 50%;
+
+    &:after {
+      @apply hidden relative bg-color_background;
+      content: '';
+      top: 8px;
+      left: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    &:checked {
+      @apply bg-color_button_primary border-0;
+
+      &:after {
+        @apply block;
+      }
+
+      &:disabled {
+        @apply border-0;
+        background: $lw_blue30;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      @apply shadow-shadow_v2;
+    }
+
+    &:disabled {
+      @apply cursor-not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  label {
+    @apply flex items-center justify-center flex-wrap overflow-hidden ml-spacing_06 cursor-pointer text-color_text_02;
+
+    &.#{$component}-sm {
+      @apply ml-spacing_04;
+    }
+  }
+}
+
+.#{$component}-disabled {
+  label {
+    @apply cursor-not-allowed text-color_text_disabled;
+  }
+}
+
+.#{$component}-sm {
+  input {
+    width: 16px;
+    height: 16px;
+
+    &:after {
+      left: 5.3px;
+      top: 5.3px;
+      width: 5.3px;
+      height: 5.3px;
+    }
+  }
+}
