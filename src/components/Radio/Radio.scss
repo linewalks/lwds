@@ -3,7 +3,6 @@
 $component: #{$prefix}-radio;
 
 $lw_blue30: #a3c6fa;
-$lw_grey60: #8d98a5;
 
 .#{$component} {
   @apply flex;
@@ -17,13 +16,12 @@ $lw_grey60: #8d98a5;
   }
 
   input {
-    @apply bg-color_background border-2 border-solid cursor-pointer;
+    @apply bg-color_background border-2 border-solid border-color_icon_05 cursor-pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 24px;
     height: 24px;
-    border-color: $lw_grey60;
     border-radius: 50%;
 
     &:after {
