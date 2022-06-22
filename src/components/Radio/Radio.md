@@ -43,29 +43,25 @@ const render = () => {
   }
 
   return (
-    <div>
-      <RadioGroup name="test" value={value} onChange={handleChange}>
-        <div>
-          <Radio size="sm" value="text1">
-            Test1
-          </Radio>
-          <Radio size="sm" value="test2">
-            Test2
-          </Radio>
-          <Radio size="sm" value="test3" disabled>
-            Test3
-          </Radio>
-          <div style={{ margin: 10 }}>EdgeCase</div>
-          <Radio value="test4">Test4</Radio>
-          <Radio value="test5">
-            <div style={{ color: 'blue' }}>Custom Test</div>
-          </Radio>
-          <Radio value="test6" disabled>
-            Test6
-          </Radio>
-        </div>
-      </RadioGroup>
-    </div>
+    <RadioGroup name="test" value={value} onChange={handleChange}>
+      <Radio size="sm" value="text1">
+        Test1
+      </Radio>
+      <Radio size="sm" value="test2">
+        Test2
+      </Radio>
+      <Radio size="sm" value="test3" disabled>
+        Test3
+      </Radio>
+      <div style={{ margin: 20 }}>EdgeCase</div>
+      <Radio value="test4">Test4</Radio>
+      <Radio value="test5">
+        <div style={{ color: 'blue' }}>Custom Test</div>
+      </Radio>
+      <Radio value="test6" disabled>
+        Test6
+      </Radio>
+    </RadioGroup>
   )
 }
 render()
