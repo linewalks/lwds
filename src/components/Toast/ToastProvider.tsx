@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 import ReactDOM from 'react-dom'
@@ -35,19 +41,21 @@ export const ToastProvider = ({
   const removeAllToast = () => setToastList([])
 
   const intervalRemoveToast = () => {
-    _.forEach(toastList, (item) => {
-      if (Date.now() - item.initTime > item.duration) removeToast(item.toastId)
-    })
+    setToastList((prevToastList) =>
+      prevToastList.filter(
+        (toast) => Date.now() - toast.initTime < toast.duration,
+      ),
+    )
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setCanUseDOM(true)
   }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
       intervalRemoveToast()
-    }, 4000)
+    }, 1000)
 
     return () => clearInterval(timer)
   }, [toastList])
