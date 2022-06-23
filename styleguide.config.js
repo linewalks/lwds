@@ -90,24 +90,12 @@ module.exports = {
           content: 'src/components/Button/Button.md',
         },
         {
-          name: 'Dropdown',
-          content: 'src/components/Dropdown/Dropdown.md',
-        },
-        {
-          name: 'Tooltip',
-          content: 'src/components/Tooltip/Tooltip.md',
-        },
-        {
-          name: 'ProgressBar',
-          content: 'src/components/ProgressBar/ProgressBar.md',
-        },
-        {
           name: 'Checkbox',
           content: 'src/components/Checkbox/Checkbox.md',
         },
         {
-          name: 'Toast',
-          content: 'src/components/Toast/Toast.md',
+          name: 'Dropdown',
+          content: 'src/components/Dropdown/Dropdown.md',
         },
         {
           name: 'ProgressBar',
@@ -120,6 +108,14 @@ module.exports = {
         {
           name: 'Tabs',
           content: 'src/components/Tabs/Tabs.md',
+        },
+        {
+          name: 'Toast',
+          content: 'src/components/Toast/Toast.md',
+        },
+        {
+          name: 'Tooltip',
+          content: 'src/components/Tooltip/Tooltip.md',
         },
       ],
     },
