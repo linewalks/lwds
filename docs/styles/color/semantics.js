@@ -73,6 +73,7 @@ module.exports = {
   $color_icon_02: colors.$lw_grey90,
   $color_icon_03: colors.$lw_grey80,
   $color_icon_04: colors.$lw_grey70,
+  $color_icon_05: colors.$lw_grey60,
   $color_icon_danger: colors.$lw_red50,
   $color_icon_safe: colors.$lw_green50,
   $color_icon_accent: colors.$lw_blue50,
