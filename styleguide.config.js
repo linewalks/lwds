@@ -90,28 +90,32 @@ module.exports = {
           content: 'src/components/Button/Button.md',
         },
         {
-          name: 'Dropdown',
-          content: 'src/components/Dropdown/Dropdown.md',
+          name: 'Checkbox',
+          content: 'src/components/Checkbox/Checkbox.md',
         },
         {
-          name: 'Tooltip',
-          content: 'src/components/Tooltip/Tooltip.md',
+          name: 'Dropdown',
+          content: 'src/components/Dropdown/Dropdown.md',
         },
         {
           name: 'ProgressBar',
           content: 'src/components/ProgressBar/ProgressBar.md',
         },
         {
-          name: 'Checkbox',
-          content: 'src/components/Checkbox/Checkbox.md',
+          name: 'Radio',
+          content: 'src/components/Radio/Radio.md',
+        },
+        {
+          name: 'Tabs',
+          content: 'src/components/Tabs/Tabs.md',
         },
         {
           name: 'Toast',
           content: 'src/components/Toast/Toast.md',
         },
         {
-          name: 'Tabs',
-          content: 'src/components/Tabs/Tabs.md',
+          name: 'Tooltip',
+          content: 'src/components/Tooltip/Tooltip.md',
         },
       ],
     },
