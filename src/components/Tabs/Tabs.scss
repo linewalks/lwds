@@ -88,7 +88,7 @@ $scroll-button-tail-width: 16px;
   }
 
   &-button {
-    @apply flex items-center justify-center;
+    @apply flex items-center justify-center bg-color_background cursor-pointer;
     width: #{$scroll-button-width};
     height: #{$scroll-button-height};
 
