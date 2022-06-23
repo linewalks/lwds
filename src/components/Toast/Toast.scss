@@ -1,0 +1,58 @@
+@import '../../assets/styles/global.scss';
+
+$provider: #{$prefix}-toastProvider;
+$component: #{$prefix}-toast;
+
+.#{$provider} {
+  @apply fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.#{$component} {
+  @apply relative flex justify-center items-center bg-color_background border border-solid border-color_safe;
+  min-width: 340px;
+  min-height: 48px;
+  padding: 15px 60px;
+  border-radius: 10px;
+
+  &.#{$component}-fail {
+    @apply border-color_danger;
+  }
+
+  // 기획 변경 예정
+  & + & {
+    @apply mt-spacing_02;
+  }
+}
+
+.#{$component}-message {
+  @apply flex justify-center items-center;
+  min-width: 220px;
+
+  & > div:nth-of-type(1) {
+    @apply ml-spacing_04;
+    font-size: 12px;
+  }
+}
+
+.#{$component}-button-action {
+  @apply flex justify-center items-center ml-spacing_06 text-color_text_03;
+  min-width: 48px;
+  font-weight: 700;
+  font-size: 8px;
+
+  div {
+    padding-top: 1px;
+  }
+
+  svg {
+    @apply ml-spacing_03;
+  }
+}
+
+.#{$component}-button-close {
+  @apply absolute;
+  right: 24px;
+}
