@@ -34,7 +34,7 @@
 
 <br />
 
-##### Usage
+##### Basic Usage
 
 - Tabs 내부에 TabList와 TabPanels 를 활용하여 구조를 정의할 수 있습니다.
 - TabList 는 Tab 로 구조화할 수 있습니다. 마찬가지로 TabPanels 는 TabPanel 을 활용하여 구조화할 수 있습니다.
@@ -62,7 +62,7 @@ const show = () => {
 show()
 ```
 
-##### Usage
+##### TabList 만 활용하는 경우
 
 - 또한 TabPanels 를 구현하지 않고 Tabs 의 형태만으로도 사용할 수 있습니다.
 
@@ -84,7 +84,7 @@ const show = () => {
 show()
 ```
 
-##### Usage
+##### Custom Tab, indicator, border
 
 - Tab 컴포넌트는 내부를 커스텀 할 수 있으므로, 다양한 형태의 탭으로 변경 가능합니다
 - noIndicator 를 전달하여 Tab 하단의 Indicator 를 표시하지 않을 수 있다
@@ -114,7 +114,7 @@ const show = () => {
 show()
 ```
 
-##### Usage
+##### selectedIndex, disabled
 
 - 특정한 Tab 이 초기에 활성화 되어야 하는 경우는 selectedIndex 를 활용할 수 있습니다.
 - Tab은 각각 별개로 disabled 속성을 통하여 선택 불가능하도록 만들 수 있습니다.
@@ -154,7 +154,7 @@ const show = () => {
 show()
 ```
 
-##### Usage
+##### variant, tickSpeed
 
 - variant 를 활용하여 default, primary, danger 의 세 가지 테마를 활용할 수 있습니다.
 - tickSpeed 는 숫자를 입력받습니다.
