@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/linewalks/lwds/compare/v0.2.0...v0.3.1) (2022-06-23)
+
+### Bug Fixes
+
+- tabs scroll button fix css ([#189](https://github.com/linewalks/lwds/issues/189)) ([53d1aee](https://github.com/linewalks/lwds/commit/53d1aeee531fb00373d91c4a4075c2e2aec9cd98))
+
 ## [0.3.0](https://github.com/linewalks/lwds/compare/v0.2.0...v0.3.0) (2022-06-23)
 
 ### Features
