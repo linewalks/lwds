@@ -14,6 +14,7 @@ import {
 import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
 import CloseIcon from '@components/Icon/Icons/Navigation/CloseIcon'
 import ExclamationCircleFilledIcon from '@components/Icon/Icons/Specific/ExclamationCircleFilledIcon'
+import SuccessCircleFilledIcon from '@components/Icon/Icons/Specific/SuccessCircleFilledIcon'
 
 import { IToast, IToastBox } from '@components/Toast/Type'
 
@@ -54,7 +55,7 @@ const Toast = ({
     >
       <div className={clsx(cls('toast', 'message'))}>
         {type === 'success' ? (
-          <img src={SuccessCircleIcon} width={16} height={16} />
+          <SuccessCircleFilledIcon width={16} height={16} />
         ) : (
           <ExclamationCircleFilledIcon width={16} height={16} />
         )}
