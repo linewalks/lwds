@@ -110,7 +110,7 @@ $scroll-button-tail-width: 16px;
   z-index: 1;
 
   &-wrapper {
-    @apply relative;
+    @apply cursor-pointer relative;
   }
 
   &:hover {
