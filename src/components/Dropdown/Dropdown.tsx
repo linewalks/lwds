@@ -28,11 +28,11 @@ interface DropdownProps {
 }
 
 interface DropdownItemProps {
-  label?: string
+  label?: string | number | React.ReactElement
   value?: string | number
   desc?: string
   type?: 'danger'
-  icon?: React.ReactElement | null
+  icon?: React.ReactElement
   disabled?: boolean
   className?: string
   onClick?: Function
