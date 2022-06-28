@@ -31,12 +31,6 @@ import Button from '@components/Button/Button'
 import Dropdown from '@components/Dropdown/Dropdown'
 
 const render = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleButtonClick = () => {
-    setIsOpen(!isOpen)
-  }
-
   return (
     <div
       style={{
@@ -45,14 +39,11 @@ const render = () => {
         justifyContent: 'space-around',
       }}
     >
-      <span style={{ position: 'relative' }}>
-        <Button onClick={handleButtonClick}>Dropdown</Button>
-        <Dropdown isOpen={isOpen}>
-          <Dropdown.Item id="edit" option="Edit" />
-          <Dropdown.Item id="duplicate" option="Dupliate" />
-          <Dropdown.Item id="delete" option="Delete" />
-        </Dropdown>
-      </span>
+      <Dropdown triggerNode={<Button>Dropdown</Button>}>
+        <Dropdown.Item label="Edit" value="edit" />
+        <Dropdown.Item label="Dupliate" value="duplicate" />
+        <Dropdown.Item label="Delete" value="delete" />
+      </Dropdown>
     </div>
   )
 }
@@ -60,6 +51,7 @@ const render = () => {
 render()
 ```
 
+<!--
 #### size props
 
 ```js
@@ -560,4 +552,4 @@ const render = () => {
 }
 
 render()
-```
+``` -->
