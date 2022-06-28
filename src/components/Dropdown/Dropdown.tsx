@@ -14,7 +14,6 @@ interface DropdownProps {
   scrollable?: boolean
   className?: string
   ref?: React.RefObject<HTMLElement>
-  onClick?: Function
   style?: object
   children?: React.ReactElement
 }
@@ -27,6 +26,7 @@ interface DropdownItemProps {
   icon?: React.ReactElement | null
   disabled?: boolean
   className?: string
+  onClick?: Function
   style?: object
 }
 
@@ -112,6 +112,7 @@ Dropdown.Item = ({
   icon,
   disabled,
   className,
+  onClick,
   style,
 }: DropdownItemProps) => {
   return (
@@ -125,7 +126,7 @@ Dropdown.Item = ({
         disabled && cls('dropdown', 'menu', 'disabled'),
         className,
       )}
-      onClick={(e) => disabled && e.stopPropagation()}
+      onClick={() => !disabled && onClick && onClick(value)}
       style={style}
     >
       <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
