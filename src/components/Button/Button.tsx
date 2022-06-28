@@ -24,6 +24,7 @@ interface ButtonProps {
   loading: boolean
   responsiveHeight: boolean
   id?: string
+  className?: string
   style?: object
   leftIcon?: React.ReactElement
   rightIcon?: React.ReactElement
@@ -50,6 +51,7 @@ function renderButton<
     loading,
     responsiveHeight,
     id,
+    className,
     style,
     leftIcon,
     rightIcon,
@@ -90,6 +92,7 @@ function renderButton<
           cls('button', 'ghost', ghostType),
         icon && cls('button', 'icon'),
         loading && cls('button', variant, 'loading'),
+        className,
       )}
       style={{
         ...style,
