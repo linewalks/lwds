@@ -104,7 +104,7 @@ $menu-h-lg: 40px;
   display: flex;
   align-items: center;
 
-  .#{$component}-menu-name {
+  .#{$component}-menu-label {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

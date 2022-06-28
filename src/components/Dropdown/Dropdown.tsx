@@ -105,7 +105,7 @@ Dropdown.defaultProps = {
 }
 
 Dropdown.Item = ({
-  option,
+  label,
   value,
   desc,
   type,
@@ -130,7 +130,7 @@ Dropdown.Item = ({
     >
       <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
         <i className={cls('dropdown', 'menu', 'icon')}>{icon}</i>
-        <span className={cls('dropdown', 'menu', 'name')}>{option}</span>
+        <span className={cls('dropdown', 'menu', 'label')}>{label}</span>
       </dt>
       {desc && (
         <dd
