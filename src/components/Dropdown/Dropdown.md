@@ -38,9 +38,9 @@ const render = () => {
       }}
     >
       <Dropdown triggerNode={<Button>Dropdown</Button>}>
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>
     </div>
   )
@@ -77,9 +77,9 @@ const render = () => {
         triggerNode={<Button>Dropdown</Button>}
         onClose={() => setIsOpen(false)}
       >
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>
     </div>
   )
@@ -105,15 +105,15 @@ const render = () => {
       }}
     >
       <Dropdown size="md" triggerNode={<Button>md size</Button>}>
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>
 
       <Dropdown size="lg" triggerNode={<Button>lg size</Button>}>
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>
     </div>
   )
@@ -139,27 +139,27 @@ const render = () => {
       }}
     >
       <Dropdown placement="left" triggerNode={<Button>left placement</Button>}>
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>
 
       <Dropdown
         placement="center"
         triggerNode={<Button>center placement</Button>}
       >
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>
 
       <Dropdown
         placement="right"
         triggerNode={<Button>right placement</Button>}
       >
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>
     </div>
   )
@@ -178,13 +178,13 @@ import Button from '@components/Button/Button'
 import Dropdown from '@components/Dropdown/Dropdown'
 
 const dropDownData = [
-  { label: 'option1', value: 1 },
-  { label: 'option2', value: 2 },
-  { label: 'option3', value: 3 },
-  { label: 'option4', value: 4 },
-  { label: 'option5', value: 5 },
-  { label: 'option6', value: 6 },
-  { label: 'option7', value: 7 },
+  { label: 'option1', id: 1 },
+  { label: 'option2', id: 2 },
+  { label: 'option3', id: 3 },
+  { label: 'option4', id: 4 },
+  { label: 'option5', id: 5 },
+  { label: 'option6', id: 6 },
+  { label: 'option7', id: 7 },
 ]
 
 const render = () => {
@@ -197,22 +197,14 @@ const render = () => {
       }}
     >
       <Dropdown triggerNode={<Button>Default</Button>}>
-        {dropDownData.map(({ label, value }, idx) => (
-          <Dropdown.Item
-            key={`Dropdown__item__${idx}`}
-            label={label}
-            value={value}
-          />
+        {dropDownData.map(({ label, id }, idx) => (
+          <Dropdown.Item key={`Dropdown__item__${idx}`} label={label} id={id} />
         ))}
       </Dropdown>
 
       <Dropdown scrollable triggerNode={<Button>Default</Button>}>
-        {dropDownData.map(({ label, value }, idx) => (
-          <Dropdown.Item
-            key={`Dropdown__item__${idx}`}
-            label={label}
-            value={value}
-          />
+        {dropDownData.map(({ label, id }, idx) => (
+          <Dropdown.Item key={`Dropdown__item__${idx}`} label={label} id={id} />
         ))}
       </Dropdown>
     </div>
@@ -231,7 +223,7 @@ render()
 | Props Name |               Types                | Default | Option |
 | :--------: | :--------------------------------: | :-----: | :----: |
 |   label    | string, number, React.ReactElement |         |        |
-|   value    |           string, number           |         |        |
+|     id     |           string, number           |         |        |
 |    desc    |               string               |         |        |
 |    type    |              'danger'              |         |        |
 |    icon    |         React.ReactElement         |         |        |
@@ -261,9 +253,9 @@ const render = () => {
       }}
     >
       <Dropdown triggerNode={<Button>With description</Button>}>
-        <Dropdown.Item label="Edit" value="edit" desc="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" desc="duplicate" />
-        <Dropdown.Item label="Delete" value="delete" desc="delete" />
+        <Dropdown.Item label="Edit" id="edit" desc="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" desc="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" desc="delete" />
       </Dropdown>
     </div>
   )
@@ -289,14 +281,9 @@ const render = () => {
       }}
     >
       <Dropdown triggerNode={<Button>With type</Button>}>
-        <Dropdown.Item label="Edit" value="edit" desc="edit" />
-        <Dropdown.Item label="Dupliate" value="duplicate" desc="duplicate" />
-        <Dropdown.Item
-          label="Delete"
-          value="delete"
-          desc="delete"
-          type="danger"
-        />
+        <Dropdown.Item label="Edit" id="edit" desc="edit" />
+        <Dropdown.Item label="Dupliate" id="duplicate" desc="duplicate" />
+        <Dropdown.Item label="Delete" id="delete" desc="delete" type="danger" />
       </Dropdown>
     </div>
   )
@@ -332,19 +319,19 @@ const render = () => {
       <Dropdown icon triggerNode={<Button>With icon</Button>}>
         <Dropdown.Item
           label="Edit"
-          value="edit"
+          id="edit"
           desc="edit"
           icon={<PencilIcon />}
         />
         <Dropdown.Item
           label="Dupliate"
-          value="duplicate"
+          id="duplicate"
           desc="duplicate"
           icon={<DuplicateIcon />}
         />
         <Dropdown.Item
           label="Delete"
-          value="delete"
+          id="delete"
           desc="delete"
           type="danger"
           icon={<TrashIcon />}
@@ -382,19 +369,19 @@ const render = () => {
         <Dropdown.Item
           disabled
           label="Edit"
-          value="edit"
+          id="edit"
           desc="edit"
           icon={<PencilIcon />}
         />
         <Dropdown.Item
           label="Dupliate"
-          value="duplicate"
+          id="duplicate"
           desc="duplicate"
           icon={<DuplicateIcon />}
         />
         <Dropdown.Item
           label="Delete"
-          value="delete"
+          id="delete"
           desc="delete"
           type="danger"
           icon={<TrashIcon />}
@@ -409,7 +396,7 @@ render()
 
 #### Click event
 
-- 클릭 이벤트 핸들러에 `Dropdown.Item`의 value 를 전달합니다.
+- 클릭 이벤트 핸들러에 `Dropdown.Item`의 id 를 전달합니다.
 
 ```js
 import React from 'react'
@@ -422,8 +409,8 @@ import {
 } from '@components/Icon/Icons/Action'
 
 const render = () => {
-  const handleClick = (value) => {
-    alert(value)
+  const handleClick = (id) => {
+    alert(id)
   }
 
   return (
@@ -438,21 +425,21 @@ const render = () => {
         <Dropdown.Item
           disabled
           label="Edit"
-          value="edit"
+          id="edit"
           desc="edit"
           icon={<PencilIcon />}
           onClick={handleClick}
         />
         <Dropdown.Item
           label="Dupliate"
-          value="duplicate"
+          id="duplicate"
           desc="duplicate"
           icon={<DuplicateIcon />}
           onClick={handleClick}
         />
         <Dropdown.Item
           label="Delete"
-          value="delete"
+          id="delete"
           desc="delete"
           type="danger"
           icon={<TrashIcon />}
@@ -481,8 +468,8 @@ import {
 } from '@components/Icon/Icons/Action'
 
 const render = () => {
-  const handleClick = (value) => {
-    alert(value)
+  const handleClick = (id) => {
+    alert(id)
   }
 
   return (
@@ -497,14 +484,14 @@ const render = () => {
         <Dropdown.Item
           disabled
           label="Edit"
-          value="edit"
+          id="edit"
           desc="edit"
           icon={<PencilIcon />}
           onClick={handleClick}
         />
         <Dropdown.Item
           label="Dupliate"
-          value="duplicate"
+          id="duplicate"
           desc="duplicate"
           icon={<DuplicateIcon />}
           onClick={handleClick}
@@ -512,7 +499,7 @@ const render = () => {
         <Dropdown.Divider />
         <Dropdown.Item
           label="Delete"
-          value="delete"
+          id="delete"
           desc="delete"
           type="danger"
           icon={<TrashIcon />}

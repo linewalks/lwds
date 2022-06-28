@@ -9,15 +9,14 @@ import { PencilIcon, TrashIcon } from '@components/Icon/Icons/Action'
 import cls from '@helpers/class'
 
 const menuData = [
-  { label: 'Edit', value: 'edit', icon: <PencilIcon /> },
+  { label: 'Edit', id: 'edit', icon: <PencilIcon /> },
   {
     label: 'Duplicate',
-    value: 'duplicate',
-
+    id: 'duplicate',
     desc: 'duplicate',
   },
-  { label: 'Disabled', value: 'disabled' },
-  { label: 'Delete', value: 'delete', type: 'danger', icon: <TrashIcon /> },
+  { label: 'Disabled', id: 'disabled' },
+  { label: 'Delete', id: 'delete', type: 'danger', icon: <TrashIcon /> },
 ]
 
 const onClickMock = jest.fn()
@@ -110,8 +109,8 @@ describe('Dropdown item test', () => {
   it('desc test', () => {
     render(
       <Dropdown isOpen>
-        <Dropdown.Item label="Edit" value="edit" desc="edit" />
-        <Dropdown.Item label="Duplicate" value="duplicate" />
+        <Dropdown.Item label="Edit" id="edit" desc="edit" />
+        <Dropdown.Item label="Duplicate" id="duplicate" />
       </Dropdown>,
     )
 
@@ -128,8 +127,8 @@ describe('Dropdown item test', () => {
 
     render(
       <Dropdown isOpen>
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Delete" value="delete" type={type} />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Delete" id="delete" type={type} />
       </Dropdown>,
     )
 
@@ -144,8 +143,8 @@ describe('Dropdown item test', () => {
   it('disabled test', () => {
     render(
       <Dropdown isOpen>
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Delete" value="delete" disabled />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Delete" id="delete" disabled />
       </Dropdown>,
     )
 
@@ -169,13 +168,13 @@ describe('Dropdown click event test', () => {
     setup()
 
     fireEvent.click(screen.getAllByRole('dropdown-menu')[idx])
-    expect(onClickMock).toHaveBeenCalledWith(menuData[idx].value)
+    expect(onClickMock).toHaveBeenCalledWith(menuData[idx].id)
   })
 
   it('disabled item event test', () => {
     render(
       <Dropdown isOpen onClick={onClickMock}>
-        <Dropdown.Item label="disabled" value="disabled" disabled />
+        <Dropdown.Item label="disabled" id="disabled" disabled />
       </Dropdown>,
     )
 
@@ -192,8 +191,8 @@ describe('Dropdown open, close test', () => {
   it('auto open test', () => {
     render(
       <Dropdown triggerNode={<Button role="trigger-button">Open</Button>}>
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>,
     )
 
@@ -205,8 +204,8 @@ describe('Dropdown open, close test', () => {
   it('auto close test', () => {
     render(
       <Dropdown triggerNode={<Button role="trigger-button">Open</Button>}>
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>,
     )
 
@@ -226,8 +225,8 @@ describe('Dropdown open, close test', () => {
           </Button>
         }
       >
-        <Dropdown.Item label="Edit" value="edit" />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Edit" id="edit" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>,
     )
 
@@ -244,8 +243,8 @@ describe('Dropdown open, close test', () => {
           triggerNode={<Button>Custom Close</Button>}
           onClose={onCloseMock}
         >
-          <Dropdown.Item label="Edit" value="edit" />
-          <Dropdown.Item label="Delete" value="delete" />
+          <Dropdown.Item label="Edit" id="edit" />
+          <Dropdown.Item label="Delete" id="delete" />
         </Dropdown>
         ,
       </>,
@@ -260,9 +259,9 @@ describe('Dropdown divider test', () => {
   it('dropdown divider render', () => {
     render(
       <Dropdown isOpen>
-        <Dropdown.Item label="Edit" value="edit" />
+        <Dropdown.Item label="Edit" id="edit" />
         <Dropdown.Divider />
-        <Dropdown.Item label="Delete" value="delete" />
+        <Dropdown.Item label="Delete" id="delete" />
       </Dropdown>,
     )
 

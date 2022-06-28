@@ -29,7 +29,7 @@ interface DropdownProps {
 
 interface DropdownItemProps {
   label?: string | number | React.ReactElement
-  value?: string | number
+  id?: string | number
   desc?: string
   type?: 'danger'
   icon?: React.ReactElement
@@ -133,8 +133,8 @@ Dropdown.defaultProps = {
 }
 
 Dropdown.Item = ({
+  id,
   label,
-  value,
   desc,
   type,
   icon,
@@ -149,14 +149,14 @@ Dropdown.Item = ({
   const handleClick = useCallback(() => {
     if (disabled) return
 
-    onClick && onClick(value)
+    onClick && onClick(id)
     onClose()
   }, [disabled, onClick, onClose])
 
   return (
     <div
       ref={ref}
-      data-id={value}
+      data-id={id}
       role="dropdown-menu"
       className={clsx(
         cls('dropdown', 'menu'),
