@@ -22,6 +22,7 @@ interface DropdownProps {
   scrollable?: boolean
   className?: string
   ref?: React.RefObject<HTMLElement>
+  onClick?: Function
   onClose?: Function
   style?: object
   children?: React.ReactElement
@@ -62,6 +63,7 @@ const Dropdown = ({
   scrollable,
   className,
   ref,
+  onClick,
   onClose,
   style,
   children,
@@ -76,6 +78,12 @@ const Dropdown = ({
     }),
     [],
   )
+
+  const handleClick = useCallback((e) => {
+    const dropdownMenu = e.target.closest(`.${cls('dropdown', 'menu')}`)
+
+    onClick && onClick(dropdownMenu.dataset.id)
+  }, [])
 
   const handleClickOpen = useCallback(() => {
     const triggerNodeClickEvent = triggerNode.props?.onClick
@@ -115,6 +123,7 @@ const Dropdown = ({
               fontClass[validateCheck('size', size)],
               className,
             )}
+            onClick={handleClick}
             style={style}
           >
             {children}

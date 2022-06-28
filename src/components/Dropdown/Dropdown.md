@@ -214,6 +214,66 @@ const render = () => {
 render()
 ```
 
+#### Click event
+
+- 이벤트 버블링을 통해 클릭 이벤트 핸들러에 `Dropdown.Item`의 id 를 전달합니다.
+
+```js
+import React from 'react'
+import Button from '@components/Button/Button'
+import Dropdown from '@components/Dropdown/Dropdown'
+import {
+  PencilIcon,
+  DuplicateIcon,
+  TrashIcon,
+} from '@components/Icon/Icons/Action'
+
+const render = () => {
+  const handleClick = (id) => {
+    alert(id)
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        height: '200px',
+        justifyContent: 'space-around',
+      }}
+    >
+      <Dropdown
+        icon
+        triggerNode={<Button>With click event</Button>}
+        onClick={handleClick}
+      >
+        <Dropdown.Item
+          disabled
+          label="Edit"
+          id="edit"
+          desc="edit"
+          icon={<PencilIcon />}
+        />
+        <Dropdown.Item
+          label="Dupliate"
+          id="duplicate"
+          desc="duplicate"
+          icon={<DuplicateIcon />}
+        />
+        <Dropdown.Item
+          label="Delete"
+          id="delete"
+          desc="delete"
+          type="danger"
+          icon={<TrashIcon />}
+        />
+      </Dropdown>
+    </div>
+  )
+}
+
+render()
+```
+
 ### &lt;Dropdown.Item /&gt;
 
 - 각 Dropdown 메뉴를 구성하기 위해 사용합니다.
