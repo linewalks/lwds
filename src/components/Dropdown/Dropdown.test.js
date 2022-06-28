@@ -2,29 +2,37 @@ import React from 'react'
 import { screen } from '@testing-library/dom'
 import { cleanup, fireEvent, render } from '@testing-library/react'
 
+import Button from '@components/Button/Button'
 import Dropdown from '@components/Dropdown/Dropdown'
 import { PencilIcon, TrashIcon } from '@components/Icon/Icons/Action'
 
 import cls from '@helpers/class'
 
 const menuData = [
-  { id: 'edit', option: 'Edit', icon: <PencilIcon /> },
+  { label: 'Edit', value: 'edit', icon: <PencilIcon /> },
   {
-    id: 'duplicate',
-    option: 'Duplicate',
+    label: 'Duplicate',
+    value: 'duplicate',
+
     desc: 'duplicate',
   },
-  { id: 'disabled', option: 'Disabled' },
-  { id: 'delete', option: 'Delete', type: 'danger', icon: <TrashIcon /> },
+  { label: 'Disabled', value: 'disabled' },
+  { label: 'Delete', value: 'delete', type: 'danger', icon: <TrashIcon /> },
 ]
 
 const onClickMock = jest.fn()
+const onOpenMock = jest.fn()
+const onCloseMock = jest.fn()
 
 const setup = (props) => {
   return render(
-    <Dropdown isOpen onClick={onClickMock} {...props}>
-      {menuData.map((menuProps) => (
-        <Dropdown.Item key={`dropdown__item__${menuProps.id}`} {...menuProps} />
+    <Dropdown isOpen {...props}>
+      {menuData.map((menuProps, idx) => (
+        <Dropdown.Item
+          key={`dropdown__item__${idx}`}
+          onClick={onClickMock}
+          {...menuProps}
+        />
       ))}
     </Dropdown>,
   )
@@ -63,11 +71,11 @@ describe('Dropdown test', () => {
     )
   })
 
-  it.each(['left', 'center', 'right'])('direction(%s) test', (direction) => {
-    setup({ direction })
+  it.each(['left', 'center', 'right'])('placement(%s) test', (placement) => {
+    setup({ placement })
 
     expect(screen.getByRole('dropdown-menu-list')).toHaveClass(
-      cls('dropdown', direction),
+      cls('dropdown', placement),
     )
   })
 
@@ -88,8 +96,8 @@ describe('Dropdown test', () => {
       )
     })
 
-    it('wrong direction props', () => {
-      setup({ direction: 'bottom' })
+    it('wrong placement props', () => {
+      setup({ placement: 'bottom' })
 
       expect(screen.getByRole('dropdown-menu-list')).toHaveClass(
         cls('dropdown', 'left'),
@@ -102,8 +110,8 @@ describe('Dropdown item test', () => {
   it('desc test', () => {
     render(
       <Dropdown isOpen>
-        <Dropdown.Item id="edit" option="Edit" desc="edit" />
-        <Dropdown.Item id="duplicate" option="Duplicate" />
+        <Dropdown.Item label="Edit" value="edit" desc="edit" />
+        <Dropdown.Item label="Duplicate" value="duplicate" />
       </Dropdown>,
     )
 
@@ -120,8 +128,8 @@ describe('Dropdown item test', () => {
 
     render(
       <Dropdown isOpen>
-        <Dropdown.Item id="edit" option="Edit" />
-        <Dropdown.Item id="delete" option="Delete" type={type} />
+        <Dropdown.Item label="Edit" value="edit" />
+        <Dropdown.Item label="Delete" value="delete" type={type} />
       </Dropdown>,
     )
 
@@ -136,8 +144,8 @@ describe('Dropdown item test', () => {
   it('disabled test', () => {
     render(
       <Dropdown isOpen>
-        <Dropdown.Item id="edit" option="Edit" />
-        <Dropdown.Item id="delete" option="Delete" disabled />
+        <Dropdown.Item label="Edit" value="edit" />
+        <Dropdown.Item label="Delete" value="delete" disabled />
       </Dropdown>,
     )
 
@@ -161,13 +169,13 @@ describe('Dropdown click event test', () => {
     setup()
 
     fireEvent.click(screen.getAllByRole('dropdown-menu')[idx])
-    expect(onClickMock).toHaveBeenCalledWith(menuData[idx].id)
+    expect(onClickMock).toHaveBeenCalledWith(menuData[idx].value)
   })
 
   it('disabled item event test', () => {
     render(
       <Dropdown isOpen onClick={onClickMock}>
-        <Dropdown.Item id="disabled" option="disabled" disabled />
+        <Dropdown.Item label="disabled" value="disabled" disabled />
       </Dropdown>,
     )
 
@@ -176,13 +184,85 @@ describe('Dropdown click event test', () => {
   })
 })
 
+describe('Dropdown open, close test', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('auto open test', () => {
+    render(
+      <Dropdown triggerNode={<Button role="trigger-button">Open</Button>}>
+        <Dropdown.Item label="Edit" value="edit" />
+        <Dropdown.Item label="Delete" value="delete" />
+      </Dropdown>,
+    )
+
+    expect(screen.queryByRole('dropdown-menu-list')).toBeNull()
+    fireEvent.click(screen.getByRole('trigger-button'))
+    expect(screen.getByRole('dropdown-menu-list')).toBeInTheDocument()
+  })
+
+  it('auto close test', () => {
+    render(
+      <Dropdown triggerNode={<Button role="trigger-button">Open</Button>}>
+        <Dropdown.Item label="Edit" value="edit" />
+        <Dropdown.Item label="Delete" value="delete" />
+      </Dropdown>,
+    )
+
+    fireEvent.click(screen.getByRole('trigger-button'))
+    expect(screen.getByRole('dropdown-menu-list')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByText('Edit'))
+    expect(screen.queryByRole('dropdown-menu-list')).toBeNull()
+  })
+
+  it('custom open test', () => {
+    render(
+      <Dropdown
+        triggerNode={
+          <Button role="trigger-button" onClick={onOpenMock}>
+            Custom Open
+          </Button>
+        }
+      >
+        <Dropdown.Item label="Edit" value="edit" />
+        <Dropdown.Item label="Delete" value="delete" />
+      </Dropdown>,
+    )
+
+    fireEvent.click(screen.getByRole('trigger-button'))
+    expect(onOpenMock).toHaveBeenCalled()
+  })
+
+  it('custom close test', () => {
+    render(
+      <>
+        <Button role="dropdown-outside">Dummy Button</Button>
+        <Dropdown
+          isOpen
+          triggerNode={<Button>Custom Close</Button>}
+          onClose={onCloseMock}
+        >
+          <Dropdown.Item label="Edit" value="edit" />
+          <Dropdown.Item label="Delete" value="delete" />
+        </Dropdown>
+        ,
+      </>,
+    )
+
+    fireEvent.click(screen.getByText('Edit'))
+    expect(onCloseMock).toHaveBeenCalled()
+  })
+})
+
 describe('Dropdown divider test', () => {
   it('dropdown divider render', () => {
     render(
       <Dropdown isOpen>
-        <Dropdown.Item id="edit" option="Edit" />
+        <Dropdown.Item label="Edit" value="edit" />
         <Dropdown.Divider />
-        <Dropdown.Item id="delete" option="Delete" />
+        <Dropdown.Item label="Delete" value="delete" />
       </Dropdown>,
     )
 
