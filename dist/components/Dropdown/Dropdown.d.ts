@@ -1,29 +1,40 @@
 import React from 'react';
 import '@components/Dropdown/Dropdown.scss';
 interface DropdownProps {
-    isOpen: boolean;
+    triggerNode?: React.ReactElement;
+    isOpen?: boolean;
     size?: 'md' | 'lg';
     icon?: boolean;
-    direction?: 'left' | 'center' | 'right';
+    placement?: 'left' | 'center' | 'right';
     scrollable?: boolean;
     className?: string;
+    ref?: React.RefObject<HTMLElement>;
     onClick?: Function;
+    onClose?: Function;
     style?: object;
     children?: React.ReactElement;
 }
 interface DropdownItemProps {
-    id: string | number;
-    option: string;
+    label?: string | number | React.ReactElement;
+    id?: string | number;
     desc?: string;
     type?: 'danger';
-    icon?: React.ReactElement | null;
+    icon?: React.ReactElement;
     disabled?: boolean;
     className?: string;
+    ref?: React.RefObject<HTMLDivElement>;
+    onClick?: Function;
     style?: object;
 }
 declare const Dropdown: {
-    ({ isOpen, size, icon, direction, scrollable, className, onClick, style, children, }: DropdownProps): JSX.Element;
-    Item({ id, option, desc, type, icon, disabled, className, style, }: DropdownItemProps): JSX.Element;
+    ({ triggerNode, isOpen: propsIsOpen, size, icon, placement, scrollable, className, ref, onClick, onClose, style, children, }: DropdownProps): JSX.Element;
+    defaultProps: {
+        size: string;
+        icon: boolean;
+        placement: string;
+        scrollable: boolean;
+    };
+    Item({ id, label, desc, type, icon, disabled, className, ref, onClick, style, }: DropdownItemProps): JSX.Element;
     Divider(): JSX.Element;
 };
 export default Dropdown;
