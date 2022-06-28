@@ -155,12 +155,18 @@ Dropdown.Item = ({
 }: DropdownItemProps) => {
   const { onClose } = useContext(DropdownContext)
 
-  const handleClick = useCallback(() => {
-    if (disabled) return
+  const handleClick = useCallback(
+    (e) => {
+      if (disabled) {
+        e.stopPropagation()
+        return
+      }
 
-    onClick && onClick(id)
-    onClose()
-  }, [disabled, onClick, onClose])
+      onClick && onClick(id)
+      onClose()
+    },
+    [disabled, onClick, onClose],
+  )
 
   return (
     <div
