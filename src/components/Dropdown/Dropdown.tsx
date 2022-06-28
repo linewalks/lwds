@@ -18,7 +18,7 @@ interface DropdownProps {
   isOpen?: boolean
   size?: 'md' | 'lg'
   icon?: boolean
-  direction?: 'left' | 'center' | 'right'
+  placement?: 'left' | 'center' | 'right'
   scrollable?: boolean
   className?: string
   ref?: React.RefObject<HTMLElement>
@@ -42,7 +42,7 @@ interface DropdownItemProps {
 const validateCheck = (key: string, target: string) => {
   const checkSet = {
     size: ['md', 'lg'],
-    direction: ['left', 'center', 'right'],
+    placement: ['left', 'center', 'right'],
   }
 
   if (!checkSet[key]) throw new Error('Wrong Validate Check Key')
@@ -57,7 +57,7 @@ const Dropdown = ({
   isOpen: propsIsOpen,
   size,
   icon,
-  direction,
+  placement,
   scrollable,
   className,
   ref,
@@ -108,7 +108,7 @@ const Dropdown = ({
             className={clsx(
               cls('dropdown', 'list'),
               cls('dropdown', validateCheck('size', size)),
-              cls('dropdown', validateCheck('direction', direction)),
+              cls('dropdown', validateCheck('placement', placement)),
               scrollable && cls('dropdown', 'scrollable'),
               icon && cls('dropdown', 'icon', 'list'),
               fontClass[validateCheck('size', size)],
@@ -127,7 +127,7 @@ const Dropdown = ({
 Dropdown.defaultProps = {
   size: 'md',
   icon: false,
-  direction: 'left',
+  placement: 'left',
   scrollable: false,
 }
 
