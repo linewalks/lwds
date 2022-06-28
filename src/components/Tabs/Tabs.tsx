@@ -3,7 +3,7 @@ import _ from 'lodash'
 import clsx from 'clsx'
 
 import cls from '@helpers/class'
-import useIsomorphicLayoutEffect from '@helpers/useIsomorphicLayoutEffect'
+import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import '@components/Tabs/Tabs.scss'
 import { ChevronIcon } from '@components/Icon/Icons/Navigation'

@@ -1,37 +1,50 @@
-import React, { useMemo, useCallback } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
+import _ from 'lodash'
 import clsx from 'clsx'
 
+import useOutsideAlerter from '@hooks/useOutsideAlerter'
 import cls from '@helpers/class'
-
 import '@components/Dropdown/Dropdown.scss'
 
 interface DropdownProps {
-  isOpen: boolean
+  triggerNode?: React.ReactElement
+  isOpen?: boolean
   size?: 'md' | 'lg'
   icon?: boolean
-  direction?: 'left' | 'center' | 'right'
+  placement?: 'left' | 'center' | 'right'
   scrollable?: boolean
   className?: string
+  ref?: React.RefObject<HTMLElement>
   onClick?: Function
+  onClose?: Function
   style?: object
   children?: React.ReactElement
 }
 
 interface DropdownItemProps {
-  id: string | number
-  option: string
+  label?: string | number | React.ReactElement
+  id?: string | number
   desc?: string
   type?: 'danger'
-  icon?: React.ReactElement | null
+  icon?: React.ReactElement
   disabled?: boolean
   className?: string
+  ref?: React.RefObject<HTMLDivElement>
+  onClick?: Function
   style?: object
 }
 
 const validateCheck = (key: string, target: string) => {
   const checkSet = {
     size: ['md', 'lg'],
-    direction: ['left', 'center', 'right'],
+    placement: ['left', 'center', 'right'],
   }
 
   if (!checkSet[key]) throw new Error('Wrong Validate Check Key')
@@ -39,17 +52,25 @@ const validateCheck = (key: string, target: string) => {
   return checkSet[key].includes(target) ? target : checkSet[key][0]
 }
 
+const DropdownContext = createContext(null)
+
 const Dropdown = ({
-  isOpen = false,
-  size = 'md',
-  icon = false,
-  direction = 'left',
-  scrollable = false,
+  triggerNode,
+  isOpen: propsIsOpen,
+  size,
+  icon,
+  placement,
+  scrollable,
   className,
+  ref,
   onClick,
+  onClose,
   style,
   children,
 }: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef()
+
   const fontClass = useMemo(
     () => ({
       md: 'body_02_r',
@@ -64,40 +85,86 @@ const Dropdown = ({
     onClick && onClick(dropdownMenu.dataset.id)
   }, [])
 
+  const handleClickOpen = useCallback(() => {
+    const triggerNodeClickEvent = triggerNode.props?.onClick
+
+    _.isNil(propsIsOpen) && setIsOpen(!isOpen)
+    triggerNodeClickEvent && triggerNodeClickEvent()
+  }, [triggerNode, propsIsOpen, isOpen])
+
+  const handleClose = useCallback(() => {
+    _.isNil(propsIsOpen) && setIsOpen(false)
+    onClose && onClose()
+  }, [propsIsOpen, onClose])
+
+  useOutsideAlerter(dropdownRef, handleClose)
+
   return (
-    isOpen && (
-      <dl
-        role="dropdown-menu-list"
-        className={clsx(
-          cls('dropdown'),
-          cls('dropdown', validateCheck('size', size)),
-          cls('dropdown', validateCheck('direction', direction)),
-          scrollable && cls('dropdown', 'scrollable'),
-          icon && cls('dropdown', 'icon', 'list'),
-          fontClass[validateCheck('size', size)],
-          className,
+    <DropdownContext.Provider
+      value={{
+        onClose: handleClose,
+      }}
+    >
+      <span ref={ref} className={cls('dropdown')}>
+        {triggerNode &&
+          React.cloneElement(triggerNode, {
+            onClick: handleClickOpen,
+          })}
+        {(_.isNil(propsIsOpen) ? isOpen : propsIsOpen) && (
+          <dl
+            ref={dropdownRef}
+            role="dropdown-menu-list"
+            className={clsx(
+              cls('dropdown', 'list'),
+              cls('dropdown', validateCheck('size', size)),
+              cls('dropdown', validateCheck('placement', placement)),
+              scrollable && cls('dropdown', 'scrollable'),
+              icon && cls('dropdown', 'icon', 'list'),
+              fontClass[validateCheck('size', size)],
+              className,
+            )}
+            onClick={handleClick}
+            style={style}
+          >
+            {children}
+          </dl>
         )}
-        onClick={handleClick}
-        style={style}
-      >
-        {children}
-      </dl>
-    )
+      </span>
+    </DropdownContext.Provider>
   )
+}
+
+Dropdown.defaultProps = {
+  size: 'md',
+  icon: false,
+  placement: 'left',
+  scrollable: false,
 }
 
 Dropdown.Item = ({
   id,
-  option,
+  label,
   desc,
   type,
   icon,
   disabled,
   className,
+  ref,
+  onClick,
   style,
 }: DropdownItemProps) => {
+  const { onClose } = useContext(DropdownContext)
+
+  const handleClick = useCallback(() => {
+    if (disabled) return
+
+    onClick && onClick(id)
+    onClose()
+  }, [disabled, onClick, onClose])
+
   return (
     <div
+      ref={ref}
       data-id={id}
       role="dropdown-menu"
       className={clsx(
@@ -107,12 +174,16 @@ Dropdown.Item = ({
         disabled && cls('dropdown', 'menu', 'disabled'),
         className,
       )}
-      onClick={(e) => disabled && e.stopPropagation()}
+      onClick={handleClick}
       style={style}
     >
-      <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
+      <dt
+        ref={ref}
+        role="dropdown-menu-term"
+        className={cls('dropdown', 'menu', 'term')}
+      >
         <i className={cls('dropdown', 'menu', 'icon')}>{icon}</i>
-        <span className={cls('dropdown', 'menu', 'name')}>{option}</span>
+        <span className={cls('dropdown', 'menu', 'label')}>{label}</span>
       </dt>
       {desc && (
         <dd
