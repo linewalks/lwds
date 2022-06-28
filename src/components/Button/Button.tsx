@@ -67,7 +67,7 @@ function renderButton<
     return (
       icon &&
       React.cloneElement(icon, {
-        className: cls('button', className),
+        className: clsx(cls('button', className), icon.props.className),
         width: '1em',
         height: '1em',
       })
