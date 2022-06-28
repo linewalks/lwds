@@ -70,7 +70,7 @@ $menu-h-lg: 40px;
 // icon 옵션이 추가될 때 Dropdown
 .#{$component}-icon-list {
   .#{$component}-menu-icon {
-    display: inline;
+    display: inline-flex;
   }
 
   &.#{$component}-md .#{$component}-menu-desc {
