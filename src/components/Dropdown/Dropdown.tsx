@@ -35,6 +35,7 @@ interface DropdownItemProps {
   icon?: React.ReactElement
   disabled?: boolean
   className?: string
+  ref?: React.RefObject<HTMLDivElement>
   onClick?: Function
   style?: object
 }
@@ -139,6 +140,7 @@ Dropdown.Item = ({
   icon,
   disabled,
   className,
+  ref,
   onClick,
   style,
 }: DropdownItemProps) => {
@@ -153,6 +155,7 @@ Dropdown.Item = ({
 
   return (
     <div
+      ref={ref}
       data-id={value}
       role="dropdown-menu"
       className={clsx(
@@ -165,7 +168,11 @@ Dropdown.Item = ({
       onClick={handleClick}
       style={style}
     >
-      <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
+      <dt
+        ref={ref}
+        role="dropdown-menu-term"
+        className={cls('dropdown', 'menu', 'term')}
+      >
         <i className={cls('dropdown', 'menu', 'icon')}>{icon}</i>
         <span className={cls('dropdown', 'menu', 'label')}>{label}</span>
       </dt>
