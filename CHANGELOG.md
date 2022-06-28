@@ -2,13 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.3.2](https://github.com/linewalks/lwds/compare/v0.3.1...v0.3.2) (2022-06-24)
+### [0.3.3](https://github.com/linewalks/lwds/compare/v0.3.1...v0.3.3) (2022-06-28)
 
+### Features
+
+- **dropdown:** dropdown logic improvement ([8b2fb22](https://github.com/linewalks/lwds/commit/8b2fb228f91b5f8c96437e7892753d7e6ded30b2))
+- **button:** add className props ([1e5cac4](https://github.com/linewalks/lwds/commit/1e5cac425eae64bbc20a6a4423b355ca4a06d130))
+
+### [0.3.2](https://github.com/linewalks/lwds/compare/v0.3.1...v0.3.2) (2022-06-24)
 
 ### Bug Fixes
 
-* export component modules ([#192](https://github.com/linewalks/lwds/issues/192)) ([f1c4bfe](https://github.com/linewalks/lwds/commit/f1c4bfe5444cfd16e449be3c9e05f1017d8f883c))
-* Tabs hover css ([a8201a4](https://github.com/linewalks/lwds/commit/a8201a4be084aa31244c0c724c6657b944d3a6bb))
+- export component modules ([#192](https://github.com/linewalks/lwds/issues/192)) ([f1c4bfe](https://github.com/linewalks/lwds/commit/f1c4bfe5444cfd16e449be3c9e05f1017d8f883c))
+- Tabs hover css ([a8201a4](https://github.com/linewalks/lwds/commit/a8201a4be084aa31244c0c724c6657b944d3a6bb))
 
 ### [0.3.1](https://github.com/linewalks/lwds/compare/v0.2.0...v0.3.1) (2022-06-23)
 
