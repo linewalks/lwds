@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/linewalks/lwds/compare/v0.3.1...v0.3.3) (2022-06-28)
+
+
+### Bug Fixes
+
+* **dropdown:** stop propagation click event when menu disabled ([d7d9eca](https://github.com/linewalks/lwds/commit/d7d9ecac2a4522acd2a5f512d4a71655c9b9d8c7))
+* export component modules ([#192](https://github.com/linewalks/lwds/issues/192)) ([f1c4bfe](https://github.com/linewalks/lwds/commit/f1c4bfe5444cfd16e449be3c9e05f1017d8f883c))
+* Tabs hover css ([a8201a4](https://github.com/linewalks/lwds/commit/a8201a4be084aa31244c0c724c6657b944d3a6bb))
+
 ### [0.3.2](https://github.com/linewalks/lwds/compare/v0.3.1...v0.3.2) (2022-06-24)
 
 
