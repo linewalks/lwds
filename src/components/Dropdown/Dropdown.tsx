@@ -6,7 +6,7 @@ import cls from '@helpers/class'
 import '@components/Dropdown/Dropdown.scss'
 
 interface DropdownProps {
-  isOpen: boolean
+  isOpen?: boolean
   size?: 'md' | 'lg'
   icon?: boolean
   direction?: 'left' | 'center' | 'right'
@@ -18,8 +18,8 @@ interface DropdownProps {
 }
 
 interface DropdownItemProps {
-  id: string | number
-  option: string
+  option?: string
+  value?: string | number
   desc?: string
   type?: 'danger'
   icon?: React.ReactElement | null
@@ -40,11 +40,11 @@ const validateCheck = (key: string, target: string) => {
 }
 
 const Dropdown = ({
-  isOpen = false,
-  size = 'md',
-  icon = false,
-  direction = 'left',
-  scrollable = false,
+  isOpen: propsIsOpen,
+  size,
+  icon,
+  direction,
+  scrollable,
   className,
   onClick,
   style,
@@ -86,9 +86,17 @@ const Dropdown = ({
   )
 }
 
+Dropdown.defaultProps = {
+  isOpen: false,
+  size: 'md',
+  icon: false,
+  direction: 'left',
+  scrollable: false,
+}
+
 Dropdown.Item = ({
-  id,
   option,
+  value,
   desc,
   type,
   icon,
@@ -98,7 +106,7 @@ Dropdown.Item = ({
 }: DropdownItemProps) => {
   return (
     <div
-      data-id={id}
+      data-id={value}
       role="dropdown-menu"
       className={clsx(
         cls('dropdown', 'menu'),
