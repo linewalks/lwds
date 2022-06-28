@@ -1,24 +1,26 @@
-import React, { useMemo, useCallback } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
+import _ from 'lodash'
 import clsx from 'clsx'
 
 import cls from '@helpers/class'
-
 import '@components/Dropdown/Dropdown.scss'
 
 interface DropdownProps {
+  triggerNode: React.ReactElement
   isOpen?: boolean
   size?: 'md' | 'lg'
   icon?: boolean
   direction?: 'left' | 'center' | 'right'
   scrollable?: boolean
   className?: string
+  ref?: React.RefObject<HTMLElement>
   onClick?: Function
   style?: object
   children?: React.ReactElement
 }
 
 interface DropdownItemProps {
-  option?: string
+  label?: string
   value?: string | number
   desc?: string
   type?: 'danger'
@@ -40,16 +42,19 @@ const validateCheck = (key: string, target: string) => {
 }
 
 const Dropdown = ({
+  triggerNode,
   isOpen: propsIsOpen,
   size,
   icon,
   direction,
   scrollable,
   className,
-  onClick,
+  ref,
   style,
   children,
 }: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   const fontClass = useMemo(
     () => ({
       md: 'body_02_r',
@@ -58,36 +63,41 @@ const Dropdown = ({
     [],
   )
 
-  const handleClick = useCallback((e) => {
-    const dropdownMenu = e.target.closest(`.${cls('dropdown', 'menu')}`)
+  const handleClickOpen = useCallback(() => {
+    const triggerNodeClickEvent = triggerNode.props?.onClick
 
-    onClick && onClick(dropdownMenu.dataset.id)
-  }, [])
+    _.isNil(propsIsOpen) && setIsOpen(!isOpen)
+    triggerNodeClickEvent && triggerNodeClickEvent()
+  }, [triggerNode, propsIsOpen, isOpen])
 
   return (
-    isOpen && (
-      <dl
-        role="dropdown-menu-list"
-        className={clsx(
-          cls('dropdown'),
-          cls('dropdown', validateCheck('size', size)),
-          cls('dropdown', validateCheck('direction', direction)),
-          scrollable && cls('dropdown', 'scrollable'),
-          icon && cls('dropdown', 'icon', 'list'),
-          fontClass[validateCheck('size', size)],
-          className,
-        )}
-        onClick={handleClick}
-        style={style}
-      >
-        {children}
-      </dl>
-    )
+    <span className={cls('dropdown')} ref={ref}>
+      {triggerNode &&
+        React.cloneElement(triggerNode, {
+          onClick: handleClickOpen,
+        })}
+      {(_.isNil(propsIsOpen) ? isOpen : propsIsOpen) && (
+        <dl
+          role="dropdown-menu-list"
+          className={clsx(
+            cls('dropdown', 'list'),
+            cls('dropdown', validateCheck('size', size)),
+            cls('dropdown', validateCheck('direction', direction)),
+            scrollable && cls('dropdown', 'scrollable'),
+            icon && cls('dropdown', 'icon', 'list'),
+            fontClass[validateCheck('size', size)],
+            className,
+          )}
+          style={style}
+        >
+          {children}
+        </dl>
+      )}
+    </span>
   )
 }
 
 Dropdown.defaultProps = {
-  isOpen: false,
   size: 'md',
   icon: false,
   direction: 'left',
