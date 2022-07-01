@@ -4,17 +4,18 @@
 
 #### Props
 
-| Props Name  |           Types           | Default |
-| :---------: | :-----------------------: | :-----: |
-| triggerNode |    React.ReactElement     |         |
-|   isOpen    |          boolean          |         |
-|    size     |        'md', 'lg'         |  'md'   |
-|    icon     |          boolean          |  false  |
-|  placement  | 'left', 'center', 'right' | 'left'  |
-| scrollable  |          boolean          |  false  |
-|  className  |          string           |         |
-|   onClose   |         Function          |         |
-|    style    |          object           |         |
+|  Props Name  |           Types           | Default |
+| :----------: | :-----------------------: | :-----: |
+| triggerNode  |    React.ReactElement     |         |
+|    isOpen    |          boolean          |         |
+|     size     |        'md', 'lg'         |  'md'   |
+|     icon     |          boolean          |  false  |
+|  placement   | 'left', 'center', 'right' | 'left'  |
+|  scrollable  |          boolean          |  false  |
+|  className   |          string           |         |
+| containerRef |      React.RefObject      |         |
+|   onClose    |         Function          |         |
+|    style     |          object           |         |
 
 <br />
 
@@ -289,6 +290,7 @@ render()
 |    icon    |         React.ReactElement         |         |        |
 |  disabled  |              boolean               |         |        |
 | className  |               string               |         |        |
+|  itemRef   |          React.RefObject           |         |        |
 |  onClick   |              Function              |         |        |
 |   style    |               object               |         |        |
 

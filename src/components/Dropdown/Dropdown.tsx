@@ -23,6 +23,7 @@ interface DropdownProps {
   placement?: 'left' | 'center' | 'right'
   scrollable?: boolean
   className?: string
+  containerRef?: React.RefObject<HTMLDivElement>
   onClick?: Function
   onClose?: Function
   style?: object
@@ -37,7 +38,7 @@ interface DropdownItemProps {
   icon?: React.ReactElement
   disabled?: boolean
   className?: string
-  ref?: React.RefObject<HTMLDivElement>
+  itemRef?: React.RefObject<HTMLDivElement>
   onClick?: Function
   style?: object
 }
@@ -63,6 +64,7 @@ const Dropdown = ({
   placement,
   scrollable,
   className,
+  containerRef,
   onClick,
   onClose,
   style,
@@ -161,7 +163,7 @@ const Dropdown = ({
         onClose: handleClose,
       }}
     >
-      <div className={cls('dropdown')}>
+      <div ref={containerRef} className={cls('dropdown')}>
         {triggerNode &&
           React.cloneElement(triggerNode, {
             ref: triggerRef,
@@ -207,7 +209,7 @@ Dropdown.Item = ({
   icon,
   disabled,
   className,
-  ref,
+  itemRef,
   onClick,
   style,
 }: DropdownItemProps) => {
@@ -228,7 +230,7 @@ Dropdown.Item = ({
 
   return (
     <div
-      ref={ref}
+      ref={itemRef}
       data-id={id}
       role="dropdown-menu"
       className={clsx(
@@ -241,11 +243,7 @@ Dropdown.Item = ({
       onClick={handleClick}
       style={style}
     >
-      <dt
-        ref={ref}
-        role="dropdown-menu-term"
-        className={cls('dropdown', 'menu', 'term')}
-      >
+      <dt role="dropdown-menu-term" className={cls('dropdown', 'menu', 'term')}>
         <i className={cls('dropdown', 'menu', 'icon')}>{icon}</i>
         <span className={cls('dropdown', 'menu', 'label')}>{label}</span>
       </dt>
