@@ -8,7 +8,9 @@ import React, {
 } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
+import { createPortal } from 'react-dom'
 
+import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 import useOutsideAlerter from '@hooks/useOutsideAlerter'
 import cls from '@helpers/class'
 import '@components/Dropdown/Dropdown.scss'
@@ -21,7 +23,6 @@ interface DropdownProps {
   placement?: 'left' | 'center' | 'right'
   scrollable?: boolean
   className?: string
-  ref?: React.RefObject<HTMLElement>
   onClick?: Function
   onClose?: Function
   style?: object
@@ -62,14 +63,19 @@ const Dropdown = ({
   placement,
   scrollable,
   className,
-  ref,
   onClick,
   onClose,
   style,
   children,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef()
+  const [pos, setPos] = useState({
+    top: 0,
+    left: 0,
+  })
+
+  const triggerRef = useRef<HTMLElement>()
+  const dropdownRef = useRef<HTMLDListElement>()
 
   const fontClass = useMemo(
     () => ({
@@ -97,7 +103,57 @@ const Dropdown = ({
     onClose && onClose()
   }, [propsIsOpen, onClose])
 
+  const handleDropdownPos = useCallback(() => {
+    if (triggerRef.current && dropdownRef.current) {
+      const {
+        x: triggerRefX,
+        y: triggerRefY,
+        width: triggerRefWidth,
+        height: triggerRefHeight,
+      } = triggerRef.current.getBoundingClientRect()
+
+      const dropdownElWidth = parseFloat(
+        window.getComputedStyle(dropdownRef.current).width,
+      )
+
+      const top = triggerRefY + triggerRefHeight + window.scrollY
+
+      if (placement === 'center') {
+        setPos({
+          top,
+          left:
+            triggerRefX +
+            triggerRefWidth / 2 -
+            dropdownElWidth / 2 +
+            window.scrollX,
+        })
+      } else if (placement === 'right') {
+        setPos({
+          top,
+          left:
+            triggerRefX + triggerRefWidth - dropdownElWidth + window.scrollX,
+        })
+      } else {
+        setPos({
+          top,
+          left: triggerRefX + window.scrollX,
+        })
+      }
+    }
+  }, [dropdownRef, triggerRef, placement])
+
   useOutsideAlerter(dropdownRef, handleClose)
+
+  useIsomorphicLayoutEffect(() => {
+    handleDropdownPos()
+    window.addEventListener('resize', handleDropdownPos)
+    window.addEventListener('scroll', handleDropdownPos)
+
+    return () => {
+      window.removeEventListener('resize', handleDropdownPos)
+      window.removeEventListener('scroll', handleDropdownPos)
+    }
+  }, [handleDropdownPos])
 
   return (
     <DropdownContext.Provider
@@ -105,31 +161,33 @@ const Dropdown = ({
         onClose: handleClose,
       }}
     >
-      <span ref={ref} className={cls('dropdown')}>
+      <div className={cls('dropdown')}>
         {triggerNode &&
           React.cloneElement(triggerNode, {
+            ref: triggerRef,
             onClick: handleClickOpen,
           })}
-        {(_.isNil(propsIsOpen) ? isOpen : propsIsOpen) && (
+        {createPortal(
           <dl
             ref={dropdownRef}
             role="dropdown-menu-list"
             className={clsx(
               cls('dropdown', 'list'),
               cls('dropdown', validateCheck('size', size)),
-              cls('dropdown', validateCheck('placement', placement)),
+              (propsIsOpen ?? isOpen) && cls('dropdown', 'open'),
               scrollable && cls('dropdown', 'scrollable'),
               icon && cls('dropdown', 'icon', 'list'),
               fontClass[validateCheck('size', size)],
               className,
             )}
             onClick={handleClick}
-            style={style}
+            style={{ ...pos, ...style }}
           >
             {children}
-          </dl>
+          </dl>,
+          document.body,
         )}
-      </span>
+      </div>
     </DropdownContext.Provider>
   )
 }
