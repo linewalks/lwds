@@ -8,7 +8,7 @@ interface DropdownProps {
     placement?: 'left' | 'center' | 'right';
     scrollable?: boolean;
     className?: string;
-    ref?: React.RefObject<HTMLElement>;
+    containerRef?: React.RefObject<HTMLDivElement>;
     onClick?: Function;
     onClose?: Function;
     style?: object;
@@ -22,19 +22,19 @@ interface DropdownItemProps {
     icon?: React.ReactElement;
     disabled?: boolean;
     className?: string;
-    ref?: React.RefObject<HTMLDivElement>;
+    itemRef?: React.RefObject<HTMLDivElement>;
     onClick?: Function;
     style?: object;
 }
 declare const Dropdown: {
-    ({ triggerNode, isOpen: propsIsOpen, size, icon, placement, scrollable, className, ref, onClick, onClose, style, children, }: DropdownProps): JSX.Element;
+    ({ triggerNode, isOpen: propsIsOpen, size, icon, placement, scrollable, className, containerRef, onClick, onClose, style, children, }: DropdownProps): JSX.Element;
     defaultProps: {
         size: string;
         icon: boolean;
         placement: string;
         scrollable: boolean;
     };
-    Item({ id, label, desc, type, icon, disabled, className, ref, onClick, style, }: DropdownItemProps): JSX.Element;
+    Item({ id, label, desc, type, icon, disabled, className, itemRef, onClick, style, }: DropdownItemProps): JSX.Element;
     Divider(): JSX.Element;
 };
 export default Dropdown;
