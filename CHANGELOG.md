@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.3.3](https://github.com/linewalks/lwds/compare/v0.3.1...v0.3.3) (2022-06-28)
+### [0.3.4](https://github.com/linewalks/lwds/compare/v0.3.3...v0.3.4) (2022-07-03)
+
+### Features
+
+- **dropdown:** overflow style using react portal ([097ef54](https://github.com/linewalks/lwds/commit/097ef54b0e973e11702c0351d03ac44e7c968fcf))
+
+### [0.3.3](https://github.com/linewalks/lwds/compare/v0.3.2...v0.3.3) (2022-06-28)
 
 ### Features
 
