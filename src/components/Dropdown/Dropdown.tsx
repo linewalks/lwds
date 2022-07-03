@@ -142,7 +142,7 @@ const Dropdown = ({
         })
       }
     }
-  }, [dropdownRef, triggerRef, placement])
+  }, [placement])
 
   useOutsideAlerter(dropdownRef, handleClose)
 
