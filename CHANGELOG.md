@@ -8,14 +8,14 @@ All notable changes to this project will be documented in this file. See [standa
 
 - **dropdown:** overflow style using react portal ([097ef54](https://github.com/linewalks/lwds/commit/097ef54b0e973e11702c0351d03ac44e7c968fcf))
 
-### [0.3.3](https://github.com/linewalks/lwds/compare/v0.3.1...v0.3.3) (2022-06-28)
+### [0.3.3](https://github.com/linewalks/lwds/compare/v0.3.2...v0.3.3) (2022-06-28)
 
 ### Features
 
 - **dropdown:** dropdown logic improvement ([8b2fb22](https://github.com/linewalks/lwds/commit/8b2fb228f91b5f8c96437e7892753d7e6ded30b2))
 - **button:** add className props ([1e5cac4](https://github.com/linewalks/lwds/commit/1e5cac425eae64bbc20a6a4423b355ca4a06d130))
 
-### [0.3.2](https://github.com/linewalks/lwds/compare/v0.3.2...v0.3.2) (2022-06-24)
+### [0.3.2](https://github.com/linewalks/lwds/compare/v0.3.1...v0.3.2) (2022-06-24)
 
 ### Bug Fixes
 
