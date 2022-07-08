@@ -2,8 +2,8 @@ import React, {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
-  useRef,
   useState,
 } from 'react'
 import _ from 'lodash'
@@ -26,6 +26,7 @@ interface DropdownProps {
   className?: string
   containerRef?: React.RefObject<HTMLDivElement>
   isPortal?: boolean
+  portalQueryStr?: string
   onClick?: Function
   onClose?: Function
   style?: object
@@ -58,8 +59,10 @@ const validateCheck = (key: string, target: string) => {
 
 const DropdownContext = createContext(null)
 
-const WrapDropdownList = ({ isPortal, children }) => {
-  return isPortal ? createPortal(children, document.body) : children
+const PortalDropdownList = ({ isPortal, portalQueryStr, children }) => {
+  const el = document.querySelector(portalQueryStr) ?? document.body
+
+  return isPortal ? createPortal(children, el) : children
 }
 
 const Dropdown = ({
@@ -72,13 +75,12 @@ const Dropdown = ({
   className,
   containerRef,
   isPortal,
+  portalQueryStr,
   onClick,
   onClose,
   style,
   children,
 }: DropdownProps) => {
-  const dropdownRef = useRef<HTMLDivElement>()
-
   const [isOpen, setIsOpen] = useState(false)
   const [floatingOffset, setFloatingOffset] = useState(0)
 
@@ -143,7 +145,7 @@ const Dropdown = ({
     }
   }, [])
 
-  useOutsideAlerter(dropdownRef, handleClose)
+  useOutsideAlerter(refs.floating, handleClose)
 
   return (
     <DropdownContext.Provider
@@ -157,27 +159,25 @@ const Dropdown = ({
             ref: reference,
             onClick: handleClickOpen,
           })}
-        <WrapDropdownList isPortal={isPortal}>
-          <div ref={dropdownRef}>
-            <dl
-              ref={floating}
-              role="dropdown-menu-list"
-              className={clsx(
-                cls('dropdown', 'list'),
-                cls('dropdown', validateCheck('size', size)),
-                (propsIsOpen ?? isOpen) && cls('dropdown', 'open'),
-                scrollable && cls('dropdown', 'scrollable'),
-                icon && cls('dropdown', 'icon', 'list'),
-                fontClass[validateCheck('size', size)],
-                className,
-              )}
-              onClick={handleClick}
-              style={{ top: y ?? 0, left: x ?? 0, ...style }}
-            >
-              {children}
-            </dl>
-          </div>
-        </WrapDropdownList>
+        <PortalDropdownList isPortal={isPortal} portalQueryStr={portalQueryStr}>
+          <dl
+            ref={floating}
+            role="dropdown-menu-list"
+            className={clsx(
+              cls('dropdown', 'list'),
+              cls('dropdown', validateCheck('size', size)),
+              (propsIsOpen ?? isOpen) && cls('dropdown', 'open'),
+              scrollable && cls('dropdown', 'scrollable'),
+              icon && cls('dropdown', 'icon', 'list'),
+              fontClass[validateCheck('size', size)],
+              className,
+            )}
+            onClick={handleClick}
+            style={{ top: y ?? 0, left: x ?? 0, ...style }}
+          >
+            {children}
+          </dl>
+        </PortalDropdownList>
       </div>
     </DropdownContext.Provider>
   )
