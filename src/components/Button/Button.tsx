@@ -8,8 +8,8 @@ import '@components/Button/Button.scss'
 
 interface ButtonProps {
   // TODO variant => variant와 color로 나누기
-  disabled: boolean
-  variant:
+  disabled?: boolean
+  variant?:
     | string
     | 'primary'
     | 'secondary'
@@ -18,11 +18,11 @@ interface ButtonProps {
     | 'danger_primary'
     | 'danger_tertiary'
   ghostType: string | 'default' | 'important' | 'danger'
-  size: string | 'sm' | 'md' | 'lg' | 'xl'
-  bold: boolean
-  icon: boolean
-  loading: boolean
-  responsiveHeight: boolean
+  size?: string | 'sm' | 'md' | 'lg' | 'xl'
+  bold?: boolean
+  icon?: boolean
+  loading?: boolean
+  responsiveHeight?: boolean
   id?: string
   className?: string
   style?: object
