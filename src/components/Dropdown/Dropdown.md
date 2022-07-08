@@ -4,18 +4,20 @@
 
 #### Props
 
-|  Props Name  |           Types           | Default |
-| :----------: | :-----------------------: | :-----: |
-| triggerNode  |    React.ReactElement     |         |
-|    isOpen    |          boolean          |         |
-|     size     |        'md', 'lg'         |  'md'   |
-|     icon     |          boolean          |  false  |
-|  placement   | 'left', 'center', 'right' | 'left'  |
-|  scrollable  |          boolean          |  false  |
-|  className   |          string           |         |
-| containerRef |      React.RefObject      |         |
-|   onClose    |         Function          |         |
-|    style     |          object           |         |
+|   Props Name   |           Types           | Default |
+| :------------: | :-----------------------: | :-----: |
+|  triggerNode   |    React.ReactElement     |         |
+|     isOpen     |          boolean          |         |
+|      size      |        'md', 'lg'         |  'md'   |
+|      icon      |          boolean          |  false  |
+|   placement    | 'left', 'center', 'right' | 'left'  |
+|   scrollable   |          boolean          |  false  |
+|   className    |          string           |         |
+|  containerRef  |      React.RefObject      |         |
+|    isPortal    |          boolean          |  false  |
+| portalQueryStr |          string           |         |
+|    onClose     |         Function          |         |
+|     style      |          object           |         |
 
 <br />
 
@@ -34,7 +36,7 @@ const render = () => {
     <div
       style={{
         display: 'flex',
-        height: '150px',
+        height: '200px',
         justifyContent: 'space-around',
       }}
     >
@@ -208,6 +210,46 @@ const render = () => {
           <Dropdown.Item key={`Dropdown__item__${idx}`} label={label} id={id} />
         ))}
       </Dropdown>
+    </div>
+  )
+}
+
+render()
+```
+
+#### portal props
+
+- `isPortal` props 를 통해 Dropdown 을 전역적으로 배치할 수 있습니다.
+- `portalQueryStr` props 를 통해 Portal 위치를 지정할 수 있습니다.
+  - Portal 위치를 지정할 Element 의 쿼리 스트링을 입력합니다.
+  - `portalQueryStr` 을 지정하지 않거나, 해당 쿼리 스트링으로 Element을 찾을 수 없는 경우 Portal 이 적용되는 위치는 document.body 로 자동 지정됩니다.
+
+```js
+import React from 'react'
+import Button from '@components/Button/Button'
+import Dropdown from '@components/Dropdown/Dropdown'
+
+const render = () => {
+  return (
+    <div style={{ height: '80px', overflow: 'scroll' }}>
+      <div
+        style={{
+          display: 'flex',
+          height: '100px',
+          justifyContent: 'space-around',
+        }}
+      >
+        <Dropdown triggerNode={<Button>Dropdown Default</Button>}>
+          <Dropdown.Item label="Edit" id="edit" />
+          <Dropdown.Item label="Dupliate" id="duplicate" />
+          <Dropdown.Item label="Delete" id="delete" />
+        </Dropdown>
+        <Dropdown isPortal triggerNode={<Button>Dropdown Portal</Button>}>
+          <Dropdown.Item label="Edit" id="edit" />
+          <Dropdown.Item label="Dupliate" id="duplicate" />
+          <Dropdown.Item label="Delete" id="delete" />
+        </Dropdown>
+      </div>
     </div>
   )
 }
