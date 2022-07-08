@@ -134,12 +134,14 @@ const Dropdown = ({
       )
       setFloatingOffset(Math.abs(triggerElWidth - dropdownElWidth) / 2)
     }
+  }, [refs.reference.current, refs.floating.current, placement])
 
+  useEffect(() => {
     return () => {
       refs.reference.current = null
       refs.floating.current = null
     }
-  }, [refs.reference.current, refs.floating.current, placement])
+  }, [])
 
   useOutsideAlerter(dropdownRef, handleClose)
 
