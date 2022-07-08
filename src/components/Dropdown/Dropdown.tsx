@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
-import { useFloating, autoUpdate } from '@floating-ui/react-dom'
+import { useFloating, autoUpdate, offset } from '@floating-ui/react-dom'
 import { createPortal } from 'react-dom'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
@@ -77,14 +77,10 @@ const Dropdown = ({
   style,
   children,
 }: DropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const { x, y, reference, floating, refs } = useFloating({
-    whileElementsMounted: autoUpdate,
-    placement: 'bottom',
-  })
-
   const dropdownRef = useRef<HTMLDivElement>()
+
+  const [isOpen, setIsOpen] = useState(false)
+  const [floatingOffset, setFloatingOffset] = useState(0)
 
   const fontClass = useMemo(
     () => ({
@@ -93,6 +89,21 @@ const Dropdown = ({
     }),
     [],
   )
+
+  const placementOffset = useMemo(
+    () => ({
+      left: floatingOffset,
+      right: -floatingOffset,
+      center: 0,
+    }),
+    [floatingOffset],
+  )
+
+  const { x, y, reference, floating, refs } = useFloating({
+    whileElementsMounted: autoUpdate,
+    placement: 'bottom',
+    middleware: [offset({ crossAxis: placementOffset[placement] })],
+  })
 
   const handleClick = useCallback((e) => {
     const dropdownMenu = e.target.closest(`.${cls('dropdown', 'menu')}`)
@@ -111,6 +122,24 @@ const Dropdown = ({
     _.isNil(propsIsOpen) && setIsOpen(false)
     onClose && onClose()
   }, [propsIsOpen, onClose])
+
+  useIsomorphicLayoutEffect(() => {
+    const triggerEl = refs.reference.current
+    const dropdownEl = refs.floating.current
+
+    if (triggerEl && dropdownEl) {
+      const { width: triggerElWidth } = triggerEl.getBoundingClientRect()
+      const dropdownElWidth = parseFloat(
+        window.getComputedStyle(dropdownEl).width,
+      )
+      setFloatingOffset(Math.abs(triggerElWidth - dropdownElWidth) / 2)
+    }
+
+    return () => {
+      refs.reference.current = null
+      refs.floating.current = null
+    }
+  }, [refs.reference.current, refs.floating.current, placement])
 
   useOutsideAlerter(dropdownRef, handleClose)
 
@@ -157,7 +186,7 @@ Dropdown.defaultProps = {
   icon: false,
   placement: 'left',
   scrollable: false,
-  isPortal: true,
+  isPortal: false,
 }
 
 Dropdown.Item = ({
