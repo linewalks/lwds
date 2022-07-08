@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
+import { useFloating, autoUpdate } from '@floating-ui/react-dom'
 import { createPortal } from 'react-dom'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
@@ -24,6 +25,7 @@ interface DropdownProps {
   scrollable?: boolean
   className?: string
   containerRef?: React.RefObject<HTMLDivElement>
+  isPortal?: boolean
   onClick?: Function
   onClose?: Function
   style?: object
@@ -71,13 +73,13 @@ const Dropdown = ({
   children,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [pos, setPos] = useState({
-    top: 0,
-    left: 0,
+
+  const { x, y, reference, floating, refs } = useFloating({
+    whileElementsMounted: autoUpdate,
+    placement: 'bottom',
   })
 
-  const triggerRef = useRef<HTMLElement>()
-  const dropdownRef = useRef<HTMLDListElement>()
+  const dropdownRef = useRef<HTMLDivElement>()
 
   const fontClass = useMemo(
     () => ({
@@ -105,57 +107,7 @@ const Dropdown = ({
     onClose && onClose()
   }, [propsIsOpen, onClose])
 
-  const handleDropdownPos = useCallback(() => {
-    if (triggerRef.current && dropdownRef.current) {
-      const {
-        x: triggerRefX,
-        y: triggerRefY,
-        width: triggerRefWidth,
-        height: triggerRefHeight,
-      } = triggerRef.current.getBoundingClientRect()
-
-      const dropdownElWidth = parseFloat(
-        window.getComputedStyle(dropdownRef.current).width,
-      )
-
-      const top = triggerRefY + triggerRefHeight + window.scrollY
-
-      if (placement === 'center') {
-        setPos({
-          top,
-          left:
-            triggerRefX +
-            triggerRefWidth / 2 -
-            dropdownElWidth / 2 +
-            window.scrollX,
-        })
-      } else if (placement === 'right') {
-        setPos({
-          top,
-          left:
-            triggerRefX + triggerRefWidth - dropdownElWidth + window.scrollX,
-        })
-      } else {
-        setPos({
-          top,
-          left: triggerRefX + window.scrollX,
-        })
-      }
-    }
-  }, [placement])
-
   useOutsideAlerter(dropdownRef, handleClose)
-
-  useIsomorphicLayoutEffect(() => {
-    handleDropdownPos()
-    window.addEventListener('resize', handleDropdownPos)
-    window.addEventListener('scroll', handleDropdownPos)
-
-    return () => {
-      window.removeEventListener('resize', handleDropdownPos)
-      window.removeEventListener('scroll', handleDropdownPos)
-    }
-  }, [handleDropdownPos])
 
   return (
     <DropdownContext.Provider
@@ -166,29 +118,30 @@ const Dropdown = ({
       <div ref={containerRef} className={cls('dropdown')}>
         {triggerNode &&
           React.cloneElement(triggerNode, {
-            ref: triggerRef,
+            ref: reference,
             onClick: handleClickOpen,
           })}
-        {createPortal(
-          <dl
-            ref={dropdownRef}
-            role="dropdown-menu-list"
-            className={clsx(
-              cls('dropdown', 'list'),
-              cls('dropdown', validateCheck('size', size)),
-              (propsIsOpen ?? isOpen) && cls('dropdown', 'open'),
-              scrollable && cls('dropdown', 'scrollable'),
-              icon && cls('dropdown', 'icon', 'list'),
-              fontClass[validateCheck('size', size)],
-              className,
-            )}
-            onClick={handleClick}
-            style={{ ...pos, ...style }}
-          >
-            {children}
-          </dl>,
-          document.body,
-        )}
+        <WrapDropdownList isPortal={isPortal}>
+          <div ref={dropdownRef}>
+            <dl
+              ref={floating}
+              role="dropdown-menu-list"
+              className={clsx(
+                cls('dropdown', 'list'),
+                cls('dropdown', validateCheck('size', size)),
+                (propsIsOpen ?? isOpen) && cls('dropdown', 'open'),
+                scrollable && cls('dropdown', 'scrollable'),
+                icon && cls('dropdown', 'icon', 'list'),
+                fontClass[validateCheck('size', size)],
+                className,
+              )}
+              onClick={handleClick}
+              style={{ top: y ?? 0, left: x ?? 0, ...style }}
+            >
+              {children}
+            </dl>
+          </div>
+        </WrapDropdownList>
       </div>
     </DropdownContext.Provider>
   )
