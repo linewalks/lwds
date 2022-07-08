@@ -36,7 +36,7 @@ const render = () => {
     <div
       style={{
         display: 'flex',
-        height: '200px',
+        height: '150px',
         justifyContent: 'space-around',
       }}
     >
