@@ -58,6 +58,10 @@ const validateCheck = (key: string, target: string) => {
 
 const DropdownContext = createContext(null)
 
+const WrapDropdownList = ({ isPortal, children }) => {
+  return isPortal ? createPortal(children, document.body) : children
+}
+
 const Dropdown = ({
   triggerNode,
   isOpen: propsIsOpen,
@@ -67,6 +71,7 @@ const Dropdown = ({
   scrollable,
   className,
   containerRef,
+  isPortal,
   onClick,
   onClose,
   style,
@@ -152,6 +157,7 @@ Dropdown.defaultProps = {
   icon: false,
   placement: 'left',
   scrollable: false,
+  isPortal: true,
 }
 
 Dropdown.Item = ({
