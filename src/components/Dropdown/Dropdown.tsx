@@ -2,12 +2,13 @@ import React, {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
-  useRef,
   useState,
 } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
+import { useFloating, autoUpdate, offset } from '@floating-ui/react-dom'
 import { createPortal } from 'react-dom'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
@@ -24,6 +25,8 @@ interface DropdownProps {
   scrollable?: boolean
   className?: string
   containerRef?: React.RefObject<HTMLDivElement>
+  isPortal?: boolean
+  portalQueryStr?: string
   onClick?: Function
   onClose?: Function
   style?: object
@@ -56,6 +59,12 @@ const validateCheck = (key: string, target: string) => {
 
 const DropdownContext = createContext(null)
 
+const PortalDropdownList = ({ isPortal, portalQueryStr, children }) => {
+  const el = document.querySelector(portalQueryStr) ?? document.body
+
+  return isPortal ? createPortal(children, el) : children
+}
+
 const Dropdown = ({
   triggerNode,
   isOpen: propsIsOpen,
@@ -65,19 +74,15 @@ const Dropdown = ({
   scrollable,
   className,
   containerRef,
+  isPortal,
+  portalQueryStr,
   onClick,
   onClose,
   style,
   children,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [pos, setPos] = useState({
-    top: 0,
-    left: 0,
-  })
-
-  const triggerRef = useRef<HTMLElement>()
-  const dropdownRef = useRef<HTMLDListElement>()
+  const [floatingOffset, setFloatingOffset] = useState(0)
 
   const fontClass = useMemo(
     () => ({
@@ -86,6 +91,21 @@ const Dropdown = ({
     }),
     [],
   )
+
+  const placementOffset = useMemo(
+    () => ({
+      left: floatingOffset,
+      right: -floatingOffset,
+      center: 0,
+    }),
+    [floatingOffset],
+  )
+
+  const { x, y, reference, floating, refs } = useFloating({
+    whileElementsMounted: autoUpdate,
+    placement: 'bottom',
+    middleware: [offset({ crossAxis: placementOffset[placement] })],
+  })
 
   const handleClick = useCallback((e) => {
     const dropdownMenu = e.target.closest(`.${cls('dropdown', 'menu')}`)
@@ -105,57 +125,27 @@ const Dropdown = ({
     onClose && onClose()
   }, [propsIsOpen, onClose])
 
-  const handleDropdownPos = useCallback(() => {
-    if (triggerRef.current && dropdownRef.current) {
-      const {
-        x: triggerRefX,
-        y: triggerRefY,
-        width: triggerRefWidth,
-        height: triggerRefHeight,
-      } = triggerRef.current.getBoundingClientRect()
-
-      const dropdownElWidth = parseFloat(
-        window.getComputedStyle(dropdownRef.current).width,
-      )
-
-      const top = triggerRefY + triggerRefHeight + window.scrollY
-
-      if (placement === 'center') {
-        setPos({
-          top,
-          left:
-            triggerRefX +
-            triggerRefWidth / 2 -
-            dropdownElWidth / 2 +
-            window.scrollX,
-        })
-      } else if (placement === 'right') {
-        setPos({
-          top,
-          left:
-            triggerRefX + triggerRefWidth - dropdownElWidth + window.scrollX,
-        })
-      } else {
-        setPos({
-          top,
-          left: triggerRefX + window.scrollX,
-        })
-      }
-    }
-  }, [placement])
-
-  useOutsideAlerter(dropdownRef, handleClose)
-
   useIsomorphicLayoutEffect(() => {
-    handleDropdownPos()
-    window.addEventListener('resize', handleDropdownPos)
-    window.addEventListener('scroll', handleDropdownPos)
+    const triggerEl = refs.reference.current
+    const dropdownEl = refs.floating.current
 
-    return () => {
-      window.removeEventListener('resize', handleDropdownPos)
-      window.removeEventListener('scroll', handleDropdownPos)
+    if (triggerEl && dropdownEl) {
+      const { width: triggerElWidth } = triggerEl.getBoundingClientRect()
+      const dropdownElWidth = parseFloat(
+        window.getComputedStyle(dropdownEl).width,
+      )
+      setFloatingOffset(Math.abs(triggerElWidth - dropdownElWidth) / 2)
     }
-  }, [handleDropdownPos])
+  }, [refs.reference.current, refs.floating.current, placement])
+
+  useEffect(() => {
+    return () => {
+      refs.reference.current = null
+      refs.floating.current = null
+    }
+  }, [])
+
+  useOutsideAlerter(refs.floating, handleClose)
 
   return (
     <DropdownContext.Provider
@@ -166,12 +156,12 @@ const Dropdown = ({
       <div ref={containerRef} className={cls('dropdown')}>
         {triggerNode &&
           React.cloneElement(triggerNode, {
-            ref: triggerRef,
+            ref: reference,
             onClick: handleClickOpen,
           })}
-        {createPortal(
+        <PortalDropdownList isPortal={isPortal} portalQueryStr={portalQueryStr}>
           <dl
-            ref={dropdownRef}
+            ref={floating}
             role="dropdown-menu-list"
             className={clsx(
               cls('dropdown', 'list'),
@@ -183,12 +173,11 @@ const Dropdown = ({
               className,
             )}
             onClick={handleClick}
-            style={{ ...pos, ...style }}
+            style={{ top: y ?? 0, left: x ?? 0, ...style }}
           >
             {children}
-          </dl>,
-          document.body,
-        )}
+          </dl>
+        </PortalDropdownList>
       </div>
     </DropdownContext.Provider>
   )
@@ -199,6 +188,7 @@ Dropdown.defaultProps = {
   icon: false,
   placement: 'left',
   scrollable: false,
+  isPortal: false,
 }
 
 Dropdown.Item = ({
