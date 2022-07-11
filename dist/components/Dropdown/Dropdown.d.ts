@@ -9,6 +9,8 @@ interface DropdownProps {
     scrollable?: boolean;
     className?: string;
     containerRef?: React.RefObject<HTMLDivElement>;
+    isPortal?: boolean;
+    portalQueryStr?: string;
     onClick?: Function;
     onClose?: Function;
     style?: object;
@@ -27,12 +29,13 @@ interface DropdownItemProps {
     style?: object;
 }
 declare const Dropdown: {
-    ({ triggerNode, isOpen: propsIsOpen, size, icon, placement, scrollable, className, containerRef, onClick, onClose, style, children, }: DropdownProps): JSX.Element;
+    ({ triggerNode, isOpen: propsIsOpen, size, icon, placement, scrollable, className, containerRef, isPortal, portalQueryStr, onClick, onClose, style, children, }: DropdownProps): JSX.Element;
     defaultProps: {
         size: string;
         icon: boolean;
         placement: string;
         scrollable: boolean;
+        isPortal: boolean;
     };
     Item({ id, label, desc, type, icon, disabled, className, itemRef, onClick, style, }: DropdownItemProps): JSX.Element;
     Divider(): JSX.Element;
