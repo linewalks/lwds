@@ -108,22 +108,17 @@ const Dropdown = ({
   })
 
   const handleClick = useCallback((e) => {
-    e.stopPropagation()
     const dropdownMenu = e.target.closest(`.${cls('dropdown', 'menu')}`)
 
     onClick && onClick(dropdownMenu.dataset.id)
   }, [])
 
-  const handleClickOpen = useCallback(
-    (e) => {
-      e.stopPropagation()
-      const triggerNodeClickEvent = triggerNode.props?.onClick
+  const handleClickOpen = useCallback(() => {
+    const triggerNodeClickEvent = triggerNode.props?.onClick
 
-      _.isNil(propsIsOpen) && setIsOpen(!isOpen)
-      triggerNodeClickEvent && triggerNodeClickEvent()
-    },
-    [triggerNode, propsIsOpen, isOpen],
-  )
+    _.isNil(propsIsOpen) && setIsOpen(!isOpen)
+    triggerNodeClickEvent && triggerNodeClickEvent()
+  }, [triggerNode, propsIsOpen, isOpen])
 
   const handleClose = useCallback(() => {
     _.isNil(propsIsOpen) && setIsOpen(false)
