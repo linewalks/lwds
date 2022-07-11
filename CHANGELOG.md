@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.5](https://github.com/linewalks/lwds/compare/v0.3.4...v0.3.5) (2022-07-11)
+
+
+### Features
+
+* **dropdown:** add dropdown portal adjust props ([4853483](https://github.com/linewalks/lwds/commit/4853483d25ce26cf0ff9eb602591cb4655140d96))
+* **dropdown:** add portal element query string props ([fa4d3b3](https://github.com/linewalks/lwds/commit/fa4d3b3e39f9f646ddf1192048aaf235bd0643ac))
+* **dropdown:** calculate dropdown position using @floating-ui/react-dom ([9372cff](https://github.com/linewalks/lwds/commit/9372cff0e9d81df382c979787d479b99fa37b609))
+* **dropdown:** calculate placement offset ([7709060](https://github.com/linewalks/lwds/commit/770906014a778d7b10990998bd9089fec50509ae))
+* **dropdown:** split componentUnmount ref logic ([d8eed16](https://github.com/linewalks/lwds/commit/d8eed16cff1ae123fbbb657ec0d86c72b9fa4c73))
+* **dropdown:** stop dropdown click event propagation ([#204](https://github.com/linewalks/lwds/issues/204)) ([62f31b9](https://github.com/linewalks/lwds/commit/62f31b94423a9c58be0d5172ae24e397529f49ac))
+
+
+### Bug Fixes
+
+* **dropdown:** scroll calculation error in portal ([feff206](https://github.com/linewalks/lwds/commit/feff2060abced446b811b23e2dff7e766f3a4cbe))
+* set button props optional type ([27e4605](https://github.com/linewalks/lwds/commit/27e4605bee73a6b9105bdf3cafac4f7899d93ee4))
+
+
+### Docs
+
+* **dropdown:** add portal description ([8954abe](https://github.com/linewalks/lwds/commit/8954abe643454a58ab198a6c2a9a32cff9bc2f99))
+* reset basic dropdown height ([09db85f](https://github.com/linewalks/lwds/commit/09db85fb6e8defeb95a7341e44a8d27d1c5bdfe9))
+
 ### [0.3.4](https://github.com/linewalks/lwds/compare/v0.3.3...v0.3.4) (2022-07-03)
 
 ### Features
