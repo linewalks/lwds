@@ -1,6 +1,6 @@
 {
   "name": "lwds",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Linewalks Design System",
   "keywords": [
     "lwds",
@@ -53,7 +53,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postcommit": "yarn build:docs && yarn build && yarn build:commit"
+      "postcommit": "yarn build:docs && yarn build:prod && yarn build:commit"
     }
   },
   "jest": {
