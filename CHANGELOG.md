@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/linewalks/lwds/compare/v0.0.8...v0.3.7) (2022-07-29)
+
+### Bug Fixes
+
+- ghost button - transparent 적용 ([f5661f3](https://github.com/linewalks/lwds/commit/f5661f3ba223057cc3df349fe24fe22a0c034135))
+
 ### [0.3.6](https://github.com/linewalks/lwds/compare/v0.2.0...v0.3.6) (2022-07-13)
 
 ### Bug Fixes
