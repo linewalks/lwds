@@ -207,7 +207,7 @@ $variants: 'primary', 'secondary', 'danger_primary', 'ghost', 'tertiary',
 }
 
 .#{$component}-ghost {
-  @apply text-color_text_01;
+  @apply text-color_text_01 bg-transparent;
   svg {
     @apply fill-color_icon_01;
   }
