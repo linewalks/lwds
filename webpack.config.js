@@ -1,7 +1,12 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const sass = require('node-sass')
 const path = require('path')
 
-module.exports = {
+const isProduction = process.env.NODE_ENV === 'production'
+
+const config = {
+  mode: isProduction ? 'production' : 'development',
   module: {
     rules: [
       {
@@ -14,7 +19,7 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif)$/i,
@@ -40,7 +45,7 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
           },
@@ -62,6 +67,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+  ],
   resolve: {
     extensions: ['.jsx', '.ts', '.tsx', '.js'],
     alias: {
@@ -73,3 +83,38 @@ module.exports = {
     },
   },
 }
+
+const appConfig = Object.assign({}, config, {
+  entry: { app: './src/index.ts' },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name]/index.js',
+  },
+})
+
+const iconsConfig = Object.assign({}, config, {
+  entry: { icons: './src/components/Icon/Icons/index.ts' },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name]/index.js',
+  },
+})
+
+const stylesConfig = Object.assign({}, config, {
+  entry: { styles: './src/assets/styles/index.js' },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name]/index.js',
+  },
+})
+
+const typoConfig = Object.assign({}, config, {
+  entry: {
+    typography: './src/assets/styles/index.scss',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+  },
+})
+
+module.exports = [appConfig, iconsConfig, stylesConfig, typoConfig]
