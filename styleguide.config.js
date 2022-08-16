@@ -1,5 +1,6 @@
 const path = require('path')
 const { version } = require('./package')
+const webpackConfig = require('./webpack.config.js')
 
 const ignore = [
   '**/__tests__/**',
@@ -152,5 +153,11 @@ module.exports = {
           .withCustomConfig(`${process.cwd()}/tsconfig.json`)
           .parse(filePath, source, resolver, handlers)
       : require('react-docgen').parse(source, resolver, handlers)
+  },
+  webpackConfig: {
+    mode: webpackConfig[0].mode,
+    module: webpackConfig[0].module,
+    plugins: webpackConfig[0].plugins,
+    resolve: webpackConfig[0].resolve,
   },
 }
