@@ -17,7 +17,7 @@ interface ButtonProps {
     | 'ghost'
     | 'danger_primary'
     | 'danger_tertiary'
-  ghostType: string | 'default' | 'important' | 'danger'
+  ghostType?: string | 'default' | 'important' | 'danger'
   size?: string | 'sm' | 'md' | 'lg' | 'xl'
   bold?: boolean
   icon?: boolean
