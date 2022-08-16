@@ -41,7 +41,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --coverage",
-    "build": "rm -rf dist && rollup -c",
+    "build": "rm -rf dist && webpack",
     "build:prod": "NODE_ENV=production yarn build",
     "styleguide": "styleguidist server",
     "build:docs": "styleguidist build",
@@ -129,6 +129,7 @@
     "jest-sonar-reporter": "^2.0.0",
     "jest-styled-components": "^6.3.3",
     "lint-staged": "^9.4.3",
+    "mini-css-extract-plugin": "1.0.0",
     "minimist": "^1.2.2",
     "node-sass": "^4.13.1",
     "postcss": "^8.3.11",
@@ -155,7 +156,8 @@
     "ts-loader": "^8.0.15",
     "typescript": "^4.4.4",
     "url-loader": "^4.1.1",
-    "webpack": "4.44.2"
+    "webpack": "4.44.2",
+    "webpack-cli": "^4.10.0"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^0.7.2",
@@ -183,7 +185,7 @@
     "node": "12.x || 14.x"
   },
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/app/index.js",
     "./typography.css": "./dist/typography.css",
     "./icons": "./dist/icons/index.js",
     "./styles": "./dist/styles/index.js"
