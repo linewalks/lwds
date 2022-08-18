@@ -1,0 +1,490 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.font, .text_disabled, .text_inverse, .text_accent, .text_info, .text_safe, .text_error, .text05, .text04, .text03, .text02, .text01, .fs42, .fs40, .fs32, .fs22, .fs20, .fs18, .fs16, .fs14, .fs13, .fs12 {
+  letter-spacing: -0.5px;
+  font-family: "Spoqa Han Sans Neo";
+}
+
+.fs12 {
+  font-size: 12px;
+}
+
+.fs13 {
+  font-size: 13px;
+}
+
+.fs14 {
+  font-size: 14px;
+}
+
+.fs16 {
+  font-size: 16px;
+}
+
+.fs18 {
+  font-size: 18px;
+}
+
+.fs20 {
+  font-size: 20px;
+}
+
+.fs22 {
+  font-size: 22px;
+}
+
+.fs32 {
+  font-size: 32px;
+}
+
+.fs40 {
+  font-size: 40px;
+}
+
+.fs42 {
+  font-size: 42px;
+}
+
+.text01 {
+  color: #24292d;
+}
+
+.text02 {
+  color: #3b424a;
+}
+
+.text03 {
+  color: #535e6a;
+}
+
+.text04 {
+  color: #6c7a89;
+}
+
+.text05 {
+  color: #8d98a5;
+}
+
+.text_error {
+  color: #e81f02;
+}
+
+.text_safe {
+  color: #087d27;
+}
+
+.text_info {
+  color: #0d66e7;
+}
+
+.text_accent {
+  color: #3481f4;
+}
+
+.text_inverse {
+  color: #ffffff;
+}
+
+.text_disabled {
+  color: #b0bac4;
+}
+
+.font-family, .caption, .caption_b, .caption_r, .caption_m, .body, .body_01_m, .body_01_m_multi, .body_02_m, .body_02_m_multi, .body_03_m, .body_03_m_multi, .body_02_r, .body_02_r_multi, .body_03_r, .body_03_r_multi, .body_04_r, .body_04_r_multi, .body_05_r, .body_05_r_multi, .body_06_r, .body_06_r_multi, .subtitle, .subtitle_01_multi, .subtitle_02_multi, .subtitle_01, .subtitle_02, .heading, .heading_01_multi, .heading_02_multi, .heading_01, .heading_02, .heading_03, .heading_04 {
+  font-family: "Spoqa Han Sans Neo";
+}
+
+.heading, .heading_01_multi, .heading_02_multi, .heading_01, .heading_02, .heading_03, .heading_04 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.heading_04 {
+  font-size: 32px;
+  line-height: 47px;
+}
+
+.heading_03 {
+  font-size: 28px;
+  line-height: 40px;
+}
+
+.heading_02 {
+  font-size: 22px;
+  line-height: 32px;
+}
+
+.heading_01 {
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.heading_02_multi {
+  font-size: 22px;
+  line-height: 35px;
+}
+
+.heading_01_multi {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.subtitle, .subtitle_01_multi, .subtitle_02_multi, .subtitle_01, .subtitle_02 {
+  font-weight: 700;
+}
+
+.subtitle_02 {
+  letter-spacing: -0.5px;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+.subtitle_01 {
+  letter-spacing: -0.3px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.subtitle_02_multi {
+  letter-spacing: -0.5px;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.subtitle_01_multi {
+  letter-spacing: -0.3px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.body, .body_01_m, .body_01_m_multi, .body_02_m, .body_02_m_multi, .body_03_m, .body_03_m_multi, .body_02_r, .body_02_r_multi, .body_03_r, .body_03_r_multi, .body_04_r, .body_04_r_multi, .body_05_r, .body_05_r_multi, .body_06_r, .body_06_r_multi {
+  text-decoration: inherit;
+  text-transform: inherit;
+}
+
+.body_06_r, .body_06_r_multi {
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.body_06_r_multi {
+  line-height: calc(27px + 6px);
+}
+
+.body_05_r, .body_05_r_multi {
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.body_05_r_multi {
+  line-height: calc(22px + 5px);
+}
+
+.body_04_r, .body_04_r_multi {
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.body_04_r_multi {
+  line-height: calc(21px + 4px);
+}
+
+.body_03_r, .body_03_r_multi {
+  font-weight: 400;
+  letter-spacing: -0.4px;
+  font-size: 15px;
+  line-height: 19px;
+}
+
+.body_03_r_multi {
+  line-height: calc(19px + 3px);
+}
+
+.body_02_r, .body_02_r_multi {
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.body_02_r_multi {
+  line-height: calc(18px + 3px);
+}
+
+.body_03_m, .body_03_m_multi {
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.body_03_m_multi {
+  line-height: calc(22px + 2px);
+}
+
+.body_02_m, .body_02_m_multi {
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.body_02_m_multi {
+  line-height: calc(20px + 2px);
+}
+
+.body_01_m, .body_01_m_multi {
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.body_01_m_multi {
+  line-height: calc(19px + 1px);
+}
+
+.caption, .caption_b, .caption_r, .caption_m {
+  letter-spacing: -0.2px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.caption_m {
+  font-weight: 500;
+}
+
+.caption_r {
+  font-weight: 400;
+}
+
+.caption_b {
+  font-weight: 700;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+* {
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+}
+
+.lwds-progressbar {
+  @apply relative flex justify-center items-center;
+}
+
+.lwds-progressbar-label {
+  @apply sticky;
+}
+.lwds-progressbar-label-sm {
+  font-size: 12px;
+}
+.lwds-progressbar-label-md {
+  font-size: 16px;
+}
+
+@keyframes infiniteAnimation {
+  0% {
+    transform: translateX(0) scaleX(0);
+  }
+  25% {
+    transform: translateX(25%) scaleX(0.3);
+  }
+  50% {
+    transform: translateX(50%) scaleX(0.5);
+  }
+  75% {
+    transform: translateX(75%) scaleX(0.25);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0);
+  }
+}
+.lwds-progressbar-state {
+  @apply flex rounded-sm bg-color_layout_03;
+}
+.lwds-progressbar-state-current {
+  @apply bg-color_primary_element rounded-sm;
+  height: 100%;
+  transition: width 0.7s ease-in;
+}
+.lwds-progressbar-state-infinite {
+  animation: infiniteAnimation 1s infinite linear;
+  transform-origin: 0%;
+}
+
+.lwds-progressbar-label-top {
+  @apply mb-spacing_02 text-center;
+}
+
+.lwds-progressbar-top {
+  @apply flex-col;
+}
+
+.lwds-progressbar-label-right {
+  @apply ml-spacing_04;
+}
+
+.lwds-progressbar-right {
+  @apply flex-row-reverse;
+}
+
+.lwds-progressbar-label-bottom {
+  @apply mt-spacing_02 text-center;
+}
+
+.lwds-progressbar-bottom {
+  @apply flex-col-reverse;
+}
+
+.lwds-progressbar-label-left {
+  @apply mr-spacing_04;
+}
+
+.lwds-progressbar-left {
+  @apply flex-row;
+}

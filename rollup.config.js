@@ -1,5 +1,5 @@
 import postcss from 'rollup-plugin-postcss'
-import scssVariable from 'rollup-plugin-sass-variables'
+import sass from 'rollup-plugin-sass'
 
 import alias from '@rollup/plugin-alias'
 import nodeResolve from '@rollup/plugin-node-resolve'
@@ -16,14 +16,14 @@ import { terser } from 'rollup-plugin-terser'
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
-function commonPlugins(path) {
+function commonPlugins(inputPath, outputPath) {
   return [
     external(),
     babel({
       babelHelpers: 'runtime',
       exclude: 'node_modules/**',
       extensions,
-      include: [`${path}/*.ts`, `${path}/*.tsx`],
+      include: [`${inputPath}/*.ts`, `${inputPath}/*.tsx`],
     }),
     alias({
       resolve: ['.ts', '.tsx'],
@@ -35,10 +35,10 @@ function commonPlugins(path) {
       ],
     }),
     postcss({
-      includePaths: `${path}`,
+      includePaths: `${inputPath}`,
       extensions: ['.css', '.scss', '.sass'],
     }),
-    scssVariable(),
+    sass({ output: `${outputPath}/index.css` }),
     nodeResolve({
       extensions,
       mainFields: ['browser', 'jsnext', 'module', 'main'],
@@ -56,7 +56,7 @@ function commonPlugins(path) {
       tsconfigDefaults: { compilerOptions: { declaration: true } },
       tsconfig: 'tsconfig.json',
       tsconfigOverride: {
-        include: [`typings`, `${path}/*.ts`, `${path}/*.tsx`],
+        include: [`typings`, `${inputPath}/*.ts`, `${inputPath}/*.tsx`],
       },
     }),
     svgr(),
@@ -99,7 +99,7 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: commonPlugins(input),
+    plugins: commonPlugins(input, output),
     external: commonExternal(),
   })),
 
@@ -120,7 +120,7 @@ export default [
         exports: 'default',
       },
     ],
-    plugins: commonPlugins('src/assets/styles'),
+    plugins: commonPlugins('src/assets/styles', 'dist/styles'),
     external: commonExternal(),
   },
   {
