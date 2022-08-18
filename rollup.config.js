@@ -1,5 +1,5 @@
 import postcss from 'rollup-plugin-postcss'
-import sass from 'rollup-plugin-sass'
+import scssVariable from 'rollup-plugin-sass-variables'
 
 import alias from '@rollup/plugin-alias'
 import nodeResolve from '@rollup/plugin-node-resolve'
@@ -16,7 +16,7 @@ import { terser } from 'rollup-plugin-terser'
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
-function commonPlugins(inputPath, outputPath) {
+function commonPlugins(inputPath) {
   return [
     external(),
     babel({
@@ -35,10 +35,13 @@ function commonPlugins(inputPath, outputPath) {
       ],
     }),
     postcss({
-      includePaths: `${inputPath}`,
+      modules: false,
+      extract: true,
+      minimize: true,
+      includePaths: inputPath,
       extensions: ['.css', '.scss', '.sass'],
     }),
-    sass({ output: `${outputPath}/index.css` }),
+    scssVariable(),
     nodeResolve({
       extensions,
       mainFields: ['browser', 'jsnext', 'module', 'main'],
