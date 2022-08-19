@@ -155,9 +155,9 @@ module.exports = {
       : require('react-docgen').parse(source, resolver, handlers)
   },
   webpackConfig: {
-    mode: webpackConfig[0].mode,
-    module: webpackConfig[0].module,
-    plugins: webpackConfig[0].plugins,
-    resolve: webpackConfig[0].resolve,
+    mode: webpackConfig.mode,
+    module: webpackConfig.module,
+    plugins: webpackConfig.plugins,
+    resolve: webpackConfig.resolve,
   },
 }
