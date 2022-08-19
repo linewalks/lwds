@@ -35,7 +35,10 @@ function commonPlugins(path) {
       ],
     }),
     postcss({
-      includePaths: `${path}`,
+      modules: false,
+      extract: true,
+      minimize: true,
+      includePaths: path,
       extensions: ['.css', '.scss', '.sass'],
     }),
     scssVariable(),

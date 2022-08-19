@@ -41,7 +41,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --coverage",
-    "build": "rm -rf dist && webpack",
+    "build": "rm -rf dist && rollup -c",
     "build:prod": "NODE_ENV=production yarn build",
     "styleguide": "styleguidist server",
     "build:docs": "styleguidist build",
