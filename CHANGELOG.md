@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/linewalks/lwds/compare/v0.3.8-0...v0.3.8) (2022-08-19)
+
 ### [0.3.8-0](https://github.com/linewalks/lwds/compare/v0.3.7...v0.3.8-0) (2022-08-16)
 
 
