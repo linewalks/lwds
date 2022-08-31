@@ -33,6 +33,7 @@ function commonPlugins(path) {
         { find: '@assets', replacement: 'src/assets' },
         { find: '@components', replacement: 'src/components' },
         { find: '@helpers', replacement: 'src/helpers' },
+        { find: 'fonts', replacement: 'src/assets/styles/font/fonts' },
       ],
     }),
     postcss({
