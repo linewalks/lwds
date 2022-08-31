@@ -1,4 +1,26 @@
-/* purgecss start ignore */
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+
+  font-weight: 700;
+
+  src: url("~fonts/SpoqaHanSansNeo-Bold.woff2") format("woff2"), url("~fonts/SpoqaHanSansNeo-Bold.woff") format("woff"), url("~fonts/SpoqaHanSansNeo-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+
+  font-weight: 500;
+
+  src: url("~fonts/SpoqaHanSansNeo-Medium.woff2") format("woff2"), url("~fonts/SpoqaHanSansNeo-Medium.woff") format("woff"), url("~fonts/SpoqaHanSansNeo-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+
+  font-weight: 400;
+
+  src: url("~fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2"), url("~fonts/SpoqaHanSansNeo-Regular.woff") format("woff"), url("~fonts/SpoqaHanSansNeo-Regular.ttf") format("truetype");
+}
 
 .font, .fs12, .fs13, .fs14, .fs16, .fs18, .fs20, .fs22, .fs32, .fs40, .fs42, .text01, .text02, .text03, .text04, .text05, .text_error, .text_safe, .text_info, .text_accent, .text_inverse, .text_disabled {
   letter-spacing: -0.5px;
@@ -266,5 +288,3 @@
 .caption_b {
   font-weight: 700;
 }
-
-/* purgecss end ignore */
