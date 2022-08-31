@@ -1,5 +1,6 @@
 import postcss from 'rollup-plugin-postcss'
 import scssVariable from 'rollup-plugin-sass-variables'
+import copy from 'rollup-plugin-copy'
 
 import alias from '@rollup/plugin-alias'
 import nodeResolve from '@rollup/plugin-node-resolve'
@@ -136,6 +137,14 @@ export default [
       postcss({
         modules: false,
         extract: true,
+      }),
+      copy({
+        targets: [
+          {
+            src: 'src/assets/styles/font/fonts/**/*',
+            dest: 'dist/fonts',
+          },
+        ],
       }),
     ],
   },
