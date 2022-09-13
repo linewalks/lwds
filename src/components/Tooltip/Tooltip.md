@@ -83,9 +83,19 @@ const render = () => (
       </Button>
     </Tooltip>
 
-    <Tooltip hasCaret align="bottom-right" text="bottom-right">
+    <Tooltip
+      hasCaret
+      align="bottom-right"
+      text={
+        <>
+          bottom
+          <br />
+          right
+        </>
+      }
+    >
       <Button variant="tertiary" size="md">
-        bottom-right (+ hasCaret)
+        bottom-right (+ hasCaret) (+ new line)
       </Button>
     </Tooltip>
   </GridBox>

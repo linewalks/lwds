@@ -17,7 +17,7 @@ $tooltip-z-index: 5000;
   @apply bg-color_layout_emphasize_01 text-color_icon_inverse_01 px-spacing_03 py-spacing_02 text-center absolute;
   border-radius: 4px;
   z-index: #{$tooltip-z-index};
-  height: #{$tooltip-height};
+  max-width: 320px;
   min-width: 32px;
   white-space: nowrap;
 }
