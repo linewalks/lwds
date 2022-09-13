@@ -15,7 +15,7 @@ interface TooltipProps {
     | 'bottom-right'
     | 'left'
     | 'right'
-  text: string
+  text: string | React.ReactElement
   hasCaret?: boolean
   className?: string
   children: React.ReactElement
