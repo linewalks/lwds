@@ -4,6 +4,9 @@
 
 - describe button (including icon-only button)
 - Use when defining a term or inline item
+- When applying multiline,
+  <br />
+  please wrap text prop with React element then place `<br />` HTML Element where you want to force a line break.
 
 <br />
 
