@@ -188,6 +188,7 @@
   },
   "exports": {
     ".": "./dist/index.js",
+    "./lwds.css": "./dist/index.css",
     "./typography.css": "./dist/typography.css",
     "./icons": "./dist/icons/index.js",
     "./styles": "./dist/styles/index.js"
