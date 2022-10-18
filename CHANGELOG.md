@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.13](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.13) (2022-10-18)
+
+
+### Bug Fixes
+
+* multiline 적용 ([dcfd932](https://github.com/linewalks/lwds/commit/dcfd932162088201681ccd38b0f12ecc06b3a778))
+
 ### [0.3.10](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.10) (2022-10-18)
 
 
