@@ -1,5 +1,3 @@
-/* purgecss start ignore */
-
 .font, .fs12, .fs13, .fs14, .fs16, .fs18, .fs20, .fs22, .fs32, .fs40, .fs42, .text01, .text02, .text03, .text04, .text05, .text_error, .text_safe, .text_info, .text_accent, .text_inverse, .text_disabled {
   letter-spacing: -0.5px;
   font-family: "Spoqa Han Sans Neo";
@@ -266,5 +264,3 @@
 .caption_b {
   font-weight: 700;
 }
-
-/* purgecss end ignore */
