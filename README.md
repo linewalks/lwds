@@ -92,4 +92,8 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 ## Contact
 
-이종혁 - jh.lee@linewalks.com
+- Jungwoo - jungwoo@linewalks.com
+- lahee - lahee@linewalks.com
+- jh.lee - jh.lee@linewalks.com
+- leetaehee - leetaehee@linewalks.com
+- seonyeong - seonyeong@linewalks.com
