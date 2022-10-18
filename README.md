@@ -8,26 +8,23 @@ Linewalks 사내 디자인 시스템을 React 환경에서 사용하기 쉽게 �
 
 #### Built With
 
-- Node = 12.x LTS, 14.x LTS
+- Node = 14.x LTS (14.17.0 권장)
 - yarn >= 1.19.x, 1.5.x
 
 #### Prerequisites
 
-1. Install Node.js (14.x LTS)
+1. Install Node.js (14.x LTS) [파일다운로드](https://nodejs.org/dist/latest-v14.x/)
 
-- [파일다운로드](https://nodejs.org/dist/latest-v14.x/)
-
-2. Install Yarn
-
-- [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
+2. Install Yarn [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
 
 #### Installation
 
 1. Clone the repo
 2. Install packages
-   ```sh
-   > yarn
-   ```
+
+```sh
+> yarn
+```
 
 ## Usage
 
@@ -60,11 +57,22 @@ Linewalks 사내 디자인 시스템을 React 환경에서 사용하기 쉽게 �
 ```js
 import * as React from 'react'
 import ReactDOM from 'react-dom'
-import Button from 'lwds/Button'
-// import styles from 'lwds/styles'
+
+import { Button } from 'lwds'
+import styles from 'lwds/styles'
 
 function App() {
-  return <Button variant="contained">Hello World</Button>
+  return (
+    <>
+      <div
+        className={styles.heading_04}
+        style={{ color: styles.color_text_03 }}
+      >
+        Title
+      </div>
+      <Button variant="contained">Hello World</Button>
+    </>
+  )
 }
 
 ReactDOM.render(<App />, document.querySelector('#app'))
