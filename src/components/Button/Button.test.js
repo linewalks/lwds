@@ -3,7 +3,7 @@ import each from 'jest-each'
 import { mount } from 'enzyme'
 
 import Button from '@components/Button/Button'
-import ChevronIcon from '@components/Icon/ChevronIcon'
+import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
 import cls from '@helpers/class'
 
 describe('default', () => {
@@ -15,38 +15,36 @@ describe('default', () => {
 })
 
 describe('size', () => {
-  each(['lg', 'md', 'sm']).it('%s', (size) => {
+  each(['sm' | 'md' | 'lg' | 'xl']).it('%s', (size) => {
     const wrapper = mount(<Button size={size} />)
-    expect(wrapper.find(`.${cls('button', 'size', size)}`)).toHaveLength(2)
+    expect(wrapper.find(`.${cls('button', size)}`)).toHaveLength(1)
   })
 })
 
 describe('variant', () => {
   each([
-    'primary',
-    'basic',
-    'primary_line',
-    'basic_line',
-    'primary_light',
-    'basic_light',
+    'primary' |
+      'secondary' |
+      'tertiary' |
+      'ghost' |
+      'danger_primary' |
+      'danger_tertiary',
   ]).it('%s', (variant) => {
     const wrapper = mount(<Button variant={variant} />)
-    expect(wrapper.find(`.${cls('button', 'variant', variant)}`)).toHaveLength(
-      2,
-    )
+    expect(wrapper.find(`.${cls('button', variant)}`)).toHaveLength(1)
   })
 })
 
 describe('with image', () => {
   it('start', () => {
     const wrapper = mount(
-      <Button variant="basic" size="lg" startIcon={<ChevronIcon />} />,
+      <Button variant="basic" size="lg" leftIcon={<ChevronIcon />} />,
     )
     expect(wrapper.find('svg')).toHaveLength(1)
   })
   it('end', () => {
     const wrapper = mount(
-      <Button variant="basic" size="lg" endIcon={<ChevronIcon />} />,
+      <Button variant="basic" size="lg" rightIcon={<ChevronIcon />} />,
     )
     expect(wrapper.find('svg')).toHaveLength(1)
   })
@@ -55,8 +53,8 @@ describe('with image', () => {
       <Button
         variant="basic"
         size="lg"
-        startIcon={<ChevronIcon />}
-        endIcon={<ChevronIcon />}
+        leftIcon={<ChevronIcon />}
+        rightIcon={<ChevronIcon />}
       />,
     )
     expect(wrapper.find('svg')).toHaveLength(2)
@@ -66,23 +64,17 @@ describe('with image', () => {
 describe('block', () => {
   it('block', () => {
     const wrapper = mount(<Button variant="basic" size="lg" block />)
-    expect(wrapper.find(`.${cls('button', 'block')}`)).toHaveLength(2)
+    expect(wrapper.props('block')).toBeTruthy()
   })
 })
 
 describe('font weight', () => {
   it('font bold', () => {
     const wrapper = mount(<Button variant="basic" size="lg" bold />)
-    expect(wrapper.childAt(0).props().style).toHaveProperty(
-      'fontWeight',
-      'bold',
-    )
+    expect(wrapper.childAt(0).props().style).toHaveProperty('fontWeight', 700)
   })
   it('font normal', () => {
     const wrapper = mount(<Button variant="basic" size="lg" bold={false} />)
-    expect(wrapper.childAt(0).props().style).toHaveProperty(
-      'fontWeight',
-      'normal',
-    )
+    expect(wrapper.childAt(0).props().style).toHaveProperty('fontWeight', 500)
   })
 })

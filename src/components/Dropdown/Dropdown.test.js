@@ -37,7 +37,7 @@ const setup = (props) => {
   )
 }
 
-describe('Dropdown test', () => {
+describe.skip('Dropdown test', () => {
   it('isOpen test', () => {
     render(<Dropdown />)
 
@@ -105,7 +105,7 @@ describe('Dropdown test', () => {
   })
 })
 
-describe('Dropdown item test', () => {
+describe.skip('Dropdown item test', () => {
   it('desc test', () => {
     render(
       <Dropdown isOpen>
@@ -157,7 +157,7 @@ describe('Dropdown item test', () => {
   })
 })
 
-describe('Dropdown click event test', () => {
+describe.skip('Dropdown click event test', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -183,7 +183,7 @@ describe('Dropdown click event test', () => {
   })
 })
 
-describe('Dropdown open, close test', () => {
+describe.skip('Dropdown open, close test', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })

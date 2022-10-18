@@ -12,12 +12,16 @@
 
 ### Props
 
-| Props Name |                                       Types                                       | Default  |
-| :--------: | :-------------------------------------------------------------------------------: | :------: |
-|   align    | 'top','bottom','left','right','top-left','top-right','bottom-left','bottom-right' | 'bottom' |
-|  hasCaret  |                                      boolean                                      |  false   |
-|    text    |                                      string                                       |          |
-| className  |                                      string                                       |          |
+|   Props Name   |                                       Types                                       |  Default  |
+| :------------: | :-------------------------------------------------------------------------------: | :-------: |
+|     align      | 'top','bottom','left','right','top-left','top-right','bottom-left','bottom-right' | 'bottom'  |
+|      text      |                                      string                                       |           |
+|    variant     |                                'default', 'white'                                 | 'default' |
+|    hasCaret    |                                      boolean                                      |   false   |
+|    isPortal    |                                      boolean                                      |   false   |
+| portalQueryStr |                                      string                                       |   null    |
+|   className    |                                      string                                       |           |
+|     style      |                                      object                                       |    {}     |
 
 <br />
 
@@ -39,54 +43,55 @@ const GridBox = styled.div`
 
 const render = () => (
   <GridBox>
-    <Tooltip hasCaret align="top-left" text="top-left">
+    <Tooltip isPortal hasCaret align="top-left" text="top-left">
       <Button variant="tertiary" size="md">
         top-left (+ hasCaret)
       </Button>
     </Tooltip>
 
-    <Tooltip align="top" text="top">
+    <Tooltip isPortal align="top" text="top" variant="white">
       <Button variant="tertiary" size="md">
         top
       </Button>
     </Tooltip>
-    <Tooltip hasCaret align="top-right" text="top-right">
+    <Tooltip isPortal hasCaret align="top-right" text="top-right">
       <Button variant="tertiary" size="md">
         top-right (+ hasCaret)
       </Button>
     </Tooltip>
 
-    <Tooltip hasCaret align="left" text="left">
+    <Tooltip isPortal hasCaret align="left" text="left" variant="white">
       <Button variant="tertiary" size="md">
         left (+ hasCaret)
       </Button>
     </Tooltip>
 
-    <Tooltip text="basic button">
+    <Tooltip isPortal text="basic button">
       <Button variant="primary" size="md">
         default
       </Button>
     </Tooltip>
 
-    <Tooltip hasCaret align="right" text="right">
+    <Tooltip isPortal hasCaret align="right" text="right" variant="white">
       <Button variant="tertiary" size="md">
         right (+ hasCaret)
       </Button>
     </Tooltip>
 
-    <Tooltip hasCaret align="bottom-left" text="bottom-left">
+    <Tooltip isPortal hasCaret align="bottom-left" text="bottom-left">
       <Button variant="tertiary" size="md">
         bottom-left (+ hasCaret)
       </Button>
     </Tooltip>
 
-    <Tooltip align="bottom" text="bottom">
+    <Tooltip isPortal align="bottom" text="bottom" variant="white">
       <Button variant="tertiary" size="md">
         bottom
       </Button>
     </Tooltip>
 
     <Tooltip
+      isPortal
       hasCaret
       align="bottom-right"
       text={
