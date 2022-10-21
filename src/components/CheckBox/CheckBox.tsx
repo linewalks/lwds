@@ -41,6 +41,7 @@ const CheckBox = ({
     const checked = evt.target.checked
     propsChecked || setChecked(checked)
     onChange && onChange(checked, id)
+    evt.stopPropagation()
   }
 
   useEffect(() => {
