@@ -52,6 +52,7 @@ module.exports = {
             'src/components/Color/Core.tsx',
             'src/components/Color/Status.tsx',
             'src/components/Color/Theme.tsx',
+            'src/components/Color/VisualColor.tsx',
             'src/components/Color/ChartColor.tsx',
           ],
         },
