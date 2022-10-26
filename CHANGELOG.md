@@ -2,19 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.16](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.16) (2022-10-26)
+
+### Features
+
+- ChartColor 와 VisualColor 구분 ([10f1a4b](https://github.com/linewalks/lwds/commit/06969d59fbe45064e1f75d9e054647b288d9957c))
+
 ### [0.3.15](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.15) (2022-10-25)
 
+### Features
 
-### Bug Fixes
-
-* multiline 적용 ([dcfd932](https://github.com/linewalks/lwds/commit/dcfd932162088201681ccd38b0f12ecc06b3a778))
+- Chart Color 추가 ([347f599](https://github.com/linewalks/lwds/commit/4d48fbefd8bbae6f99b55aeee6d5ffee765aa4ff))
 
 ### [0.3.14](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.14) (2022-10-18)
-
-
-### Bug Fixes
-
-* multiline 적용 ([dcfd932](https://github.com/linewalks/lwds/commit/dcfd932162088201681ccd38b0f12ecc06b3a778))
 
 ### [0.3.13](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.13) (2022-10-18)
 
