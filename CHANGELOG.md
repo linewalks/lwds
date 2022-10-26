@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.17](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.17) (2022-10-26)
+
+### Features
+
+- sementic name remove \_chart ([#235](https://github.com/linewalks/lwds/issues/235)) ([5e0e34b](https://github.com/linewalks/lwds/commit/5e0e34b446f97703ca665021fd3831f70539ec30))
+
 ### [0.3.16](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.16) (2022-10-26)
 
 ### Features
