@@ -1,0 +1,56 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-tooltip;
+$tooltip-min-height: 24px;
+$tooltip-margin: 4px;
+$caret-width: 12px;
+$caret-radius: 3px;
+$caret-pad: 2px;
+$tooltip-z-index: 9000;
+
+.#{$component} {
+  @apply relative w-max h-max;
+}
+
+// basic content
+.#{$component}-content {
+  @apply absolute bg-color_layout_emphasize_03 text-color_icon_inverse_01 px-spacing_03 py-spacing_02 text-center shadow-shadow_v2;
+  max-width: 320px;
+  min-width: 32px;
+  min-height: #{$tooltip-min-height};
+  z-index: #{$tooltip-z-index};
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500 !important;
+}
+
+// caret
+.#{$component}-caret {
+  @apply absolute bg-color_layout_emphasize_03 shadow-shadow_v2 inline;
+  width: #{$caret-width};
+  height: #{$caret-width};
+  border-radius: #{$caret-radius};
+  clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+}
+
+// caret position
+.#{$component}-main-top {
+  transform: rotate(45deg);
+}
+
+.#{$component}-main-bottom {
+  transform: rotate(225deg);
+}
+
+.#{$component}-main-left {
+  transform: rotate(315deg);
+}
+
+.#{$component}-main-right {
+  transform: rotate(135deg);
+}
+
+// variant white override
+.#{$component}-white {
+  @apply bg-color_background text-color_text_02;
+}

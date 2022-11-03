@@ -43,82 +43,86 @@ module.exports = {
   styleguideDir: 'docs',
   pagePerSection: true,
   sections: [
-    {
-      name: 'Foundation',
-      sections: [
-        {
-          name: 'Color',
-          components: () => [
-            'src/components/Color/Core.tsx',
-            'src/components/Color/Status.tsx',
-            'src/components/Color/Theme.tsx',
-            'src/components/Color/VisualColor.tsx',
-            'src/components/Color/ChartColor.tsx',
-          ],
-        },
-        {
-          name: 'Icon',
-          content: 'src/components/Icon/Icon.md',
-          components: () => [
-            'src/components/Icon/IconSet/Navigation.tsx',
-            'src/components/Icon/IconSet/Action.tsx',
-            'src/components/Icon/IconSet/Domain.tsx',
-            'src/components/Icon/IconSet/Specific.tsx',
-            'src/components/Icon/IconSet/Toggle.tsx',
-          ],
-        },
-        {
-          name: 'Shadow',
-          content: 'src/components/Shadow/Shadow.md',
-        },
-        {
-          name: 'Spacing',
-          content: 'src/components/Spacing/Spacing.md',
-        },
-        {
-          name: 'Size',
-          content: 'src/components/Size/Size.md',
-        },
-        {
-          name: 'Typography',
-          content: 'src/components/Typography/Typography.md',
-        },
-      ],
-    },
+    // {
+    //   name: 'Foundation',
+    //   sections: [
+    //     {
+    //       name: 'Color',
+    //       components: () => [
+    //         'src/components/Color/Core.tsx',
+    //         'src/components/Color/Status.tsx',
+    //         'src/components/Color/Theme.tsx',
+    //         'src/components/Color/VisualColor.tsx',
+    //         'src/components/Color/ChartColor.tsx',
+    //       ],
+    //     },
+    //     {
+    //       name: 'Icon',
+    //       content: 'src/components/Icon/Icon.md',
+    //       components: () => [
+    //         'src/components/Icon/IconSet/Navigation.tsx',
+    //         'src/components/Icon/IconSet/Action.tsx',
+    //         'src/components/Icon/IconSet/Domain.tsx',
+    //         'src/components/Icon/IconSet/Specific.tsx',
+    //         'src/components/Icon/IconSet/Toggle.tsx',
+    //       ],
+    //     },
+    //     {
+    //       name: 'Shadow',
+    //       content: 'src/components/Shadow/Shadow.md',
+    //     },
+    //     {
+    //       name: 'Spacing',
+    //       content: 'src/components/Spacing/Spacing.md',
+    //     },
+    //     {
+    //       name: 'Size',
+    //       content: 'src/components/Size/Size.md',
+    //     },
+    //     {
+    //       name: 'Typography',
+    //       content: 'src/components/Typography/Typography.md',
+    //     },
+    //   ],
+    // },
     {
       name: 'Component',
       sections: [
+        // {
+        //   name: 'Button',
+        //   content: 'src/components/Button/Button.md',
+        // },
+        // {
+        //   name: 'Checkbox',
+        //   content: 'src/components/Checkbox/Checkbox.md',
+        // },
+        // {
+        //   name: 'Dropdown',
+        //   content: 'src/components/Dropdown/Dropdown.md',
+        // },
+        // {
+        //   name: 'ProgressBar',
+        //   content: 'src/components/ProgressBar/ProgressBar.md',
+        // },
+        // {
+        //   name: 'Radio',
+        //   content: 'src/components/Radio/Radio.md',
+        // },
+        // {
+        //   name: 'Tabs',
+        //   content: 'src/components/Tabs/Tabs.md',
+        // },
+        // {
+        //   name: 'Toast',
+        //   content: 'src/components/Toast/Toast.md',
+        // },
+        // {
+        //   name: 'Tooltip',
+        //   content: 'src/components/Tooltip/Tooltip.md',
+        // },
         {
-          name: 'Button',
-          content: 'src/components/Button/Button.md',
-        },
-        {
-          name: 'Checkbox',
-          content: 'src/components/Checkbox/Checkbox.md',
-        },
-        {
-          name: 'Dropdown',
-          content: 'src/components/Dropdown/Dropdown.md',
-        },
-        {
-          name: 'ProgressBar',
-          content: 'src/components/ProgressBar/ProgressBar.md',
-        },
-        {
-          name: 'Radio',
-          content: 'src/components/Radio/Radio.md',
-        },
-        {
-          name: 'Tabs',
-          content: 'src/components/Tabs/Tabs.md',
-        },
-        {
-          name: 'Toast',
-          content: 'src/components/Toast/Toast.md',
-        },
-        {
-          name: 'Tooltip',
-          content: 'src/components/Tooltip/Tooltip.md',
+          name: 'NewTooltip',
+          content: 'src/components/Tooltip/NewTooltip.md',
         },
       ],
     },
