@@ -6,9 +6,11 @@
 | :-------------: | :----------------------------------------------------------------------------------------------------------------------: | :-----: |
 |    placement    | top, bottom, left, right, top-left, top-right, bottom-left, bottom-right, left-top, left-bottom, right-top, right-bottom | bottom  |
 |      text       |                                                   string, ReactElement                                                   |         |
-|     variant     |                                                      default, white                                                      | default |
 |      align      |                                                    left, center,right                                                    |  left   |
+|     variant     |                                                      default, white                                                      | default |
 |    hasCaret     |                                                         boolean                                                          |  false  |
+|    isAdjust     |                                                         boolean                                                          |  true   |
+|   defaultOpen   |                                                         boolean                                                          |  false  |
 | parentContainer |                                                         function                                                         |         |
 |    className    |                                                          string                                                          |         |
 |      style      |                                                          object                                                          |   {}    |
@@ -45,12 +47,14 @@ const Button = styled(_Button)`
 `
 
 const render = () => {
-  const pRef = React.useRef(null)
-
   return (
-    <div className="pRef">
+    <div>
       <FlexDiv style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-        <Tooltip placement="top-left" text="top-left">
+        <Tooltip
+          placement="top-left"
+          text="top-left (default open)"
+          defaultOpen
+        >
           <Button variant="tertiary" size="md">
             TOP-LEFT
           </Button>
@@ -322,7 +326,6 @@ const Button = styled(_Button)`
 `
 
 const render = () => {
-  const pRef = React.useRef(null)
   const longText =
     "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
@@ -382,7 +385,6 @@ const FlexWrapper = styled.section`
 `
 
 const render = () => {
-  const pRef = React.useRef(null)
   const longText =
     "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 

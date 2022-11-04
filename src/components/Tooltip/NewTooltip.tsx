@@ -28,6 +28,7 @@ interface TooltipProps {
   text: string | React.ReactElement
   variant?: 'default' | 'white'
   isAdjust?: boolean
+  defaultOpen?: boolean
   hasCaret?: boolean
   className?: string
   parentContainer?: () => HTMLElement // 렌더 시점에서는 대상을 찾을 수 없기 때문에 함수형태로 전달 받음
@@ -163,10 +164,8 @@ const getConvertDirections = (directions) => {
   return _directions
 }
 
-const Tooltip = React.forwardRef<HTMLInputElement>(
+const Tooltip = React.forwardRef(
   (props: TooltipProps, ref): React.ReactElement => {
-    const [isOpen, setIsOpen] = useState(false)
-
     const {
       placement = 'bottom',
       text,
@@ -174,11 +173,14 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
       align = 'left',
       hasCaret = false,
       isAdjust = true,
+      defaultOpen = false,
       parentContainer = null,
       className: customClassName = '',
       style: customStyle = {},
       children,
     } = props
+
+    const [isOpen, setIsOpen] = useState(defaultOpen)
 
     const showTooltip = useCallback(() => setIsOpen(true), [])
     const hideTooltip = useCallback(() => setIsOpen(false), [])
