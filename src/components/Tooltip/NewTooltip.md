@@ -1,31 +1,26 @@
 <br />
 
-### Usage
-
-- describe button (including icon-only button)
-- Use when defining a term or inline item
-- When applying multiline,
-  <br />
-  please wrap text prop with React element then place `<br />` HTML Element where you want to force a line break.
-
-<br />
-
 ### Props
 
-|   Props Name   |                                       Types                                       |  Default  |
-| :------------: | :-------------------------------------------------------------------------------: | :-------: |
-|   placement    | 'top','bottom','left','right','top-left','top-right','bottom-left','bottom-right' | 'bottom'  |
-|      text      |                                      string                                       |           |
-|    variant     |                                'default', 'white'                                 | 'default' |
-|    hasCaret    |                                      boolean                                      |   false   |
-|    isPortal    |                                      boolean                                      |   false   |
-| portalQueryStr |                                      string                                       |   null    |
-|   className    |                                      string                                       |           |
-|     style      |                                      object                                       |    {}     |
+|   Props Name    |                                                          Types                                                           | Default |
+| :-------------: | :----------------------------------------------------------------------------------------------------------------------: | :-----: |
+|    placement    | top, bottom, left, right, top-left, top-right, bottom-left, bottom-right, left-top, left-bottom, right-top, right-bottom | bottom  |
+|      text       |                                                   string, ReactElement                                                   |         |
+|     variant     |                                                      default, white                                                      | default |
+|      align      |                                                    left, center,right                                                    |  left   |
+|    hasCaret     |                                                         boolean                                                          |  false  |
+| parentContainer |                                                         function                                                         |         |
+|    className    |                                                          string                                                          |         |
+|      style      |                                                          object                                                          |   {}    |
 
-<br />
+---
 
-### Example Code
+<br>
+### Usage
+
+#### Placement
+
+- Placement provide 12 directions.
 
 ```js
 import React from 'react'
@@ -55,56 +50,38 @@ const render = () => {
   return (
     <div className="pRef">
       <FlexDiv style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-        <Tooltip
-          isPortal
-          hasCaret
-          placement="top-left"
-          text="top-left"
-          parentContainer={() => document.querySelector('.pRef')}
-        >
+        <Tooltip placement="top-left" text="top-left">
           <Button variant="tertiary" size="md">
-            TOP-LEFT(C)
+            TOP-LEFT
           </Button>
         </Tooltip>
 
-        <Tooltip isPortal hasCaret placement="top" text="top" variant="white">
+        <Tooltip placement="top" text="top">
           <Button variant="tertiary" size="md">
             TOP
           </Button>
         </Tooltip>
-        <Tooltip isPortal hasCaret placement="top-right" text="top-right">
+        <Tooltip placement="top-right" text="top-right">
           <Button variant="tertiary" size="md">
-            TOP-RIGHT(C)
+            TOP-RIGHT
           </Button>
         </Tooltip>
       </FlexDiv>
 
       <div style={{ width: buttonWidth, float: 'left' }}>
-        <Tooltip
-          isPortal
-          hasCaret
-          placement="left-top"
-          text="left"
-          variant="white"
-        >
+        <Tooltip placement="left-top" text="left">
           <Button variant="tertiary" size="md">
-            LEFT-TOP(C)
+            LEFT-TOP
           </Button>
         </Tooltip>
-        <Tooltip isPortal hasCaret placement="left" text="left" variant="white">
+        <Tooltip placement="left" text="left">
           <Button variant="tertiary" size="md">
-            LEFT(C)
+            LEFT
           </Button>
         </Tooltip>
-        <Tooltip
-          isPortal
-          hasCaret
-          placement="left-bottom"
-          text="left"
-          variant="white"
-        >
+        <Tooltip placement="left-bottom" text="left">
           <Button variant="tertiary" size="md">
-            LEFT-BOTTOM(C)
+            LEFT-BOTTOM
           </Button>
         </Tooltip>
       </div>
@@ -112,25 +89,19 @@ const render = () => {
       <div
         style={{ width: buttonWidth, marginLeft: buttonWidth * 4 + gap * 4 }}
       >
-        <Tooltip isPortal placement="right-top" text="right" variant="white">
+        <Tooltip placement="right-top" text="right">
           <Button variant="tertiary" size="md">
             RIGHT-TOP
           </Button>
         </Tooltip>
-        <Tooltip isPortal placement="right" text="right" variant="white">
+        <Tooltip placement="right" text="right">
           <Button variant="tertiary" size="md">
             RIGHT
           </Button>
         </Tooltip>
-        <Tooltip
-          isPortal
-          hasCaret
-          placement="right-bottom"
-          text="right"
-          variant="white"
-        >
+        <Tooltip placement="right-bottom" text="right">
           <Button variant="tertiary" size="md">
-            RIGHT-BOTTOM(C)
+            RIGHT-BOTTOM
           </Button>
         </Tooltip>
       </div>
@@ -138,20 +109,19 @@ const render = () => {
       <FlexDiv
         style={{ marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' }}
       >
-        <Tooltip isPortal hasCaret placement="bottom-left" text="bottom-left">
+        <Tooltip placement="bottom-left" text="bottom-left">
           <Button variant="tertiary" size="md">
-            BOTTOM-LEFT(C)
+            BOTTOM-LEFT
           </Button>
         </Tooltip>
 
-        <Tooltip isPortal placement="bottom" text="bottom" variant="white">
+        <Tooltip placement="bottom" text="bottom">
           <Button variant="tertiary" size="md">
             BOTTOM
           </Button>
         </Tooltip>
 
         <Tooltip
-          isPortal
           placement="bottom-right"
           text={
             <>
@@ -171,6 +141,163 @@ const render = () => {
 }
 render()
 ```
+
+#### Variant
+
+- Variant provide 2 types. 'default', 'white'
+
+```js
+import React from 'react'
+
+import Button from '@components/Button/Button'
+import Tooltip from '@components/Tooltip/NewTooltip'
+
+const render = () => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <Tooltip placement="left" text="variant default">
+        <Button variant="tertiary" size="md">
+          DEFAULT
+        </Button>
+      </Tooltip>
+      <Tooltip placement="left" text="variant white" variant="white">
+        <Button variant="tertiary" size="md">
+          WHITE
+        </Button>
+      </Tooltip>
+    </div>
+  )
+}
+render()
+```
+
+#### Align
+
+- Align provide 3 types. 'left', 'center', 'right'
+
+```js
+import React from 'react'
+
+import Button from '@components/Button/Button'
+import Tooltip from '@components/Tooltip/NewTooltip'
+
+const render = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Tooltip placement="bottom" text="align left" style={{ width: 100 }}>
+        <Button variant="tertiary" size="md">
+          LEFT
+        </Button>
+      </Tooltip>
+      <Tooltip
+        placement="bottom"
+        text="align center"
+        align="center"
+        style={{ width: 100 }}
+      >
+        <Button variant="tertiary" size="md">
+          CENTER
+        </Button>
+      </Tooltip>
+      <Tooltip
+        placement="bottom"
+        text="align right"
+        align="right"
+        style={{ width: 100 }}
+      >
+        <Button variant="tertiary" size="md">
+          RIGHT
+        </Button>
+      </Tooltip>
+    </div>
+  )
+}
+render()
+```
+
+#### Caret
+
+```js
+import React from 'react'
+
+import Button from '@components/Button/Button'
+import Tooltip from '@components/Tooltip/NewTooltip'
+
+const render = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Tooltip placement="bottom" text="DEFAULT CARET" hasCaret>
+        <Button variant="tertiary" size="md">
+          CARET(DEFAULT)
+        </Button>
+      </Tooltip>
+      <Tooltip placement="bottom" text="WHITE CARET" hasCaret variant="white">
+        <Button variant="tertiary" size="md">
+          CARET(WHITE)
+        </Button>
+      </Tooltip>
+    </div>
+  )
+}
+render()
+```
+
+#### ParentContainer
+
+- You can use React.useRef or document.querySelector
+
+```js
+import React from 'react'
+import styled from 'styled-components'
+
+import Button from '@components/Button/Button'
+import Tooltip from '@components/Tooltip/NewTooltip'
+
+const Box = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 120px;
+  height: 32px;
+
+  border: 2px dashed magenta;
+`
+
+const render = () => {
+  const elBox = React.useRef(null)
+
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Box ref={elBox}>BOX</Box>
+      <Tooltip
+        placement="top"
+        text="with parent"
+        hasCaret
+        parentContainer={() => elBox.current}
+      >
+        <Button variant="tertiary" size="md">
+          HAS PARENT REF
+        </Button>
+      </Tooltip>
+      <Box className="parent-tooltip">BOX</Box>
+      <Tooltip
+        placement="top"
+        text="with parent"
+        hasCaret
+        parentContainer={() => document.querySelector('.parent-tooltip')}
+      >
+        <Button variant="tertiary" size="md">
+          HAS PARENT QUERY
+        </Button>
+      </Tooltip>
+    </div>
+  )
+}
+render()
+```
+
+#### Overflow Text And Custom Tooltip
 
 ```js
 import React from 'react'
@@ -199,6 +326,13 @@ const render = () => {
   const longText =
     "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
+  const TestComponent = (
+    <div>
+      <div style={{ width: 120, fontSize: 23 }}>TITLE</div>
+      <div style={{ width: 300, height: 200, marginTop: 24 }}>BODY</div>
+    </div>
+  )
+
   return (
     <div>
       <Tooltip isPortal hasCaret placement="top-left" text={longText}>
@@ -206,11 +340,18 @@ const render = () => {
           LONG TEXT
         </Button>
       </Tooltip>
+      <Tooltip isPortal hasCaret placement="bottom-left" text={TestComponent}>
+        <Button variant="tertiary" size="md">
+          COMPONENT
+        </Button>
+      </Tooltip>
     </div>
   )
 }
 render()
 ```
+
+#### Auto Adjust tooltip position
 
 ```js
 import React from 'react'

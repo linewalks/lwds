@@ -14,7 +14,7 @@ $tooltip-z-index: 9000;
 // basic content
 .#{$component}-content {
   @apply absolute bg-color_layout_emphasize_03 text-color_icon_inverse_01 px-spacing_03 py-spacing_02 text-center shadow-shadow_v2;
-  max-width: 320px;
+  max-width: 400px;
   min-width: 32px;
   min-height: #{$tooltip-min-height};
   z-index: #{$tooltip-z-index};
@@ -25,7 +25,7 @@ $tooltip-z-index: 9000;
 
 // caret
 .#{$component}-caret {
-  @apply absolute bg-color_layout_emphasize_03 shadow-shadow_v2 inline;
+  @apply absolute bg-color_layout_emphasize_03 shadow-shadow_v2;
   width: #{$caret-width};
   height: #{$caret-width};
   border-radius: #{$caret-radius};

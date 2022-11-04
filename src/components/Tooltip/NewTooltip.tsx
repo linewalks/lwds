@@ -30,19 +30,17 @@ interface TooltipProps {
   isAdjust?: boolean
   hasCaret?: boolean
   className?: string
-  parentContainer?: () => HTMLElement
+  parentContainer?: () => HTMLElement // 렌더 시점에서는 대상을 찾을 수 없기 때문에 함수형태로 전달 받음
   style?: object
   children: React.ReactElement
 }
 
 interface PortalWithQueryProps {
-  parentContainer: () => HTMLElement
   reference: React.RefObject<HTMLElement>
   children: React.ReactElement
 }
 
 const PortalWithQuery = ({
-  parentContainer,
   reference,
   children,
 }: PortalWithQueryProps): React.ReactPortal => {
@@ -50,18 +48,18 @@ const PortalWithQuery = ({
     ref: reference,
   })
 
-  return createPortal(newChilden, parentContainer() ?? document.body)
+  return createPortal(newChilden, document.body)
 }
 
 const DEFAULT_OFFSET = 2 // spacing_01
-const CARET_OFFSET = 6
+const CARET_OFFSET = 8 // caret-width / 2 + default_offset
 const CARET_WIDTH = 12
+const ALIGN_TYPES = ['left', 'center', 'right']
 
 const getOffsetDirection = (placement) => _.split(placement, '-')
 const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
   const _offset = hasCaret ? CARET_OFFSET : DEFAULT_OFFSET
 
-  console.log(directions)
   // tooltip pos
   let _left = 0
   let _top = 0
@@ -119,7 +117,7 @@ const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
   return [_top, _left, _aTop, _aLeft]
 }
 
-const hasTooltipConflict = (
+const isTooltipOutOfScreen = (
   refRect,
   floatRect,
   mainViewport,
@@ -171,14 +169,15 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
 
     const {
       placement = 'bottom',
-      align = 'left',
+      text,
       variant = 'default',
+      align = 'left',
       hasCaret = false,
       isAdjust = true,
-      parentContainer = () => document.body,
-      className: customClassName,
+      parentContainer = null,
+      className: customClassName = '',
+      style: customStyle = {},
       children,
-      text,
     } = props
 
     const showTooltip = useCallback(() => setIsOpen(true), [])
@@ -194,34 +193,43 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
 
     useIsomorphicLayoutEffect(() => {
       if (isOpen) {
-        const refRect = refReference.current.getBoundingClientRect()
+        // 부모 컨테이너를 제공받았다면 툴팁을 반영할 대상이 변경된다
+        const _refReference = parentContainer
+          ? parentContainer()
+          : refReference?.current
+
+        const refRect = _refReference.getBoundingClientRect()
         const floatRect = refFloating.current.getBoundingClientRect()
 
+        // 보정을 위한 document client H, W 정보
         const mainViewport = {
           height: document.documentElement.clientHeight,
           width: document.documentElement.clientWidth,
         }
 
-        const hasConflict = hasTooltipConflict(
+        // 보정치를 활용하여 상하좌우 단편적으로 스크린 외부로 나가는 것 감지
+        // 특이사항) 좌가 넘쳐 우로 변경하였을 때 우도 넘치면 우로 그냥 노출 감지 변경은 1회만
+        const isOutOfScreen = isTooltipOutOfScreen(
           refRect,
           floatRect,
           mainViewport,
           _.first(directions),
         )
 
+        // 보정치로 인한 스크린 외부 노출로 directions 변경
         const innerDirections =
-          hasConflict && isAdjust
+          isOutOfScreen && isAdjust
             ? getConvertDirections(directions)
             : directions
-
         setDirections(innerDirections) // update
 
+        // 위치 기반으로 툴팁과 화살표 방향 계산
         const [top, left, aTop, aLeft] = getCalculatingPos(
           {
             width: refRect.width,
             height: refRect.height,
-            left: refReference.current?.offsetLeft,
-            top: refReference.current?.offsetTop,
+            left: _refReference?.offsetLeft,
+            top: _refReference?.offsetTop,
           },
           floatRect,
           innerDirections,
@@ -246,10 +254,7 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
           {children}
         </div>
         {isOpen && (
-          <PortalWithQuery
-            parentContainer={parentContainer}
-            reference={refFloating}
-          >
+          <PortalWithQuery reference={refFloating}>
             <div
               className={clsx(
                 cls(COMPONENT, 'content'),
@@ -259,7 +264,8 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
               style={{
                 top: tooltipPos.y ?? 0,
                 left: tooltipPos.x ?? 0,
-                textAlign: align,
+                textAlign: ALIGN_TYPES.includes(align) ? align : 'left',
+                ...customStyle,
               }}
             >
               {text}
