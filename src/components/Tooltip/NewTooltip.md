@@ -211,3 +211,62 @@ const render = () => {
 }
 render()
 ```
+
+```js
+import React from 'react'
+import styled from 'styled-components'
+
+import _Button from '@components/Button/Button'
+import Tooltip from '@components/Tooltip/NewTooltip'
+
+const buttonWidth = 140
+const buttonHeight = 50
+const gap = 4
+
+const FlexDiv = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const Button = styled(_Button)`
+  width: ${buttonWidth}px;
+  height: ${buttonHeight}px !important;
+  margin: ${gap}px;
+`
+
+const FlexWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+`
+
+const render = () => {
+  const pRef = React.useRef(null)
+  const longText =
+    "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+
+  const shortText = 'Short~'
+
+  return (
+    <FlexWrapper>
+      <Tooltip isPortal hasCaret placement="left" text={longText}>
+        <Button variant="tertiary" size="md">
+          ADJUST
+        </Button>
+      </Tooltip>
+      <Tooltip
+        isPortal
+        hasCaret
+        isAdjust={false}
+        placement="left"
+        text={shortText}
+      >
+        <Button variant="tertiary" size="md">
+          NOT ADJUST
+        </Button>
+      </Tooltip>
+    </FlexWrapper>
+  )
+}
+render()
+```

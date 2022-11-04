@@ -27,9 +27,10 @@ interface TooltipProps {
   align: 'left' | 'right' | 'center'
   text: string | React.ReactElement
   variant?: 'default' | 'white'
-  parentContainer?: () => HTMLElement
+  isAdjust?: boolean
   hasCaret?: boolean
   className?: string
+  parentContainer?: () => HTMLElement
   style?: object
   children: React.ReactElement
 }
@@ -60,6 +61,7 @@ const getOffsetDirection = (placement) => _.split(placement, '-')
 const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
   const _offset = hasCaret ? CARET_OFFSET : DEFAULT_OFFSET
 
+  console.log(directions)
   // tooltip pos
   let _left = 0
   let _top = 0
@@ -69,68 +71,110 @@ const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
   let _aTop = 0
 
   // 아래 경우는 width 를 기반으로한 x 축 제어
-  switch (directions[0]) {
-    case 'top':
-    case 'bottom':
-      if (directions[0] === 'top') {
-        _top = refRect.top - (floatRect.height + _offset)
-        _aTop = floatRect.height - CARET_WIDTH / 2
-      } else {
-        _top = refRect.top + (refRect.height + _offset)
-        _aTop = -CARET_WIDTH / 2
-      }
+  if (['top', 'bottom'].includes(directions[0])) {
+    if (directions[0] === 'top') {
+      _top = refRect.top - (floatRect.height + _offset)
+      _aTop = floatRect.height - CARET_WIDTH / 2
+    } else {
+      _top = refRect.top + (refRect.height + _offset)
+      _aTop = -CARET_WIDTH / 2
+    }
 
-      if (directions[1]) {
-        // 2nd directions left / right
-        if (directions[1] === 'left') {
-          _left = refRect.left
-          _aLeft = CARET_WIDTH
-        } else {
-          _left = refRect.left + refRect.width - floatRect.width
-          _aLeft = floatRect.width - CARET_WIDTH * 2
-        }
+    if (directions[1]) {
+      // 2nd directions left / right
+      if (directions[1] === 'left') {
+        _left = refRect.left
+        _aLeft = CARET_WIDTH
       } else {
-        _left = refRect.left + (refRect.width / 2 - floatRect.width / 2)
-        _aLeft = floatRect.width / 2 - CARET_WIDTH / 2
+        _left = refRect.left + refRect.width - floatRect.width
+        _aLeft = floatRect.width - CARET_WIDTH * 2
       }
-      break
-    case 'left':
-    case 'right':
-      if (directions[0] === 'left') {
-        _left = refRect.left - (floatRect.width + _offset)
-        _aLeft = floatRect.width - CARET_WIDTH / 2
-      } else {
-        _left = refRect.left + (refRect.width + _offset)
-        _aLeft = -CARET_WIDTH / 2
-      }
-      if (directions[1]) {
-        if (directions[1] === 'top') {
-          _top = refRect.top
-          _aTop = CARET_WIDTH / 2
-        } else {
-          _top = refRect.top + refRect.height - floatRect.height
-          _aTop = CARET_WIDTH / 2
-        }
-      } else {
-        _top = refRect.top + (refRect.height / 2 - floatRect.height / 2)
-        _aTop = floatRect.height / 2 - CARET_WIDTH / 2
-      }
+    } else {
+      _left = refRect.left + (refRect.width / 2 - floatRect.width / 2)
+      _aLeft = floatRect.width / 2 - CARET_WIDTH / 2
+    }
+  } else {
+    if (directions[0] === 'left') {
+      _left = refRect.left - (floatRect.width + _offset)
+      _aLeft = floatRect.width - CARET_WIDTH / 2
+    } else {
+      _left = refRect.left + (refRect.width + _offset)
+      _aLeft = -CARET_WIDTH / 2
+    }
 
-      break
+    if (directions[1]) {
+      if (directions[1] === 'top') {
+        _top = refRect.top
+        _aTop = CARET_WIDTH / 2
+      } else {
+        _top = refRect.top + refRect.height - floatRect.height
+        _aTop = CARET_WIDTH / 2
+      }
+    } else {
+      _top = refRect.top + (refRect.height / 2 - floatRect.height / 2)
+      _aTop = floatRect.height / 2 - CARET_WIDTH / 2
+    }
   }
 
   return [_top, _left, _aTop, _aLeft]
 }
 
+const hasTooltipConflict = (
+  refRect,
+  floatRect,
+  mainViewport,
+  mainDirection,
+) => {
+  // 툴팁이 현재 화면내에서 충돌영역 확인
+  let _flag = false
+  switch (mainDirection) {
+    case 'top':
+      _flag = refRect.top <= floatRect.height + CARET_OFFSET
+      break
+    case 'bottom':
+      _flag =
+        mainViewport.height <=
+        refRect.top + refRect.height + floatRect.height + CARET_OFFSET
+      break
+    case 'left':
+      _flag = refRect.left <= floatRect.width + CARET_OFFSET
+      break
+    case 'right':
+      _flag =
+        mainViewport.width <=
+        refRect.left + refRect.width + floatRect.width + CARET_OFFSET
+      break
+  }
+
+  return _flag
+}
+
+const CONVERT_DIRECTION = {
+  top: 'bottom',
+  bottom: 'top',
+  left: 'right',
+  right: 'left',
+}
+const getConvertDirections = (directions) => {
+  if (!_.isArray(directions) || _.isEmpty(directions)) {
+    throw new Error('Check your placement.')
+  }
+
+  const _directions = [...directions]
+  _directions.splice(0, 1, CONVERT_DIRECTION[directions[0]])
+  return _directions
+}
+
 const Tooltip = React.forwardRef<HTMLInputElement>(
   (props: TooltipProps, ref): React.ReactElement => {
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
 
     const {
       placement = 'bottom',
       align = 'left',
       variant = 'default',
       hasCaret = false,
+      isAdjust = true,
       parentContainer = () => document.body,
       className: customClassName,
       children,
@@ -146,12 +190,31 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
     const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
     const [arrowPos, setArrowPos] = useState({ x: 0, y: 0 })
 
-    const directions = useMemo(() => getOffsetDirection(placement), [placement])
+    const [directions, setDirections] = useState(getOffsetDirection(placement))
 
     useIsomorphicLayoutEffect(() => {
       if (isOpen) {
         const refRect = refReference.current.getBoundingClientRect()
         const floatRect = refFloating.current.getBoundingClientRect()
+
+        const mainViewport = {
+          height: document.documentElement.clientHeight,
+          width: document.documentElement.clientWidth,
+        }
+
+        const hasConflict = hasTooltipConflict(
+          refRect,
+          floatRect,
+          mainViewport,
+          _.first(directions),
+        )
+
+        const innerDirections =
+          hasConflict && isAdjust
+            ? getConvertDirections(directions)
+            : directions
+
+        setDirections(innerDirections) // update
 
         const [top, left, aTop, aLeft] = getCalculatingPos(
           {
@@ -161,14 +224,14 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
             top: refReference.current?.offsetTop,
           },
           floatRect,
-          directions,
+          innerDirections,
           hasCaret,
         )
 
         setTooltipPos({ x: left, y: top })
         setArrowPos({ x: aLeft, y: aTop })
       }
-    }, [isOpen, hasCaret, directions])
+    }, [isOpen, hasCaret, directions, isAdjust])
 
     return (
       <>
@@ -222,4 +285,4 @@ const Tooltip = React.forwardRef<HTMLInputElement>(
   },
 )
 
-export default Tooltip
+export default React.memo(Tooltip)

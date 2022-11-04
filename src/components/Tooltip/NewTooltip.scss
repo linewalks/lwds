@@ -4,8 +4,7 @@ $component: #{$prefix}-tooltip;
 $tooltip-min-height: 24px;
 $tooltip-margin: 4px;
 $caret-width: 12px;
-$caret-radius: 3px;
-$caret-pad: 2px;
+$caret-radius: 4px;
 $tooltip-z-index: 9000;
 
 .#{$component} {
