@@ -9,7 +9,7 @@ import Radio from '@components/Radio/Radio'
 import RadioGroup from '@components/Radio/RadioGroup'
 import Tabs, { Tab, TabList, TabPanel, TabPanels } from '@components/Tabs/Tabs'
 import { ToastProvider, useToast } from '@components/Toast'
-import Tooltip from '@components/Tooltip/Tooltip'
+import Tooltip from '@src/components/Tooltip/Tooltip'
 
 // import semantics from '@assets/styles/color/semantics'
 // import shadow from '@assets/styles/shadow'

@@ -1,20 +1,17 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useRef, useMemo } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 import { createPortal } from 'react-dom'
-import { useFloating, autoUpdate, offset } from '@floating-ui/react-dom'
 import { mergeRefs } from 'react-merge-refs'
 
 import cls from '@helpers/class'
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
-import '@components/Tooltip/Tooltip.scss'
+import './Tooltip.scss'
 
 const COMPONENT = 'tooltip'
-const CARET_SIZE = 4 // caret width
-const TOOLTIP_HEIGHT = 4 // tooltip-height
 
 interface TooltipProps {
-  align:
+  placement:
     | 'top'
     | 'top-left'
     | 'top-right'
@@ -22,144 +19,278 @@ interface TooltipProps {
     | 'bottom-left'
     | 'bottom-right'
     | 'left'
+    | 'left-top'
+    | 'left-bottom'
     | 'right'
+    | 'right-top'
+    | 'right-bottom'
+  align: 'left' | 'right' | 'center'
   text: string | React.ReactElement
   variant?: 'default' | 'white'
-  style?: object
-  isPortal?: boolean
-  portalQueryStr?: string
+  isAdjust?: boolean
+  defaultOpen?: boolean
   hasCaret?: boolean
   className?: string
+  parentContainer?: () => HTMLElement // 렌더 시점에서는 대상을 찾을 수 없기 때문에 함수형태로 전달 받음
+  style?: object
   children: React.ReactElement
 }
 
-const PortalWithQuery = ({ isPortal, portalQueryStr, children }) => {
-  const el = document.querySelector(portalQueryStr) ?? document.body
-
-  return isPortal ? createPortal(children, el) : children
+interface PortalWithQueryProps {
+  reference: React.RefObject<HTMLElement>
+  children: React.ReactElement
 }
 
-const Tooltip = React.forwardRef<HTMLInputElement>(
-  (
-    {
-      align = 'bottom',
-      text,
-      variant = 'default',
-      hasCaret = false,
-      isPortal = false,
-      portalQueryStr = null,
-      className: customClassName,
-      style = {},
-      children,
-      ...rest
-    }: TooltipProps,
-    ref,
-  ) => {
-    const [showTooltip, setShowTooltip] = useState(false)
-    const [offsetObj, setOffsetObj] = useState({ mainAxis: 0, crossAxis: 0 })
+const PortalWithQuery = ({
+  reference,
+  children,
+}: PortalWithQueryProps): React.ReactPortal => {
+  const newChilden = React.cloneElement(children, {
+    ref: reference,
+  })
 
-    const showContent = () => setShowTooltip(true)
-    const removeContent = () => setShowTooltip(false)
+  return createPortal(newChilden, document.body)
+}
 
-    const hasPlacement = useCallback(
-      (findPlacement) => align.includes(findPlacement),
-      [align],
-    )
+const DEFAULT_OFFSET = 2 // spacing_01
+const CARET_OFFSET = 8 // caret-width / 2 + default_offset
+const CARET_WIDTH = 12
+const ALIGN_TYPES = ['left', 'center', 'right']
 
-    const { x, y, reference, floating, refs } = useFloating({
-      whileElementsMounted: autoUpdate,
-      placement: 'bottom',
-      middleware: [offset(offsetObj)],
-    })
+const getOffsetDirection = (placement) => _.split(placement, '-')
+const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
+  const _offset = hasCaret ? CARET_OFFSET : DEFAULT_OFFSET
 
-    const updateOffsetObj = () => {
-      const {
-        reference: { current },
-        floating: { current: fCurrent },
-      } = refs
+  // tooltip pos
+  let _left = 0
+  let _top = 0
 
-      const { height, width } = current.getBoundingClientRect()
+  // arrow pos
+  let _aLeft = 0
+  let _aTop = 0
 
-      if (fCurrent) {
-        const { width: fWidth, height: fHeight } =
-          fCurrent.getBoundingClientRect()
-        let mainAxis = -height / 2 - fHeight / 2
-        let crossAxis = 0
-
-        if ('left' === align) {
-          crossAxis =
-            -width / 2 -
-            fWidth / 2 -
-            (CARET_SIZE + (hasCaret ? TOOLTIP_HEIGHT : 0))
-
-          return setOffsetObj({ crossAxis, mainAxis })
-        }
-
-        if ('right' === align) {
-          crossAxis =
-            width / 2 +
-            fWidth / 2 +
-            (CARET_SIZE + (hasCaret ? TOOLTIP_HEIGHT : 0))
-
-          return setOffsetObj({ crossAxis, mainAxis })
-        }
-
-        if (hasPlacement('top')) {
-          mainAxis = -height * 2 + (hasCaret ? 0 : TOOLTIP_HEIGHT)
-        } else if (hasPlacement('bottom')) {
-          mainAxis = CARET_SIZE + (hasCaret ? TOOLTIP_HEIGHT : 0)
-        }
-
-        if (hasPlacement('left')) {
-          crossAxis = width / 2 - fWidth / 2
-        } else if (hasPlacement('right')) {
-          crossAxis = -width / 2 + fWidth / 2
-        } else {
-          crossAxis = 0
-        }
-
-        setOffsetObj({ crossAxis, mainAxis })
-      }
+  // 아래 경우는 width 를 기반으로한 x 축 제어
+  if (['top', 'bottom'].includes(directions[0])) {
+    if (directions[0] === 'top') {
+      _top = refRect.top - (floatRect.height + _offset)
+      _aTop = floatRect.height - CARET_WIDTH / 2
+    } else {
+      _top = refRect.top + (refRect.height + _offset)
+      _aTop = -CARET_WIDTH / 2
     }
 
+    if (directions[1]) {
+      // 2nd directions left / right
+      if (directions[1] === 'left') {
+        _left = refRect.left
+        _aLeft = CARET_WIDTH
+      } else {
+        _left = refRect.left + refRect.width - floatRect.width
+        _aLeft = floatRect.width - CARET_WIDTH * 2
+      }
+    } else {
+      _left = refRect.left + (refRect.width / 2 - floatRect.width / 2)
+      _aLeft = floatRect.width / 2 - CARET_WIDTH / 2
+    }
+  } else {
+    if (directions[0] === 'left') {
+      _left = refRect.left - (floatRect.width + _offset)
+      _aLeft = floatRect.width - CARET_WIDTH / 2
+    } else {
+      _left = refRect.left + (refRect.width + _offset)
+      _aLeft = -CARET_WIDTH / 2
+    }
+
+    if (directions[1]) {
+      if (directions[1] === 'top') {
+        _top = refRect.top
+        _aTop = CARET_WIDTH / 2
+      } else {
+        _top = refRect.top + refRect.height - floatRect.height
+        _aTop = CARET_WIDTH / 2
+      }
+    } else {
+      _top = refRect.top + (refRect.height / 2 - floatRect.height / 2)
+      _aTop = floatRect.height / 2 - CARET_WIDTH / 2
+    }
+  }
+
+  return [_top, _left, _aTop, _aLeft]
+}
+
+const isTooltipOutOfScreen = (
+  refRect,
+  floatRect,
+  mainViewport,
+  mainDirection,
+) => {
+  // 툴팁이 현재 화면내에서 충돌영역 확인
+  let _flag = false
+  switch (mainDirection) {
+    case 'top':
+      _flag = refRect.top <= floatRect.height + CARET_OFFSET
+      break
+    case 'bottom':
+      _flag =
+        mainViewport.height <=
+        refRect.top + refRect.height + floatRect.height + CARET_OFFSET
+      break
+    case 'left':
+      _flag = refRect.left <= floatRect.width + CARET_OFFSET
+      break
+    case 'right':
+      _flag =
+        mainViewport.width <=
+        refRect.left + refRect.width + floatRect.width + CARET_OFFSET
+      break
+  }
+
+  return _flag
+}
+
+const CONVERT_DIRECTION = {
+  top: 'bottom',
+  bottom: 'top',
+  left: 'right',
+  right: 'left',
+}
+const getConvertDirections = (directions) => {
+  if (!_.isArray(directions) || _.isEmpty(directions)) {
+    throw new Error('Check your placement.')
+  }
+
+  const _directions = [...directions]
+  _directions.splice(0, 1, CONVERT_DIRECTION[directions[0]])
+  return _directions
+}
+
+const Tooltip = React.forwardRef(
+  (props: TooltipProps, ref): React.ReactElement => {
+    const {
+      placement = 'bottom',
+      text,
+      variant = 'default',
+      align = 'left',
+      hasCaret = false,
+      isAdjust = true,
+      defaultOpen = false,
+      parentContainer = null,
+      className: customClassName = '',
+      style: customStyle = {},
+      children,
+    } = props
+
+    const [isOpen, setIsOpen] = useState(defaultOpen)
+
+    const showTooltip = useCallback(() => setIsOpen(true), [])
+    const hideTooltip = useCallback(() => setIsOpen(false), [])
+
+    const refReference = useRef<HTMLElement>(null)
+    const refFloating = useRef<HTMLDivElement>(null)
+
+    const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
+    const [arrowPos, setArrowPos] = useState({ x: 0, y: 0 })
+
+    const [directions, setDirections] = useState(getOffsetDirection(placement))
+
     useIsomorphicLayoutEffect(() => {
-      updateOffsetObj()
-    }, [refs.floating.current, refs.reference.current, align, isPortal])
+      if (isOpen) {
+        // 부모 컨테이너를 제공받았다면 툴팁을 반영할 대상이 변경된다
+        const _refReference = parentContainer
+          ? parentContainer()
+          : refReference?.current
+
+        const refRect = _refReference.getBoundingClientRect()
+        const floatRect = refFloating.current.getBoundingClientRect()
+
+        // 보정을 위한 document client H, W 정보
+        const mainViewport = {
+          height: document.documentElement.clientHeight,
+          width: document.documentElement.clientWidth,
+        }
+
+        // 보정치를 활용하여 상하좌우 단편적으로 스크린 외부로 나가는 것 감지
+        // 특이사항) 좌가 넘쳐 우로 변경하였을 때 우도 넘치면 우로 그냥 노출 감지 변경은 1회만
+        const isOutOfScreen = isTooltipOutOfScreen(
+          refRect,
+          floatRect,
+          mainViewport,
+          _.first(directions),
+        )
+
+        // 보정치로 인한 스크린 외부 노출로 directions 변경
+        const innerDirections =
+          isOutOfScreen && isAdjust
+            ? getConvertDirections(directions)
+            : directions
+        setDirections(innerDirections) // update
+
+        // 위치 기반으로 툴팁과 화살표 방향 계산
+        const [top, left, aTop, aLeft] = getCalculatingPos(
+          {
+            width: refRect.width,
+            height: refRect.height,
+            left: _refReference?.offsetLeft,
+            top: _refReference?.offsetTop,
+          },
+          floatRect,
+          innerDirections,
+          hasCaret,
+        )
+
+        setTooltipPos({ x: left, y: top })
+        setArrowPos({ x: aLeft, y: aTop })
+      }
+    }, [isOpen, hasCaret, directions, isAdjust])
 
     return (
-      <div
-        ref={mergeRefs([ref, reference])}
-        onFocus={showContent}
-        onBlur={removeContent}
-        onMouseOver={showContent}
-        onMouseLeave={removeContent}
-        className={clsx(
-          cls(COMPONENT),
-          cls(COMPONENT, align),
-          showTooltip && hasCaret && cls(COMPONENT, 'caret'),
-          customClassName,
-        )}
-        {...rest}
-      >
-        {children}
-        <PortalWithQuery isPortal={isPortal} portalQueryStr={portalQueryStr}>
-          {showTooltip && (
+      <>
+        <div
+          ref={mergeRefs([ref, refReference])}
+          onFocus={showTooltip}
+          onMouseOver={showTooltip}
+          onBlur={hideTooltip}
+          onMouseLeave={hideTooltip}
+          className={clsx(cls(COMPONENT), customClassName)}
+        >
+          {children}
+        </div>
+        {isOpen && (
+          <PortalWithQuery reference={refFloating}>
             <div
-              ref={floating}
-              style={{ top: y ?? 0, left: x ?? 0 }}
               className={clsx(
-                cls(COMPONENT, align),
                 cls(COMPONENT, 'content'),
-                cls(COMPONENT, 'content', variant),
+                cls(COMPONENT, placement),
+                cls(COMPONENT, variant),
               )}
+              style={{
+                top: tooltipPos.y ?? 0,
+                left: tooltipPos.x ?? 0,
+                textAlign: ALIGN_TYPES.includes(align) ? align : 'left',
+                ...customStyle,
+              }}
             >
               {text}
+              {hasCaret && (
+                <div
+                  className={clsx(
+                    cls(COMPONENT, 'caret'),
+                    cls(COMPONENT, variant),
+                    cls(COMPONENT, 'main', directions[0]),
+                    directions[1] && cls(COMPONENT, 'sub', directions[1]),
+                  )}
+                  style={{
+                    top: arrowPos.y ?? 0,
+                    left: arrowPos.x ?? 0,
+                  }}
+                />
+              )}
             </div>
-          )}
-        </PortalWithQuery>
-      </div>
+          </PortalWithQuery>
+        )}
+      </>
     )
   },
 )
 
-export default Tooltip
+export default React.memo(Tooltip)
