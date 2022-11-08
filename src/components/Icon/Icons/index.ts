@@ -118,20 +118,18 @@ export { default as ThemeLessThanIcon } from './Formula/ThemeLessThanIcon'
 export { default as ThemeNotBetweenIcon } from './Formula/ThemeNotBetweenIcon'
 
 // Specific Icons
-export { default as AnalysisIcon } from './Specific/AnalysisIcon'
-export { default as AnalysisSelectedIcon } from './Specific/AnalysisSelectedIcon'
-export { default as CohortIcon } from './Specific/CohortIcon'
-export { default as CohortSelectedIcon } from './Specific/CohortSelectedIcon'
-export { default as ComparisonIcon } from './Specific/ComparisonIcon'
-export { default as ComparisonSelectedIcon } from './Specific/ComparisonSelectedIcon'
-export { default as ConceptSetIcon } from './Specific/ConceptSetIcon'
-export { default as ConceptSetSelectedIcon } from './Specific/ConceptSetSelectedIcon'
-export { default as DocumentIcon } from './Specific/DocumentIcon'
-export { default as DocumentSelectedIcon } from './Specific/DocumentSelectedIcon'
-export { default as DoneCircleFilledIcon } from './Specific/DoneCircleFilledIcon'
-export { default as ExclamationCircleFilledIcon } from './Specific/ExclamationCircleFilledIcon'
-export { default as ProjectIcon } from './Specific/ProjectIcon'
-export { default as ProjectSelectedIcon } from './Specific/ProjectSelectedIcon'
+export { default as CohortModeBasicIcon } from './Specific/CohortModeBasicIcon'
+export { default as CohortModeAdvancedIcon } from './Specific/CohortModeAdvancedIcon'
+export { default as CohortTemplateBasicIcon } from './Specific/CohortTemplateBasicIcon'
+export { default as CohortTemplateAdvancedIcon } from './Specific/CohortTemplateAdvancedIcon'
+
+export { default as FeasibilityUnexecutedIcon } from './Specific/FeasibilityUnexecutedIcon'
+export { default as FeasibilityDoneIcon } from './Specific/FeasibilityDoneIcon'
+export { default as FeasibilityFailIcon } from './Specific/FeasibilityFailIcon'
+
+export { default as AlertCheckIcon } from './Specific/FeasibilityDoneIcon'
+export { default as AlertExclamationWarningIcon } from './Specific/AlertExclamationWarningIcon'
+export { default as AlertExclamationErrorIcon } from './Specific/AlertExclamationErrorIcon'
 
 // Toggle Icons
 export { default as CheckboxCheckedIcon } from './Toggle/CheckboxCheckedIcon'

@@ -13,8 +13,8 @@ import {
 
 import ChevronIcon from '@components/Icon/Icons/Navigation/ChevronIcon'
 import CloseIcon from '@components/Icon/Icons/Navigation/CloseIcon'
-import ExclamationCircleFilledIcon from '@components/Icon/Icons/Specific/ExclamationCircleFilledIcon'
-import SuccessCircleFilledIcon from '@components/Icon/Icons/Specific/SuccessCircleFilledIcon'
+import ExclamationCircleFilledIcon from '@components/Icon/Icons/Specific/legacy/ExclamationCircleFilledIcon'
+import SuccessCircleFilledIcon from '@components/Icon/Icons/Specific/legacy/SuccessCircleFilledIcon'
 
 import { IToast, IToastBox } from '@components/Toast/Type'
 
