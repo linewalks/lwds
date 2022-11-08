@@ -13,12 +13,22 @@ export interface SVGIconProps {
   viewBox?: string
   size?: string | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   responsive?: boolean
+  flip?: 'x' | 'y'
   children?: React.ReactNode
 }
 
 const SVGIcon = (props: SVGIconProps) => {
-  const { color, width, height, viewBox, size, responsive, children, ...rest } =
-    props
+  const {
+    color,
+    width,
+    height,
+    viewBox,
+    size,
+    responsive,
+    flip,
+    children,
+    ...rest
+  } = props
 
   return (
     <svg
@@ -30,6 +40,9 @@ const SVGIcon = (props: SVGIconProps) => {
       className={
         size &&
         (responsive ? cls('icon', 'responsive', size) : cls('icon', size))
+      }
+      transform={
+        flip ? (flip === 'x' ? 'scale(1, -1)' : 'scale(-1, 1)') : 'scale(1,1)'
       }
       {...rest}
     >
