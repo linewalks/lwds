@@ -23,8 +23,9 @@ module.exports = {
   $color_layout_emphasize_02: colors.$lw_grey80,
   $color_layout_emphasize_03: colors.$lw_grey90,
 
-  $color_danger: colors.$lw_red50,
   $color_safe: colors.$lw_green50,
+  $color_caution: colors.$lw_yellow50,
+  $color_danger: colors.$lw_red50,
 
   // Status Colors
   // hover
@@ -63,8 +64,10 @@ module.exports = {
   $color_text_error: colors.$lw_red60,
   $color_text_safe: colors.$lw_green60,
   $color_text_info: colors.$lw_blue60,
-  $color_text_accent: colors.$lw_blue50,
+  $color_text_success: colors.$lw_green60,
+  $color_text_warning: colors.$lw_yellow70,
   $color_text_danger: colors.$lw_red50,
+  $color_text_accent: colors.$lw_blue50,
   $color_text_inverse: colors.$lw_white,
   $color_text_disabled: colors.$lw_grey50,
 
@@ -80,6 +83,12 @@ module.exports = {
   $color_icon_inverse_01: colors.$lw_white,
   $color_icon_inverse_02: colors.$lw_grey40,
   $color_icon_disabled: colors.$lw_grey50,
+  $color_icon_info: colors.$lw_blue60,
+  $color_icon_caution: colors.$lw_yellow50,
+  $color_icon_warning: colors.$lw_yellow70,
+  $color_icon_error: colors.$lw_red60,
+  $color_icon_success: colors.$lw_green60,
+  $color_icon_disabled_accent: colors.$lw_blue30,
 
   // Button
   $color_button_primary: colors.$lw_blue50,
