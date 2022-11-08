@@ -37,7 +37,12 @@
     }
   },
   // "include": ["typings", "src/**/*"],
-  "include": ["typings", "./src/**/*.ts", "./src/**/*.tsx"],
+  "include": [
+    "typings",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "src/components/Icon/Icons/Specific/CohortModeAdvancedIcon"
+  ],
   "exclude": [
     "node_modules",
     "dist",

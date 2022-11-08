@@ -7,22 +7,22 @@ interface IconProps extends SVGIconProps {
   rotate?: number
 }
 
-const SubtractCircleIcon = (props: IconProps) => {
+const ConditionIcon = (props: IconProps) => {
   const { viewBox, rotate } = props
 
   return (
     <SVGIcon {...props}>
       <path
-        d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm4 7a1 1 0 0 1 0 2H8a1 1 0 0 1 0-2h8z"
+        d="M17 12.9689V11.0311L7 5V7.01038L15.2558 11.8789V12.0727L7 16.9412V19L17 12.9689Z"
         transform={svgRotate(rotate, viewBox)}
       />
     </SVGIcon>
   )
 }
 
-SubtractCircleIcon.defaultProps = {
+ConditionIcon.defaultProps = {
   viewBox: '0 0 24 24',
   rotate: 0,
 }
 
-export default SubtractCircleIcon
+export default ConditionIcon

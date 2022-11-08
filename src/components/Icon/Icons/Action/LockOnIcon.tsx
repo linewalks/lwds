@@ -7,7 +7,7 @@ interface IconProps extends SVGIconProps {
   rotate?: number
 }
 
-const LockIcon = (props: IconProps) => {
+const LockOnIcon = (props: IconProps) => {
   const { viewBox, rotate } = props
 
   return (
@@ -20,9 +20,9 @@ const LockIcon = (props: IconProps) => {
   )
 }
 
-LockIcon.defaultProps = {
+LockOnIcon.defaultProps = {
   viewBox: '0 0 24 24',
   rotate: 0,
 }
 
-export default LockIcon
+export default LockOnIcon
