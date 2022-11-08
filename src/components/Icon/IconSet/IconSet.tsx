@@ -9,6 +9,8 @@ const WrapIcon = styled.div`
   padding: 10px;
   background-color: #f6f7f9;
   border-radius: 10px;
+
+  font-size: 13px;
 `
 
 const IconSet = ({ IconModules }): JSX.Element => {
