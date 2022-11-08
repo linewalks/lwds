@@ -17,7 +17,7 @@ const ThemeEqualToIcon = (props: IconProps) => {
         transform={svgRotate(rotate, viewBox)}
       />
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M10.0002 9L9.7588 10.4375H1.60352L1.84491 9H10.0002ZM9.39666 12.503L9.15527 13.9405H1L1.24138 12.503H9.39666Z"
         transform={svgRotate(rotate, viewBox)}
       />

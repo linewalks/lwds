@@ -17,8 +17,8 @@ const ThemeGreaterOrEqualToIcon = (props: IconProps) => {
         transform={svgRotate(rotate, viewBox)}
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M9.29883 11.5693L1 15.4939L1.31919 13.7026L7.7029 10.7225L7.72064 10.5922L2.4186 7.59588L2.72006 6L9.60029 9.90828L9.29883 11.5693ZM10.0001 16.643H1.13379V18H10.0001V16.643Z"
         transform={svgRotate(rotate, viewBox)}
       />

@@ -13,7 +13,7 @@ const ThemeLessOrEqualToIcon = (props: IconProps) => {
   return (
     <SVGIcon {...props}>
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M8.6007 13.898L8.30329 15.4939L1.51538 11.5856L1.81279 9.92456L10.0003 6L9.68536 7.79129L3.38731 10.7714L3.36981 10.9016L8.6007 13.898ZM9.7473 16.6432H1V18.0002H9.7473V16.6432Z"
         transform={svgRotate(rotate, viewBox)}
       />

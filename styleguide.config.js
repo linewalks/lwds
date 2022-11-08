@@ -65,7 +65,6 @@ module.exports = {
             'src/components/Icon/IconSet/Domain.tsx',
             'src/components/Icon/IconSet/Formula.tsx',
             'src/components/Icon/IconSet/Specific.tsx',
-            'src/components/Icon/IconSet/Toggle.tsx',
           ],
         },
         {
