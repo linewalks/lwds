@@ -1,5 +1,18 @@
 import React from 'react';
-import '@components/Tooltip/Tooltip.scss';
-declare const Tooltip: React.ForwardRefExoticComponent<React.RefAttributes<HTMLInputElement>>;
-export default Tooltip;
+import './Tooltip.scss';
+interface TooltipProps {
+    placement: 'top' | 'top-left' | 'top-right' | 'bottom' | 'bottom-left' | 'bottom-right' | 'left' | 'left-top' | 'left-bottom' | 'right' | 'right-top' | 'right-bottom';
+    align: 'left' | 'right' | 'center';
+    text: string | React.ReactElement;
+    variant?: 'default' | 'white';
+    isAdjust?: boolean;
+    defaultOpen?: boolean;
+    hasCaret?: boolean;
+    className?: string;
+    parentContainer?: () => HTMLElement;
+    style?: object;
+    children: React.ReactElement;
+}
+declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<TooltipProps & React.RefAttributes<unknown>>>;
+export default _default;
 //# sourceMappingURL=Tooltip.d.ts.map
