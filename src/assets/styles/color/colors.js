@@ -116,7 +116,7 @@ module.exports = {
   $lw_green50: '#0cb639',
   $lw_green60: '#087d27',
   $lw_green90: '#013c12',
-  $lw_yellow50: '#F5D019',
+  $lw_yellow50: '#f5d019',
   $lw_yellow70: '#867109',
   $lw_red50: '#ff4c33',
   $lw_red60: '#e81f02',
