@@ -7,6 +7,7 @@ export interface SVGIconProps {
     viewBox?: string;
     size?: string | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     responsive?: boolean;
+    flip?: 'x' | 'y';
     children?: React.ReactNode;
 }
 declare const SVGIcon: {

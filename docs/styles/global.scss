@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'reset.scss';
+@import 'variables.scss';
+
+@import './color/fontColors.scss';
+@import './font/font.scss';
+@import './typography/typography.scss';
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+* {
+  font-family: 'Spoqa Han Sans Neo', sans-serif;
+}
