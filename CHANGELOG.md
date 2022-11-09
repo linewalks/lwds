@@ -4,10 +4,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.3.18](https://github.com/linewalks/lwds/compare/v0.0.1...v0.3.18) (2022-11-09)
 
-
 ### Features
 
-* sementic name remove _chart ([#235](https://github.com/linewalks/lwds/issues/235)) ([5e0e34b](https://github.com/linewalks/lwds/commit/5e0e34b446f97703ca665021fd3831f70539ec30))
+- tooltip ([#228](https://github.com/linewalks/lwds/issues/235)) ([d50973a](https://github.com/linewalks/lwds/commit/d50973a9b39941a3ca05cf13929628e8c65004fa))
+- warning color ([#241](https://github.com/linewalks/lwds/issues/241)) ([bebf505](https://github.com/linewalks/lwds/pull/242/commits/bebf5056993ab86f4b2090693f93c39672fbe0d4))
+- new icons ([#239](https://github.com/linewalks/lwds/issues/239)) ([3b6e39](https://github.com/linewalks/lwds/pull/240/commits/3b6e39127d2f3dc8306b79abe475558703a96b63))
 
 ### [0.3.17](https://github.com/linewalks/lwds/compare/v0.3.8...v0.3.17) (2022-10-26)
 
