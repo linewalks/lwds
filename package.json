@@ -43,7 +43,7 @@
     "test:watch": "jest --watch --coverage",
     "build": "rm -rf dist && rollup -c",
     "build:prod": "NODE_ENV=production yarn build",
-    "styleguide": "styleguidist server",
+    "styleguide": "FAST_REFRESH=false styleguidist server",
     "build:docs": "styleguidist build",
     "build:commit": "git add . && git commit -m \"chore(build): build\"",
     "eslint": "eslint ./src/**/*.js ./src/**/**/*.js",

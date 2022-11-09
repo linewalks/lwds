@@ -1,0 +1,92 @@
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-tooltip;
+$tooltip-height: 24px;
+$tooltip-margin: 4px;
+$caret-side-width: 4px;
+$caret-border-width: 1px;
+$caret-radius: 3px;
+$tooltip-z-index: 5000;
+
+// tooltip wrapper
+.#{$component} {
+  @apply relative w-max h-max;
+}
+
+// basic content
+.#{$component}-content {
+  @apply bg-color_layout_emphasize_01 text-color_icon_inverse_01 px-spacing_03 py-spacing_02 text-center absolute;
+  border-radius: 4px;
+  z-index: #{$tooltip-z-index};
+  max-width: 320px;
+  min-width: 32px;
+  white-space: nowrap;
+}
+
+// variant white override
+.#{$component}-content-white {
+  @apply bg-color_background text-color_text_02 border border-solid border-color_layout_emphasize_01;
+}
+
+// caret
+.#{$component}-caret:hover::before,
+.#{$component}-caret:focus-within:before {
+  @apply absolute bg-color_layout_emphasize_01 border-color_layout_emphasize_01 border-solid;
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-width: #{$caret-side-width};
+  z-index: #{$tooltip-z-index};
+  border-top-right-radius: #{$caret-radius};
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+}
+
+.#{$component}-top.#{$component}-caret::before,
+.#{$component}-top-left.#{$component}-caret::before,
+.#{$component}-top-right.#{$component}-caret::before {
+  @apply top-spacing_00;
+  transform: translate(-50%, calc(-100% - #{$tooltip-margin})) rotate(135deg);
+}
+.#{$component}-top.#{$component}-caret::before {
+  left: 50%;
+}
+.#{$component}-top-right.#{$component}-caret::before {
+  left: calc(#{$caret-radius + ($caret-side-width * 2)});
+}
+.#{$component}-top-left.#{$component}-caret::before {
+  right: #{$caret-radius};
+}
+
+.#{$component}-bottom.#{$component}-caret::before,
+.#{$component}-bottom-right.#{$component}-caret::before,
+.#{$component}-bottom-left.#{$component}-caret::before {
+  bottom: 0;
+  transform: translate(
+      -50%,
+      calc(-100% - #{$tooltip-margin} + #{$tooltip-height})
+    )
+    rotate(-45deg);
+}
+.#{$component}-bottom.#{$component}-caret::before {
+  left: 50%;
+}
+.#{$component}-bottom-right.#{$component}-caret::before {
+  left: calc(#{$caret-radius + ($caret-side-width * 2)});
+}
+.#{$component}-bottom-left.#{$component}-caret::before {
+  right: #{$caret-radius};
+}
+
+.#{$component}-left.#{$component}-caret::before {
+  left: 0;
+  bottom: 50%;
+  transform: translate(calc(-100% - #{$tooltip-margin} - 1px), 50%)
+    // translate x좌표 param에 1px 추가 이유: caret과 말풍선 사이 공간 교정
+    rotate(45deg);
+}
+
+.#{$component}-right.#{$component}-caret::before {
+  right: 0;
+  bottom: 50%;
+  transform: translate(calc(100% + #{$tooltip-margin}), 50%) rotate(-135deg);
+}

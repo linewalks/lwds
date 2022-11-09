@@ -122,31 +122,10 @@ module.exports = {
         },
       ],
     },
-    // {
-    //   name: 'Forms',
-    //   components: () => [
-    //     'src/components/Forms/Checkbox.tsx',
-    //     'src/components/Forms/Radio.tsx',
-    //     'src/components/Forms/TextInput.tsx',
-    //     'src/components/Forms/Select.tsx',
-    //   ],
-    // },
-    // {
-    //   name: 'Tabs',
-    //   components: () => ['src/components/Tabs/Tabs.tsx'],
-    // },
-    // {
-    //   name: 'Menu',
-    //   components: () => ['src/components/Menu/Dropdown/Dropdown.tsx'],
-    // },
-    // {
-    //   name: 'Advanced',
-    //   components: () => [
-    //     'src/components/Search/SearchBar.tsx',
-    //     'src/components/Tooltip/Tooltip.tsx',
-    //     'src/components/ProgressBar/ProgressBar.tsx',
-    //   ],
-    // },
+    {
+      name: 'Tabs',
+      components: () => ['src/components/Tabs/Tabs.tsx'],
+    },
   ],
   propsParser: (filePath, source, resolver, handlers) => {
     const { ext } = path.parse(filePath)
