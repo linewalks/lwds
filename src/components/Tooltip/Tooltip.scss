@@ -5,24 +5,21 @@ $tooltip-min-height: 24px;
 $tooltip-margin: 4px;
 $caret-width: 12px;
 $caret-radius: 4px;
-$tooltip-z-index: 9000;
-
-.#{$component} {
-  @apply relative w-max h-max;
-}
 
 // basic content
 .#{$component}-content {
-  @apply absolute bg-color_layout_emphasize_03 text-color_icon_inverse_01 px-spacing_03 py-spacing_02 text-center shadow-shadow_v2;
+  @apply absolute bg-color_layout_emphasize_03 text-color_icon_inverse_01 px-spacing_03 py-spacing_02 text-center shadow-shadow_v2 hidden opacity-0;
+  visibility: hidden;
   max-width: 400px;
   min-width: 32px;
   min-height: #{$tooltip-min-height};
-  z-index: #{$tooltip-z-index};
   border-radius: 4px;
+
   font-size: 13px;
   font-weight: 500 !important;
   letter-spacing: -0.3px;
-  line-height: 19px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
 }
 
 // caret
@@ -30,6 +27,7 @@ $tooltip-z-index: 9000;
   @apply absolute bg-color_layout_emphasize_03 shadow-shadow_v2;
   width: #{$caret-width};
   height: #{$caret-width};
+  border: none;
   border-radius: #{$caret-radius};
   clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
 }
@@ -54,4 +52,8 @@ $tooltip-z-index: 9000;
 // variant white override
 .#{$component}-white {
   @apply bg-color_background text-color_text_02;
+}
+
+.#{$component}-content-show {
+  @apply block visible opacity-100;
 }
