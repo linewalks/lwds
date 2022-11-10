@@ -28,6 +28,8 @@ $lw_red90: #4d0900 !default;
 $lw_green50: #0cb639 !default;
 $lw_green60: #087d27 !default;
 $lw_green90: #013c12 !default;
+$lw_yellow50: #f5d019 !default;
+$lw_yellow70: #867109 !default;
 $lw_highlight: rgba(255, 240, 0, 0.24) !default;
 $lw_dimmed_overlay: rgba(36, 41, 45, 0.34) !default;
 $lw_active_overlay: rgba(36, 41, 45, 0.12) !default;
@@ -52,6 +54,7 @@ $color_layout_emphasize_02: $lw_grey80 !default;
 $color_layout_emphasize_03: $lw_grey90 !default;
 
 $color_danger: $lw_red50 !default;
+$color_caution: $lw_yellow50 !default;
 $color_safe: $lw_green50 !default;
 
 $color_hover_primary: $lw_hover_overlay !default;
@@ -82,10 +85,12 @@ $color_text_03: $lw_grey80 !default;
 $color_text_04: $lw_grey70 !default;
 $color_text_05: $lw_grey60 !default;
 $color_text_error: $lw_red60 !default;
-$color_text_safe: $lw_green60 !default;
+$color_text_safe: $lw_green60 !default; // deprecate
+$color_text_success: $lw_green60 !default;
 $color_text_info: $lw_blue60 !default;
 $color_text_accent: $lw_blue50 !default;
 $color_text_danger: $lw_red50 !default;
+$color_text_warning: $lw_yellow70 !default;
 $color_text_inverse: $lw_white !default;
 $color_text_disabled: $lw_grey50 !default;
 
@@ -93,12 +98,19 @@ $color_icon_01: $lw_grey100 !default;
 $color_icon_02: $lw_grey90 !default;
 $color_icon_03: $lw_grey80 !default;
 $color_icon_04: $lw_grey70 !default;
+$color_icon_05: $lw_grey60 !default;
 $color_icon_danger: $lw_red50 !default;
 $color_icon_safe: $lw_green50 !default;
 $color_icon_accent: $lw_blue50 !default;
 $color_icon_inverse_01: $lw_white !default;
 $color_icon_inverse_02: $lw_grey40 !default;
 $color_icon_disabled: $lw_grey50 !default;
+$color_icon_info: $lw_blue60 !default;
+$color_icon_caution: $lw_yellow50 !default;
+$color_icon_warning: $lw_yellow70 !default;
+$color_icon_error: $lw_red60 !default;
+$color_icon_success: $lw_green60 !default;
+$color_icon_disabled_accent: $lw_blue30 !default;
 
 $color_button_primary: $lw_blue50 !default;
 $color_button_secondary: $lw_grey30 !default;
