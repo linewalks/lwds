@@ -4,10 +4,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.3.19](https://github.com/linewalks/lwds/compare/v0.0.1...v0.3.19) (2022-11-10)
 
+### Bug Fixes
 
-### Features
-
-* sementic name remove _chart ([#235](https://github.com/linewalks/lwds/issues/235)) ([5e0e34b](https://github.com/linewalks/lwds/commit/5e0e34b446f97703ca665021fd3831f70539ec30))
+- Apply Tooltip delay ([493525](https://github.com/linewalks/lwds/commit/493525394139d813faf356778d3d4a5795d4f293))
+- New colors add scss/less files ([493525](https://github.com/linewalks/lwds/commit/493525394139d813faf356778d3d4a5795d4f293))
 
 ### [0.3.18](https://github.com/linewalks/lwds/compare/v0.0.1...v0.3.18) (2022-11-09)
 
