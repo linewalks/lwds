@@ -8,6 +8,7 @@ interface TooltipProps {
     isAdjust?: boolean;
     defaultOpen?: boolean;
     hasCaret?: boolean;
+    zIndex?: number;
     className?: string;
     parentContainer?: () => HTMLElement;
     style?: object;
