@@ -122,10 +122,6 @@ module.exports = {
         },
       ],
     },
-    {
-      name: 'Tabs',
-      components: () => ['src/components/Tabs/Tabs.tsx'],
-    },
   ],
   propsParser: (filePath, source, resolver, handlers) => {
     const { ext } = path.parse(filePath)
