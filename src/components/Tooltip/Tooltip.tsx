@@ -1,10 +1,11 @@
-import React, { useState, useCallback, useRef, useMemo } from 'react'
+import React, { useState, useRef } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 import { createPortal } from 'react-dom'
 import { mergeRefs } from 'react-merge-refs'
 
 import cls from '@helpers/class'
+import useDetectResize from '@hooks/useDetectResize'
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 import './Tooltip.scss'
 
@@ -30,6 +31,7 @@ interface TooltipProps {
   isAdjust?: boolean
   defaultOpen?: boolean
   hasCaret?: boolean
+  zIndex?: number
   className?: string
   parentContainer?: () => HTMLElement // 렌더 시점에서는 대상을 찾을 수 없기 때문에 함수형태로 전달 받음
   style?: object
@@ -53,9 +55,10 @@ const PortalWithQuery = ({
 }
 
 const DEFAULT_OFFSET = 2 // spacing_01
-const CARET_OFFSET = 8 // caret-width / 2 + default_offset
+const CARET_OFFSET = 10 // caret-width / 2 + default_offset
 const CARET_WIDTH = 12
 const ALIGN_TYPES = ['left', 'center', 'right']
+const DEFAULT_Z_INDEX = 9000
 
 const getOffsetDirection = (placement) => _.split(placement, '-')
 const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
@@ -73,10 +76,10 @@ const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
   if (['top', 'bottom'].includes(directions[0])) {
     if (directions[0] === 'top') {
       _top = refRect.top - (floatRect.height + _offset)
-      _aTop = floatRect.height - CARET_WIDTH / 2
+      _aTop = floatRect.height - CARET_WIDTH / 2 - DEFAULT_OFFSET
     } else {
       _top = refRect.top + (refRect.height + _offset)
-      _aTop = -CARET_WIDTH / 2
+      _aTop = -CARET_WIDTH / 2 + DEFAULT_OFFSET
     }
 
     if (directions[1]) {
@@ -95,7 +98,7 @@ const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
   } else {
     if (directions[0] === 'left') {
       _left = refRect.left - (floatRect.width + _offset)
-      _aLeft = floatRect.width - CARET_WIDTH / 2
+      _aLeft = floatRect.width - CARET_WIDTH / 2 - DEFAULT_OFFSET
     } else {
       _left = refRect.left + (refRect.width + _offset)
       _aLeft = -CARET_WIDTH / 2
@@ -175,6 +178,7 @@ const Tooltip = React.forwardRef(
       isAdjust = true,
       defaultOpen = false,
       parentContainer = null,
+      zIndex,
       className: customClassName = '',
       style: customStyle = {},
       children,
@@ -182,11 +186,22 @@ const Tooltip = React.forwardRef(
 
     const [isOpen, setIsOpen] = useState(defaultOpen)
 
-    const showTooltip = useCallback(() => setIsOpen(true), [])
-    const hideTooltip = useCallback(() => setIsOpen(false), [])
+    let delayId = null
+    const showTooltip = () => {
+      delayId = setTimeout(() => {
+        setIsOpen(true)
+      }, 300)
+    }
+    const hideTooltip = () => {
+      // 사용자가 스치듯 지나간경우는 동작하지 않도록하기 위함
+      clearTimeout(delayId)
+      setIsOpen(false)
+    }
 
     const refReference = useRef<HTMLElement>(null)
     const refFloating = useRef<HTMLDivElement>(null)
+
+    const properties = useDetectResize()
 
     const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
     const [arrowPos, setArrowPos] = useState({ x: 0, y: 0 })
@@ -194,100 +209,96 @@ const Tooltip = React.forwardRef(
     const [directions, setDirections] = useState(getOffsetDirection(placement))
 
     useIsomorphicLayoutEffect(() => {
-      if (isOpen) {
-        // 부모 컨테이너를 제공받았다면 툴팁을 반영할 대상이 변경된다
-        const _refReference = parentContainer
-          ? parentContainer()
-          : refReference?.current
+      // 부모 컨테이너를 제공받았다면 툴팁을 반영할 대상이 변경된다
+      const _refReference = parentContainer
+        ? parentContainer()
+        : refReference?.current
 
-        const refRect = _refReference.getBoundingClientRect()
-        const floatRect = refFloating.current.getBoundingClientRect()
+      const refRect = _refReference.getBoundingClientRect()
+      const floatRect = refFloating.current.getBoundingClientRect()
 
-        // 보정을 위한 document client H, W 정보
-        const mainViewport = {
-          height: document.documentElement.clientHeight,
-          width: document.documentElement.clientWidth,
-        }
-
-        // 보정치를 활용하여 상하좌우 단편적으로 스크린 외부로 나가는 것 감지
-        // 특이사항) 좌가 넘쳐 우로 변경하였을 때 우도 넘치면 우로 그냥 노출 감지 변경은 1회만
-        const isOutOfScreen = isTooltipOutOfScreen(
-          refRect,
-          floatRect,
-          mainViewport,
-          _.first(directions),
-        )
-
-        // 보정치로 인한 스크린 외부 노출로 directions 변경
-        const innerDirections =
-          isOutOfScreen && isAdjust
-            ? getConvertDirections(directions)
-            : directions
-        setDirections(innerDirections) // update
-
-        // 위치 기반으로 툴팁과 화살표 방향 계산
-        const [top, left, aTop, aLeft] = getCalculatingPos(
-          {
-            width: refRect.width,
-            height: refRect.height,
-            left: _refReference?.offsetLeft,
-            top: _refReference?.offsetTop,
-          },
-          floatRect,
-          innerDirections,
-          hasCaret,
-        )
-
-        setTooltipPos({ x: left, y: top })
-        setArrowPos({ x: aLeft, y: aTop })
+      // 보정을 위한 document client H, W 정보
+      const mainViewport = {
+        height: document.documentElement.clientHeight,
+        width: document.documentElement.clientWidth,
       }
-    }, [isOpen, hasCaret, directions, isAdjust])
+
+      // 보정치를 활용하여 상하좌우 단편적으로 스크린 외부로 나가는 것 감지
+      // 특이사항) 좌가 넘쳐 우로 변경하였을 때 우도 넘치면 우로 그냥 노출 감지 변경은 1회만
+      const isOutOfScreen = isTooltipOutOfScreen(
+        refRect,
+        floatRect,
+        mainViewport,
+        _.first(directions),
+      )
+
+      // 보정치로 인한 스크린 외부 노출로 directions 변경
+      const innerDirections =
+        isOutOfScreen && isAdjust
+          ? getConvertDirections(directions)
+          : directions
+      setDirections(innerDirections) // update
+
+      // 위치 기반으로 툴팁과 화살표 방향 계산
+      const [top, left, aTop, aLeft] = getCalculatingPos(
+        {
+          width: refRect.width,
+          height: refRect.height,
+          left: _refReference?.offsetLeft,
+          top: _refReference?.offsetTop,
+        },
+        floatRect,
+        innerDirections,
+        hasCaret,
+      )
+
+      setTooltipPos({ x: left, y: top })
+      setArrowPos({ x: aLeft, y: aTop })
+    }, [isOpen, hasCaret, directions, isAdjust, properties])
 
     return (
       <>
-        <div
-          ref={mergeRefs([ref, refReference])}
-          onFocus={showTooltip}
-          onMouseOver={showTooltip}
-          onBlur={hideTooltip}
-          onMouseLeave={hideTooltip}
-          className={clsx(cls(COMPONENT), customClassName)}
-        >
-          {children}
-        </div>
-        {isOpen && (
-          <PortalWithQuery reference={refFloating}>
-            <div
-              className={clsx(
-                cls(COMPONENT, 'content'),
-                cls(COMPONENT, placement),
-                cls(COMPONENT, variant),
-              )}
-              style={{
-                top: tooltipPos.y ?? 0,
-                left: tooltipPos.x ?? 0,
-                textAlign: ALIGN_TYPES.includes(align) ? align : 'left',
-                ...customStyle,
-              }}
-            >
-              {text}
-              {hasCaret && (
-                <div
-                  className={clsx(
-                    cls(COMPONENT, 'caret'),
-                    cls(COMPONENT, variant),
-                    cls(COMPONENT, 'main', directions[0]),
-                    directions[1] && cls(COMPONENT, 'sub', directions[1]),
-                  )}
-                  style={{
-                    top: arrowPos.y ?? 0,
-                    left: arrowPos.x ?? 0,
-                  }}
-                />
-              )}
-            </div>
-          </PortalWithQuery>
-        )}
+        {React.cloneElement(children, {
+          ref: mergeRefs([ref, refReference]),
+          onFocus: showTooltip,
+          onMouseEnter: showTooltip,
+          onBlur: hideTooltip,
+          onMouseLeave: hideTooltip,
+          className: clsx(cls(COMPONENT), customClassName),
+        })}
+        <PortalWithQuery reference={refFloating}>
+          <div
+            className={clsx(
+              cls(COMPONENT, 'content'),
+              cls(COMPONENT, placement),
+              cls(COMPONENT, variant),
+              isOpen && cls(COMPONENT, 'content', 'show'),
+            )}
+            style={{
+              top: tooltipPos.y,
+              left: tooltipPos.x,
+              textAlign: ALIGN_TYPES.includes(align) ? align : 'left',
+              zIndex: zIndex ?? DEFAULT_Z_INDEX,
+              ...customStyle,
+            }}
+          >
+            {text}
+            {hasCaret && (
+              <div
+                className={clsx(
+                  cls(COMPONENT, 'caret'),
+                  cls(COMPONENT, variant),
+                  cls(COMPONENT, 'main', directions[0]),
+                  directions[1] && cls(COMPONENT, 'sub', directions[1]),
+                )}
+                style={{
+                  top: arrowPos.y,
+                  left: arrowPos.x,
+                }}
+              />
+            )}
+          </div>
+        </PortalWithQuery>
       </>
     )
   },
