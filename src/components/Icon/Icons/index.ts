@@ -127,6 +127,9 @@ export { default as FeasibilityUnexecutedIcon } from './Specific/FeasibilityUnex
 export { default as FeasibilityDoneIcon } from './Specific/FeasibilityDoneIcon'
 export { default as FeasibilityFailIcon } from './Specific/FeasibilityFailIcon'
 
+export { default as AddCheckUnaddedIcon } from './Specific/AddCheckUnaddedIcon'
+export { default as AddCheckAddedIcon } from './Specific/AddCheckAddedIcon'
+
 export { default as AlertCheckIcon } from './Specific/FeasibilityDoneIcon'
 export { default as AlertExclamationWarningIcon } from './Specific/AlertExclamationWarningIcon'
 export { default as AlertExclamationErrorIcon } from './Specific/AlertExclamationErrorIcon'
