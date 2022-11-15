@@ -1,6 +1,6 @@
 /* purgecss start ignore */
 
-.font, .fs12, .fs13, .fs14, .fs16, .fs18, .fs20, .fs22, .fs32, .fs40, .fs42, .text01, .text02, .text03, .text04, .text05, .text_error, .text_safe, .text_info, .text_accent, .text_inverse, .text_disabled {
+.font, .text_disabled, .text_inverse, .text_accent, .text_info, .text_safe, .text_error, .text05, .text04, .text03, .text02, .text01, .fs42, .fs40, .fs32, .fs22, .fs20, .fs18, .fs16, .fs14, .fs13, .fs12 {
   letter-spacing: -0.5px;
   font-family: "Spoqa Han Sans Neo";
 }
@@ -89,11 +89,11 @@
   color: #b0bac4;
 }
 
-.font-family, .heading, .heading_04, .heading_03, .heading_02, .heading_01, .heading_02_multi, .heading_01_multi, .subtitle, .subtitle_02, .subtitle_01, .subtitle_02_multi, .subtitle_01_multi, .body, .body_06_r, .body_06_r_multi, .body_05_r, .body_05_r_multi, .body_04_r, .body_04_r_multi, .body_03_r, .body_03_r_multi, .body_02_r, .body_02_r_multi, .body_03_m, .body_03_m_multi, .body_02_m, .body_02_m_multi, .body_01_m, .body_01_m_multi, .caption, .caption_m, .caption_r, .caption_b {
+.font-family, .caption, .caption_b, .caption_r, .caption_m, .body, .body_01_m, .body_01_m_multi, .body_02_m, .body_02_m_multi, .body_03_m, .body_03_m_multi, .body_02_r, .body_02_r_multi, .body_03_r, .body_03_r_multi, .body_04_r, .body_04_r_multi, .body_05_r, .body_05_r_multi, .body_06_r, .body_06_r_multi, .subtitle, .subtitle_01_multi, .subtitle_02_multi, .subtitle_01, .subtitle_02, .heading, .heading_01_multi, .heading_02_multi, .heading_01, .heading_02, .heading_03, .heading_04 {
   font-family: "Spoqa Han Sans Neo";
 }
 
-.heading, .heading_04, .heading_03, .heading_02, .heading_01, .heading_02_multi, .heading_01_multi {
+.heading, .heading_01_multi, .heading_02_multi, .heading_01, .heading_02, .heading_03, .heading_04 {
   font-weight: 700;
   letter-spacing: -0.5px;
 }
@@ -128,7 +128,7 @@
   line-height: 28px;
 }
 
-.subtitle, .subtitle_02, .subtitle_01, .subtitle_02_multi, .subtitle_01_multi {
+.subtitle, .subtitle_01_multi, .subtitle_02_multi, .subtitle_01, .subtitle_02 {
   font-weight: 700;
 }
 
@@ -156,7 +156,7 @@
   line-height: 22px;
 }
 
-.body, .body_06_r, .body_06_r_multi, .body_05_r, .body_05_r_multi, .body_04_r, .body_04_r_multi, .body_03_r, .body_03_r_multi, .body_02_r, .body_02_r_multi, .body_03_m, .body_03_m_multi, .body_02_m, .body_02_m_multi, .body_01_m, .body_01_m_multi {
+.body, .body_01_m, .body_01_m_multi, .body_02_m, .body_02_m_multi, .body_03_m, .body_03_m_multi, .body_02_r, .body_02_r_multi, .body_03_r, .body_03_r_multi, .body_04_r, .body_04_r_multi, .body_05_r, .body_05_r_multi, .body_06_r, .body_06_r_multi {
   text-decoration: inherit;
   text-transform: inherit;
 }
@@ -249,7 +249,7 @@
   line-height: calc(19px + 1px);
 }
 
-.caption, .caption_m, .caption_r, .caption_b {
+.caption, .caption_b, .caption_r, .caption_m {
   letter-spacing: -0.2px;
   font-size: 12px;
   line-height: 18px;
