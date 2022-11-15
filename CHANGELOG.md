@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.21](https://github.com/linewalks/lwds/compare/v0.0.1...v0.3.21) (2022-11-15)
+
+### Bug Fixes
+
+- pacakge.json typography export
+- package.json engines node version >=14.0.0
+
 ### [0.3.20](https://github.com/linewalks/lwds/compare/v0.0.1...v0.3.20) (2022-11-15)
 
 ### Features
