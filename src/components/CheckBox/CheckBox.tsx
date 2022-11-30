@@ -33,13 +33,11 @@ const CheckBox = ({
   children,
   onChange,
 }: CheckBoxProps) => {
-  const [checked, setChecked] = useState(
-    defaultChecked || propsChecked || false,
-  )
+  const [checked, setChecked] = useState(defaultChecked)
 
   const handleOnChange = (evt) => {
     const checked = evt.target.checked
-    propsChecked || setChecked(checked)
+    _.isNil(propsChecked) && setChecked(checked)
     onChange && onChange(checked, id)
   }
 
@@ -63,7 +61,7 @@ const CheckBox = ({
       <input
         type="checkbox"
         id={id}
-        checked={checked}
+        checked={_.isNil(propsChecked) ? checked : propsChecked}
         disabled={disabled}
         onChange={handleOnChange}
       />
