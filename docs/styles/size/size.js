@@ -1,1 +1,33 @@
-module.exports={p00:"0px",p04:"8px",p08:"16px",p10:"20px",p12:"24px",p16:"32px",p20:"40px",p24:"48px",p28:"56px",p32:"64px",p36:"72px",p40:"80px",p44:"88px",p48:"96px",r00:"0rem",r04:"0.5rem",r08:"1rem",r10:"1.25rem",r12:"1.5rem",r16:"2rem",r20:"2.5rem",r24:"3rem",r28:"3.5rem",r32:"4rem",r36:"4.5rem",r40:"5rem",r44:"5.5rem",r48:"6rem"};
+//tailwind.config.js 설정을 위해 CommonJS 방식 사용
+module.exports = {
+  // px
+  p00: '0px',
+  p04: '8px',
+  p08: '16px',
+  p10: '20px',
+  p12: '24px',
+  p16: '32px',
+  p20: '40px',
+  p24: '48px',
+  p28: '56px',
+  p32: '64px',
+  p36: '72px',
+  p40: '80px',
+  p44: '88px',
+  p48: '96px',
+  // rem
+  r00: '0rem',
+  r04: '0.5rem',
+  r08: '1rem',
+  r10: '1.25rem',
+  r12: '1.5rem',
+  r16: '2rem',
+  r20: '2.5rem',
+  r24: '3rem',
+  r28: '3.5rem',
+  r32: '4rem',
+  r36: '4.5rem',
+  r40: '5rem',
+  r44: '5.5rem',
+  r48: '6rem',
+}
