@@ -55,6 +55,46 @@ const PieChart = ({
     )
   }
 
+  useEffect(() => {
+    // selector
+    const chartBox = d3.select(`#${id}`)
+    const svg = chartBox.select('.svg')
+    const tooltipBox = chartBox.select('.tooltip-box')
+    const tooltipSircle = chartBox.select('.tooltip-sircle')
+    const tooltipTextBox = chartBox.select('.tooltip-text-box')
+
+    // default value
+    const SVG_WIDTH = svg.node().getBoundingClientRect().width - 16
+    const SVG_HEIGHT = svg.node().getBoundingClientRect().height
+    const MARGIN = 8
+    const INIT_DURATION_MS = 600
+    const HOVER_DURATION_MS = 300
+    const TOOLTIP_DISTANCE_X = 30
+    const TOOLTIP_DISTANCE_Y = 0
+    const HOVER_STROKE_WIDTH = 1.5
+    const HOVER_STROKE_COLOR = '#24292d'
+
+    const {
+      width: svgWidth = SVG_WIDTH,
+      height: svgHeight = SVG_HEIGHT,
+      margin = MARGIN,
+      radius = Math.min(svgWidth, svgHeight) / 2 - margin,
+      innerRadius = radius / 2,
+      hoverStorkeWidth = HOVER_STROKE_WIDTH,
+      hoverStrokeColor = HOVER_STROKE_COLOR,
+    } = style || {}
+
+    const {
+      init: initDuration = INIT_DURATION_MS,
+      hover: hoverDuration = HOVER_DURATION_MS,
+    } = duration || {}
+
+    const {
+      x: tooltipDistanceX = TOOLTIP_DISTANCE_X,
+      y: tooltipDistanceY = TOOLTIP_DISTANCE_Y,
+    } = tooltip || {}
+  }, [JSON.stringify(data)])
+
   return (
     <WrapChartBox id={id}>
       <WrapSvg className="svg" />
