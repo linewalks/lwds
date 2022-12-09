@@ -138,6 +138,28 @@ const PieChart = ({
       .attr('height', svgHeight)
       .append('g')
       .attr('transform', `translate(${svgWidth / 2},${svgHeight / 2})`)
+
+    chart
+      .selectAll('arc')
+      .data(pie(data))
+      .enter()
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', (d) => colors[d.index])
+      .on('mouseover', mouseover)
+      .on('mousemove', mousemove)
+      .on('mouseleave', mouseleave)
+      .transition()
+      .duration(initDuration)
+      .attrTween('d', (d) => {
+        const originalEnd = d.endAngle
+        return (t) => {
+          const currentAngle = interpolate(t)
+          if (currentAngle < d.startAngle) return ''
+          d.endAngle = Math.min(currentAngle, originalEnd)
+          return arc(d)
+        }
+      })
   }, [JSON.stringify(data)])
 
   return (
