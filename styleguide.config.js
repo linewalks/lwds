@@ -122,6 +122,15 @@ module.exports = {
         },
       ],
     },
+    {
+      name: 'Chart',
+      sections: [
+        {
+          name: 'PieChart',
+          content: 'src/charts/pie/PieChart.md',
+        },
+      ],
+    },
   ],
   propsParser: (filePath, source, resolver, handlers) => {
     const { ext } = path.parse(filePath)
