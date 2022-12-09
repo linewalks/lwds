@@ -48,6 +48,13 @@ const PieChart = ({
   tooltip,
   id = _.uniqueId('pie_chart'),
 }: PieChartProps) => {
+  const colorSizeDiff = _.size(data) - _.size(colors)
+  if (colorSizeDiff !== 0) {
+    _.forEach(_.range(colorSizeDiff + 1), () =>
+      colors.push(`#${Math.round(Math.random() * 0xffffff).toString(16)}`),
+    )
+  }
+
   return (
     <WrapChartBox id={id}>
       <WrapSvg className="svg" />
