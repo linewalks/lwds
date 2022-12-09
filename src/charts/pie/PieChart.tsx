@@ -93,6 +93,35 @@ const PieChart = ({
       x: tooltipDistanceX = TOOLTIP_DISTANCE_X,
       y: tooltipDistanceY = TOOLTIP_DISTANCE_Y,
     } = tooltip || {}
+
+    // event fucntion
+    const mouseover = (e, { data, index }) => {
+      d3.select(e.target)
+        .transition()
+        .duration(hoverDuration)
+        .attr('stroke-width', hoverStorkeWidth)
+        .style('stroke', hoverStrokeColor)
+
+      tooltipBox.style('visibility', 'visible')
+      tooltipSircle.style('background-color', colors[index])
+      tooltipTextBox
+        .append('div')
+        .style('margin-right', '0.5rem')
+        .text(`${data.key} :`)
+      tooltipTextBox.append('div').text(`${data.value}`)
+    }
+
+    const mousemove = (e) => {
+      tooltipBox
+        .style('left', `${e.pageX + tooltipDistanceX}px`)
+        .style('top', `${e.pageY + tooltipDistanceY}px`)
+    }
+
+    const mouseleave = ({ target }) => {
+      d3.select(target).transition().duration(300).attr('stroke-width', 0)
+      tooltipBox.style('visibility', 'hidden')
+      tooltipTextBox.selectAll('*').remove()
+    }
   }, [JSON.stringify(data)])
 
   return (
