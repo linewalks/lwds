@@ -129,6 +129,10 @@ module.exports = {
           name: 'BarPlot',
           content: 'src/chart/BarPlot/BarPlot.md',
         },
+        {
+          name: 'PieChart',
+          content: 'src/charts/pie/PieChart.md',
+        },
       ],
     },
   ],
