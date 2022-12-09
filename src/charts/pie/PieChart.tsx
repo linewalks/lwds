@@ -122,6 +122,22 @@ const PieChart = ({
       tooltipBox.style('visibility', 'hidden')
       tooltipTextBox.selectAll('*').remove()
     }
+
+    // default chart method
+    const pie = d3
+      .pie()
+      .value((d) => d.value)
+      .sort(null)
+
+    const arc = d3.arc().outerRadius(radius).innerRadius(innerRadius)
+
+    const interpolate = d3.interpolate(pie.startAngle()(), pie.endAngle()())
+
+    const chart = svg
+      .attr('width', svgWidth)
+      .attr('height', svgHeight)
+      .append('g')
+      .attr('transform', `translate(${svgWidth / 2},${svgHeight / 2})`)
   }, [JSON.stringify(data)])
 
   return (
