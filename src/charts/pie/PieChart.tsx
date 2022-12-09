@@ -5,6 +5,40 @@ import styled from 'styled-components'
 
 import Legend from './Legend'
 
+interface Data {
+  key: string
+  value: number
+}
+
+interface PieStyleObj {
+  width?: number
+  height?: number
+  margin?: number
+  radius?: number
+  innerRadius?: number
+  hoverStorkeWidth?: number
+  hoverStrokeColor?: number
+}
+
+interface DurationObj {
+  init?: number
+  hover?: number
+}
+
+interface TooltipObj {
+  x?: number
+  y?: number
+}
+
+interface PieChartProps {
+  data?: Data[]
+  colors?: string[]
+  style?: PieStyleObj
+  duration?: DurationObj
+  tooltip?: TooltipObj
+  id?: string
+}
+
 const PieChart = ({
   // props 논의 필요. 임의 지정.
   data,
@@ -13,7 +47,7 @@ const PieChart = ({
   duration,
   tooltip,
   id = _.uniqueId('pie_chart'),
-}) => {
+}: PieChartProps) => {
   return (
     <WrapChartBox id={id}>
       <WrapSvg className="svg" />
