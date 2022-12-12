@@ -264,7 +264,7 @@ const Tooltip = React.forwardRef(
           onMouseEnter: showTooltip,
           onBlur: hideTooltip,
           onMouseLeave: hideTooltip,
-          className: clsx(cls(COMPONENT), customClassName),
+          className: clsx(cls(COMPONENT), children.props.className),
         })}
         <PortalWithQuery reference={refFloating}>
           <div
@@ -273,6 +273,7 @@ const Tooltip = React.forwardRef(
               cls(COMPONENT, placement),
               cls(COMPONENT, variant),
               isOpen && cls(COMPONENT, 'content', 'show'),
+              customClassName,
             )}
             style={{
               top: tooltipPos.y,
