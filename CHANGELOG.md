@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.23](https://github.com/linewalks/lwds/compare/v0.0.1...v0.3.23) (2022-12-12)
+
+
+### Features
+
+* apply add check icons ([#247](https://github.com/linewalks/lwds/issues/247)) ([c54c49c](https://github.com/linewalks/lwds/commit/c54c49c400b0d35afb83774fc774a2ececb2a362))
+* sementic name remove _chart ([#235](https://github.com/linewalks/lwds/issues/235)) ([5e0e34b](https://github.com/linewalks/lwds/commit/5e0e34b446f97703ca665021fd3831f70539ec30))
+
+
+### Bug Fixes
+
+* checkbox propsChecked ([#253](https://github.com/linewalks/lwds/issues/253)) ([b37ebd3](https://github.com/linewalks/lwds/commit/b37ebd3946a050b8926b588027a8679b4f45460d))
+* omit children className ([5fd3b48](https://github.com/linewalks/lwds/commit/5fd3b48ae0e2cd7072737e994d50ac3493155ee0))
+
 ### [0.3.22](https://github.com/linewalks/lwds/compare/v0.2.0...v0.3.22) (2022-11-30)
 
 
