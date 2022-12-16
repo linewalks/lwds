@@ -12,7 +12,7 @@ export const renderDefaultBars = ({
     .selectAll('rect') //default ? rect : g
     .data(data)
     .join('rect') //default ? rect : g
-    .attr('fill', (d) => d.color || barColor) // gradient?
+    .attr('fill', (d) => d.color ?? barColor) // gradient?
     .attr(
       'x',
       (
