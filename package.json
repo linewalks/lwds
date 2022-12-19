@@ -174,7 +174,6 @@
     "recharts": "1.8.5",
     "regenerator-runtime": "^0.13.7",
     "rollup": "^2.34.2",
-    "sass": "^1.56.1",
     "styled-components": "^4.3.2",
     "tslib": "^2.3.1"
   },
