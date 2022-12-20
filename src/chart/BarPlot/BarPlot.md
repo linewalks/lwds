@@ -8,21 +8,19 @@ const render = () => {
   return (
     <div>
       <BarPlot
-        // zoom
-        width={500}
-        height={300}
+        height={200}
         data={defaultMock}
         maxValue={30}
         valueAxisLocation="left"
         nameAxisLocation="bottom"
-        margin={{ top: 15, left: 40, right: 15, bottom: 30 }}
-        // hasTooltip
-        scroll={{ x: 400 }}
-        // options={{
-        //   renderTooltip: ({ targetData }) => (
-        //     <Tooltip targetData={targetData} />
-        //   ),
-        // }}
+        margin={{ top: 15, left: 50, right: 0, bottom: 30 }}
+        options={{
+          legend: { color: 'skyblue', text: '전체' },
+          axisUnit: {
+            x: 'xAxis',
+            y: 'yAxis',
+          },
+        }}
       />
     </div>
   )
