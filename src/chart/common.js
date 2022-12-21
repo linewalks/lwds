@@ -1,3 +1,5 @@
+import { scaleOrdinal } from 'd3'
+
 export const colorScaleOrdinal = (keyArr, colorArr) =>
   scaleOrdinal().domain(keyArr).range(colorArr)
 
