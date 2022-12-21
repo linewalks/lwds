@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from 'react'
+import React, { useState, useRef, useMemo, useEffect } from 'react'
 import _ from 'lodash'
 import * as d3 from 'd3'
 
@@ -59,17 +59,30 @@ const BarPlot = ({
   const svgWidth = wrapperWidth - (options?.axisUnit.x ? AXIS_UNIT_WIDTH : 0) // Axis Label
   const svgHeight = wrapperHeight - (options?.axisUnit.y ? AXIS_UNIT_WIDTH : 0) // Axis Label
 
-  const graphWidth = svgWidth - (margin.left + margin.right)
-  const graphHeight = svgHeight - (margin.top + margin.bottom)
+  const graphWidth = svgWidth && svgWidth - (margin.left + margin.right)
+  const graphHeight = svgHeight && svgHeight - (margin.top + margin.bottom)
 
-  const calculatedMaxValue =
-    type === 'default'
-      ? _.max(data.map((d) => Number(d.value)))
-      : _.max(
+  const wrapperRefSelection = d3.select(wrapperRef.current)
+  const chartSvg = wrapperRefSelection.select('.chart-svg')
+  const tooltipDiv = wrapperRefSelection.select('.tooltip')
+  const indicatorRect = chartSvg.select('.indicator')
+
+  const calculatedMaxValue = () => {
+    switch (type) {
+      case 'default':
+        return _.max(data.map((d) => Number(d.value)))
+      case 'group':
+        return _.max(
           data.map((d) => _.max(d.value.map((valueD) => Number(valueD.value)))),
         )
+      case 'stack':
+        return _.max(
+          data.map((d) => d.value.reduce((acc, cur) => acc + cur.value, 0)),
+        )
+    }
+  }
 
-  maxValue = calculatedMaxValue > maxValue ? calculatedMaxValue : maxValue
+  maxValue = calculatedMaxValue() > maxValue ? calculatedMaxValue() : maxValue
   // lower maxValue than calculatedMaxValue will be replaced by calculatedMaxValue
 
   const { groups, subGroups } = options
@@ -107,90 +120,85 @@ const BarPlot = ({
     [],
   )
 
-  // common but different variable name
-  const nameScale = d3[`scale${_.upperFirst(nameScaleType)}`]()
-    .domain(type === 'default' ? _.map(data, (d) => d.name) : groups)
-    .range(
-      _.isEmpty(chartTransform)
-        ? isHorizontal
-          ? [0, graphHeight]
-          : [0, graphWidth]
-        : (isHorizontal ? [0, graphHeight] : [0, graphWidth]).map((d) =>
-            chartTransform[`apply${isHorizontal ? 'Y' : 'X'}`](d),
-          ),
-    )
-    .padding(barPaddingRatio)
-
-  // common
-  const valueScale = d3[`scale${_.upperFirst(valueScaleType)}`]()
-    .domain([0, maxValue])
-    .range(isHorizontal ? [0, graphWidth] : [graphHeight, 0])
-    .nice()
-
-  // only stack
-  const stackedData =
-    type === 'stack' &&
-    d3.stack().keys(subGroups)(
-      _.map(data, (d) =>
-        _.reduce(
-          d.value,
-          (acc, cur) => {
-            acc[cur.name] = cur.value
-            return acc
-          },
-          { group: d.name },
-        ),
-      ),
-    )
-
-  // only group
-  const subGroupScale =
-    !_.isEmpty(subGroups) &&
-    d3
-      .scaleBand() // 어떻게하지 ??
-      .domain(subGroups)
-      .range(
-        isHorizontal ? [nameScale.bandwidth(), 0] : [0, nameScale.bandwidth()],
-      )
-
-  // getNameAxis
-  const getNameAxis = (svgSelection) =>
-    translateAxis(svgSelection, graphHeight, graphWidth, nameAxisLocation).call(
-      d3[`axis${_.upperFirst(nameAxisLocation)}`](nameScale).tickSize(0),
-    )
-
-  // getValueAxis
-  const getValueAxis = (svgSelection) =>
-    translateAxis(
-      svgSelection,
-      graphHeight,
-      graphWidth,
-      valueAxisLocation,
-    ).call(
-      d3[`axis${_.upperFirst(valueAxisLocation)}`](valueScale)
-        .ticks(totalTicks)
-        .tickSize(isHorizontal ? -graphHeight : -graphWidth),
-    )
-
   useEffect(() => {
     if (wrapperWidth !== 0 && data) {
-      // zoom 해결시 주석 해제
-      //   dataRef.current = data
+      // common but different variable name
+      const nameScale = d3[`scale${_.upperFirst(nameScaleType)}`]()
+        .domain(type === 'default' ? _.map(data, (d) => d.name) : groups)
+        .range(
+          _.isEmpty(chartTransform)
+            ? isHorizontal
+              ? [0, graphHeight]
+              : [0, graphWidth]
+            : (isHorizontal ? [0, graphHeight] : [0, graphWidth]).map((d) =>
+                chartTransform[`apply${isHorizontal ? 'Y' : 'X'}`](d),
+              ),
+        )
+        .padding(barPaddingRatio)
 
-      const wrapperRefSelection = d3.select(wrapperRef.current)
+      // common
+      const valueScale = d3[`scale${_.upperFirst(valueScaleType)}`]()
+        .domain([0, maxValue])
+        .range(isHorizontal ? [0, graphWidth] : [graphHeight, 0])
+        .nice()
+
+      // only stack
+      const stackedData =
+        type === 'stack' &&
+        d3.stack().keys(subGroups)(
+          _.map(data, (d) =>
+            _.reduce(
+              d.value,
+              (acc, cur) => {
+                acc[cur.name] = cur.value
+                return acc
+              },
+              { group: d.name },
+            ),
+          ),
+        )
+
+      // only group
+      const subGroupScale =
+        !_.isEmpty(subGroups) &&
+        d3
+          .scaleBand() // 어떻게하지 ??
+          .domain(subGroups)
+          .range(
+            isHorizontal
+              ? [nameScale.bandwidth(), 0]
+              : [0, nameScale.bandwidth()],
+          )
+
+      // getNameAxis
+      const getNameAxis = (svgSelection) =>
+        translateAxis(
+          svgSelection,
+          graphHeight,
+          graphWidth,
+          nameAxisLocation,
+        ).call(
+          d3[`axis${_.upperFirst(nameAxisLocation)}`](nameScale).tickSize(0),
+        )
+
+      // getValueAxis
+      const getValueAxis = (svgSelection) =>
+        translateAxis(
+          svgSelection,
+          graphHeight,
+          graphWidth,
+          valueAxisLocation,
+        ).call(
+          d3[`axis${_.upperFirst(valueAxisLocation)}`](valueScale)
+            .ticks(totalTicks)
+            .tickSize(isHorizontal ? -graphHeight : -graphWidth),
+        )
+
       // wrapper
       wrapperRefSelection
         .select('.chart-locationer')
-        // .attr('width', svgWidth)
-        // .attr('height', svgHeight)
         .attr('transform', `translate(${margin.left},${margin.top})`)
 
-      const chartSvg = wrapperRefSelection.select('.chart-svg')
-      const tooltipDiv = wrapperRefSelection.select('.tooltip')
-      const indicatorRect = chartSvg.select('.indicator')
-
-      // differrent by chart types
-      // bars
       const getColor =
         type !== 'default' && colorScaleOrdinal(subGroups, barColor)
 
@@ -243,85 +251,128 @@ const BarPlot = ({
       // common
       chartSvg.call(getNameAxis).call(getValueAxis)
 
-      zoom &&
-        chartSvg
-          .call(
-            zoomed.on('zoom', (e) => {
-              chartSvg
-                .selectAll('.bars rect')
-                .attr(isHorizontal ? 'y' : 'x', (d) => nameScale(d.name))
-                .attr(isHorizontal ? 'height' : 'width', nameScale.bandwidth())
-              getNameAxis(chartSvg)
-              indicatorRect.style('visibility', 'hidden')
-              tooltipDiv.style('visibility', 'hidden')
+      const renderZoomedBars = (type, selectBars) => {
+        switch (type) {
+          case 'default':
+            return selectBars
+              .selectAll('rect')
+              .attr(isHorizontal ? 'y' : 'x', (d) => nameScale(d.name))
+              .attr(isHorizontal ? 'height' : 'width', nameScale.bandwidth())
 
-              setChartTransform(() => e.transform)
-
-              nameScale.range(
-                (isHorizontal ? [0, graphHeight] : [0, graphWidth]).map((d) =>
-                  e.transform[`apply${isHorizontal ? 'Y' : 'X'}`](d),
-                ),
-              )
-            }),
-          )
-          .on('mousemove', (mouseEvent) => {
-            const [mouseX, mouseY] = d3.pointer(mouseEvent)
-            // scaleband invert 추가
-            if (nameScaleType === 'band') {
-              nameScale.invert = (() => {
-                const domain = nameScale.domain()
-                const range = nameScale.range()
-                const scale = d3.scaleQuantize().domain(range).range(domain)
-                return (mouseLocationValue) => scale(mouseLocationValue)
-              })()
-            }
-
-            const namePoint =
-              (isHorizontal ? mouseY : mouseX) -
-              (isHorizontal ? margin.top : margin.left)
-            const targetName = nameScale.invert(namePoint)
-
-            //tooltip data
-            const selectedData = _.find(data, (d) => d.name === targetName)
-            setTooltipData(selectedData)
-
-            const defaultTooltipLocation =
-              nameScale(targetName) + (isHorizontal ? margin.top : margin.left)
-
-            // tooltip
-            tooltipDiv
-              .style('visibility', 'visible')
-              .style(
-                // dynamic
-                isHorizontal ? 'top' : 'left',
-                `${defaultTooltipLocation}px`,
-              )
-              .style(
-                // static
-                isHorizontal ? 'right' : 'top',
-                `${isHorizontal ? margin.right : margin.top}px`,
-              )
-
-            // indicator
-            indicatorRect
+          case 'group':
+            return selectBars
+              .selectAll('g')
+              .attr('transform', (d) => {
+                return `translate(${
+                  isHorizontal
+                    ? `0, ${nameScale(d.name)}`
+                    : `${nameScale(d.name)}, 0`
+                })`
+              })
+              .selectAll('rect')
+              .attr(isHorizontal ? 'y' : 'x', (d) => {
+                return subGroupScale(d.name)
+              })
               .attr(
                 isHorizontal ? 'height' : 'width',
-                nameScale.bandwidth() * 1.5,
+                subGroupScale.bandwidth(),
               )
-              .attr(
-                isHorizontal ? 'y' : 'x',
-                nameScale(targetName) - nameScale.bandwidth() / 4,
-              )
-              .style('visibility', 'visible')
 
-            // wrapperRefSelection.select('.tooltip').style('visibility', 'visible')
-          })
-          .on('mouseleave', (mouseEvent) => {
-            indicatorRect.style('visibility', 'hidden')
-            tooltipDiv.style('visibility', 'hidden')
-          })
+          case 'stack':
+            return selectBars
+              .selectAll('rect')
+              .attr(isHorizontal ? 'y' : 'x', (d) => nameScale(d.data.group))
+              .attr(isHorizontal ? 'height' : 'width', nameScale.bandwidth())
+
+          default:
+            null
+        }
+      }
+
+      const actZoom = (e) => {
+        renderZoomedBars(type, chartSvg.select('.bars'))
+
+        getNameAxis(chartSvg)
+        indicatorRect.style('visibility', 'hidden')
+        tooltipDiv.style('visibility', 'hidden')
+
+        setChartTransform(() => e.transform)
+
+        nameScale.range(
+          (isHorizontal ? [0, graphHeight] : [0, graphWidth]).map((d) =>
+            e.transform[`apply${isHorizontal ? 'Y' : 'X'}`](d),
+          ),
+        )
+
+        type === 'group' &&
+          subGroupScale.range(
+            isHorizontal
+              ? [nameScale.bandwidth(), 0]
+              : [0, nameScale.bandwidth()],
+          )
+      }
+
+      zoom && chartSvg.call(zoomed.on('zoom', actZoom))
+
+      chartSvg
+        .on('mousemove', (mouseEvent) => {
+          const [mouseX, mouseY] = d3.pointer(mouseEvent)
+          // scaleband invert 추가
+          if (nameScaleType === 'band') {
+            nameScale.invert = (() => {
+              const domain = nameScale.domain()
+              const range = nameScale.range()
+              const scale = d3.scaleQuantize().domain(range).range(domain)
+              return (mouseLocationValue) => scale(mouseLocationValue)
+            })()
+          }
+
+          const namePoint =
+            (isHorizontal ? mouseY : mouseX) -
+            (isHorizontal ? margin.top : margin.left)
+          const targetName = nameScale.invert(namePoint)
+
+          //tooltip data
+          const selectedData = _.find(data, (d) => d.name === targetName)
+          setTooltipData(selectedData)
+
+          const defaultTooltipLocation =
+            nameScale(targetName) + (isHorizontal ? margin.top : margin.left)
+
+          // tooltip
+          tooltipDiv
+            .style('visibility', 'visible')
+            .style(
+              // dynamic
+              isHorizontal ? 'top' : 'left',
+              `${defaultTooltipLocation}px`,
+            )
+            .style(
+              // static
+              isHorizontal ? 'right' : 'top',
+              `${isHorizontal ? margin.right : margin.top}px`,
+            )
+
+          // indicator
+          indicatorRect
+            .attr(isHorizontal ? 'height' : 'width', nameScale.step())
+            .attr(
+              isHorizontal ? 'y' : 'x',
+              nameScale(targetName) - nameScale.step() * (barPaddingRatio / 2),
+            )
+            .style('visibility', 'visible')
+
+          // wrapperRefSelection.select('.tooltip').style('visibility', 'visible')
+        })
+        .on('mouseleave', (mouseEvent) => {
+          indicatorRect.style('visibility', 'hidden')
+          tooltipDiv.style('visibility', 'hidden')
+        })
+      return () => {
+        chartSvg.select('.bars').selectAll('*').remove()
+      }
     }
-  }, [data, wrapperRefRect])
+  }, [wrapperRefRect, isHorizontal])
 
   return (
     <>
@@ -371,7 +422,6 @@ const BarPlot = ({
                 style={{ visibility: 'hidden', fill: 'grey', opacity: 0.4 }}
               />
               <g className="bars" clipPath={`url(#${uid}--Bars)`} />
-              <g className="axis-label" />
             </g>
           </svg>
         </div>
