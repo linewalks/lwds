@@ -1,0 +1,25 @@
+@use '../../../scss/variables.scss' as variables;
+@import '../../assets/styles/global.scss';
+
+$component: #{$prefix}-barplot;
+$axis-label-width: 20px;
+
+// $lw_blue30: #a3c6fa;
+// $lw_grey60: #8d98a5;
+// .#{$component} {
+// }
+
+.#{$component}.chart-svg {
+  display: block;
+  margin-left: $axis-label-width;
+  .tick > line {
+    stroke: #dcdfe5;
+  }
+  .domain {
+    stroke: transparent;
+  }
+  .tick > text {
+    font-size: 14px;
+    fill: variables.$color_text_05;
+  }
+}

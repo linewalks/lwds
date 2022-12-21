@@ -122,6 +122,15 @@ module.exports = {
         },
       ],
     },
+    {
+      name: 'Chart',
+      sections: [
+        {
+          name: 'BarPlot',
+          content: 'src/chart/BarPlot/BarPlot.md',
+        },
+      ],
+    },
   ],
   propsParser: (filePath, source, resolver, handlers) => {
     const { ext } = path.parse(filePath)
