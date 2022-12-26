@@ -5,7 +5,6 @@ import styled, { keyframes } from 'styled-components'
 
 import cls from '@helpers/class'
 
-import SuccessCircleIcon from '@assets/svg/icn_specific_alert_done_circle_filled_success.svg'
 import {
   $color_icon_danger,
   $color_icon_safe,
