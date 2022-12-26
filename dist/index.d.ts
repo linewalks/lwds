@@ -6,7 +6,6 @@ import ProgressBar from "./components/ProgressBar/ProgressBar";
 import Radio from "./components/Radio/Radio";
 import RadioGroup from "./components/Radio/RadioGroup";
 import Tabs, { Tab, TabList, TabPanel, TabPanels } from "./components/Tabs/Tabs";
-import { ToastProvider, useToast } from "./components/Toast";
 import Tooltip from "./components/Tooltip/Tooltip";
-export { Button, CheckBox, CheckBoxSet, Dropdown, ProgressBar, Radio, RadioGroup, Tabs, Tab, TabList, TabPanel, TabPanels, ToastProvider, useToast, Tooltip };
+export { Button, CheckBox, CheckBoxSet, Dropdown, ProgressBar, Radio, RadioGroup, Tabs, Tab, TabList, TabPanel, TabPanels, Tooltip };
 //# sourceMappingURL=index.d.ts.map

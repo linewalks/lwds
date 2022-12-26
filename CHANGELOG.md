@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.24](https://github.com/linewalks/lwds/compare/v0.3.23...v0.3.24) (2022-12-26)
+
+
+### Bug Fixes
+
+* build error ([#264](https://github.com/linewalks/lwds/issues/264)) ([f71b550](https://github.com/linewalks/lwds/commit/f71b550fa6b0359d58c3b8009f2008b59bb6c4dc))
+
 ### [0.3.23](https://github.com/linewalks/lwds/compare/v0.0.1...v0.3.23) (2022-12-12)
 
 
