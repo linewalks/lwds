@@ -22,6 +22,7 @@ module.exports = {
     '@assets': path.resolve(__dirname, 'src/assets'),
     '@components': path.resolve(__dirname, 'src/components'),
     '@helpers': path.resolve(__dirname, 'src/helpers'),
+    '@types': path.resolve(__dirname, 'src/types'),
   },
   version,
   ignore: ignore.concat([]),
