@@ -14,6 +14,6 @@ interface TooltipProps {
     style?: object;
     children: React.ReactElement;
 }
-declare const _default: React.MemoExoticComponent<React.ForwardRefExoticComponent<TooltipProps & React.RefAttributes<unknown>>>;
+declare const _default: React.MemoExoticComponent<(props: TooltipProps) => React.ReactElement<any, string | React.JSXElementConstructor<any>>>;
 export default _default;
 //# sourceMappingURL=Tooltip.d.ts.map
