@@ -28,7 +28,8 @@
           "@assets": "./src/assets",
           "@components": "./src/components",
           "@helpers": "./src/helpers",
-          "@hooks": "./src/hooks"
+          "@hooks": "./src/hooks",
+          "@types": "./src/types"
         }
       }
     ]

@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 import { createPortal } from 'react-dom'
-import { mergeRefs } from 'react-merge-refs'
 
 import cls from '@helpers/class'
 import useDetectResize from '@hooks/useDetectResize'
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
+
 import './Tooltip.scss'
 
 const COMPONENT = 'tooltip'
@@ -38,15 +38,15 @@ interface TooltipProps {
   children: React.ReactElement
 }
 
-interface PortalWithQueryProps {
+interface PortalWithRefProps {
   reference: React.RefObject<HTMLElement>
   children: React.ReactElement
 }
 
-const PortalWithQuery = ({
+const PortalWithRef = ({
   reference,
   children,
-}: PortalWithQueryProps): React.ReactPortal => {
+}: PortalWithRefProps): React.ReactPortal => {
   const newChilden = React.cloneElement(children, {
     ref: reference,
   })
@@ -121,36 +121,6 @@ const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
   return [_top, _left, _aTop, _aLeft]
 }
 
-const isTooltipOutOfScreen = (
-  refRect,
-  floatRect,
-  mainViewport,
-  mainDirection,
-) => {
-  // 툴팁이 현재 화면내에서 충돌영역 확인
-  let _flag = false
-  switch (mainDirection) {
-    case 'top':
-      _flag = refRect.top <= floatRect.height + CARET_OFFSET
-      break
-    case 'bottom':
-      _flag =
-        mainViewport.height <=
-        refRect.top + refRect.height + floatRect.height + CARET_OFFSET
-      break
-    case 'left':
-      _flag = refRect.left <= floatRect.width + CARET_OFFSET
-      break
-    case 'right':
-      _flag =
-        mainViewport.width <=
-        refRect.left + refRect.width + floatRect.width + CARET_OFFSET
-      break
-  }
-
-  return _flag
-}
-
 const CONVERT_DIRECTION = {
   top: 'bottom',
   bottom: 'top',
@@ -167,86 +137,87 @@ const getConvertDirections = (directions) => {
   return _directions
 }
 
-const Tooltip = React.forwardRef(
-  (props: TooltipProps, ref): React.ReactElement => {
-    const {
-      placement = 'bottom',
-      text,
-      variant = 'default',
-      align = 'left',
-      hasCaret = false,
-      isAdjust = true,
-      defaultOpen = false,
-      parentContainer = null,
-      zIndex,
-      className: customClassName = '',
-      style: customStyle = {},
-      children,
-    } = props
+const Tooltip = (props: TooltipProps): React.ReactElement => {
+  const {
+    placement = 'bottom',
+    text,
+    variant = 'default',
+    align = 'left',
+    hasCaret = false,
+    isAdjust = true,
+    defaultOpen = false,
+    parentContainer = null,
+    zIndex,
+    className: customClassName = '',
+    style: customStyle = {},
+    children,
+  } = props
 
-    const [isOpen, setIsOpen] = useState(defaultOpen)
+  const _id = _.uniqueId(`lwds__${COMPONENT}__`)
+  const [isOpen, setIsOpen] = useState(defaultOpen)
 
-    let delayId = null
-    const showTooltip = () => {
-      delayId = setTimeout(() => {
-        setIsOpen(true)
-      }, 300)
+  const showTooltip = () => setIsOpen(true)
+  const hideTooltip = () => setIsOpen(false)
+
+  const refReference = useRef<HTMLElement>(null)
+  const refFloating = useRef<HTMLDivElement>(null)
+
+  const properties = useDetectResize()
+
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
+  const [arrowPos, setArrowPos] = useState({ x: 0, y: 0 })
+
+  const [directions, setDirections] = useState(getOffsetDirection(placement))
+  const [hasCollision, setHasCollision] = useState(false)
+
+  const cb = (entries) => {
+    if (_.isEmpty(entries)) return
+    const entry: IntersectionObserverEntry = _.first(entries)
+    if (entry.intersectionRatio < 1) {
+      setHasCollision(true)
     }
-    const hideTooltip = () => {
-      // 사용자가 스치듯 지나간경우는 동작하지 않도록하기 위함
-      clearTimeout(delayId)
-      setIsOpen(false)
+  }
+
+  const io = new IntersectionObserver(cb) // 관찰자 초기화
+
+  useIsomorphicLayoutEffect(() => {
+    if (isOpen) {
+      io.observe(refFloating.current)
     }
+    return () => {
+      io.disconnect()
+      setHasCollision(false)
+    }
+  }, [isOpen])
 
-    const refReference = useRef<HTMLElement>(null)
-    const refFloating = useRef<HTMLDivElement>(null)
+  useIsomorphicLayoutEffect(() => {
+    if (!_.isEmpty(properties)) {
+      // properties 즉 resize 가 발생한 경우는 collision 을 false 로 원래 위치로 다시 렌더링 되도록 함
+      setHasCollision(false)
+    }
+  }, [properties])
 
-    const properties = useDetectResize()
-
-    const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
-    const [arrowPos, setArrowPos] = useState({ x: 0, y: 0 })
-
-    const [directions, setDirections] = useState(getOffsetDirection(placement))
-
-    useIsomorphicLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    if (isOpen) {
       // 부모 컨테이너를 제공받았다면 툴팁을 반영할 대상이 변경된다
-      const _refReference = parentContainer
-        ? parentContainer()
-        : refReference?.current
+      const _refReference =
+        parentContainer && _.isFunction(parentContainer)
+          ? parentContainer()
+          : refReference?.current
 
       const refRect = _refReference.getBoundingClientRect()
       const floatRect = refFloating.current.getBoundingClientRect()
 
-      // 보정을 위한 document client H, W 정보
-      const mainViewport = {
-        height: document.documentElement.clientHeight,
-        width: document.documentElement.clientWidth,
-      }
-
-      // 보정치를 활용하여 상하좌우 단편적으로 스크린 외부로 나가는 것 감지
-      // 특이사항) 좌가 넘쳐 우로 변경하였을 때 우도 넘치면 우로 그냥 노출 감지 변경은 1회만
-      const isOutOfScreen = isTooltipOutOfScreen(
-        refRect,
-        floatRect,
-        mainViewport,
-        _.first(directions),
-      )
-
       // 보정치로 인한 스크린 외부 노출로 directions 변경
       const innerDirections =
-        isOutOfScreen && isAdjust
+        hasCollision && isAdjust
           ? getConvertDirections(directions)
-          : directions
+          : getOffsetDirection(placement)
       setDirections(innerDirections) // update
 
       // 위치 기반으로 툴팁과 화살표 방향 계산
       const [top, left, aTop, aLeft] = getCalculatingPos(
-        {
-          width: refRect.width,
-          height: refRect.height,
-          left: _refReference?.offsetLeft,
-          top: _refReference?.offsetTop,
-        },
+        refRect,
         floatRect,
         innerDirections,
         hasCaret,
@@ -254,19 +225,21 @@ const Tooltip = React.forwardRef(
 
       setTooltipPos({ x: left, y: top })
       setArrowPos({ x: aLeft, y: aTop })
-    }, [isOpen, hasCaret, directions, isAdjust, properties])
+    }
+  }, [isOpen, hasCaret, isAdjust, properties, hasCollision, placement])
 
-    return (
-      <>
-        {React.cloneElement(children, {
-          ref: mergeRefs([ref, refReference]),
-          onFocus: showTooltip,
-          onMouseEnter: showTooltip,
-          onBlur: hideTooltip,
-          onMouseLeave: hideTooltip,
-          className: clsx(cls(COMPONENT), children.props.className),
-        })}
-        <PortalWithQuery reference={refFloating}>
+  return (
+    <>
+      {/* 해당 Div 는 Outter 요소에 지나지 않음 children 이 배열인 경우 여러개를 감싸서 처리해야함. */}
+      {React.cloneElement(children, {
+        ref: refReference,
+        onFocus: showTooltip,
+        onMouseEnter: showTooltip,
+        onBlur: hideTooltip,
+        onMouseLeave: hideTooltip,
+      })}
+      {isOpen && refReference.current && (
+        <PortalWithRef reference={refFloating}>
           <div
             className={clsx(
               cls(COMPONENT, 'content'),
@@ -299,10 +272,10 @@ const Tooltip = React.forwardRef(
               />
             )}
           </div>
-        </PortalWithQuery>
-      </>
-    )
-  },
-)
+        </PortalWithRef>
+      )}
+    </>
+  )
+}
 
 export default React.memo(Tooltip)

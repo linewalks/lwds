@@ -43,18 +43,15 @@ const FlexDiv = styled.div`
 const Button = styled(_Button)`
   width: ${buttonWidth}px;
   height: ${buttonHeight}px !important;
-  margin: ${gap}px;
 `
 
 const render = () => {
   return (
     <div>
-      <FlexDiv style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-        <Tooltip
-          placement="top-left"
-          text="top-left (default open)"
-          defaultOpen
-        >
+      <FlexDiv
+        style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap', gap: 4 }}
+      >
+        <Tooltip placement="top-left" text="top-left">
           <Button variant="tertiary" size="md">
             TOP-LEFT
           </Button>
@@ -72,8 +69,15 @@ const render = () => {
         </Tooltip>
       </FlexDiv>
 
-      <div style={{ width: buttonWidth, float: 'left' }}>
-        <Tooltip placement="left-top" text="left">
+      <FlexDiv
+        style={{
+          width: buttonWidth,
+          float: 'left',
+          flexDirection: 'column',
+          gap: 4,
+        }}
+      >
+        <Tooltip placement="left-top" text="left-top">
           <Button variant="tertiary" size="md">
             LEFT-TOP
           </Button>
@@ -88,10 +92,15 @@ const render = () => {
             LEFT-BOTTOM
           </Button>
         </Tooltip>
-      </div>
+      </FlexDiv>
 
-      <div
-        style={{ width: buttonWidth, marginLeft: buttonWidth * 4 + gap * 4 }}
+      <FlexDiv
+        style={{
+          flexDirection: 'column',
+          gap: 4,
+          width: buttonWidth,
+          marginLeft: buttonWidth * 4 + gap * 2,
+        }}
       >
         <Tooltip placement="right-top" text="right">
           <Button variant="tertiary" size="md">
@@ -108,10 +117,15 @@ const render = () => {
             RIGHT-BOTTOM
           </Button>
         </Tooltip>
-      </div>
+      </FlexDiv>
 
       <FlexDiv
-        style={{ marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' }}
+        style={{
+          marginLeft: buttonWidth,
+          clear: 'both',
+          whiteSpace: 'nowrap',
+          gap: 4,
+        }}
       >
         <Tooltip placement="bottom-left" text="bottom-left">
           <Button variant="tertiary" size="md">
@@ -209,9 +223,17 @@ const render = () => {
         align="right"
         style={{ width: 100 }}
       >
-        <Button variant="tertiary" size="md">
+        <Button className="ve" variant="tertiary" size="md">
           RIGHT
         </Button>
+      </Tooltip>
+      <Tooltip
+        placement="bottom"
+        text="align right"
+        align="right"
+        style={{ width: 100 }}
+      >
+        RRRIGHT
       </Tooltip>
     </div>
   )
@@ -327,7 +349,7 @@ const Button = styled(_Button)`
 
 const render = () => {
   const longText =
-    "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
   const TestComponent = (
     <div>
@@ -386,14 +408,14 @@ const FlexWrapper = styled.section`
 
 const render = () => {
   const longText =
-    "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
   const shortText = 'Short~'
 
   return (
     <FlexWrapper>
       <Tooltip isPortal hasCaret placement="left" text={longText}>
-        <Button variant="tertiary" size="md">
+        <Button variant="tertiary" size="md" className="shi">
           ADJUST
         </Button>
       </Tooltip>

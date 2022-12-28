@@ -32,6 +32,8 @@ function commonPlugins(path) {
         { find: '@assets', replacement: 'src/assets' },
         { find: '@components', replacement: 'src/components' },
         { find: '@helpers', replacement: 'src/helpers' },
+        { find: '@hooks', replacement: 'src/hooks' },
+        { find: '@types', replacement: 'src/types' },
       ],
     }),
     postcss({
