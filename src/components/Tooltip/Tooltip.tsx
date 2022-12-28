@@ -181,6 +181,12 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
   const io = new IntersectionObserver(cb) // 관찰자 초기화
 
   useIsomorphicLayoutEffect(() => {
+    return () => {
+      io.disconnect()
+    }
+  }, [])
+
+  useIsomorphicLayoutEffect(() => {
     if (isOpen) {
       io.observe(refFloating.current)
     }

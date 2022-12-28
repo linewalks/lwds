@@ -415,7 +415,7 @@ const render = () => {
   return (
     <FlexWrapper>
       <Tooltip isPortal hasCaret placement="left" text={longText}>
-        <Button variant="tertiary" size="md" className="shi">
+        <Button variant="tertiary" size="md">
           ADJUST
         </Button>
       </Tooltip>
