@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.26](https://github.com/linewalks/lwds/compare/v0.3.23...v0.3.26) (2022-12-28)
+
+- maintainer deploy test version
+
 ### [0.3.25](https://github.com/linewalks/lwds/compare/v0.3.23...v0.3.25) (2022-12-28)
 
 ### Bug Fixes
