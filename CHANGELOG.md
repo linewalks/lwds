@@ -4,11 +4,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.3.26](https://github.com/linewalks/lwds/compare/v0.3.23...v0.3.26) (2022-12-28)
 
-
-### Bug Fixes
-
-* build error ([#264](https://github.com/linewalks/lwds/issues/264)) ([f71b550](https://github.com/linewalks/lwds/commit/f71b550fa6b0359d58c3b8009f2008b59bb6c4dc))
-* tooltip placement ([#267](https://github.com/linewalks/lwds/issues/267)) ([78dfb67](https://github.com/linewalks/lwds/commit/78dfb675db442397452563deb353606766beb910))
+- maintainer deploy test version
 
 ### [0.3.25](https://github.com/linewalks/lwds/compare/v0.3.23...v0.3.25) (2022-12-28)
 
