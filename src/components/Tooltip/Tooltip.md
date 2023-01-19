@@ -10,7 +10,7 @@
 |     variant     |                                                      default, white                                                      | default |
 |    hasCaret     |                                                         boolean                                                          |  false  |
 |    isAdjust     |                                                         boolean                                                          |  true   |
-|   defaultOpen   |                                                         boolean                                                          |  false  |
+|      open       |                                                         boolean                                                          |  false  |
 | parentContainer |                                                         function                                                         |         |
 |    className    |                                                          string                                                          |         |
 |      style      |                                                          object                                                          |   {}    |
@@ -202,10 +202,13 @@ import Tooltip from '@components/Tooltip/Tooltip'
 const render = () => {
   return (
     <div style={{ display: 'flex', gap: 12 }}>
-      <Tooltip placement="bottom" text="align left" style={{ width: 100 }}>
-        <Button variant="tertiary" size="md">
-          LEFT
-        </Button>
+      <Tooltip
+        placement="bottom"
+        text="align left"
+        align="left"
+        style={{ width: 100 }}
+      >
+        LEFT
       </Tooltip>
       <Tooltip
         placement="bottom"
@@ -213,9 +216,7 @@ const render = () => {
         align="center"
         style={{ width: 100 }}
       >
-        <Button variant="tertiary" size="md">
-          CENTER
-        </Button>
+        CENTER
       </Tooltip>
       <Tooltip
         placement="bottom"
@@ -223,17 +224,7 @@ const render = () => {
         align="right"
         style={{ width: 100 }}
       >
-        <Button className="ve" variant="tertiary" size="md">
-          RIGHT
-        </Button>
-      </Tooltip>
-      <Tooltip
-        placement="bottom"
-        text="align right"
-        align="right"
-        style={{ width: 100 }}
-      >
-        RRRIGHT
+        <div>RIGHT</div>
       </Tooltip>
     </div>
   )
@@ -431,6 +422,28 @@ const render = () => {
         </Button>
       </Tooltip>
     </FlexWrapper>
+  )
+}
+render()
+```
+
+#### Default Open
+
+```js
+import React from 'react'
+
+import Button from '@components/Button/Button'
+import Tooltip from '@components/Tooltip/Tooltip'
+
+const render = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Tooltip placement="bottom" text="DEFAULT CARET" hasCaret open>
+        <Button variant="tertiary" size="md">
+          Default Open
+        </Button>
+      </Tooltip>
+    </div>
   )
 }
 render()
