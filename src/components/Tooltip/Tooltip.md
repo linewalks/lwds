@@ -51,7 +51,7 @@ const render = () => {
       <FlexDiv
         style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap', gap: 4 }}
       >
-        <Tooltip placement="top-left" text="top-left">
+        <Tooltip placement="top-left" text="top-left" defaultOpen>
           <Button variant="tertiary" size="md">
             TOP-LEFT
           </Button>
@@ -202,10 +202,13 @@ import Tooltip from '@components/Tooltip/Tooltip'
 const render = () => {
   return (
     <div style={{ display: 'flex', gap: 12 }}>
-      <Tooltip placement="bottom" text="align left" style={{ width: 100 }}>
-        <Button variant="tertiary" size="md">
-          LEFT
-        </Button>
+      <Tooltip
+        placement="bottom"
+        text="align left"
+        align="left"
+        style={{ width: 100 }}
+      >
+        LEFT
       </Tooltip>
       <Tooltip
         placement="bottom"
@@ -213,9 +216,7 @@ const render = () => {
         align="center"
         style={{ width: 100 }}
       >
-        <Button variant="tertiary" size="md">
-          CENTER
-        </Button>
+        CENTER
       </Tooltip>
       <Tooltip
         placement="bottom"
@@ -223,17 +224,7 @@ const render = () => {
         align="right"
         style={{ width: 100 }}
       >
-        <Button className="ve" variant="tertiary" size="md">
-          RIGHT
-        </Button>
-      </Tooltip>
-      <Tooltip
-        placement="bottom"
-        text="align right"
-        align="right"
-        style={{ width: 100 }}
-      >
-        RRRIGHT
+        <div>RIGHT</div>
       </Tooltip>
     </div>
   )
@@ -252,12 +243,18 @@ import Tooltip from '@components/Tooltip/Tooltip'
 const render = () => {
   return (
     <div style={{ display: 'flex', gap: 12 }}>
-      <Tooltip placement="bottom" text="DEFAULT CARET" hasCaret>
+      <Tooltip placement="bottom" text="DEFAULT CARET" hasCaret defaultOpen>
         <Button variant="tertiary" size="md">
           CARET(DEFAULT)
         </Button>
       </Tooltip>
-      <Tooltip placement="bottom" text="WHITE CARET" hasCaret variant="white">
+      <Tooltip
+        placement="bottom"
+        text="WHITE CARET"
+        hasCaret
+        variant="white"
+        defaultOpen
+      >
         <Button variant="tertiary" size="md">
           CARET(WHITE)
         </Button>

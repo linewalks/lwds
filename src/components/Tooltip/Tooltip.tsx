@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react'
 import _ from 'lodash'
 import clsx from 'clsx'
 import { createPortal } from 'react-dom'
@@ -62,6 +62,10 @@ const DEFAULT_Z_INDEX = 9000
 
 const getOffsetDirection = (placement) => _.split(placement, '-')
 const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
+  // 스크롤 위치에 따른 getBoundingClientRect 수치 보정 값
+  const scrollY = window.scrollY || window.pageYOffset
+  const scrollX = window.scrollX || window.pageXOffset
+
   const _offset = hasCaret ? CARET_OFFSET : DEFAULT_OFFSET
 
   // tooltip pos
@@ -83,7 +87,6 @@ const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
     }
 
     if (directions[1]) {
-      // 2nd directions left / right
       if (directions[1] === 'left') {
         _left = refRect.left
         _aLeft = CARET_WIDTH
@@ -118,7 +121,7 @@ const getCalculatingPos = (refRect, floatRect, directions, hasCaret) => {
     }
   }
 
-  return [_top, _left, _aTop, _aLeft]
+  return [_top + scrollY, _left + scrollX, _aTop, _aLeft]
 }
 
 const CONVERT_DIRECTION = {
@@ -153,11 +156,10 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
     children,
   } = props
 
-  const _id = _.uniqueId(`lwds__${COMPONENT}__`)
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
-  const showTooltip = () => setIsOpen(true)
-  const hideTooltip = () => setIsOpen(false)
+  const showTooltip = useCallback(() => setIsOpen(true), [])
+  const hideTooltip = useCallback(() => setIsOpen(false), [])
 
   const refReference = useRef<HTMLElement>(null)
   const refFloating = useRef<HTMLDivElement>(null)
@@ -167,24 +169,16 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
   const [arrowPos, setArrowPos] = useState({ x: 0, y: 0 })
 
-  const [directions, setDirections] = useState(getOffsetDirection(placement))
+  const directions = useMemo(() => getOffsetDirection(placement), [placement])
   const [hasCollision, setHasCollision] = useState(false)
 
   const cb = (entries) => {
-    if (_.isEmpty(entries)) return
-    const entry: IntersectionObserverEntry = _.first(entries)
-    if (entry.intersectionRatio < 1) {
-      setHasCollision(true)
-    }
+    const [entry] = entries
+    if (!entry) return
+    entry.intersectionRatio < 1 && setHasCollision(true)
   }
 
   const io = new IntersectionObserver(cb) // 관찰자 초기화
-
-  useIsomorphicLayoutEffect(() => {
-    return () => {
-      io.disconnect()
-    }
-  }, [])
 
   useIsomorphicLayoutEffect(() => {
     if (isOpen) {
@@ -209,42 +203,56 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
       const _refReference =
         parentContainer && _.isFunction(parentContainer)
           ? parentContainer()
-          : refReference?.current
+          : refReference.current
 
       const refRect = _refReference.getBoundingClientRect()
       const floatRect = refFloating.current.getBoundingClientRect()
 
       // 보정치로 인한 스크린 외부 노출로 directions 변경
-      const innerDirections =
-        hasCollision && isAdjust
-          ? getConvertDirections(directions)
-          : getOffsetDirection(placement)
-      setDirections(innerDirections) // update
+      let _directions = getOffsetDirection(placement)
+      if (hasCollision && isAdjust) {
+        _directions = getConvertDirections(directions)
+        setHasCollision(false)
+      }
 
       // 위치 기반으로 툴팁과 화살표 방향 계산
       const [top, left, aTop, aLeft] = getCalculatingPos(
         refRect,
         floatRect,
-        innerDirections,
+        _directions,
         hasCaret,
       )
 
       setTooltipPos({ x: left, y: top })
       setArrowPos({ x: aLeft, y: aTop })
     }
-  }, [isOpen, hasCaret, isAdjust, properties, hasCollision, placement])
+  }, [
+    isOpen,
+    directions,
+    hasCaret,
+    isAdjust,
+    properties,
+    hasCollision,
+    placement,
+  ])
+
+  const _props = useMemo(
+    () => ({
+      ref: refReference,
+      onFocus: showTooltip,
+      onMouseEnter: showTooltip,
+      onBlur: hideTooltip,
+      onMouseLeave: hideTooltip,
+    }),
+    [showTooltip, hideTooltip],
+  )
 
   return (
     <>
-      {/* 해당 Div 는 Outter 요소에 지나지 않음 children 이 배열인 경우 여러개를 감싸서 처리해야함. */}
-      {React.cloneElement(children, {
-        ref: refReference,
-        onFocus: showTooltip,
-        onMouseEnter: showTooltip,
-        onBlur: hideTooltip,
-        onMouseLeave: hideTooltip,
-      })}
-      {isOpen && refReference.current && (
+      {React.isValidElement(children)
+        ? React.cloneElement(children, _props)
+        : React.createElement('span', _props, children)}
+      {isOpen && (
         <PortalWithRef reference={refFloating}>
           <div
             className={clsx(
