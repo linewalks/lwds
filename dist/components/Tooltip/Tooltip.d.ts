@@ -6,7 +6,7 @@ interface TooltipProps {
     text: string | React.ReactElement;
     variant?: 'default' | 'white';
     isAdjust?: boolean;
-    defaultOpen?: boolean;
+    open?: boolean;
     hasCaret?: boolean;
     zIndex?: number;
     className?: string;
