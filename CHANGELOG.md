@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.27](https://github.com/linewalks/lwds/compare/v0.3.23...v0.3.27) (2023-01-19)
+
+### Bug Fixes
+
+- tooltip placement ([#267](https://github.com/linewalks/lwds/issues/267)) ([78dfb67](https://github.com/linewalks/lwds/commit/78dfb675db442397452563deb353606766beb910))
+
 ### [0.3.26](https://github.com/linewalks/lwds/compare/v0.3.23...v0.3.26) (2022-12-28)
 
 - maintainer deploy test version
