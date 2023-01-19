@@ -92,8 +92,8 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 ## Contact
 
-- Jungwoo - jungwoo@linewalks.com
-- lahee - lahee@linewalks.com
-- jh.lee - jh.lee@linewalks.com
-- leetaehee - leetaehee@linewalks.com
-- seonyeong - seonyeong@linewalks.com
+- sector.rest - sector.rest@kakaohealthcare.com
+- rapha.el - rapha.el@kakaohealthcare.com
+- lana.good - lana.good@kakaohealthcare.com
+- champ.mark - champ.mark@kakaohealthcare.com
+- edit.re - edit.re@kakaohealthcare.com
