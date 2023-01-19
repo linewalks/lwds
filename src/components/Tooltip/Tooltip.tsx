@@ -29,7 +29,7 @@ interface TooltipProps {
   text: string | React.ReactElement
   variant?: 'default' | 'white'
   isAdjust?: boolean
-  defaultOpen?: boolean
+  open?: boolean
   hasCaret?: boolean
   zIndex?: number
   className?: string
@@ -148,7 +148,7 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
     align = 'left',
     hasCaret = false,
     isAdjust = true,
-    defaultOpen = false,
+    open = false,
     parentContainer = null,
     zIndex,
     className: customClassName = '',
@@ -156,7 +156,7 @@ const Tooltip = (props: TooltipProps): React.ReactElement => {
     children,
   } = props
 
-  const [isOpen, setIsOpen] = useState(defaultOpen)
+  const [isOpen, setIsOpen] = useState(open)
 
   const showTooltip = useCallback(() => setIsOpen(true), [])
   const hideTooltip = useCallback(() => setIsOpen(false), [])

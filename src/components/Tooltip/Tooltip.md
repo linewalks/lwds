@@ -10,7 +10,7 @@
 |     variant     |                                                      default, white                                                      | default |
 |    hasCaret     |                                                         boolean                                                          |  false  |
 |    isAdjust     |                                                         boolean                                                          |  true   |
-|   defaultOpen   |                                                         boolean                                                          |  false  |
+|      open       |                                                         boolean                                                          |  false  |
 | parentContainer |                                                         function                                                         |         |
 |    className    |                                                          string                                                          |         |
 |      style      |                                                          object                                                          |   {}    |
@@ -51,7 +51,7 @@ const render = () => {
       <FlexDiv
         style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap', gap: 4 }}
       >
-        <Tooltip placement="top-left" text="top-left" defaultOpen>
+        <Tooltip placement="top-left" text="top-left">
           <Button variant="tertiary" size="md">
             TOP-LEFT
           </Button>
@@ -243,18 +243,12 @@ import Tooltip from '@components/Tooltip/Tooltip'
 const render = () => {
   return (
     <div style={{ display: 'flex', gap: 12 }}>
-      <Tooltip placement="bottom" text="DEFAULT CARET" hasCaret defaultOpen>
+      <Tooltip placement="bottom" text="DEFAULT CARET" hasCaret>
         <Button variant="tertiary" size="md">
           CARET(DEFAULT)
         </Button>
       </Tooltip>
-      <Tooltip
-        placement="bottom"
-        text="WHITE CARET"
-        hasCaret
-        variant="white"
-        defaultOpen
-      >
+      <Tooltip placement="bottom" text="WHITE CARET" hasCaret variant="white">
         <Button variant="tertiary" size="md">
           CARET(WHITE)
         </Button>
@@ -428,6 +422,28 @@ const render = () => {
         </Button>
       </Tooltip>
     </FlexWrapper>
+  )
+}
+render()
+```
+
+#### Default Open
+
+```js
+import React from 'react'
+
+import Button from '@components/Button/Button'
+import Tooltip from '@components/Tooltip/Tooltip'
+
+const render = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Tooltip placement="bottom" text="DEFAULT CARET" hasCaret open>
+        <Button variant="tertiary" size="md">
+          Default Open
+        </Button>
+      </Tooltip>
+    </div>
   )
 }
 render()
