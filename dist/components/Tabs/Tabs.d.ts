@@ -1,7 +1,7 @@
 import React from 'react';
 import '@components/Tabs/Tabs.scss';
-declare type TSizeType = 'md' | 'lg';
-declare type TVariantType = 'primary' | 'danger' | 'default';
+type TSizeType = 'md' | 'lg';
+type TVariantType = 'primary' | 'danger' | 'default';
 interface ITabsProps {
     selectedIndex?: number;
     size?: TSizeType;

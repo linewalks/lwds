@@ -1,8 +1,8 @@
 import React from 'react';
 import './ProgressBar.scss';
-declare type InnerNumberType = number | string;
-declare type PlacementType = 'top' | 'right' | 'bottom' | 'left';
-declare type SizeType = 'sm' | 'md';
+type InnerNumberType = number | string;
+type PlacementType = 'top' | 'right' | 'bottom' | 'left';
+type SizeType = 'sm' | 'md';
 export declare const validateNumber: (num: any) => boolean;
 export declare const getMax: (val: InnerNumberType, max: InnerNumberType) => number;
 interface ProgressBarProps {
