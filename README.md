@@ -97,3 +97,4 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 - lana.good - lana.good@kakaohealthcare.com
 - champ.mark - champ.mark@kakaohealthcare.com
 - edit.re - edit.re@kakaohealthcare.com
+- yuno.dev - yuno.dev@kakaohealthcare.com

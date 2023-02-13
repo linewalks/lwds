@@ -15,15 +15,16 @@
   "homepage": "https://linewalks.github.io/lwds/",
   "bugs": {
     "url": "https://github.com/linewalks/lwds/issues",
-    "email": "system@linewalks.com"
+    "email": "rapha.el@kakaohealthcare.com"
   },
   "license": "MIT",
   "contributors": [
-    "Jungwoo <jungwoo@linewalks.com> (https://linewalks.com)",
-    "lahee <lahee@linewalks.com> (https://linewalks.com)",
-    "jh.lee <jh.lee@linewalks.com> (https://linewalks.com)",
-    "leetaehee <leetaehee@linewalks.com> (https://linewalks.com)",
-    "seonyeong <seonyeong@linewalks.com> (https://linewalks.com)"
+    "sector <sector.rest@kakaohealthcare.com> (https://kakaohealthcare.com)",
+    "rapha <rapha.el@kakaohealthcare.com> (https://kakaohealthcare.com)",
+    "lana <lana.good@kakaohealthcare.com> (https://kakaohealthcare.com)",
+    "champ <champ.mark@kakaohealthcare.com> (https://kakaohealthcare.com)",
+    "edit <edit.re@kakaohealthcare.com> (https://kakaohealthcare.com)",
+    "yuno <yuno.dev@kakaohealthcare.com> (https://kakaohealthcare.com)"
   ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
