@@ -29,7 +29,7 @@ interface DropdownItemProps {
     style?: object;
 }
 declare const Dropdown: {
-    ({ triggerNode, isOpen: propsIsOpen, size, icon, placement, scrollable, className, containerRef, isPortal, portalQueryStr, onClick, onClose, style, children, }: DropdownProps): JSX.Element;
+    ({ triggerNode, isOpen: propsIsOpen, size, icon, placement, scrollable, className, containerRef, isPortal, portalQueryStr, onClick, onClose, style, children, }: DropdownProps): React.JSX.Element;
     defaultProps: {
         size: string;
         icon: boolean;
@@ -37,8 +37,8 @@ declare const Dropdown: {
         scrollable: boolean;
         isPortal: boolean;
     };
-    Item({ id, label, desc, type, icon, disabled, className, itemRef, onClick, style, }: DropdownItemProps): JSX.Element;
-    Divider(): JSX.Element;
+    Item({ id, label, desc, type, icon, disabled, className, itemRef, onClick, style, }: DropdownItemProps): React.JSX.Element;
+    Divider(): React.JSX.Element;
 };
 export default Dropdown;
 //# sourceMappingURL=Dropdown.d.ts.map

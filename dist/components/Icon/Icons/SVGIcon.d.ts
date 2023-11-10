@@ -11,7 +11,7 @@ export interface SVGIconProps {
     children?: React.ReactNode;
 }
 declare const SVGIcon: {
-    (props: SVGIconProps): JSX.Element;
+    (props: SVGIconProps): React.JSX.Element;
     defaultProps: {
         color: string;
         width: string;

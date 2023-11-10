@@ -17,7 +17,7 @@ interface ProgressBarProps {
     children?: React.ReactNode;
 }
 declare const ProgressBar: {
-    ({ placement, value, size, width, thickness, strokeColor, max, isInfinite, children, ...rest }: ProgressBarProps): JSX.Element;
+    ({ placement, value, size, width, thickness, strokeColor, max, isInfinite, children, ...rest }: ProgressBarProps): React.JSX.Element;
     defaultProps: {
         placement: string;
         value: number;
