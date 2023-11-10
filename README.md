@@ -8,13 +8,12 @@ Linewalks 사내 디자인 시스템을 React 환경에서 사용하기 쉽게 �
 
 #### Built With
 
-- Node = 14.x LTS (14.17.0 권장)
-- yarn >= 1.19.x, 1.5.x
+- Node = 16.x LTS (16.20.2 권장)
+- yarn >= 1.22.19
 
 #### Prerequisites
 
-1. Install Node.js (14.x LTS) [파일다운로드](https://nodejs.org/dist/latest-v14.x/)
-
+1. Install Node.js (14.x LTS) [파일다운로드](https://nodejs.org/dist/latest-v16.x/)
 2. Install Yarn [yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
 
 #### Installation
@@ -95,6 +94,4 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 - sector.rest - sector.rest@kakaohealthcare.com
 - rapha.el - rapha.el@kakaohealthcare.com
 - lana.good - lana.good@kakaohealthcare.com
-- champ.mark - champ.mark@kakaohealthcare.com
 - edit.re - edit.re@kakaohealthcare.com
-- yuno.dev - yuno.dev@kakaohealthcare.com
