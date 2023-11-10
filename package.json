@@ -22,9 +22,7 @@
     "sector <sector.rest@kakaohealthcare.com> (https://kakaohealthcare.com)",
     "rapha <rapha.el@kakaohealthcare.com> (https://kakaohealthcare.com)",
     "lana <lana.good@kakaohealthcare.com> (https://kakaohealthcare.com)",
-    "champ <champ.mark@kakaohealthcare.com> (https://kakaohealthcare.com)",
-    "edit <edit.re@kakaohealthcare.com> (https://kakaohealthcare.com)",
-    "yuno <yuno.dev@kakaohealthcare.com> (https://kakaohealthcare.com)"
+    "edit <edit.re@kakaohealthcare.com> (https://kakaohealthcare.com)"
   ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
