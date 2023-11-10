@@ -13,6 +13,6 @@ interface CheckBoxProps {
     children: React.ReactElement;
     onChange: (checked: boolean, id: string) => void;
 }
-declare const CheckBox: ({ color, className, defaultChecked, disabled, id, mixed, checked: propsChecked, size, style, children, onChange, }: CheckBoxProps) => JSX.Element;
+declare const CheckBox: ({ color, className, defaultChecked, disabled, id, mixed, checked: propsChecked, size, style, children, onChange, }: CheckBoxProps) => React.JSX.Element;
 export default CheckBox;
 //# sourceMappingURL=CheckBox.d.ts.map

@@ -17,23 +17,23 @@ interface ITabListProps {
     noBorder?: boolean;
     children?: React.ReactNode;
 }
-export default function Tabs({ selectedIndex, size, variant, tickSpeed, noIndicator, className, onChange, children, ...rest }: ITabsProps): JSX.Element;
-export declare function TabList({ noBorder, className, children, ...rest }: ITabListProps): JSX.Element;
+export default function Tabs({ selectedIndex, size, variant, tickSpeed, noIndicator, className, onChange, children, ...rest }: ITabsProps): React.JSX.Element;
+export declare function TabList({ noBorder, className, children, ...rest }: ITabListProps): React.JSX.Element;
 export declare function Tab({ className, disabled, children, ...rest }: {
     [x: string]: any;
     className: any;
     disabled: any;
     children: any;
-}): JSX.Element;
+}): React.JSX.Element;
 export declare function TabPanels({ className, children, ...rest }: {
     [x: string]: any;
     className: any;
     children: any;
-}): JSX.Element;
+}): React.JSX.Element;
 export declare function TabPanel({ className, children, ...rest }: {
     [x: string]: any;
     className: any;
     children: any;
-}): JSX.Element;
+}): React.JSX.Element;
 export {};
 //# sourceMappingURL=Tabs.d.ts.map

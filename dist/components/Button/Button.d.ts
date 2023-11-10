@@ -17,7 +17,7 @@ interface ButtonProps {
     children?: React.ReactNode;
     onClick?: React.MouseEventHandler<HTMLElement>;
 }
-declare function renderButton<T extends ButtonProps, U extends React.RefObject<HTMLButtonElement>>(props: T, ref: U): JSX.Element;
+declare function renderButton<T extends ButtonProps, U extends React.RefObject<HTMLButtonElement>>(props: T, ref: U): React.JSX.Element;
 declare const _default: typeof renderButton;
 export default _default;
 //# sourceMappingURL=Button.d.ts.map
